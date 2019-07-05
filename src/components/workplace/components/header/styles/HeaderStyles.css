@@ -1,0 +1,15 @@
+#header{
+  width: 100%;
+  height: 70px;
+  background: orangered;
+  display: flex;
+  flex-direction: row;
+}
+
+#menuItemsContainer{
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 5%;
+}

@@ -1,0 +1,63 @@
+#outterContainer{
+  width: 100%;
+  height: 600px;
+}
+
+#authContentBlock{
+  width: 80%;
+  height: 100%;
+  background: transparent;
+  margin-left: 10%;
+}
+
+.desktopAuthContentBlock{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.mobileAuthContentBlock{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+#entrySentenceContainer{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding-top: 50px;
+}
+
+.desktopinspiringWord{
+  font-family: Arial;
+  text-align: left;
+  color: orangered;
+}
+
+.desktopinspiringWord:nth-child(1){
+  font-size: 100px;
+}
+.desktopinspiringWord:nth-child(2){
+  font-size: 120px;
+}
+.desktopinspiringWord:nth-child(3){
+  font-size: 140px;
+}
+
+.mobileinspiringWord{
+  font-family: Arial;
+  text-align: left;
+  color: orangered;
+}
+
+.mobileinspiringWord:nth-child(1){
+  font-size: 80px;
+}
+.mobileinspiringWord:nth-child(2){
+  font-size: 80px;
+}
+.mobileinspiringWord:nth-child(3){
+  font-size: 80px;
+}

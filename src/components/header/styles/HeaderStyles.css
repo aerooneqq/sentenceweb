@@ -1,0 +1,115 @@
+#titleContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 35px;
+}
+
+#menuOptionsContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.headerVertSeparator {
+    background: #ffffff;
+    width: 1px;
+    height: 35px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+    .headerVertSeparator.vertHeaderRotation {
+        animation-name: vertSeparatorRotate;
+        animation-duration: 0.3s;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+    }
+
+@keyframes vertSeparatorRotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(195deg);
+    }
+}
+
+.headerTitle {
+    color: #ffffff;
+    font-family: "Courier New";
+    letter-spacing: 3px;
+    font-size: 30px;
+    cursor: default;
+    visibility: visible;
+    opacity: 0;
+
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+    .headerTitle.fadeIn {
+        animation-name: titleFadeIn;
+        animation-duration: 1s;
+        animation-delay: 0.4s;
+        animation-fill-mode: forwards;
+    }
+
+@keyframes titleFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.headerMenuOption {
+    width: auto;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+}
+
+    .headerMenuOption.headerMenuItemFadeIn {
+        animation-name: menuItemFadeIn;
+        animation-duration: 1s;
+        animation-delay: 0.4s;
+        animation-fill-mode: forwards;
+    }
+
+@keyframes menuItemFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.headerMenuOptionText {
+    margin-left: -5px;
+}
+
+    .headerMenuOptionText.menuItemTextslideIn {
+        animation-name: menuOptionTextSlideIn;
+        animation-duration: 0.5s;
+        animation-delay: 0.4s;
+        animation-fill-mode: forwards;
+    }
+
+@keyframes menuOptionTextSlideIn{
+    from{
+        margin-left: -5px;
+    }
+
+    to{
+        margin-left: 5px;
+    }
+}

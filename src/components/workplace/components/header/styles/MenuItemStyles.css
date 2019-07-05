@@ -1,0 +1,21 @@
+.workplaceHeaderMenuItem{
+  height: 100%;
+
+  font-family: Arial;
+  font-size: 18px;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  cursor: default;
+
+  margin-left: 20px;
+}
+
+.workplaceHeaderMenuItem:nth-child(1){
+  margin-left: 10%;
+}
+
+.workplaceHeaderMenuItem:hover{
+  color: #e0e0e0;
+}

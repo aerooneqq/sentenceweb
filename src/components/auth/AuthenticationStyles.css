@@ -1,0 +1,67 @@
+﻿#authenticationContainer {
+    background-color: transparent;
+    margin-top: 20px;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 0px;
+    border-color: lightgray;
+    z-index: 2;
+}
+
+.desktopAuthenticationContainer{
+  width: 400px;
+  height: 450px;
+}
+
+.mobileAuthenticationContainer{
+  width: 100%;
+  height: 450px;
+}
+
+#signModuleContainer{
+  width: 100%;
+  height: 100%;
+
+  padding-top: 20px;
+  margin-top: 10px;
+
+  border-radius: 5px;
+  background: #f0f0f0;
+}
+
+.rotate{
+  transform: rotateY(180deg)
+}
+
+#rotationContainer, #front, #back {
+  perspective: 1000;
+  width: 100%;
+  height: 100%;
+
+  margin-top: 10px;
+  padding-top:  0px;
+  border-radius: 5px;
+  background: #f0f0f0;
+}
+
+#rotation{
+  transition: 1s;
+  transform-style: preserve-3d;
+
+  position: relative;
+}
+
+#back, #front{
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#back{
+  transform: rotateY(180deg)
+}
+
+#front{
+  z-index: 2;
+}

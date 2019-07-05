@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
+import HomeComponent from "./components/mainComponents/HomeComponent"
+import WorkplaceComponent from "./components/mainComponents/WorkplaceComponent"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import device from "./scripts/device.js"
+import DeviceContext from "./contexts/DeviceContext.js"
+
+export default class App extends React.Component {
+
+  constructor(){
+    super()
+    this.state = {
+      userLoggedIn: false,
+      user: null
+    };
+  }
+
+  getDevice(){
+    if (device.mobile()){
+      return "mobile"
+    }
+
+    return "desktop"
+  }
+
+  render() {
+    let device = this.getDevice()
+    let token = localStorage.getItem("token")
+
+    return(
+      <DeviceContext.Provider value = {device}>
+        <BrowserRouter>
+          <Route>
+            <Switch>
+              <Route exact path="/" component={token === null ? HomeComponent : WorkplaceComponent}/>
+            </Switch>
+          </Route>
+        </BrowserRouter>
+      </DeviceContext.Provider>
+    )
+  }
 }
-
-export default App;

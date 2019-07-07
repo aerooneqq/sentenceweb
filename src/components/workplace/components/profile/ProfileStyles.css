@@ -1,0 +1,31 @@
+#profileContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  height: 600px;
+  align-self: center;
+}
+
+#userPhotoCont{
+  width: 300px;
+  height: 100%;
+  background: #f9f9f9;
+  border-style: none;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#profileDataCont{
+  width: 300px;
+  height: 100%;
+  background: #f9f9f9;
+  margin-left: 25px;
+  border-style: none;
+  border-radius: 10px;
+}

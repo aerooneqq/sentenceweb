@@ -1,10 +1,28 @@
 .profiletextBoxCont{
-  width: 80%;
-  margin-left: 10%;
+  width: 90%;
+  margin-left: 5%;
   height: 50px;
   background-color: transparent;
 }
 
-.propertyNameText{
-   
+.propertyValueInput{
+  width: 90%;
+  margin-left: 5%;
+  height: 25px;
+
+  border-style: solid;
+  border-width: 1px;
+  border-color: orange;
+  border-radius: 5px;
+
+  padding-left: 5px;
+
+  font-family: Arial;
+  font-size: 16px;
+}
+
+.propertyValueInput:focus{
+  outline: none;
+
+  border-color: orangered;
 }

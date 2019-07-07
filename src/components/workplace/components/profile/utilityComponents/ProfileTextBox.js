@@ -1,5 +1,4 @@
 import React, {Component} from "react"
-
 import "../styles/ProfileTextBoxStyles.css"
 
 export default class TextBox extends Component{
@@ -11,7 +10,7 @@ export default class TextBox extends Component{
     return(
       <div className = "profiletextBoxCont">
         <p className = "propertyNameText">Property name</p>
-        <input className = "propertyValueInput" type = "text">Property value</input>
+        <input className = "propertyValueInput" type = "text" value="Property value"></input>
       </div>
     )
   }

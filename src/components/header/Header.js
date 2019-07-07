@@ -20,6 +20,7 @@ export default class Header extends React.Component {
 
         return (
             <div style={headerStyle}>
+              <div id = "leftHeaderPart">
                 <div id="titleContainer">
                   <HeaderTitle />
                   <VerticalSeparator />
@@ -27,6 +28,7 @@ export default class Header extends React.Component {
                 <div id="menuOptionsContainer">
                   {jsxMenuOptions}
                 </div>
+              </div>
             </div>
         )
     }

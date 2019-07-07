@@ -3,6 +3,7 @@ import React, {Component, Suspense, lazy} from "react"
 const UserPhoto = lazy(()=>import("./utilityComponents/UserPhoto"))
 const SignOutComponent = lazy(()=>import("./utilityComponents/SignOutComponent"))
 const DeleteAccountComponent = lazy(()=>import("./utilityComponents/DeleteAccountComponent"))
+const ProfileDataComponent = lazy(()=>import("./utilityComponents/ProfileDataComponent"))
 
 export default class Profile extends Component{
   constructor(){
@@ -11,11 +12,17 @@ export default class Profile extends Component{
 
   render(){
     return (
-      <div>
-        <UserPhoto />
-        <SignOutComponent />
-        <DeleteAccountComponent />
+      <div id = "profileContainer">
+        <div id = "userPhotoComponent">
+          <UserPhoto />
+          <SignOutComponent />
+          <DeleteAccountComponent />
+        </div>
+        <div id = "profileDataCont">
+          <ProfileDataComponent />
+        </div>
       </div>
+
     )
   }
 }

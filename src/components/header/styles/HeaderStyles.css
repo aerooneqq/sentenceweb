@@ -11,9 +11,19 @@
   align-items: center;
 }
 
+#leftHeaderPart{
+  width: auto;
+  height: 100%;
+  background: transparent;
+  display:  flex;
+  flex-direction: row;
+  flex-wrap:  wrap;
+  align-items: center;
+}
+
 .headerVertSeparator {
     background: #ffffff;
-    width: 1px;
+    width: 2px;
     height: 35px;
     margin-left: 10px;
     margin-right: 10px;
@@ -37,6 +47,10 @@
 }
 
 .headerTitle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
     color: #ffffff;
     font-family: "Courier New";
     letter-spacing: 3px;

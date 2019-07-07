@@ -17,7 +17,7 @@ export default class HeaderTitle extends React.Component {
 
     render() {
         return (
-            <h2 id={this.state.titleID} className="headerTitle">Sentence</h2>
+            <h2 id={this.state.titleID} className="headerTitle"><div>Sentence</div></h2>
         )
     }
 }

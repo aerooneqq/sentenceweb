@@ -33,7 +33,7 @@ export default class App extends React.Component {
         <BrowserRouter>
           <Route>
             <Switch>
-              <Route exact path="/" component={token === null ? HomeComponent : WorkplaceComponent}/>
+              <Route exact path="/" component={token === null ? HomeComponent : HomeComponent}/>
             </Switch>
           </Route>
         </BrowserRouter>

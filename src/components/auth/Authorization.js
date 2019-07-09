@@ -40,7 +40,7 @@ export default class Authorization extends React.Component {
     }
 
     tryToAuthorizeUser(userInput){
-      //Performing an hhtp call here in future
+      //Performing an https call here in future
       let user = {email: "aerooneQ@yandex.ru", name: "Aero"}
       localStorage.setItem("token", "a")
 

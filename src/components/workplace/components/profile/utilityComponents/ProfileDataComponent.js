@@ -11,6 +11,10 @@ export default class ProfileDataComponent extends Component{
     return(
       <div id = "profileDataContainer">
         <ProfileTextBox />
+        <ProfileTextBox />
+        <ProfileTextBox />
+        <ProfileTextBox />
+        <ProfileTextBox />
       </div>
     )
   }

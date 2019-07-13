@@ -1,7 +1,9 @@
 import React, {Component, lazy} from "react"
-import "../styles/UserPhotoStyles.css"
+import "./styles/UserPhotoStyles.css"
 
-const ProfileDataItem = lazy(()=>import("./ProfileDataItem"))
+import authPhto from "../img/authenticationWhiteDataIcon.png"
+
+const ProfileDataItem = lazy(()=>import("./userPhotoAtoms/ProfileDataItem"))
 
 export default class UserPhoto extends Component{
   constructor(props){
@@ -18,11 +20,11 @@ export default class UserPhoto extends Component{
           </div>
         </div>
         <div id="profileDataItemsContainer">
-          <ProfileDataItem />
-          <ProfileDataItem />
-          <ProfileDataItem />
-          <ProfileDataItem />
-          <ProfileDataItem />
+          <ProfileDataItem imgURL = {authPhto}/>
+          <ProfileDataItem imgURL = {authPhto}/>
+          <ProfileDataItem imgURL = {authPhto}/>
+          <ProfileDataItem imgURL = {authPhto}/>
+          <ProfileDataItem imgURL = {authPhto}/>
         </div>
       </div>
     )

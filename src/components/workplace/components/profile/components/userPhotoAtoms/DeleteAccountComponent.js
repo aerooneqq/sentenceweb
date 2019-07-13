@@ -1,5 +1,5 @@
 import React, {Component} from "react"
-import "../styles/DeleteAccountCompStyles.css"
+import "./styles/DeleteAccountCompStyles.css"
 
 export default class DeleteAccountComponent extends Component {
   render(){

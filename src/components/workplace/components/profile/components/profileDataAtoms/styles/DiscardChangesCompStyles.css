@@ -1,0 +1,16 @@
+#discardChangesCont{ 
+    width: 90%;
+    height: auto;
+
+    font-family: Arial; 
+    font-size: 15px;
+    color: gray; 
+    
+    margin-left: 10%;
+
+    cursor: default;
+}
+
+#discardChangesCont:hover{ 
+    text-decoration: underline;
+}

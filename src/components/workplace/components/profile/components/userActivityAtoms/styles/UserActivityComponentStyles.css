@@ -1,0 +1,34 @@
+#userActivitiesCont{ 
+    height: 700px;
+
+    overflow-y:auto;
+    overflow-x:hidden;
+    
+    transform:rotate(-90deg) translateY(-200px) translateX(10px);
+    transform-origin:right top;
+
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#userActivitiesCont::-webkit-scrollbar{ 
+    height: 0px;
+}   
+
+#userActivitiesCont > div{ 
+    transform: rotate(90deg);
+}
+
+.monthActivityCont:nth-child(1){ 
+    margin-left: 5px;
+}
+
+.monthActivityCont:nth-child(n){ 
+    margin-right: 5px;
+}
+
+#activityHeader{ 
+    font-family: Arial; 
+    color: orangered;
+    font-size: 20px;
+}

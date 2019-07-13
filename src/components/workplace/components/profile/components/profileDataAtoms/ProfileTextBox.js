@@ -1,5 +1,5 @@
 import React, {Component} from "react"
-import "../styles/ProfileTextBoxStyles.css"
+import "./styles/ProfileTextBoxStyles.css"
 
 export default class TextBox extends Component{
   constructor(props){
@@ -22,6 +22,7 @@ export default class TextBox extends Component{
     return(
       <div className = "profiletextBoxCont">
         <div className = "propertyNameText">Property name</div>
+        <div className = "propertyDescription">Property description desdescripdedescr iption scription t i on cription descriptio desc ripti onn</div>
         <input className = "propertyValueInput" type = "text" value={this.state.value} onChange={this.onInputChange}></input>
       </div>
     )

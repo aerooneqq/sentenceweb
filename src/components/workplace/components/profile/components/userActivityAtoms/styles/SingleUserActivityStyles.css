@@ -1,0 +1,23 @@
+.singleUserActivityCont{ 
+    width: 16px;
+    height: 16px;
+
+    background-color: transparent;
+
+    border-style: solid;
+    border-radius: 5px;
+    border-color: #e0e0e0;
+    border-width: 1px;
+
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.singleUserActivityCont:hover{
+    background-color: #e0e0e0;
+}
+
+.activityBall{
+    background-color: orangered;
+}

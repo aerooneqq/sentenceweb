@@ -1,5 +1,5 @@
 import React, {Component} from "react"
-import "../styles/SignOutComponent.css"
+import "./styles/SignOutComponent.css"
 
 export default class SignOutComponent extends Component{
   constructor(){

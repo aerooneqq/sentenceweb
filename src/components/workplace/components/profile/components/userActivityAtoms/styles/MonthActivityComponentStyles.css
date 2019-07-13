@@ -1,0 +1,20 @@
+.monthNameCont{ 
+    font-family: Arial;
+    font-size: 17px;
+    color: gray;
+    margin-left: 5px;
+
+    cursor: default;
+}
+
+.monthActivityCont{ 
+    padding-top: 10px;
+}
+
+.dayName{ 
+    font-family: Arial; 
+    color: gray;
+    font-size: 13px;
+
+    cursor: default;
+}

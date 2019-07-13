@@ -7,7 +7,7 @@
 
   background: white;
 
-  border-width: 1.5px;
+  border-width: 1px;
   border-style: solid;
   border-color: orange;
   border-radius: 5px;
@@ -25,14 +25,15 @@
 #signOutBtn:hover{
     border-color: orangered;
 }
+
 #signOutBtn:hover #signOutBtnImgContainer{
-  background: url("../img/signOutIconBtn.png");
+  background: url("../../../img/signOutIconBtn.png");
 }
 #signOutBtn:hover #signOutBtnText{
-    color: red;
+    color: orangered;
 }
 #signOutBtnImgContainer{
-  background: url("../img/signOutBtnIcon.png");
+  background: url("../../../img/signOutBtnIcon.png");
   width: 24px;
   height: 24px;
 }

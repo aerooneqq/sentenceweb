@@ -1,35 +1,39 @@
 .profiletextBoxCont{
   width: 90%;
   margin-left: 5%;
-  height: 50px;
+  height: auto;
   background-color: transparent;
 }
 
 .propertyValueInput{
   width: 90%;
-  height: 25px;
+  height: 30px;
 
   border-style: solid;
   border-width: 1px;
   border-color: orange;
   border-radius: 5px;
 
-  margin-left: 5%;
-  margin-top: 5;
+  margin-top: 5px;
 
   padding-left: 5px;
-
+  padding-right: 5px;
   font-family: Arial;
   font-size: 16px;
+}
+
+.propertyDescription{ 
+  font-family: Arial;
+  font-size: 14px;
+  color: gray;
+
+  margin-top: 5px;
 }
 
 .propertyNameText{
   font-family: Arial;
   font-size: 16px;
-  color: gray;
-
-  margin-top: 20px;
-  margin-left: 6%;
+  color: black;
 }
 
 .propertyValueInput:focus{

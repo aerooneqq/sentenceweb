@@ -5,15 +5,17 @@ export default class ProfileDataItem extends Component{
   constructor(props){
     super(props)
 
-    this.state = { 
-      imgURL: this.props.imgURL
-    }
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick(){ 
+    this.props.data.changeUserData(this.props.data.currentUserData)
   }
 
   render(){
     return(
-      <div className = "profileDataItem">
-        <img src = {this.state.imgURL} className = "profileDataItemImg">
+      <div className = "profileDataItem" onClick={this.handleClick}>
+        <img src = {this.props.data.imgURL} className = "profileDataItemImg">
         </img>
       </div>
     )

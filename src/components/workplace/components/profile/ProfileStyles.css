@@ -41,28 +41,21 @@
 }
 
 #userActivityContainer{ 
-  margin-top: 10px;
-
   display: flex;
   flex-direction: row;
   width: 700px;
 
-  height: 200px; 
-
-  background: #f9f9f9;
-
-  border-style: none;
-  border-radius: 10px;
+  height: 235px; 
 }
 
-.profileContainer:nth-child(1):hover{
+.profileShadowContainer:nth-child(1):hover{
   box-shadow: -2px 2px 5px 2px #f0f0f0;
 }
 
-.profileContainer:nth-child(2):hover{ 
+.profileShadowContainer:nth-child(2):hover{ 
   box-shadow: 0px 2px 5px 2px #f0f0f0;
 }
 
-.profileContainer:nth-child(3):hover{ 
+.profileShadowContainer:nth-child(3):hover > div > div{ 
   box-shadow: 0px 2px 5px 3px #f0f0f0;
 }

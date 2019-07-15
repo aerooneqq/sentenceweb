@@ -5,10 +5,11 @@
     margin-left: 5px;
 
     cursor: default;
+    z-index: 1;
 }
 
 .monthActivityCont{ 
-    padding-top: 10px;
+    margin-top: 10px;
 }
 
 .dayName{ 

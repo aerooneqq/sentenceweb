@@ -8,7 +8,9 @@ export default class ActivityHeader extends Component{
 
     render(){ 
         return( 
-            <div id = "activityHeader">Activity</div>
+            <div id="activityHeader">
+                Activity
+            </div>
         )
     }
 }

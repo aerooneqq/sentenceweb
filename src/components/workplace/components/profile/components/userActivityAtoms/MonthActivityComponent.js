@@ -31,7 +31,11 @@ export default class MonthActivityComponent extends Component{
         for (let i = 0; i < daysCount / 7 + 1; i++){
             tdList = []
             for (let j = 0; i*7 + j < daysCount && j < 7; j++){ 
-                tdList.push(<td><SingleUserActivityComponent count = {this.state.activities[i*7 + j].count}/></td>)
+                tdList.push(
+                    <td>
+                        <SingleUserActivityComponent count = {this.state.activities[i*7 + j].count}/>
+                    </td>
+                )
             } 
             trList.push(<tr>{tdList}</tr>);
         }

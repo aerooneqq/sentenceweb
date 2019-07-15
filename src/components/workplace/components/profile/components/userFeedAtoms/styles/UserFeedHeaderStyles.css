@@ -1,0 +1,9 @@
+#userFeedHeaderCont{ 
+    width: 300px;
+    height: 40px;
+    background-color: transparent;
+
+    color: orangered;
+    font-family: Arial; 
+    font-size: 30px;
+}

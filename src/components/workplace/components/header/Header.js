@@ -4,7 +4,7 @@ import "./styles/HeaderStyles.css"
 const MenuItem = lazy(()=>import("./utilityComponents/MenuItem"))
 
 const menuItemModels = [{id: 0, name: "Profile"}, {id: 1, name: "Templates"},
-  {id: 2, name: "Projects"}]
+  {id: 2, name: "Projects"}, {id: 3, name: "Workplace"}]
 
 export default class Header extends Component{
   constructor(){

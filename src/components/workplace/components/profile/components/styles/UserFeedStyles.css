@@ -1,0 +1,31 @@
+#userFeedContainer{ 
+    height: 450px;
+    width: 400px;
+
+    margin-top: 10px;
+
+    background: transparent;
+}
+
+#userFeedInnerCont{ 
+    height: 410px;
+    width: 100%;
+
+    background:#f9f9f9;
+
+    border-style: none; 
+    border-radius: 10px;
+}
+
+#userFeedInnerScroll{ 
+    width: 100%;
+    height: 350px;
+
+    overflow-y: auto;
+
+    background:#f9f9f9;
+}
+
+#userFeedInnerScroll::-webkit-scrollbar{ 
+    height: 0px;
+}   

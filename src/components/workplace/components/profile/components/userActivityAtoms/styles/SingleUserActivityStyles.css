@@ -12,12 +12,52 @@
     display: flex;
     justify-content: center; 
     align-items: center;
+
+    position: relative;
 }
 
 .singleUserActivityCont:hover{
-    background-color: #e0e0e0;
+    background-color: #e0e0e0;  
+}
+.singleUserActivityCont:hover .userActivityToolTip{
+    visibility:  visible;  
 }
 
 .activityBall{
     background-color: orangered;
+}
+
+.userActivityToolTip{ 
+    visibility: hidden;
+    width: 30px;
+    height: 20x;
+
+    background-color: white;
+    color: gray;
+    text-align: center;
+    font-size: 15px;
+
+    border-style: solid;
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: orangered;
+    z-index: 2000;
+
+    padding: 5px 0;
+
+    position: absolute;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -15px;
+}
+
+.userActivityToolTip::after{ 
+    content: " ";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: gray transparent transparent transparent;
 }

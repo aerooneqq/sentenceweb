@@ -1,8 +1,9 @@
-import React, {Component, lazy} from "react"
-import "./styles/UserActivityComponentStyles.css"
+import React, {Component, lazy, Suspense} from "react";
+import "./styles/UserActivityComponentStyles.css";
 
-const MonthActivityComponent = lazy(() => import("./MonthActivityComponent")) 
-
+const MonthActivityComponent = lazy(() => import("./userActivityAtoms/MonthActivityComponent"));
+const Loader = lazy(()=>import("../../../../loader/Loader"));
+const ActivityHeader = lazy(() => import("./userActivityAtoms/ActivityHeader"));
 
 export default class UserActivityComponent extends Component{
     months = ["January", "February", "March", "April", "May", "June", "August", "September", "October", "November",
@@ -42,11 +43,14 @@ export default class UserActivityComponent extends Component{
         }
 
         return(
-            <div>
-                <div id = "userActivitiesCont">
-                    {monthActivities}
+            <Suspense fallback = {<Loader />}>
+                <div>
+                    <ActivityHeader />
+                    <div id = "userActivitiesCont" className = "profileShadowContainer">
+                        {monthActivities}
+                    </div>
                 </div>
-            </div>
+            </Suspense>
         )
     }
 }

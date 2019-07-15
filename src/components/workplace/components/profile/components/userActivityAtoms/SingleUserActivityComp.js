@@ -16,7 +16,10 @@ export default class SingleUserActivityComp extends Component{
     render(){ 
         return(
             <div className = "singleUserActivityCont">
-                <div style = {this.getCountStyle()} className = "activityBall"/>
+                <div style = {this.getCountStyle()} className = "activityBall" />
+                <span class = "userActivityToolTip">
+                    {this.state.count}
+                </span> 
             </div>
         )
     }

@@ -17,15 +17,16 @@ export default class UserFeed extends Component{
                 <div id = "userFeedInnerCont">
                     <Suspense fallback={<Loader />}>
                         <div id = "userFeedInnerScroll">
-
-                                <UserAtomFeed />
-                                <UserAtomFeed />
-                                <UserAtomFeed />
-                                <UserAtomFeed />
-        
+                            <UserAtomFeed />
+                            <UserAtomFeed />
+                            <UserAtomFeed />
+                            <UserAtomFeed />
                         </div>
                         <div id = "userFeedInputCont">
-
+                            <textarea placeholder="Whats up? Type it here..." id = "userFeedTextArea"/>
+                            <button id = "sendFeedBtn">
+                                Send
+                            </button>
                         </div>
                     </Suspense>
                 </div>

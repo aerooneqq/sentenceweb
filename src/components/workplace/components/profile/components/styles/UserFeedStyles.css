@@ -19,13 +19,84 @@
 
 #userFeedInnerScroll{ 
     width: 100%;
-    height: 350px;
+    height: 360px;
 
     overflow-y: auto;
 
     background:#f9f9f9;
+    border-style: none; 
+    border-top-left-radius: 10px; 
+    border-top-right-radius: 10px;
 }
 
 #userFeedInnerScroll::-webkit-scrollbar{ 
     height: 0px;
 }   
+
+#userFeedInputCont{ 
+    width: 100%;
+    height: 53px;
+
+    background:white;
+
+    border-style: none ; 
+    border-width: 1px;
+    border-color: orangered;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    display: flex; 
+    flex-direction: row; 
+    justify-content: left;
+    align-items: center;
+}
+
+#userFeedTextArea{ 
+    width:300px;
+    height: 53px;
+
+    border-style: solid; 
+    border-bottom-left-radius: 10px;
+    border-width: 1px; 
+    border-color: orangered;
+
+    font-family: Arial; 
+    font-size: 15px;
+
+    padding: 5px;
+    margin-top: 14px;
+
+    resize: none;
+}
+
+#userFeedTextArea:focus{ 
+    outline: none;
+}
+
+#sendFeedBtn{ 
+    margin-top: 14px;
+
+    width: 100px;
+    height: 65px;
+
+    background: white; 
+    
+    font-family: Arial; 
+    font-size: 18px;
+    color: orangered;;
+
+    border-style: solid; 
+    border-width: 1px;
+    border-left-width: 0px; 
+    border-color: orangered;;
+    border-bottom-right-radius: 10px;
+}
+
+#sendFeedBtn:focus{ 
+    outline: none;
+}
+
+#sendFeedBtn:hover{ 
+    background: orangered;
+    color: white;
+}

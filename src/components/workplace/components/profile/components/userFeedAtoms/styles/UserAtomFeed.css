@@ -30,6 +30,10 @@
     margin-top: 10px;
 }
 
+.userAtomFeedCont:nth-last-child(1){ 
+    margin-bottom: 10px;
+}
+
 .userAtomFeedText{ 
     font-family: Arial; 
     color: black;

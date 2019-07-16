@@ -47,7 +47,7 @@ export default class Profile extends Component{
           </Suspense>
         </div>
 
-        <div>
+        <div id = "userActivityOutterContainer">
           <div id = "userActivityContainer">
             <UserActivityComponent />
           </div>

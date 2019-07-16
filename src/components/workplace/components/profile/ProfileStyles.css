@@ -1,7 +1,7 @@
 #profileContainer{
   height: 610px;
 
-  background: green;
+  background: transparent;
 
   display: flex;
   flex-direction: row;
@@ -25,7 +25,6 @@
 
   margin-right: 25px;
   margin-top: 10px;
-  margin-left: -60px;
 }
 
 #profileDataCont{
@@ -43,9 +42,16 @@
 #userActivityContainer{ 
   display: flex;
   flex-direction: row;
-  width: 400px;
+  width: 500px;
 
   height: 235px; 
+}
+
+#userActivityOutterContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
 }
 
 .profileShadowContainer:nth-child(1):hover{

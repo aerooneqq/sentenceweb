@@ -12,21 +12,21 @@ export default class App extends React.Component {
     super()
     this.state = {
       userLoggedIn: false,
-      user: null
+      user: null,
     };
   }
 
   getDevice(){
     if (device.mobile()){
-      return "mobile"
+      return "mobile";
     }
 
-    return "desktop"
+    return "desktop";
   }
 
   render() {
-    let device = this.getDevice()
-    let token = localStorage.getItem("token")
+    let device = this.getDevice();
+    let token = localStorage.getItem("token");
 
     return(
       <DeviceContext.Provider value = {device}>

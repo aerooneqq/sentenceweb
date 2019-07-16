@@ -2,7 +2,6 @@ import React, {Component, lazy, Suspense} from "react"
 import "./styles/UserFeedStyles.css"
 
 const UserAtomFeed = lazy(()=>import("./userFeedAtoms/UserAtomFeed"))
-const UserFeedHeader = lazy(()=>import("./userFeedAtoms/UserFeedHeader"))
 const Loader = lazy(() => import("../../../../loader/Loader"))
 
 export default class UserFeed extends Component{ 
@@ -13,7 +12,6 @@ export default class UserFeed extends Component{
     render(){ 
         return(
             <div id = "userFeedContainer"> 
-                <UserFeedHeader />
                 <div id = "userFeedInnerCont">
                     <Suspense fallback={<Loader />}>
                         <div id = "userFeedInnerScroll">

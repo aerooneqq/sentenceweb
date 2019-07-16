@@ -14,6 +14,10 @@
   align-items: center;
 }
 
+#photoContainer{ 
+  margin-top: 20px;
+}
+
 #photoBorder:hover #uploadNewUserPhotoContainer{
   visibility: visible;
   animation: uploadUserPhotoContAnimation 0.5s ease forwards;

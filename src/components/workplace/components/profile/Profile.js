@@ -1,31 +1,50 @@
 import React, {Component, Suspense, lazy} from "react"
 import "./ProfileStyles.css"
 
+//Services
+import UserService from "../../../../services/users/UserService"
+import UserActivityService from "../../../../services/userActivitiesService/UserActivitiesService"
+
+//Components
 const UserPhoto = lazy(()=>import("./components/UserPhoto"))
 const SignOutComponent = lazy(()=>import("./components/userPhotoAtoms/SignOutComponent"))
 const DeleteAccountComponent = lazy(()=>import("./components/userPhotoAtoms/DeleteAccountComponent"))
 const ProfileDataComponent = lazy(()=>import("./components/ProfileDataComponent"))
 const UserActivityComponent = lazy(()=>import("./components/UserActivityComponent"))
-const ActivityHeader = lazy(()=>import("./components/userActivityAtoms/ActivityHeader"))
-const Loader = lazy(() => import("../../../loader/Loader"))
+const Loader = lazy(()=>import("../../../loader/Loader"))
 const UserFeed = lazy(()=>import("./components/UserFeed"))
 
 
 export default class Profile extends Component{
-  constructor(){
-    super()
+  constructor(props){
+    super(props);
 
     this.state = { 
-      currentUserData: 2
-    }
+      currentUserData: 2,
+      user: null,
+      userActivities: null
+    };
 
-    this.changeCurrentUserData = this.changeCurrentUserData.bind(this)
+    this.userService = new UserService();
+    this.userActivityService = new UserActivityService();
+
+    this.changeCurrentUserData = this.changeCurrentUserData.bind(this);
   }
 
   changeCurrentUserData(newUserData){
     this.setState({ 
       currentUserData: newUserData
-    })
+    });
+  }
+
+  componentDidMount(){ 
+    alert(localStorage.getItem("token"))
+    this.userService.getUser(localStorage.getItem("token")).then(res =>{ 
+      alert(res.data["email"])
+      this.setState({ 
+        user: res.data
+      });
+    }).catch(er => alert(er))
   }
 
   render(){
@@ -34,7 +53,7 @@ export default class Profile extends Component{
         <div id = "userPhotoCont" className="profileShadowContainer">
           <div id = "innerContainer">
             <Suspense fallback = {<Loader />}>
-              <UserPhoto changeUserData = {this.changeCurrentUserData}/>
+              <UserPhoto changeUserData = {this.changeCurrentUserData}  />
               <SignOutComponent />
               <DeleteAccountComponent />
             </Suspense>
@@ -49,7 +68,7 @@ export default class Profile extends Component{
 
         <div id = "userActivityOutterContainer">
           <div id = "userActivityContainer">
-            <UserActivityComponent />
+            <UserActivityComponent  getUserActivities = {this.getUserActivities}/>
           </div>
           <UserFeed />
         </div>

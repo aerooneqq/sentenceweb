@@ -42,11 +42,10 @@ export default class Authentication extends React.Component {
                   "mobileAuthenticationContainer" : "desktopAuthenticationContainer"}>
                 <AuthenticationTopBar mode = {this.state.mode} changeSignMode
                     = {this.changeSignMode}/>
-
                 <div id ="rotationContainer">
                   <div id="rotation">
-                    <div id="front">
-                      <Authorization/>
+                    <div id = "front">
+                      <Authorization signIn = {this.props.signIn}/>
                     </div>
                     <div id = "back">
                       <Registration />

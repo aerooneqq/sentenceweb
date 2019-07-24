@@ -3,7 +3,7 @@
     overflow-y:auto;
     overflow-x:hidden;
     
-    transform:rotate(-90deg) translateY(-200px) translateX(10px);
+    transform:rotate(-90deg) translateY(-185px) translateX(10px);
     transform-origin:right top;
 
     margin-top: 15px;
@@ -17,15 +17,16 @@
 }
 
 #userActivitiesCont::-webkit-scrollbar{ 
-    height: 0px;
+    width: 5px;
 }   
+
+#userActivitiesCont::-webkit-scrollbar-thumb{
+    background: orangered;
+    border-radius: 2px;
+}
 
 #userActivitiesCont > div{ 
     transform: rotate(90deg);
-}
-
-.monthActivityCont:nth-child(1){ 
-    margin-left: 5px;
 }
 
 .monthActivityCont:nth-child(n){ 

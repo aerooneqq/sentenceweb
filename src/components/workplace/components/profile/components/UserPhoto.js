@@ -2,6 +2,7 @@ import React, {Component, lazy, Suspense} from "react"
 import "./styles/UserPhotoStyles.css"
 
 import authPhto from "../img/authenticationWhiteDataIcon.png"
+import { tsMethodSignature } from "@babel/types";
 
 const Loader = lazy(()=>import("../../../../loader/Loader"))
 const ProfileDataItem = lazy(()=>import("./userPhotoAtoms/ProfileDataItem"))

@@ -12,7 +12,8 @@ export default class AuthContentBlock extends Component{
   }
 
   render(){
-    let inspiringWordsClass = this.context == "mobile" ? "mobileinspiringWord" : "desktopinspiringWord"
+    let inspiringWordsClass = this.context === "mobile" 
+      ? "mobileinspiringWord" : "desktopinspiringWord"
 
     return (
       <div id="outterContainer">
@@ -24,7 +25,7 @@ export default class AuthContentBlock extends Component{
             <div className={inspiringWordsClass}>Render.</div>
           </div>
           <div>
-            <Authentication/>
+            <Authentication signIn = {this.props.signIn}/>
           </div>
         </div>
       </div>

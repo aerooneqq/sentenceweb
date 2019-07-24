@@ -6,7 +6,7 @@ export default class TextBox extends Component{
     super(props);
 
     this.state={
-      value: ""
+      value: props.propertyValue
     };
 
     this.onInputChange = this.onInputChange.bind(this);
@@ -21,8 +21,8 @@ export default class TextBox extends Component{
   render(){
     return(
       <div className = "profiletextBoxCont">
-        <div className = "propertyNameText">Property name</div>
-        <div className = "propertyDescription">Property description desdescripdedescr iption scription t i on cription descriptio desc ripti onn</div>
+        <div className = "propertyNameText">{this.props.propertyName}</div>
+        <div className = "propertyDescription">{this.props.propertyDescription}</div>
         <input className = "propertyValueInput" type = "text" value={this.state.value} onChange={this.onInputChange}></input>
       </div>
     )

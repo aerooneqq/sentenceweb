@@ -1,7 +1,6 @@
 import React, {Component, lazy} from "react"
 
-const ProfileTextBox = lazy(() => import("./ProfileTextBox"))
-
+const CareerStage = lazy(() => import("./CareerStage"));
 
 export default class CareerData extends Component{ 
     constructor(props){ 
@@ -9,17 +8,16 @@ export default class CareerData extends Component{
     }
 
     render(){ 
+        let careerStages = this.props.user.careerStages;
+        let careerComponents = [];
+
+        for (let i = 0; i < careerStages.length; i++){
+            careerComponents.push(<CareerStage careerStage = {careerStages[i]} />)
+        }
+
         return(
             <div className="fadeInAnimation">
-                <div className="textBlock">          
-                    <ProfileTextBox />
-                </div>
-                <div className="textBlock">          
-                    <ProfileTextBox />
-                </div>
-                <div className="textBlock">          
-                    <ProfileTextBox />
-                </div>
+                {careerComponents}
             </div>
         )
     }

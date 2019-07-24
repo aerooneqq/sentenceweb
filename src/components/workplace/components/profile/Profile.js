@@ -38,7 +38,6 @@ export default class Profile extends Component{
   }
 
   componentDidMount(){ 
-    alert(localStorage.getItem("token"))
     this.userService.getUser(localStorage.getItem("token")).then(res =>{ 
       alert(res.data["email"])
       this.setState({ 
@@ -51,18 +50,14 @@ export default class Profile extends Component{
     return (
       <div id = "profileContainer">
         <div id = "userPhotoCont" className="profileShadowContainer">
-          <div id = "innerContainer">
             <Suspense fallback = {<Loader />}>
-              <UserPhoto changeUserData = {this.changeCurrentUserData}  />
-              <SignOutComponent />
-              <DeleteAccountComponent />
+              <UserPhoto changeUserData = {this.changeCurrentUserData}  user = {this.state.user}/>
             </Suspense>
-          </div>
         </div>
 
         <div id = "profileDataCont" className="profileShadowContainer">
           <Suspense fallback = {<Loader />}>
-            <ProfileDataComponent currentUserData = {this.state.currentUserData}/>
+            <ProfileDataComponent currentUserData = {this.state.currentUserData} user = {this.state.user}/>
           </Suspense>
         </div>
 

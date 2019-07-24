@@ -51,7 +51,7 @@ export default class App extends Component {
       <DeviceContext.Provider value = {device}>
         <Suspense fallback = {<Loader />}>
           {this.state.userLoggedIn === true ? <WorkplaceComponent /> : 
-          homeComponent}
+           <WorkplaceComponent />}
         </Suspense>
       </DeviceContext.Provider>
 

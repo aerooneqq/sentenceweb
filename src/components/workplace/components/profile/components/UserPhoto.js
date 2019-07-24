@@ -1,11 +1,12 @@
-import React, {Component, lazy, Suspense} from "react"
-import "./styles/UserPhotoStyles.css"
+import React, {Component, lazy, Suspense} from "react";
+import "./styles/UserPhotoStyles.css";
 
-import authPhto from "../img/authenticationWhiteDataIcon.png"
-import { tsMethodSignature } from "@babel/types";
+import authPhto from "../img/authenticationWhiteDataIcon.png";
 
-const Loader = lazy(()=>import("../../../../loader/Loader"))
-const ProfileDataItem = lazy(()=>import("./userPhotoAtoms/ProfileDataItem"))
+const Loader = lazy(()=>import("../../../../loader/Loader"));
+const ProfileDataItem = lazy(()=>import("./userPhotoAtoms/ProfileDataItem"));
+const SignOutComponent = lazy(()=>import("./userPhotoAtoms/SignOutComponent"));
+const DeleteAccountComponent = lazy(()=>import("./userPhotoAtoms/DeleteAccountComponent"));
 
 export default class UserPhoto extends Component{
   constructor(props){
@@ -25,7 +26,15 @@ export default class UserPhoto extends Component{
       profileDataItems.push(<ProfileDataItem data = {props}/>)
     }
 
-    return (
+    if (this.props.user === null){ 
+      return(
+        <div id = "userPhotoloaderContainer">
+          <Loader />
+        </div>
+      )
+    }
+    else { 
+      return (
         <div id="photoContainer">
           <div id="photoBorder">
             <img></img>
@@ -36,7 +45,10 @@ export default class UserPhoto extends Component{
           <div id="profileDataItemsContainer">
             {profileDataItems}
           </div>
+          <SignOutComponent />
+          <DeleteAccountComponent />
         </div>
     )
+    }
   }
 }

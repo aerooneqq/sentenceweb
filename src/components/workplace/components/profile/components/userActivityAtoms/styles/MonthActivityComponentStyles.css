@@ -1,7 +1,7 @@
 .monthNameCont{ 
     font-family: Arial;
-    font-size: 17px;
-    color: gray;
+    font-size: 15px;
+    color: black;
     margin-left: 5px;
 
     cursor: default;
@@ -14,8 +14,8 @@
 
 .dayName{ 
     font-family: Arial; 
-    color: gray;
-    font-size: 13px;
+    color: black;
+    font-size: 12px;
 
     cursor: default;
 }

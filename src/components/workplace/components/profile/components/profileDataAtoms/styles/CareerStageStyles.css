@@ -1,9 +1,52 @@
 .careerStageContatiner{ 
     width: 90%;
+
+    margin-top: 30px;
     margin-left: 5%;
+
+    padding-bottom: 10px;
+
+    border-style: solid;
+    border-width: 0px;
+    border-bottom-width: 0.5px;
+    border-color: lightgray;
+}
+
+.careerStageContatiner:nth-child(1){ 
+    margin-top: 5px;
+}
+
+.careerStageContatiner::-webkit-scrollbar{ 
+    width: 5px;
+}
+
+.careerStageContatiner::-webkit-scrollbar-thumb{ 
+    background-color: orangered;
+    border-style: none;
+    border-radius: 5px;
+}
+
+.careerStageJobName{ 
+    font-family: Arial;
+    color: orangered;
+    letter-spacing: 0.1px;
+    font-size: 19px;
 }
 
 .careerStageCompanyName{ 
     font-family: Arial;
     color: black;
+    letter-spacing: 0.1px;
+    font-size: 14px;
+
+    margin-top: 5px;
+}
+
+.careerStageDescription{ 
+    font-family: Arial;
+    color: #c9c9c9;
+    letter-spacing: 0.1px;
+    font-size: 14px;
+
+    margin-top: 5px;
 }

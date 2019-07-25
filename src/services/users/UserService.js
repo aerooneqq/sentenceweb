@@ -12,4 +12,12 @@ export default class UserService {
             }
         });
     }
+
+    updateUser(token, user){ 
+        return axios.put(this.apiURL, user, {
+            headers: { 
+                "Authorization" : "Bearer " + token,
+            },
+        });
+    }
 }

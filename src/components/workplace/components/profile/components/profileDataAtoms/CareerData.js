@@ -12,7 +12,8 @@ export default class CareerData extends Component{
         let careerComponents = [];
 
         for (let i = 0; i < careerStages.length; i++){
-            careerComponents.push(<CareerStage careerStage = {careerStages[i]} />)
+            careerComponents.push(<CareerStage careerStage = {careerStages[i]} 
+                changeUpdatedUser = {this.props.changeUpdatedUser} />)
         }
 
         return(

@@ -1,7 +1,10 @@
 import React, {Component} from "react"
 import "./styles/ProfileTextBoxStyles.css"
 
-export default class TextBox extends Component{
+export default class ProfileTextBox extends Component{
+  //The initial value of an input
+  initValue = ""
+
   constructor(props){
     super(props);
 
@@ -9,10 +12,22 @@ export default class TextBox extends Component{
       value: props.propertyValue
     };
 
+    this.initValue = props.propertyValue;
     this.onInputChange = this.onInputChange.bind(this);
   }
 
+  static getDerivedStateFromProps(nextProps, prevState){ 
+      return { 
+        value: nextProps.propertyValue
+      };
+  }
+
   onInputChange(event){
+    let modelPropertyName = this.props.propertyName;
+    modelPropertyName = modelPropertyName.charAt(0).toLowerCase() + modelPropertyName.substring(1);
+
+    this.props.changeUpdatedUser(modelPropertyName, event.target.value);
+
     this.setState({
       value: event.target.value
     });

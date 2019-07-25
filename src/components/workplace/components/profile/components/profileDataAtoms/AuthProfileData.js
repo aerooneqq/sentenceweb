@@ -16,17 +16,20 @@ export default class AuthProfileData extends Component{
                 <div className="textBlock">          
                     <ProfileTextBox propertyName = "Login" 
                                     propertyDescription = "This is your nickname which can be seen by other users."
-                                    propertyValue = {user.login}/>
+                                    propertyValue = {user.login}
+                                    changeUpdatedUser = {this.props.changeUpdatedUser}/>
                 </div>
                 <div className="textBlock">          
-                    <ProfileTextBox propertyName = "E-mail"
+                    <ProfileTextBox propertyName = "Email"
                                     propertyDescription = "This is your main email, which is connected to your account."
-                                    propertyValue = {user.email}/>
+                                    propertyValue = {user.email}
+                                    changeUpdatedUser = {this.props.changeUpdatedUser}/>
                 </div>
                 <div className="textBlock">          
                     <ProfileTextBox propertyName = "Password"
                                     propertyDescription = "This is your password. Do not tell the password to anyone else."
-                                    propertyValue = {user.password}/>
+                                    propertyValue = {user.password}
+                                    changeUpdatedUser = {this.props.changeUpdatedUser}/>
                 </div>
             </div>
         );

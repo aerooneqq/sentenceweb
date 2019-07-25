@@ -3,10 +3,6 @@ import React, {Component, lazy} from "react"
 const ProfileTextBox = lazy(() => import("./ProfileTextBox"));
 
 export default class NameData extends Component{ 
-    constructor(props){ 
-        super(props);
-    }
-
     render(){ 
         let user = this.props.user;
 
@@ -15,17 +11,20 @@ export default class NameData extends Component{
             <div className="textBlock">          
             <ProfileTextBox propertyName = "Name" 
                             propertyDescription = "This is your name."
-                            propertyValue = {user.name}/>
+                            propertyValue = {user.name}
+                            changeUpdatedUser = {this.props.changeUpdatedUser}/>
             </div>
             <div className="textBlock">          
             <ProfileTextBox propertyName = "Surname" 
                             propertyDescription = "This is your surname."
-                            propertyValue = {user.surname}/>
+                            propertyValue = {user.surname}
+                            changeUpdatedUser = {this.props.changeUpdatedUser}/>
             </div>
             <div className="textBlock">          
             <ProfileTextBox propertyName = "MiddleName" 
                             propertyDescription = "This is your middle name."
-                            propertyValue = {user.middleName}/>
+                            propertyValue = {user.middleName}
+                            changeUpdatedUser = {this.props.changeUpdatedUser}/>
             </div>
         </div>
         )

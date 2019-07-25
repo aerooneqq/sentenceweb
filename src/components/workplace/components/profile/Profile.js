@@ -7,8 +7,6 @@ import UserActivityService from "../../../../services/userActivitiesService/User
 
 //Components
 const UserPhoto = lazy(()=>import("./components/UserPhoto"))
-const SignOutComponent = lazy(()=>import("./components/userPhotoAtoms/SignOutComponent"))
-const DeleteAccountComponent = lazy(()=>import("./components/userPhotoAtoms/DeleteAccountComponent"))
 const ProfileDataComponent = lazy(()=>import("./components/ProfileDataComponent"))
 const UserActivityComponent = lazy(()=>import("./components/UserActivityComponent"))
 const Loader = lazy(()=>import("../../../loader/Loader"))
@@ -29,6 +27,22 @@ export default class Profile extends Component{
     this.userActivityService = new UserActivityService();
 
     this.changeCurrentUserData = this.changeCurrentUserData.bind(this);
+    this.updateUser = this.updateUser.bind(this);
+  }
+
+  updateUser(user){ 
+    let newUser = {};
+    let newUpdatedUser = {};
+
+    for (var key in user){ 
+      newUser[key] = user[key];
+      newUpdatedUser[key] = user[key];
+    }
+
+    this.setState({ 
+      user: newUser,
+      updatedUser: newUpdatedUser
+    });
   }
 
   changeCurrentUserData(newUserData){
@@ -39,11 +53,11 @@ export default class Profile extends Component{
 
   componentDidMount(){ 
     this.userService.getUser(localStorage.getItem("token")).then(res =>{ 
-      alert(res.data["email"])
       this.setState({ 
-        user: res.data
+        user: res.data,
+        updatedUser: res.data
       });
-    }).catch(er => alert(er))
+    });
   }
 
   render(){
@@ -51,13 +65,16 @@ export default class Profile extends Component{
       <div id = "profileContainer">
         <div id = "userPhotoCont" className="profileShadowContainer">
             <Suspense fallback = {<Loader />}>
-              <UserPhoto changeUserData = {this.changeCurrentUserData}  user = {this.state.user}/>
+              <UserPhoto changeUserData = {this.changeCurrentUserData}  
+                         user = {this.state.user}/>
             </Suspense>
         </div>
 
         <div id = "profileDataCont" className="profileShadowContainer">
           <Suspense fallback = {<Loader />}>
-            <ProfileDataComponent currentUserData = {this.state.currentUserData} user = {this.state.user}/>
+            <ProfileDataComponent currentUserData = {this.state.currentUserData} 
+                                  user = {this.state.user}
+                                  updateUser = {this.updateUser}/>
           </Suspense>
         </div>
 

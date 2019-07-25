@@ -6,7 +6,6 @@ export default class TokenService{
     }
 
     async sendGetTokenRequest(email, password){ 
-        localStorage.removeItem("token")
         let link = this.apiURL + "email=" + email + "&password=" + password;
         let res = await axios(link);
         return await res.data;

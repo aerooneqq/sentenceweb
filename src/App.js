@@ -6,14 +6,47 @@ import TokenService from "./services/tokens/TokenService";
 import device from "./scripts/device.js"
 import DeviceContext from "./contexts/DeviceContext.js"
 import Loader from "./components/loader/Loader"
+import UserService from "./services/users/UserService";
+
+import "./appStyles.css";
 
 export default class App extends Component {
   constructor(){
     super()
     this.state = {
       userLoggedIn: false,
-      user: null
+      user: null,
+      component: (
+        <div id = "appLoaderContainer">
+          <Loader />
+        </div>
+      ),
     };
+    this.isTokenChecked = false;
+
+    let userService = new UserService();
+    let token = localStorage.getItem("token");
+
+    if (!this.checkedToken){
+      userService.getUser(token).then(result => {
+        this.setState({ 
+          userLoggedIn: true,
+          checkToken: true,
+          component: <WorkplaceComponent />
+        });
+
+        this.isTokenChecked = true;
+      })
+      .catch(er => { 
+        this.setState({ 
+          userLoggedIn: false,
+          component: <HomeComponent signIn = {this.signIn} />,
+          checkToken: true,
+        });
+
+        this.isTokenChecked = true;
+      });
+    }
 
     this.signIn = this.signIn.bind(this);
   }
@@ -27,15 +60,15 @@ export default class App extends Component {
   }
 
   async signIn(email, password){ 
-    let userService = new TokenService();
-    let token = await userService.sendGetTokenRequest(email, password);
+    let tokenService = new TokenService();
+    let token = await tokenService.sendGetTokenRequest(email, password);
     
     if (token != null){ 
       localStorage.removeItem("token");
       localStorage.setItem("token", token);
 
       this.setState({
-        userLoggedIn: true
+        component: <WorkplaceComponent />
       });
     }
   }
@@ -43,18 +76,12 @@ export default class App extends Component {
   render() {
     let device = this.getDevice();
 
-    let homeComponent = ( 
-      <HomeComponent signIn = {this.signIn}/>
-    )
-
     return(
       <DeviceContext.Provider value = {device}>
-        <Suspense fallback = {<Loader />}>
-          {this.state.userLoggedIn === true ? <WorkplaceComponent /> : 
-           <WorkplaceComponent />}
-        </Suspense>
-      </DeviceContext.Provider>
-
+      <Suspense fallback = {<Loader />}>
+        {this.state.component}
+      </Suspense>
+    </DeviceContext.Provider>
     )
   }
 }

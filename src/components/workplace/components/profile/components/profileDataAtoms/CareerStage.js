@@ -10,23 +10,20 @@ export default class CareerStage extends Component{
     render(){
         let job = this.props.careerStage.job;
         let company = this.props.careerStage.company;
-        let startYear = this.props.careerStage.startYear;
-        let finishYear = this.props.careerStage.finishYear;
+        let startYear = this.props.careerStage.startYear.substr(0, 4);
+        let finishYear = this.props.careerStage.finishYear.substr(0, 4);
         let description = this.props.careerStage.description;
         
         return(
             <div className = "careerStageContatiner">
-                <div className = "careerStageCompanyName">
-                    {company}
-                </div>
                 <div className = "careerStageJobName">
                     {job}
                 </div>
+                <div className = "careerStageCompanyName">
+                    {company} ({startYear} - {finishYear})
+                </div>
                 <div className = "careerStageDescription">
                     {description}
-                </div>
-                <div className = "careerStageDuration">
-                    {startYear} - {finishYear}
                 </div>
             </div>
         )

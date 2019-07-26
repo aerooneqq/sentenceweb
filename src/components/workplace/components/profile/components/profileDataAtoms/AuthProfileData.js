@@ -1,7 +1,9 @@
 import React, {Component, lazy} from "react"
 
-const ProfileTextBox = lazy(() => import("./ProfileTextBox"))
+//Styles
+import "./styles/ProfileDataContentsStyles.css";
 
+const ProfileTextBox = lazy(() => import("./ProfileTextBox"))
 
 export default class AuthProfileData extends Component{ 
     constructor(props){ 
@@ -12,7 +14,7 @@ export default class AuthProfileData extends Component{
         let user = this.props.user;
 
         return(
-            <div className="fadeInAnimation">
+            <div className="fadeInAnimation" className="profileDataContentCont">
                 <div className="textBlock">          
                     <ProfileTextBox propertyName = "Login" 
                                     propertyDescription = "This is your nickname which can be seen by other users."

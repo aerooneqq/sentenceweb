@@ -1,5 +1,7 @@
 import React, {Component, lazy} from "react"
 
+import "./styles/ProfileDataContentsStyles.css";
+
 const CareerStage = lazy(() => import("./CareerStage"));
 
 export default class CareerData extends Component{ 
@@ -17,7 +19,7 @@ export default class CareerData extends Component{
         }
 
         return(
-            <div className="fadeInAnimation">
+            <div className="fadeInAnimation" className="profileDataContentCont">
                 {careerComponents}
             </div>
         )

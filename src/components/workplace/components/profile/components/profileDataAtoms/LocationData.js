@@ -1,5 +1,7 @@
 import React, {Component, lazy} from "react"
 
+import "./styles/ProfileDataContentsStyles.css";
+
 const ProfileTextBox = lazy(() => import("./ProfileTextBox"));
 
 export default class LocationData extends Component{ 
@@ -12,7 +14,7 @@ export default class LocationData extends Component{
         let user = this.props.user;
 
         return(
-            <div className="fadeInAnimation">
+            <div className="fadeInAnimation" className="profileDataContentCont">
                 <div className="textBlock">          
                 <ProfileTextBox propertyName = "Country" 
                                 propertyDescription = "This is your country."

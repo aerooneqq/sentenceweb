@@ -26,18 +26,15 @@
 }
 
 @keyframes fadeIn{ 
-  from{ 
+  from { 
     opacity: 0;
   }
 
-  to{ 
+  to { 
     opacity: 1;
   }
 }
 
-#profileDataContentCont{ 
-  margin-top: 20px;
-}
 #profileDataContentCont .textBlock{ 
   margin-bottom: 15px;
 }

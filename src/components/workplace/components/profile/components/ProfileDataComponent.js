@@ -10,8 +10,9 @@ const CareerData = lazy(() => import("./profileDataAtoms/CareerData"));
 const AuthProfileData = lazy(() => import("./profileDataAtoms/AuthProfileData"));
 const NameData = lazy(() => import("./profileDataAtoms/NameData"));
 const LocationData = lazy(() => import("./profileDataAtoms/LocationData"));
+const Friends = lazy(() => import("./profileDataAtoms/subscribersAndSubscriptions/Friends"));
 
-export default class ProfileDataComponent extends Component{
+export default class ProfileDataComponent extends Component {
   constructor(props){
     super(props);
 
@@ -27,7 +28,7 @@ export default class ProfileDataComponent extends Component{
     this.setUpdatingStatus = this.setUpdatingStatus.bind(this);
   }
 
-  static getDerivedStateFromProps(nextProps, prevState){ 
+  static getDerivedStateFromProps(nextProps, prevState) { 
     if (prevState !== null && prevState.user === null){
       let updatedUser = {}
 
@@ -42,13 +43,13 @@ export default class ProfileDataComponent extends Component{
     }
   }
 
-  setUpdatingStatus(status){ 
+  setUpdatingStatus(status) { 
     this.setState({ 
       isUpdating: status
     });
   }
 
-  discardChangesInProfileData(){ 
+  discardChangesInProfileData() { 
     let newUpdatedUser = {};
 
     for (let key in this.state.user){ 
@@ -62,7 +63,7 @@ export default class ProfileDataComponent extends Component{
     });
   }
 
-  changeUpdatedUser(propertyName, value){
+  changeUpdatedUser(propertyName, value) {
     this.setState((state) => { 
       let user = state.updatedUser;
       
@@ -93,8 +94,8 @@ export default class ProfileDataComponent extends Component{
         return <LocationData user = {this.state.updatedUser}
                              changeUpdatedUser = {this.changeUpdatedUser} />
       case 4: 
-        return <LocationData user = {this.state.updatedUser}
-                             changeUpdatedUser = {this.changeUpdatedUser} />
+        return <Friends user = {this.state.updatedUser}
+                        changeUpdatedUser = {this.changeUpdatedUser} />
       default:
         return null;
     }

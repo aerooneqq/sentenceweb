@@ -5,16 +5,16 @@ export default class SignOutComponent extends Component{
   constructor(){
     super()
 
-    this.handleClick = this.handleClick.bind(this)
+    this.handleSignOutClick = this.handleSignOutClick.bind(this)
   }
 
-  handleClick(){
-    localStorage.clear()
+  handleSignOutClick(){
+    localStorage.clear();
   }
 
   render(){
     return(
-      <button id="signOutBtn" onClick={this.handleClick}>
+      <button id="signOutBtn" onClick={this.handleSignOutClick}>
         <div id="signOutBtnImgContainer" src = "../img/signOutBtnImg.png" />
         <div id="signOutBtnText">Sign out</div>
       </button>

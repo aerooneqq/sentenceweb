@@ -2,12 +2,17 @@ import React, {Component, Suspense} from "react"
 import HomeComponent from "./components/mainComponents/HomeComponent"
 import WorkplaceComponent from "./components/mainComponents/WorkplaceComponent"
 
-import TokenService from "./services/tokens/TokenService";
-import device from "./scripts/device.js"
 import DeviceContext from "./contexts/DeviceContext.js"
 import Loader from "./components/loader/Loader"
+
+//Services
+import TokenService from "./services/tokens/TokenService";
 import UserService from "./services/users/UserService";
 
+//Device detection
+import device from "./scripts/device.js"
+
+//Styles
 import "./appStyles.css";
 
 export default class App extends Component {
@@ -22,12 +27,15 @@ export default class App extends Component {
         </div>
       ),
     };
+
     this.isTokenChecked = false;
 
     let userService = new UserService();
     let token = localStorage.getItem("token");
 
-    if (!this.checkedToken){
+    //If we have not checked the token, we must check it and then upload
+    //the component which is suitable for the result for authentication
+    if (!this.checkedToken) {
       userService.getUser(token).then(result => {
         this.setState({ 
           userLoggedIn: true,
@@ -36,8 +44,7 @@ export default class App extends Component {
         });
 
         this.isTokenChecked = true;
-      })
-      .catch(er => { 
+      }).catch(er => { 
         this.setState({ 
           userLoggedIn: false,
           component: <HomeComponent signIn = {this.signIn} />,
@@ -51,7 +58,7 @@ export default class App extends Component {
     this.signIn = this.signIn.bind(this);
   }
 
-  getDevice(){
+  getDevice() {
     if (device.mobile()){
       return "mobile";
     }
@@ -59,7 +66,7 @@ export default class App extends Component {
     return "desktop";
   }
 
-  async signIn(email, password){ 
+  async signIn(email, password) { 
     let tokenService = new TokenService();
     let token = await tokenService.sendGetTokenRequest(email, password);
     
@@ -78,10 +85,10 @@ export default class App extends Component {
 
     return(
       <DeviceContext.Provider value = {device}>
-      <Suspense fallback = {<Loader />}>
-        {this.state.component}
-      </Suspense>
-    </DeviceContext.Provider>
+        <Suspense fallback = {<Loader />}>
+          {this.state.component}
+        </Suspense>
+      </DeviceContext.Provider>
     )
   }
 }

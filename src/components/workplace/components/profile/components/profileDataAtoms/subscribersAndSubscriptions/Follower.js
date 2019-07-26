@@ -1,23 +1,50 @@
-import React, {Component} from "react";
+import React, {Component, lazy} from "react";
+
+//Styles
+import "./styles/FollowerStyles.css";
+
+//Components
+const DeleteSubBtn = lazy(() => import("./DeleteSubBtn"));
+const ViewUserPageBtn = lazy(() => import("./ViewUserPageBtn"));
+const Loader = lazy(() => import("../../../../../../loader/Loader"));
 
 export default class Follower extends Component{ 
     constructor(props){ 
         super(props);
+
+        this.state = { 
+            isLoading: false
+        };
     }
 
     render(){ 
-        return (
-            <div>
-                <div className = "friendsListUserPhoto">
+        if (this.state.isLoading === true){ 
+            return(
+                <div className = "friendsUserListLoaderCont">
+                    <Loader message = "Loading user data"/>
                 </div>
-
-                <div className = "friendsListUserInfo">
-                    <div className = "friendsListUserName">
+            )
+        }
+        else { 
+            return (
+                <div className = "friendsListContainer">
+                    <div className = "friendsListUserPhoto">
                     </div>
-                    <div className = "friendsListUserBirthDate">
+    
+                    <div className = "friendsListUserInfo">
+                        <div className = "friendsListUserName">
+                            Степанов Евгений
+                        </div>
+                        <div className = "friendsListUserBirthDate">
+                            30.05.2000
+                        </div>
+                        <div class = "friendsListUserBtns">
+                            <DeleteSubBtn />
+                            <ViewUserPageBtn />
+                        </div>
                     </div>
                 </div>
-            </div>
-        );
+            );
+        }
     }
 }

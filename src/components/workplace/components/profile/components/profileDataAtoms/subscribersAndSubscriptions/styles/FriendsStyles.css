@@ -1,0 +1,20 @@
+#friendsScrollViewer{ 
+    width: 90%;
+    height: 360px;
+
+    overflow-y: auto;
+
+    margin-left: 5%;
+    margin-top: 40px;
+
+    background: transparent;
+}
+
+#friendsScrollViewer::-webkit-scrollbar{ 
+    width: 3px;
+}
+
+#friendsScrollViewer::-webkit-scrollbar-thumb{ 
+    background: orangered;
+    border-radius: 2px;
+}

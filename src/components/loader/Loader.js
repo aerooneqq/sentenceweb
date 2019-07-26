@@ -8,12 +8,15 @@ export default class Loader extends Component{
 
     render(){ 
         return(
-            <div class = "loaderCont">
-                <div class = "ring"> 
+            <div className = "loaderCont">
+                <div className = "ring"> 
                     <div></div>
                     <div></div>
                     <div></div>
                     <div></div>
+                </div>
+                <div className = "loaderMessageCont">
+                    {this.props.message}   
                 </div>
             </div>
         )

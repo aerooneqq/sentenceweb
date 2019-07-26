@@ -1,0 +1,57 @@
+.subscriptionsListContainer{ 
+    width: 90%;
+    background: transparent;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    display: flex;
+    flex-direction: row;
+
+    border-style: solid;
+    border-width: 0px;
+    border-color: #d0d0d0;
+    border-bottom-width: 0.8px;
+    border-radius: 2px;
+}
+
+.subscriptionsListUserPhoto{ 
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50px;
+    border-color: orangered;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.subscriptionsListUserInfo{ 
+    flex-grow: 1;
+    background: transparent;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.subscriptionsListUserName{ 
+    margin-left: 15px;
+
+    font-family: Arial;
+    font-size: 17px;
+    color: #505050;
+
+    justify-self: baseline;
+}
+
+.subscriptionsListUserBirthDate{
+    margin-left: 15px;
+
+    font-family: Arial;
+    color: gray;
+    font-size: 11px;
+}
+
+.subscriptionsListUserBtns{ 
+    margin-left: 15px;
+    margin-top: 10px;
+}

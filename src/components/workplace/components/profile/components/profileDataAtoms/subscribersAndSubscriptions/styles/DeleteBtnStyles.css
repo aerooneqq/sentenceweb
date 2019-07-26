@@ -1,0 +1,23 @@
+.deleteSubBtn{ 
+    width: 80px;
+    height: 30px;
+
+    border-width: 1px;
+    border-color: red;
+    border-style: solid;
+    border-radius: 7px;
+
+    font-family: Arial;
+    color: white;
+    font-size: 13px;
+
+    background: red;
+}
+
+.deleteSubBtn:hover{ 
+    background: linear-gradient(-120deg, #ee0000, red);
+}
+
+.deleteSubBtn:focus{ 
+    outline: none;
+}

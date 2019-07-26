@@ -18,6 +18,14 @@ export default class Friends extends Component{
             <div id = "friendsContainer">
                 <SubHeader />
                 <FriendsSearch />
+                <div id = "friendsScrollViewer">
+                    <Follower />
+                    <Follower />
+                    <Follower />
+                    <Follower />
+                    <Follower />
+                    <Follower />
+                </div>
             </div>
         )
     }

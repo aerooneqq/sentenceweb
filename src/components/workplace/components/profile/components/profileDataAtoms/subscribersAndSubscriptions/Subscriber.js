@@ -6,26 +6,13 @@ import "./styles/FollowerStyles.css";
 //Components
 const DeleteSubBtn = lazy(() => import("./DeleteSubBtn"));
 const ViewUserPageBtn = lazy(() => import("./ViewUserPageBtn"));
-const Loader = lazy(() => import("../../../../../../loader/Loader"));
 
-export default class Follower extends Component{ 
+export default class Subscriber extends Component{ 
     constructor(props){ 
         super(props);
-
-        this.state = { 
-            isLoading: false
-        };
     }
 
-    render(){ 
-        if (this.state.isLoading === true){ 
-            return(
-                <div className = "friendsUserListLoaderCont">
-                    <Loader message = "Loading user data"/>
-                </div>
-            )
-        }
-        else { 
+    render(){  
             return (
                 <div className = "friendsListContainer">
                     <div className = "friendsListUserPhoto">
@@ -33,10 +20,10 @@ export default class Follower extends Component{
     
                     <div className = "friendsListUserInfo">
                         <div className = "friendsListUserName">
-                            Степанов Евгений
+                            {this.props.subscriber.name}
                         </div>
                         <div className = "friendsListUserBirthDate">
-                            30.05.2000
+                            {this.props.subscriber.birthDate}
                         </div>
                         <div class = "friendsListUserBtns">
                             <DeleteSubBtn />
@@ -45,6 +32,5 @@ export default class Follower extends Component{
                     </div>
                 </div>
             );
-        }
     }
 }

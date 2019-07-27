@@ -5,6 +5,7 @@ import "./styles/SubscriptionStyles.css";
 
 //Components
 const ViewUserPageBtn = lazy(() => import("./ViewUserPageBtn"));
+const UnsubscribeBtn = lazy(() => import("./UnsubscribeBtn"));
 
 export default class Subscription extends Component{ 
     constructor(props){ 
@@ -25,6 +26,7 @@ export default class Subscription extends Component{
                         30.05.2000
                     </div>
                     <div class = "subscriptionsListUserBtns">
+                        <UnsubscribeBtn />
                         <ViewUserPageBtn />
                     </div>
                 </div>

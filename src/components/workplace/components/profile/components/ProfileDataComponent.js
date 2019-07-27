@@ -19,13 +19,15 @@ export default class ProfileDataComponent extends Component {
     this.state = { 
       user: props.user,
       updatedUser: {},
-      isUpdating: false
+      isUpdating: false,
+      userFriendsMode: "subscribers"
     };
 
     this.changeUpdatedUser = this.changeUpdatedUser.bind(this);
     this.getProfileDataContent = this.getProfileDataContent.bind(this);
     this.discardChangesInProfileData = this.discardChangesInProfileData.bind(this);
     this.setUpdatingStatus = this.setUpdatingStatus.bind(this);
+    this.changeUserFriendMode = this.changeUserFriendMode.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) { 
@@ -61,6 +63,12 @@ export default class ProfileDataComponent extends Component {
         updatedUser: newUpdatedUser
       }
     });
+  }
+
+  changeUserFriendMode(mode){ 
+    this.setState({ 
+      userFriendsMode: mode
+    })
   }
 
   changeUpdatedUser(propertyName, value) {

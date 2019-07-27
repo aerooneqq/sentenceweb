@@ -35,6 +35,10 @@
     background: orangered;
 }
 
+.sunHeaderOptionTitleClicked{ 
+    color: orangered !important;
+}
+
 .subHeaderOptionTitle{
     flex-grow: 1;
 

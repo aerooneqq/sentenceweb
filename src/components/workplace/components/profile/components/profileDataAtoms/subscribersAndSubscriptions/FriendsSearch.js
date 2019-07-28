@@ -13,13 +13,14 @@ export default class FriendsSearch extends Component {
 
         this.handleInputValueChange = this.handleInputValueChange.bind(this);
         this.handleInputFocus = this.handleInputFocus.bind(this);
+        this.handleSearchInputKeyEnter = this.handleSearchInputKeyEnter.bind(this);
     }
 
     handleInputValueChange(event) { 
         this.setState({ 
             value: event.target.value
         });
-    }
+    }   
 
     componentDidMount(){ 
         let friendsSearch = document.getElementById("friendsSearchInput");
@@ -43,15 +44,23 @@ export default class FriendsSearch extends Component {
         friendsSearchHelp.classList.toggle("fadeInAnimation");
     }
 
+    handleSearchInputKeyEnter(target){ 
+        if (target.charCode === 13){ 
+            let searchInput = document.getElementById("friendsSearchInput").value;
+            this.props.searchForUsers(searchInput);
+        }
+    }
+
     render() {
         return(
             <div>
                 <div id = "friendsSearch">
                     <input type = "text"    
-                        id = "friendsSearchInput"
-                        value = {this.state.value} 
-                        onChange = {this.handleInputValueChange}
-                        placeholder="Enter the query..." />
+                           id = "friendsSearchInput"
+                           value = {this.state.value} 
+                           onChange = {this.handleInputValueChange}
+                           onKeyPress = {this.handleSearchInputKeyEnter}
+                           placeholder="Enter the query..." />
                 </div>
                 <div id = "friendsSearchInputHelpCont">
                     Press enter

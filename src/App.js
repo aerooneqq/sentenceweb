@@ -7,7 +7,7 @@ import Loader from "./components/loader/Loader"
 
 //Services
 import TokenService from "./services/tokens/TokenService";
-import UserService from "./services/users/UserService";
+import UserService from "./services/userServices/UserService";
 
 //Device detection
 import device from "./scripts/device.js"

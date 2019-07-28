@@ -7,13 +7,20 @@ import "./styles/SubscriptionStyles.css";
 const ViewUserPageBtn = lazy(() => import("./ViewUserPageBtn"));
 const UnsubscribeBtn = lazy(() => import("./UnsubscribeBtn"));
 
-export default class Subscription extends Component{ 
-    constructor(props){ 
+export default class Subscription extends Component { 
+    constructor(props) { 
         super(props);
+
+        this.state = { 
+            userID: props.userID
+        };
     }
 
     render() { 
-        return( 
+        let date = this.props.subscription.birthDate;
+        date = date.substr(0, 4) + "-" + date.substr(5, 2) + "-" + date.substr(8, 2);
+
+        return ( 
             <div className = "subscriptionsListContainer">
                 <div className = "subscriptionsListUserPhoto">
                 </div>
@@ -26,7 +33,8 @@ export default class Subscription extends Component{
                         30.05.2000
                     </div>
                     <div class = "subscriptionsListUserBtns">
-                        <UnsubscribeBtn />
+                        <UnsubscribeBtn deleteSubscription = {this.props.deleteSubscription}
+                                        userID = {this.props.subscription.userID}/>
                         <ViewUserPageBtn />
                     </div>
                 </div>

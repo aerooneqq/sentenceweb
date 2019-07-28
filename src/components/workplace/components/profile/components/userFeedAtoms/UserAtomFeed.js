@@ -1,9 +1,21 @@
 import React, {Component} from "react"
 import "./styles/UserAtomFeed.css"
+import DateService from "../../../../../../services/dates/DateService";
 
 export default class UserAtomFeed extends Component{ 
     constructor(props){ 
         super(props)
+
+        let dateService = new DateService(props.date);
+
+        let day = dateService.getDay();
+        let month = dateService.getMonth();
+        let year = dateService.getYear();
+
+        this.state = { 
+            message: props.message,
+            date: day + "." + month + "." + year
+        };
     }
 
     render(){ 
@@ -15,10 +27,10 @@ export default class UserAtomFeed extends Component{
 
                 <div className="userFeedTextCont">
                     <div className="userAtomFeedText">
-                        D Descr iptionesDes criptDes cription ion criDescrip t ionDe script ionpt DecriDe scrip sc ripcriDescrip tionion
+                        {this.state.message}
                     </div>
                     <div className="userAtomFeedDate">
-                        30.05.2000
+                        {this.state.date}
                     </div>
                 </div>
             </div>

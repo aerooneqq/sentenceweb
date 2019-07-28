@@ -13,7 +13,10 @@ export default class Subscriber extends Component{
     }
 
     render(){  
-            return (
+        let date = this.props.subscriber.birthDate;
+        date = date.substr(0, 4) + "-" + date.substr(5, 2) + "-" + date.substr(8, 2);
+
+        return (
                 <div className = "friendsListContainer">
                     <div className = "friendsListUserPhoto">
                     </div>
@@ -23,14 +26,15 @@ export default class Subscriber extends Component{
                             {this.props.subscriber.name}
                         </div>
                         <div className = "friendsListUserBirthDate">
-                            {this.props.subscriber.birthDate}
+                            {date}
                         </div>
                         <div class = "friendsListUserBtns">
-                            <DeleteSubBtn />
+                            <DeleteSubBtn deleteSubscriber = {this.props.deleteSubscriber}
+                                          userID = {this.props.subscriber.userID}/>
                             <ViewUserPageBtn />
                         </div>
                     </div>
                 </div>
-            );
+        );
     }
 }

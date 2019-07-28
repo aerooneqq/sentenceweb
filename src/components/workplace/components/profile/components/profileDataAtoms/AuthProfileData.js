@@ -27,12 +27,6 @@ export default class AuthProfileData extends Component{
                                     propertyValue = {user.email}
                                     changeUpdatedUser = {this.props.changeUpdatedUser}/>
                 </div>
-                <div className="textBlock">          
-                    <ProfileTextBox propertyName = "Password"
-                                    propertyDescription = "This is your password. Do not tell the password to anyone else."
-                                    propertyValue = {user.password}
-                                    changeUpdatedUser = {this.props.changeUpdatedUser}/>
-                </div>
             </div>
         );
     }

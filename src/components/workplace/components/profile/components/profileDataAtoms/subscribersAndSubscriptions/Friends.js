@@ -5,13 +5,15 @@ import "./styles/FriendsStyles.css";
 import Loader from "../../../../../../loader/Loader";
 
 //Services
-import UserFriendsService from "../../../../../../../services/userFriends/UserFriendsService";
+import UserFriendsService from "../../../../../../../services/userServices/UserFriendsService";
+import UserService from "../../../../../../../services/userServices/UserService";
 
 //Components
 const SubHeader = lazy(() => import("./SubHeader"));
 const FriendsSearch = lazy(() => import("./FriendsSearch"));
 const Subscriber = lazy(() => import("./Subscriber"));
 const Subscription = lazy(() => import("./Subscription"));
+const UserSearchResult = lazy(() => import("./UserSearchResult"));
 
 export default class Friends extends Component{ 
     constructor(props){ 
@@ -19,12 +21,13 @@ export default class Friends extends Component{
 
         this.state = { 
             elements: [],
-            isUpdating: false
         };
 
         this.changeUserFriendMode = this.changeUserFriendMode.bind(this);
         this.uploadSubscribers = this.uploadSubscribers.bind(this);
         this.uploadSubscriptions = this.uploadSubscriptions.bind(this);
+        this.searchForUsers = this.searchForUsers.bind(this);
+        this.changeUserFriendMode = this.changeUserFriendMode.bind(this);
     }
     
     changeUserFriendMode(mode) { 
@@ -36,9 +39,35 @@ export default class Friends extends Component{
         }
     }
 
+    deleteSubscriber(userID){
+        let userFriendsService = new UserFriendsService();
+        userFriendsService.deleteSubscriber(localStorage.getItem("token"), userID)
+            .then(() => { 
+                this.uploadSubscribers();
+            }).catch(er => alert(er))
+    }
+
+    deleteSubscription(userID){ 
+        let userFriendsService = new UserFriendsService();
+        userFriendsService.deleteSubscription(localStorage.getItem("token"), userID)
+            .then(() => { 
+                this.uploadSubscriptions();
+            }).catch(er => alert(er))
+    }
+
+    subscribe(userID){ 
+        let userFriendsService = new UserFriendsService();
+        userFriendsService.addSubscription(localStorage.getItem("token"), userID)
+            .then(() => { 
+                alert("Added sub")
+            }).catch(er => { 
+                alert(er);
+            })
+    }
+
     uploadSubscribers() { 
         this.setState({ 
-            isUpdating: true
+            elements: <Loader  message = "Loading subscribers..."/>
         });
 
         let userService = new UserFriendsService();
@@ -48,14 +77,12 @@ export default class Friends extends Component{
                 let components = [];
 
                 for (let i = 0; i < data.length; i++){ 
-                    components.push(<Subscriber subscriber = {data[i]} />);
+                    components.push(<Subscriber subscriber = {data[i]}
+                                                deleteSubscriber = {this.deleteSubscriber} />);
                 }
 
-                this.setState((state) => {
-                    return { 
-                        elements: components,
-                        isUpdating: false
-                    } 
+                this.setState({
+                    elements: components 
                 });
             }).catch(er => { 
                 alert(er);
@@ -64,7 +91,7 @@ export default class Friends extends Component{
 
     uploadSubscriptions() { 
         this.setState({ 
-            isUpdating: true
+            elements: <Loader message = "Loading subscriptions..." />
         });
 
         let userFriendsService = new UserFriendsService();
@@ -74,25 +101,48 @@ export default class Friends extends Component{
                 let components = []; 
 
                 for (let i = 0; i < data.length; i++){ 
-                    components.push(<Subscription subscription = {data[i]} />)
+                    components.push(<Subscription subscription = {data[i]}
+                                                  deleteSubscription = {this.deleteSubscription} />)
                 }
 
                 this.setState({ 
                     elements: components,
-                    isUpdating: false 
                 });
+            }).catch(er => alert(er));
+    }
+
+    searchForUsers(login){ 
+        this.setState({ 
+            elements: <Loader message = "Searching for users..." />
+        })
+
+        let userService = new UserService();
+        userService.searchForUsers(localStorage.getItem("token"), login)
+            .then(res => { 
+                let data = res.data;
+
+                alert(data.length)
+                let components = data.map(user => { 
+                    return (
+                        <UserSearchResult searchResult = {user} 
+                                          subscribe = {this.subscribe}/>
+                    )
+                });
+
+                this.setState({ 
+                    elements: components
+                })
             }).catch(er => alert(er));
     }
 
     render(){
         return (
             <div id = "friendsContainer">
-                <SubHeader changeUserFriendMode = {this.changeUserFriendMode}/>
-                <FriendsSearch />
-                {this.state.isUpdating === false ? (
-                    <div id = "friendsScrollViewer">
-                        {this.state.elements}
-                    </div>) : <Loader message = "Loading subs..."/>}
+                <SubHeader changeUserFriendMode = {this.changeUserFriendMode} />
+                <FriendsSearch searchForUsers = {this.searchForUsers}/>
+                <div id = "friendsScrollViewer">
+                    {this.state.elements}
+                </div>
             </div>
         )
     }

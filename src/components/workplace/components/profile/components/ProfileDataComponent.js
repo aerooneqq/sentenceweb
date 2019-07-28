@@ -120,7 +120,7 @@ export default class ProfileDataComponent extends Component {
       case 3:
         return "Location";
       case 4:
-        return "Location";
+        return "Friends";
       default:
         return "";
     }

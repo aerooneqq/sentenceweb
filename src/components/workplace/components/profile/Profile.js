@@ -2,8 +2,8 @@ import React, {Component, Suspense, lazy} from "react"
 import "./ProfileStyles.css"
 
 //Services
-import UserService from "../../../../services/users/UserService"
-import UserActivityService from "../../../../services/userActivitiesService/UserActivitiesService"
+import UserService from "../../../../services/userServices/UserService"
+import UserActivityService from "../../../../services/userServices/UserActivitiesService"
 
 //Components
 const UserPhoto = lazy(()=>import("./components/UserPhoto"))

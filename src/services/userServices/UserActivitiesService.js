@@ -2,17 +2,15 @@ import axios from "axios"
 
 export default class UserActivitiesService{ 
     constructor(){ 
-        this.apiURL = "https://localhost:44368/api/useractivity"
+        this.apiURL = "https://localhost:44368/api/useractivities"
     }
 
-    async getUserActivities(id, token){ 
+    getUserActivities(token){ 
         let url = this.apiURL;
-        let userActivities = await axios.get(url, { 
+        return axios.get(url, { 
             headers: { 
                 Authorization: "Bearer " + token
             }
         });
-
-        return await userActivities.data;
     }
 }

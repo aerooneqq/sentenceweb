@@ -10,9 +10,10 @@ export default class MonthActivityComponent extends Component{
         super(props)
 
         this.state = { 
-            daysCount: this.props.daysCount,
+            daysCount: this.props.month.daysCount,
             activities: this.props.activities,
-            monthName: this.props.monthName
+            monthName: this.props.month.name,
+            firstDayNum: this.props.month.firstDayNum
         }
     }
 
@@ -27,16 +28,35 @@ export default class MonthActivityComponent extends Component{
         }
         trList.push(<tr className="dayName">{tdList}</tr>)
 
+        tdList = []
+        let j = 0;
+
+        for (j = 0; j<this.state.firstDayNum; j++){ 
+            tdList.push(
+                <td></td>
+            )
+        }
+
+        for (j = this.state.firstDayNum; j<7; j++){ 
+            tdList.push(
+                <td>
+                    <SingleUserActivityComponent count = {this.state.activities[j - this.state.firstDayNum].count}/>
+                </td>
+            )
+        }
         
-        for (let i = 0; i < daysCount / 7 + 1; i++){
+        trList.push(<tr>{tdList}</tr>);
+        
+        for (let i = 1; i < (daysCount + this.state.firstDayNum) / 7 + 1; i++){
             tdList = []
-            for (let j = 0; i*7 + j < daysCount && j < 7; j++){ 
+            for (j = 0; i*7 + j < daysCount && j < 7; j++){ 
                 tdList.push(
                     <td>
                         <SingleUserActivityComponent count = {this.state.activities[i*7 + j].count}/>
                     </td>
                 )
             } 
+
             trList.push(<tr>{tdList}</tr>);
         }
         

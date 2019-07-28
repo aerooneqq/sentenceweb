@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 
 //Services
-import UserService from "../../../../../../services/users/UserService";
+import UserService from "../../../../../../services/userServices/UserService";
 
 //Styles
 import "./styles/SaveChangesComponentStyles.css";

@@ -20,4 +20,13 @@ export default class UserService {
             },
         });
     }
+
+    searchForUsers(token, login){
+        let url = this.apiURL + "/search/login?login=" + login; 
+        return axios.get(url, {
+            headers: { 
+                Authorization: "Bearer " + token
+            }
+        });
+    }
 }

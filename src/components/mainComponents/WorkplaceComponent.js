@@ -8,7 +8,7 @@ const Loader = lazy(() => import("../loader/Loader"))
 export default class WorkplaceComponent extends Component{
   render(){
     return (
-        <div>
+        <div id = "workplaceContainer">
           <Header />
           <div id="contentContainer">
             <Profile />

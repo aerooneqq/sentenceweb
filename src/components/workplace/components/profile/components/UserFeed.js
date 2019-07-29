@@ -9,6 +9,7 @@ import UserFeedService from "../../../../../services/userServices/UserFeedServic
 //Components
 const UserAtomFeed = lazy(()=>import("./userFeedAtoms/UserAtomFeed"))
 const Loader = lazy(() => import("../../../../loader/Loader"))
+const Error = lazy(() => import("../../../../errorComponent/Error"))
 
 export default class UserFeed extends Component{ 
     constructor(props) { 
@@ -31,7 +32,11 @@ export default class UserFeed extends Component{
                 this.setState({
                     component: atomFeeds
                 });
-            }).catch(er => alert(er));
+            }).catch(er =>{ 
+                this.setState({ 
+                    component: <Error message = {er} /> 
+                });
+            });
     }
 
     render(){ 

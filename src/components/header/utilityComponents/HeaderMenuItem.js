@@ -12,15 +12,12 @@ export default class HeaderMenuItem extends React.Component {
         };
 
         this.handleMouseEnter = this.handleMouseEnter.bind(this);
-        this.handleMouseLeave = this.handleMouseLeave.bind(this)
+        this.handleMouseLeave = this.handleMouseLeave.bind(this);
     }
 
     componentDidMount() {
-        let menuItem = document.getElementById(this.state.containerId)
-        menuItem.classList.toggle("headerMenuItemFadeIn")
-
-        let menuItemText = document.getElementById(this.state.textId)
-        menuItemText.classList.toggle("menuItemTextslideIn")
+        document.getElementById(this.state.containerId).classList.toggle("headerMenuItemFadeIn");
+        document.getElementById(this.state.textId).classList.toggle("menuItemTextslideIn");
     }
 
     render() {
@@ -37,20 +34,20 @@ export default class HeaderMenuItem extends React.Component {
                     {this.props.menuItem.Name}
                 </div>
             </div>
-        )
+        );
     }
 
     handleMouseEnter() {
         this.setState({
             hovered: true
         })
-    }
+    };
 
     handleMouseLeave() {
         this.setState({
             hovered: false
         })
-    }
+    };
 
     getMenuOptionTextStyle() {
         return {

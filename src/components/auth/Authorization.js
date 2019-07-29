@@ -38,15 +38,16 @@ export default class Authorization extends Component {
     handleSignIn(){
       let email = this.state.email;
       let password = this.state.password;
+
       this.setState({
         isAuthorizing: true
-      })
+      });
 
-      this.props.signIn(email, password).then(data => {
+      this.props.signIn(email, password).then(() => {
         this.setState({
           isAuthorizing: false
         })
-      }).catch(er => {
+      }).catch(() => { 
         this.setState({
           isAuthorizing: false
         })
@@ -54,7 +55,7 @@ export default class Authorization extends Component {
     }
 
     render() {
-        if (this.state.isAuthorizing === true){ 
+        if (this.state.isAuthorizing) { 
           return(
             <div id = "authorizationLoaderCont">
               <Loader />

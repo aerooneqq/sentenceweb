@@ -1,6 +1,9 @@
 ﻿import React, {Suspense, lazy} from "react"
+
+//Styles
 import "./AuthenticationStyles.css"
 
+//Components
 const AuthenticationTopBar = lazy(() => import("./AuthenticationTopBar"))
 const Authorization = lazy(() => import("./Authorization.js"))
 const Registration = lazy(() => import("./Registration.js"))
@@ -19,29 +22,28 @@ export default class Authentication extends React.Component {
         this.changeSignMode = this.changeSignMode.bind(this)
     }
 
-    changeSignMode(){
-      let rotatableCont = document.getElementById("rotation")
-      rotatableCont.classList.toggle("rotate")
+    /**
+     * Changes the mode of this component. 
+     * The change comes from the AuthenticationTopBar component.
+     * Mode can take two values: "signIn" and "signUp". When the change of the mode is performed,
+     * the animation of card rotation is applied to the authentication block
+     */
+    changeSignMode() {
+      document.getElementById("rotation").classList.toggle("rotate");
 
-      if (this.state.mode === "signIn"){
-        this.setState({
-          mode: "signUp"
-        })
-      }
-      else {
-        this.setState({
-          mode: "signIn"
-        })
-      }
+      this.setState(state => { 
+        return { 
+          mode: state.mode === "signIn" ? "signUp" : "signIn"
+        };
+      });
     }
 
     render() {
         return (
           <Suspense fallback = {<div>Loading...</div>}>
-            <div id="authenticationContainer" className = {this.context === "mobile" ?
-                  "mobileAuthenticationContainer" : "desktopAuthenticationContainer"}>
-                <AuthenticationTopBar mode = {this.state.mode} changeSignMode
-                    = {this.changeSignMode}/>
+            <div id="authenticationContainer" class = "authenticationContainerSize">
+                <AuthenticationTopBar mode = {this.state.mode}
+                                      changeSignMode = {this.changeSignMode}/>
                 <div id ="rotationContainer">
                   <div id="rotation">
                     <div id = "front">
@@ -52,7 +54,6 @@ export default class Authentication extends React.Component {
                     </div>
                   </div>
                 </div>
-
             </div>
           </Suspense>
         )

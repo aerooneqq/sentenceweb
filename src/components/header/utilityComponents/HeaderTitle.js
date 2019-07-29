@@ -11,8 +11,7 @@ export default class HeaderTitle extends React.Component {
     }
 
     componentDidMount() {
-        var title = document.getElementById(this.state.titleID)
-        title.classList.toggle("fadeIn")
+        document.getElementById(this.state.titleID).classList.toggle("fadeIn")
     }
 
     render() {

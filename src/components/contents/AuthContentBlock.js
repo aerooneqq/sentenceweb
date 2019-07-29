@@ -1,32 +1,23 @@
 import React, {Component} from "react"
 
 import Authentication from "../auth/Authentication.js"
-import DeviceContext from "../../contexts/DeviceContext.js"
 import "./AuthContentBlockStyles.css"
 
 export default class AuthContentBlock extends Component{
-  static contextType = DeviceContext
-
-  constructor(props){
+  constructor(props){ 
     super(props)
   }
 
-  render(){
-    let inspiringWordsClass = this.context === "mobile" 
-      ? "mobileinspiringWord" : "desktopinspiringWord"
-
+  render() {
     return (
       <div id="outterContainer">
-        <div id="authContentBlock" className={this.context == "mobile"
-             ? "mobileAuthContentBlock" : "desktopAuthContentBlock"}>
+        <div id="authContentBlock">
           <div id="entrySentenceContainer">
-            <div className={inspiringWordsClass}>Think.</div>
-            <div className={inspiringWordsClass}>Create.</div>
-            <div className={inspiringWordsClass}>Render.</div>
+            <div className="inspiringWord">Think.</div>
+            <div className="inspiringWord">Create.</div>
+            <div className="inspiringWord">Render.</div>
           </div>
-          <div>
             <Authentication signIn = {this.props.signIn}/>
-          </div>
         </div>
       </div>
     )

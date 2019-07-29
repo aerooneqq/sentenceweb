@@ -6,8 +6,7 @@ export default class Registration extends Component{
   }
 
   componentDidMount(){
-    var authCont = document.getElementById("signUpInputContainer")
-    authCont.classList.toggle("regContentRotationThreeD")
+    document.getElementById("signUpInputContainer").classList.toggle("regContentRotationThreeD")
   }
 
   render(){

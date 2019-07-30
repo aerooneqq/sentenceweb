@@ -1,4 +1,6 @@
 import React, {Component} from "react"
+
+//Styles
 import "./LoaderStyles.css"
 
 export default class Loader extends Component{ 

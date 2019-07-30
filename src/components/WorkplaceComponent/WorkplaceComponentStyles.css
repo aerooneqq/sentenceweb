@@ -1,0 +1,17 @@
+#contentContainer{
+  width: 100%;
+  height: 100%;
+  background: white;
+  flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
+} 
+
+#workplaceContainer{ 
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,71 @@
+#signUpInputContainer{
+    width: 80%;
+    margin-left: 10%;
+    background: #f0f0f0;
+}
+
+.regInput{
+  width:90%;
+  height: 40px;
+
+  margin-top: -10px;
+
+  border-style: solid;
+  border-width: 1px;
+  border-color: orange;
+  border-radius: 5px;
+
+  font-size: 21px;
+  font-family: Arial;
+
+  padding-inline-start: 5%;
+  padding-inline-end: 5%;
+}
+
+.regInput:hover {
+  border-color: orangered;
+  outline: none;
+}
+
+.regInput:focus {
+  border-color: orangered;
+  outline: none;
+}
+
+
+.regContentRotationThreeD {
+  animation: regContentRotation 1s ease forwards
+}
+
+@keyframes regContentRotation {
+  from {
+    visibility: hidden;
+    transform: rotate3d(0, 1, 0, 180deg)
+  }
+  
+  100%{
+    transform: rotate3d(0, 1, 0, 360deg)
+  }
+}
+
+#signUpBtn{
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(32deg, orange, orangered);
+
+  border-style: none;
+  border-radius: 5px;
+
+  font-family: Arial;
+  color: white;
+  font-size: 22px;
+}
+
+#signUpBtn:hover {
+    background: linear-gradient(32deg, #FD8A60, #FC5B20);
+    outline: none;
+}
+
+#signUpBtn:focus{
+    outline: none;
+}

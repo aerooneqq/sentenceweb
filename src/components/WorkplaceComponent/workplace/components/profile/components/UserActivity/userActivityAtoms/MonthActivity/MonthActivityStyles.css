@@ -1,0 +1,30 @@
+.monthNameCont{ 
+    font-family: Arial;
+    font-size: 15px;
+    color: black;
+    margin-left: 5px;
+
+    cursor: default;
+    z-index: 1;
+}
+
+.monthActivityCont{ 
+    margin-top: 10px;
+}
+
+.monthActivityCont:nth-child(1){ 
+    margin-left: 5px;
+}
+
+.monthActivityCont:nth-last-child(1){ 
+    margin-right: 5px;
+}
+
+
+.dayName{ 
+    font-family: Arial; 
+    color: black;
+    font-size: 12px;
+
+    cursor: default;
+}

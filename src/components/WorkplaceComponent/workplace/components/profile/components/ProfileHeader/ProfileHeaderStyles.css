@@ -1,0 +1,11 @@
+#profileHeader{ 
+
+    font-family: Arial; 
+    font-size: 30px !important; 
+    color: orangered;
+    cursor: default;
+
+    margin-bottom: 5px;
+
+    text-align: left;
+}

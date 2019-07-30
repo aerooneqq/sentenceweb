@@ -1,0 +1,30 @@
+@media screen and (min-width: 560px){ 
+    .headerVertSeparator {
+        background: #ffffff;
+        width: 2px;
+        height: 35px;
+        margin-left: 10px;
+        margin-right: 10px;
+
+        animation-name: vertSeparatorRotate;
+        animation-duration: 0.3s;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+    }
+
+        @keyframes vertSeparatorRotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(195deg);
+            }
+        }
+}
+
+@media screen and (max-width: 560px){ 
+    .headerVertSeparator {
+        display: none;
+    }
+}

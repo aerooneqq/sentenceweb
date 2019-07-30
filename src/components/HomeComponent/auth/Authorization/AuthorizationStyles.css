@@ -1,0 +1,112 @@
+#signInInputContainer {
+    width: 80%;
+    margin-left: 10%;
+    background: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+
+    animation: authContentRotation 1s ease forwards
+}
+
+    @keyframes authContentRotation {
+        from {
+            visibility: hidden;
+            transform: rotate3d(0, 1, 0, 180deg)
+        }
+
+        100% { 
+            transform: rotate3d(0, 1, 0, 360deg)
+        }
+    }
+  
+.inputPropContainer {
+    margin-top: 25px;
+}
+    
+.inputNameText {
+    font-family: Arial;
+    font-size: 15px;
+    color: #606060;
+    letter-spacing: 0px;
+    font-weight: bold;
+}
+
+.authInput {
+    width:90%;
+    height: 50px;
+  
+    margin-top: -10px;
+  
+    border-style: solid;
+    border-width: 1px;
+    border-color: orange;
+    border-radius: 5px;
+  
+    font-size: 21px;
+    font-family: Arial;
+  
+    padding-inline-start: 5%;
+    padding-inline-end: 5%;
+}
+  
+.authInput:hover {
+    border-color: orangered;
+    outline: none;
+}
+  
+.authInput:focus {
+    border-color: orangered;
+    outline: none;
+}
+  
+#btnContainer {
+    margin-top: 40px;
+}
+  
+    #btnContainer p {
+        font-family: Arial;
+        font-size: 15px;
+        color: gray;
+        cursor: default;
+    }
+    
+    #btnContainer p:hover {
+        text-decoration: underline;
+    }
+
+#signInBtn {
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(32deg, orange, orangered);
+  
+    margin-top: -5px;
+  
+    border-style: none;
+    border-radius: 5px;
+  
+    font-family: Arial;
+    color: white;
+    font-size: 22px;
+}
+  
+#signInBtn:hover {
+    background: linear-gradient(32deg, #FD8A60, #FC5B20);
+    outline: none;
+}
+
+#signInBtn:focus {
+    outline: none;
+}
+
+#authorizationLoaderCont { 
+    margin-top: 100px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+  
+
+  

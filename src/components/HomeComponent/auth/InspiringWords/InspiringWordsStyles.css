@@ -1,0 +1,61 @@
+@media screen and (min-width: 430px){ 
+    .inspiringWord{
+        font-family: Arial;
+        text-align: left;
+        color: orangered;
+      }
+
+        .inspiringWord:nth-child(1){
+            font-size: 6em;
+        }
+
+        .inspiringWord:nth-child(2){
+            font-size: 7em;
+        }
+
+        .inspiringWord:nth-child(3){
+            font-size: 8em;
+        }
+}
+
+@media screen and (max-width: 430px){ 
+    .inspiringWord{
+        font-family: Arial;
+        text-align: left;
+        color: orangered;
+    
+        text-align: center;
+      }
+      
+        .inspiringWord:nth-child(1){
+            font-size: 3em;
+        }
+
+        .inspiringWord:nth-child(2){
+            font-size: 4em;
+        }
+
+        .inspiringWord:nth-child(3){
+            font-size: 5em;
+        }
+}
+
+@media screen and (min-width: 1824px){ 
+    .inspiringWord{
+        font-family: Arial;
+        text-align: left;
+        color: orangered;
+      }
+      
+        .inspiringWord:nth-child(1){
+            font-size: 6em;
+        }
+
+        .inspiringWord:nth-child(2){
+            font-size: 7em;
+        }
+        
+        .inspiringWord:nth-child(3){
+            font-size: 8em;
+        }
+}

@@ -1,0 +1,65 @@
+#subHeader{ 
+    width: 100%;
+    height: 30px;
+    background:#f0f0f0;
+
+    display: flex;
+    flex-direction: row;
+
+    margin-top:-20px;
+}
+
+.subHeaderOption{
+    height: 100%; 
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.subHeaderOption:nth-child(1){ 
+    border-style: solid;
+    border-width: 0;
+    border-right-width: 0.05px;
+    border-color: gray;
+}
+
+.subHeaderOption:nth-child(2){ 
+    border-style: solid;
+    border-width: 0;
+    border-left-width: 0.05px;
+    border-color: gray;
+}
+
+.subHeaderOption:hover .subHeaderOptionHighlighter{ 
+    background: orangered;
+}
+
+.sunHeaderOptionTitleClicked{ 
+    color: orangered !important;
+}
+
+.subHeaderOptionTitle{
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    cursor: default;
+
+    font-family: Arial;
+    color: gray;
+}
+
+.subHeaderOptionHighlighter{ 
+    width: 100%;
+    height: 2px;
+    background: transparent;
+
+    border-style: none;
+    border-radius:  2px;
+}

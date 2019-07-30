@@ -1,11 +1,11 @@
 import axios from "axios"
 
 export default class UserService { 
-    constructor(token){ 
+    constructor(token) { 
         this.apiURL = "https://localhost:44368/api/users";
     }
 
-    getUser(token){ 
+    getUser(token) { 
         return axios.get(this.apiURL, {
             headers: { 
                 "Authorization": "Bearer " + token, 
@@ -13,7 +13,7 @@ export default class UserService {
         });
     }
 
-    updateUser(token, user){ 
+    updateUser(token, user) { 
         return axios.put(this.apiURL, user, {
             headers: { 
                 "Authorization" : "Bearer " + token,
@@ -21,7 +21,7 @@ export default class UserService {
         });
     }
 
-    searchForUsers(token, login){
+    searchForUsers(token, login) {
         let url = this.apiURL + "/search/login?login=" + login; 
         return axios.get(url, {
             headers: { 

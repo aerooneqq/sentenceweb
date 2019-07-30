@@ -1,0 +1,54 @@
+@media screen and (max-width: 560px){ 
+    #menuOptionsContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: red;
+        
+        height: 0px;
+        width: 100%;
+
+        opacity: 0;
+    }
+
+    .showMenuAnimation{ 
+        animation: showMenu 0.5s ease-out forwards;
+    }
+
+    @keyframes showMenu { 
+        from { 
+            opacity: 0;
+            height: 0px;
+        }
+
+        to { 
+            opacity: 1;
+            height: 160px;
+        }
+    }
+
+    .hideMenuAnimation { 
+        animation: hideMenu 0.5s ease-in forwards;
+    }
+
+    @keyframes hideMenu { 
+        from { 
+            opacity: 1;
+            height: 160px;
+        }
+
+        to { 
+            opacity: 0;
+            height: 0px;
+        }
+    }
+}
+
+@media screen and (min-width: 560px){ 
+    #menuOptionsContainer{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+}

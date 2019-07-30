@@ -1,0 +1,81 @@
+#accountVerificationOutterContainer{ 
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 30px;
+}
+
+#accountVerificationCodeInput{ 
+    width: 120px;
+    height: 30px;
+
+    box-sizing: border-box;
+
+    padding-left: 3px;
+    padding-right: 3px;
+
+    border-width: 1px;
+    border-style: solid;
+    border-color: orangered;
+    border-radius: 5px;
+
+    font-family: Arial;
+    font-size: 15px;
+    color: gray;
+}
+
+#accountVerificationCodeInput:focus{ 
+    outline: none;
+}
+
+#accountVerificationText{
+    box-sizing: border-box;
+    
+    font-family: Arial; 
+    color: gray;
+    font-size: 14px;
+
+    padding-left: 10%;
+    padding-right: 10%;
+
+    margin-bottom: 10px;
+}
+
+#enterCodeContainer{ 
+    display: flex; 
+    flex-direction: row; 
+    justify-content: center; 
+    align-items: center;
+}
+
+#sendConfirmationCodeBtn{ 
+    width: 70px;
+    height: 30px;
+
+    border-style: solid; 
+    border-width: 1px;
+    border-color: orange; 
+    border-radius: 5px;
+
+    background: white; 
+
+    margin-left: 10px;
+
+    font-family: Arial; 
+    font-size: 15px;
+    color: orange;
+}
+
+#sendConfirmationCodeBtn:focus{ 
+    outline: none;
+}
+
+#sendConfirmationCodeBtn:hover{ 
+    color: orangered;
+    border-color: orangered;
+}

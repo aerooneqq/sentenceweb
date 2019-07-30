@@ -1,0 +1,172 @@
+@media screen and (min-width: 400px){ 
+  #photoBorder{
+    width: 200px;
+    height: 200px;
+  
+    background: white;
+  
+    border-style: solid;
+    border-width: 0.7px;
+    border-radius: 250px;
+    border-color: orangered;
+  }
+  
+  #photoContainer{   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  
+    margin-top: 20px;
+  }
+  
+  #photoBorder:hover #uploadNewUserPhotoContainer{
+    visibility: visible;
+    animation: uploadUserPhotoContAnimation 0.5s ease forwards;
+  }
+  
+  @keyframes uploadUserPhotoContAnimation {
+    from{
+      opacity:  0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+  
+  #profileDataItemsContainer{
+    display: flex;
+    flex-direction: row;
+  }
+  
+  #uploadNewUserPhotoContainer{
+    position:absolute;
+  
+    visibility: hidden;
+    opacity: 0;
+    width: 50px;
+    height: 50px;
+  
+    border-style: none;
+    border-radius: 50px;
+    background: #DFDFDF;
+  
+    z-index: 2;
+    margin-top: 120px;
+    margin-left: 75px
+  }
+  
+  #uploadNewUserPhotoContainer:hover {
+    background: #E4E4E4;
+  }
+  
+  #uploadNewUserPhotoImg{
+    background: url("../../img/uploadNewUserPhoto.png");
+  
+    width: 24px;
+    height: 24px;
+  
+    display: block;
+    margin: auto;
+    margin-top: 13px;
+  }
+  
+  #userPhotoloaderContainer{ 
+    width: 100%;
+    height: 100%;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 400px){ 
+  #photoBorder{
+    width: 200px;
+    height: 200px;
+  
+    background: white;
+  
+    border-style: solid;
+    border-width: 0.7px;
+    border-radius: 250px;
+    border-color: orangered;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #photoContainer{ 
+    margin-top: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+  }
+  
+  #photoBorder:hover #uploadNewUserPhotoContainer{
+    visibility: visible;
+    animation: uploadUserPhotoContAnimation 0.5s ease forwards;
+  }
+  
+  @keyframes uploadUserPhotoContAnimation {
+    from{
+      opacity:  0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+  
+  #profileDataItemsContainer{
+    display: flex;
+    flex-direction: row;
+  }
+  
+  #uploadNewUserPhotoContainer{
+    position:absolute;
+  
+    visibility: hidden;
+    opacity: 0;
+    width: 50px;
+    height: 50px;
+  
+    border-style: none;
+    border-radius: 50px;
+    background: #DFDFDF;
+  
+    z-index: 2;
+    margin-top: 140px;
+  }
+  
+  #uploadNewUserPhotoContainer:hover {
+    background: #E4E4E4;
+  }
+  
+  #uploadNewUserPhotoImg{
+    background: url("../../img/uploadNewUserPhoto.png");
+  
+    width: 24px;
+    height: 24px;
+  
+    display: block;
+    margin: auto;
+    margin-top: 13px;
+  }
+  
+  #userPhotoloaderContainer{ 
+    width: 100%;
+    height: 100%;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -1,19 +1,17 @@
-import React, {Component, Suspense} from "react"
-import HomeComponent from "./components/mainComponents/HomeComponent"
-import WorkplaceComponent from "./components/mainComponents/WorkplaceComponent"
+import React, {Component, Suspense, lazy} from "react"
 
-import DeviceContext from "./contexts/DeviceContext.js"
 import Loader from "./components/loader/Loader"
 
 //Services
 import TokenService from "./services/tokens/TokenService";
 import UserService from "./services/userServices/UserService";
 
-//Device detection
-import device from "./scripts/device.js"
-
 //Styles
 import "./appStyles.css";
+
+//Components
+const HomeComponent = lazy(() => import("./components/HomeComponent/HomeComponent"));
+const WorkplaceComponent = lazy(() => import("./components/WorkplaceComponent/WorkplaceComponent"));
 
 export default class App extends Component {
   constructor(){
@@ -58,14 +56,6 @@ export default class App extends Component {
     this.signIn = this.signIn.bind(this);
   }
 
-  getDevice() {
-    if (device.mobile()){
-      return "mobile";
-    }
-
-    return "desktop";
-  }
-
   async signIn(email, password) { 
     let tokenService = new TokenService();
     let token = await tokenService.sendGetTokenRequest(email, password);
@@ -81,14 +71,10 @@ export default class App extends Component {
   }
 
   render() {
-    let device = this.getDevice();
-
     return(
-      <DeviceContext.Provider value = {device}>
-        <Suspense fallback = {<Loader />}>
+      <Suspense fallback = {<Loader />} >
           {this.state.component}
-        </Suspense>
-      </DeviceContext.Provider>
+      </Suspense>
     )
   }
 }

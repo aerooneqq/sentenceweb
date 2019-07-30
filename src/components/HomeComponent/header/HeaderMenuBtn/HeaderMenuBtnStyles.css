@@ -1,0 +1,137 @@
+@media screen and (min-width: 560px){ 
+    #headerMenuBtnCont{ 
+        display: none;
+    }
+}
+
+@media screen and (max-width: 560px){ 
+    #headerMenuBtnCont{ 
+        width: 50px;
+        height: 50px; 
+    
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        justify-content: center;
+
+        margin-right: 15px;
+    
+        background: transparent;
+    }
+}
+
+.headerMenuBtnLine{ 
+    width: 40px;
+    height: 1px;
+
+    background: white;
+}
+
+.headerMenuBtnLine:nth-child(2){ 
+    margin-top: 10px;
+}
+
+.headerMenuBtnLineOpened:nth-child(1){
+    animation: topLineRotation 0.1s ease-in forwards, 
+               moveLineDown 0.1s ease-in forwards; 
+}
+
+    @keyframes topLineRotation{ 
+        from{ 
+            transform: rotateZ(0deg);
+        }
+
+        to{ 
+            transform: rotateZ(45deg);
+            transform-origin: center;
+        }
+    }
+
+    @keyframes moveLineDown{
+        from{ 
+            margin-top: 0px;
+        }
+
+        to{ 
+            margin-top: 1px;
+        }
+    }
+
+.headerMenuBtnLineOpened:nth-child(2){
+    animation: bottomLineRotation 0.1s ease-in forwards, 
+               moveLineUp 0.1s ease-in forwards; 
+}
+
+
+    @keyframes bottomLineRotation{ 
+        from{ 
+            transform: rotateZ(0deg);
+        }
+
+        to{ 
+            transform: rotateZ(-45deg);
+            transform-origin: center;
+        }
+    }
+
+    @keyframes moveLineUp{ 
+        from{ 
+            margin-top: 0px;
+        }
+
+        to{ 
+            margin-top: -1px;
+        }
+    }
+
+.headerMenuBtnLineClosed:nth-child(1){ 
+    animation: topLineRotationReverse 0.1s ease-in forwards, 
+               moveLineDownReverse 0.1s ease-in forwards; 
+}
+
+    @keyframes topLineRotationReverse{ 
+        from{ 
+            transform: rotateZ(45deg);
+            transform-origin: center;
+        }
+
+        to{ 
+            transform: rotateZ(0deg);
+        }
+    }
+
+    @keyframes moveLineDownReverse{
+        from{ 
+            margin-top: 1px;
+        }
+
+        to{ 
+            margin-top: 0px;
+        }
+    }
+
+.headerMenuBtnLineClosed:nth-child(2){ 
+    animation: bottomLineRotationReverse 0.1s ease-in forwards, 
+               moveLineUpReverse 0.1s ease-in forwards; 
+}
+
+    @keyframes bottomLineRotationReverse{ 
+        from{ 
+            transform: rotateZ(-45deg);
+            transform-origin: center;
+        }
+
+        to{ 
+            transform: rotate(0deg);
+        }
+    }
+
+    @keyframes moveLineUpReverse{ 
+        from{ 
+            margin-top: -1px;
+        }
+
+        to{ 
+            margin-top: 10px;
+        }
+    }

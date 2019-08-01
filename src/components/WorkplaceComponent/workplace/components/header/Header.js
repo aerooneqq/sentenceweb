@@ -1,14 +1,16 @@
 import React, {Component, Suspense, lazy} from "react"
-import "./styles/HeaderStyles.css"
+import "./HeaderStyles.css"
 
 const MenuItem = lazy(()=>import("./utilityComponents/MenuItem"))
 
-const menuItemModels = [{id: 0, name: "Profile"}, {id: 1, name: "Templates"},
-  {id: 2, name: "Projects"}, {id: 3, name: "Workplace"}]
+const menuItemModels = [{id: 0, name: "Profile"}, {id: 1, name: "Workplace"},
+  {id: 2, name: "Projects"}, {id: 3, name: "Templates"}]
 
 export default class Header extends Component{
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
+
+    this.getMenuOptionsArray = this.getMenuOptionsArray.bind(this)
   }
 
   render(){
@@ -26,8 +28,9 @@ export default class Header extends Component{
   getMenuOptionsArray(){
     let menuItems = []
 
-    for (let i = 0; i<menuItemModels.length; i++){
-      menuItems.push(<MenuItem menuItem = {menuItemModels[i]} />)
+    for (let i = 0; i<menuItemModels.length; i++) {
+      menuItems.push(<MenuItem menuItem = {menuItemModels[i]}
+                               changeWorkplaceComponent = {this.props.changeWorkplaceComponent} />)
     }
 
     return menuItems

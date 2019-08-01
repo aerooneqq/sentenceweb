@@ -1,4 +1,4 @@
-import React, {Component, lazy} from "react";
+import React, {Component, lazy, Suspense} from "react";
 
 //Styles
 import "./ProfileDataContStyles.css";
@@ -134,37 +134,30 @@ export default class ProfileData extends Component {
 
     if (this.props.user === null || this.state.isUpdating === true) { 
       return(
-        <div id = "profileDataLoaderContainer">
-          <Loader />
+        <div id = "profileDataOutterContainer">
+          <ProfileHeader header = "Settings"/>
+          <div id = "profileDataContainer">
+            <Loader />
+          </div>  
         </div>
       )
     }
     else { 
       return(
-        <div id = "profileDataOutterContainer">
-          <ProfileHeader header = "Settings"/>
-          <div id = "profileDataContainer">
-            <div id = "profileDataHeaderCont">
-              <ProfileDataHeader dataName = {this.getDataName(this.props.currentUserData)}/>
-            </div>  
-    
-            <div id = "profileDataContentCont">
-              {element}
-            </div>
-    
-            <div id = "saveOrDiscardBlock">
-              <div id = "saveCont">
-                  <SaveChangesComp updatedUser = {this.state.updatedUser}
-                                  updateUser = {this.props.updateUser}
-                                  setUpdatingStatus = {this.setUpdatingStatus}/>
-              </div>
-
-              <div id = "discardCont">
-                  <DiscardChangesComponent discardChangesInProfileData = {this.discardChangesInProfileData}/>
-            </div>
+          <div id = "profileDataOutterContainer">
+            <ProfileHeader header = "Settings"/>
+            <div id = "profileDataContainer">
+              <Suspense fallback = {<Loader />}>
+                  <div id = "profileDataHeaderCont">
+                    <ProfileDataHeader dataName = {this.getDataName(this.props.currentUserData)}/>
+                  </div>  
+          
+                  <div id = "profileDataContentCont">
+                    {element}
+                  </div>
+              </Suspense>
             </div>
           </div>
-        </div>
       )
     }
   }

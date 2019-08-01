@@ -1,0 +1,35 @@
+#documentsHeaderOutterContainer{ 
+    width: 100%;
+    height: 32px;
+
+    background: white;
+
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: baseline;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+#documentsHeaderOutterContainer:hover #documentsHeaderOutterContainer::-webkit-scrollbar{ 
+    height: 0px;
+}
+
+#documentsHeaderOutterContainer::-webkit-scrollbar{ 
+    height: 2px;
+}
+
+#documentsHeaderOutterContainer::-webkit-scrollbar-thumb{ 
+    background: #FFCEBC;
+}
+
+#documentsHeaderInnerContainer{ 
+    width: auto; 
+    height: 20px;
+
+    display: flex;
+    flex-direction: row;
+}

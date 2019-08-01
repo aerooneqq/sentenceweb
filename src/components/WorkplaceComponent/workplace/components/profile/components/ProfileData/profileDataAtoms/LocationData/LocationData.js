@@ -1,6 +1,8 @@
 import React, {Component, lazy} from "react"
 
 const ProfileTextBox = lazy(() => import("../ProfileTextBox/ProfileTextBox"));
+const SaveChanges = lazy(() => import("../SaveChanges/SaveChanges"));
+const DiscardChanges = lazy(() => import("../DiscardChanges/DiscardCahanges"));
 
 export default class LocationData extends Component{ 
     constructor(props){ 

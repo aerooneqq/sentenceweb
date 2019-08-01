@@ -2,7 +2,7 @@
   #photoBorder{
     width: 200px;
     height: 200px;
-  
+
     background: white;
   
     border-style: solid;
@@ -11,7 +11,9 @@
     border-color: orangered;
   }
   
-  #photoContainer{   
+  #photoContainer{  
+    width: 300px; 
+    
     display: flex;
     flex-direction: column;
     align-items: center;

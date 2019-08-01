@@ -1,6 +1,8 @@
 import React, {Component, lazy} from "react"
 
 const ProfileTextBox = lazy(() => import("../ProfileTextBox/ProfileTextBox"));
+const SaveChanges = lazy(() => import("../SaveChanges/SaveChanges"));
+const DiscardChanges = lazy(() => import("../DiscardChanges/DiscardCahanges"));
 
 export default class NameData extends Component{ 
     render(){ 
@@ -25,6 +27,10 @@ export default class NameData extends Component{
                                     propertyDescription = "This is your middle name."
                                     propertyValue = {user.middleName}
                                     changeUpdatedUser = {this.props.changeUpdatedUser}/>
+                </div>
+                <div className = "saveOrDiscardChangesCont">
+                    <SaveChanges />
+                    <DiscardChanges />
                 </div>
             </div>
         )

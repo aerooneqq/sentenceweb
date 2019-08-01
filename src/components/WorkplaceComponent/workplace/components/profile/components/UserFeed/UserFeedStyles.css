@@ -2,10 +2,8 @@
     #userFeedContainer{ 
         height: 450px;
         width: 400px;
-    
-        margin-top: 10px;
-    
         background: transparent;
+        margin-bottom: 30px;
     }
     
     #userFeedInnerCont{ 
@@ -117,7 +115,8 @@
         width: 300px;
     
         margin-top: 10px;
-    
+        margin-left: -15px;
+
         background: transparent;
     }
     

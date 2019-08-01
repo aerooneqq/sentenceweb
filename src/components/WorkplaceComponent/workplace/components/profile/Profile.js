@@ -4,6 +4,7 @@ import "./ProfileStyles.css"
 //Services
 import UserService from "../../../../../services/userServices/UserService"
 import UserActivityService from "../../../../../services/userServices/UserActivitiesService"
+import ProfileData from "./components/ProfileData/ProfileData";
 
 //Components
 const UserPhoto = lazy(()=>import("./components/UserPhoto/UserPhoto"))
@@ -64,25 +65,21 @@ export default class Profile extends Component{
     return (
       <div id = "profileContainer">
         <div id = "userPhotoCont">
-            <Suspense fallback = {<Loader />}>
               <UserPhoto changeUserData = {this.changeCurrentUserData}  
                          user = {this.state.user}/>
-            </Suspense>
         </div>
 
-        <div id = "profileDataCont">
-          <Suspense fallback = {<Loader />}>
-            <ProfileDataComponent currentUserData = {this.state.currentUserData} 
-                                  user = {this.state.user}
-                                  updateUser = {this.updateUser}/>
-          </Suspense>
-        </div>
-
-        <div id = "userActivityOutterContainer">
-          <div id = "userActivityContainer">
-            <UserActivityComponent  getUserActivities = {this.getUserActivities}/>
+        <div id = "rightProfileCont">
+          <div id = "userActivitiesOutterCont">
+            <UserActivityComponent getUserActivities = {this.getUserActivities}/>
           </div>
-          <UserFeed />
+
+          <div id = "userSettingsAndFeedOutterCont">
+            <ProfileData currentUserData = {this.state.currentUserData} 
+                         user = {this.state.user}
+                         updateUser = {this.updateUser}/>
+            <UserFeed />
+          </div>
         </div>
       </div>
     )

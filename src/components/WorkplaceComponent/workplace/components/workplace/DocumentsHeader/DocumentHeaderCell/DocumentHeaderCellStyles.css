@@ -1,0 +1,58 @@
+.documentHeaderCell{ 
+    height: 30px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-bottom: 1px;
+
+    border-style: solid;
+    border-width: 0px;
+    border-bottom-width: 2px;
+    border-color: white;
+
+    background: white;
+}
+
+    .documentHeaderCell:hover{ 
+        border-color: #F97646;
+    }
+
+.documentHeaderCellClilcked{ 
+    border-color: #F97646;
+}
+
+.documentHeaderCellName{ 
+    margin-left: 5px;
+
+    font-family: Arial;
+    font-size: 13px;
+    color: #F97646;
+
+    cursor: default;
+    white-space: nowrap;
+}
+
+.documentHeaderCellIcon{ 
+    height: 20px;
+    width: 20px;
+
+    background: url("./img/sentence_web_document_icon.png");
+}
+
+.documentHeaderSaveCont{ 
+    width: 7px;
+    height: 7px;
+
+    background: #F97646;
+
+    border-style: none; 
+    border-radius: 7px;
+
+    margin-left: 10px;
+}

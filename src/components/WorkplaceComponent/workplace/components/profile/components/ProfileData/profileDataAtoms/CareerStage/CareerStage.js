@@ -1,8 +1,10 @@
-import React, {Component} from "react"
+import React, {Component, lazy} from "react"
 
 //Styles
 import "./CareerStageStyles.css"
 
+const SaveChanges = lazy(() => import("../SaveChanges/SaveChanges"));
+const DiscardChanges = lazy(() => import("../DiscardChanges/DiscardCahanges"));
 
 export default class CareerStage extends Component{ 
     constructor(props){ 
@@ -26,6 +28,10 @@ export default class CareerStage extends Component{
                 </div>
                 <div className = "careerStageDescription">
                     {description}
+                </div>
+                <div className = "saveOrDiscardChangesCont">
+                    <SaveChanges />
+                    <DiscardChanges />
                 </div>
             </div>
         )

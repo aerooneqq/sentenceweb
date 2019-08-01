@@ -1,0 +1,75 @@
+.saveOrCloseDocContainer{ 
+    width: 10px;
+    height: 10px;
+
+    margin-left: 10px;
+}
+
+    .saveOrCloseDocContainer:hover .saveDocContainer{
+        display: none; 
+    }
+
+    .saveOrCloseDocContainer:hover .closeDocContainer{
+        display: block; 
+        margin-top: 0px;
+    }
+
+.saveDocContainer{
+    width: 10px;
+    height: 10px;
+
+    border-radius: 10px;
+    border-style: none;
+
+    background: #F97646;
+
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+
+.closeDocContainer{ 
+    width: 10px; 
+    height: 10px;
+
+    background: transparent;
+
+    position: relative;
+    top: 0px;
+    left: 0px;
+
+    margin-top: -10px;
+    display: none;
+}
+    .closeDocContainer:hover .saveOrCloseDocLine{ 
+        background: #F68C66;
+    }
+
+.saveOrCloseDocLine{ 
+    width: 12px;
+    height: 2px;
+
+    border-style: none;
+    border-radius: 1px;
+
+    position: relative;
+    top: 4px;
+    left: 0px;
+
+    background: #F97646;
+}
+
+.saveOrCloseDocLine:nth-child(1){
+    transform: rotateZ(45deg);
+    transform-origin: center;
+
+    margin-left: -1.2px;
+}
+
+.saveOrCloseDocLine:nth-child(2){ 
+    transform: rotateZ(-45deg);
+    transform-origin: center;
+
+    margin-left: -1.2px;
+    margin-top: -2px;
+}

@@ -97,7 +97,7 @@ export default class UserActivity extends Component{
 
                 this.setState({ 
                     components: monthActivities,
-                    width: document.getElementById("userActivityOutterContainer").offsetWidth - 200
+                    width: document.getElementById("userActivityOutterContainer").offsetWidth - 100
                 });
             }).catch(er => alert(er));
     }
@@ -105,10 +105,8 @@ export default class UserActivity extends Component{
     render(){ 
         return(
             <div id = "userActivityOutterContainer">
-                <ProfileHeader header = "Activity"/>
                 <div id = "userActivitiesCont" 
-                     className = "profileShadowContainer"
-                     style = {{"width" : this.state.width}}>
+                     className = "profileShadowContainer">
                     <Suspense fallback = {<Loader message = "Loading activities..." />}>
                         {this.state.components}
                     </Suspense>

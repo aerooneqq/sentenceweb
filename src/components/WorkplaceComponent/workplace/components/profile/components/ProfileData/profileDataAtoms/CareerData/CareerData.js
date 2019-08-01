@@ -1,5 +1,10 @@
 import React, {Component, lazy} from "react"
 
+import "./CareerData.css"
+
+import SaveChanges from "../SaveChanges/SaveChanges";
+import DiscardChanges from "../DiscardChanges/DiscardCahanges";
+
 const CareerStage = lazy(() => import("../CareerStage/CareerStage"));
 
 export default class CareerData extends Component{ 
@@ -17,8 +22,14 @@ export default class CareerData extends Component{
         }
 
         return(
-            <div className="fadeInAnimation" className="profileDataContentCont">
-                {careerComponents}
+            <div>
+                <div className="fadeInAnimation" className="profileDataContentCont">
+                    {careerComponents}
+                </div>
+                <div className = "saveOrDiscardChangesCont">
+                    <SaveChanges />
+                    <DiscardChanges />
+                </div>
             </div>
         )
     }

@@ -1,6 +1,8 @@
 import React, {Component, lazy} from "react"
 
-const ProfileTextBox = lazy(() => import("../ProfileTextBox/ProfileTextBox"))
+const ProfileTextBox = lazy(() => import("../ProfileTextBox/ProfileTextBox"));
+const SaveChanges = lazy(() => import("../SaveChanges/SaveChanges"));
+const DiscardChanges = lazy(() => import("../DiscardChanges/DiscardCahanges"));
 
 export default class AuthProfileData extends Component{ 
     constructor(props){ 
@@ -23,6 +25,10 @@ export default class AuthProfileData extends Component{
                                     propertyDescription = "This is your main email, which is connected to your account."
                                     propertyValue = {user.email}
                                     changeUpdatedUser = {this.props.changeUpdatedUser}/>
+                </div>
+                <div className = "saveOrDiscardChangesCont">
+                    <SaveChanges />
+                    <DiscardChanges />
                 </div>
             </div>
         );

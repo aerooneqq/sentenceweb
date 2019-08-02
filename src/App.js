@@ -7,7 +7,7 @@ import TokenService from "./services/tokens/TokenService";
 import UserService from "./services/userServices/UserService";
 
 //Styles
-import "./appStyles.css";
+import "./AppStyles.css";
 
 //Components
 const HomeComponent = lazy(() => import("./components/HomeComponent/HomeComponent"));

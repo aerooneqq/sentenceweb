@@ -26,6 +26,11 @@ export default class DocumentsHeader extends Component{
         this.changeSelectedDocument = this.changeSelectedDocument.bind(this);
     }
 
+    /**
+     * Sets the document with a given id to the opened mode.
+     * Loads this document to the workplace via calling the method which comes from workplace.
+     * @param {the id of the opened document document} id 
+     */
     changeSelectedDocument(id){ 
         this.setState(prevState => { 
             for (let openedDoc of prevState.openedDocuments) { 

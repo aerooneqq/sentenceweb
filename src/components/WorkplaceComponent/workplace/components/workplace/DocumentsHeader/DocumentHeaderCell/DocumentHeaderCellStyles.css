@@ -30,9 +30,8 @@
 .documentHeaderCellName{ 
     margin-left: 5px;
 
-    font-family: Arial;
     font-size: 13px;
-    color: #F97646;
+    color: gray;
 
     cursor: default;
     white-space: nowrap;

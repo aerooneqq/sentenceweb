@@ -7,19 +7,19 @@ import "../../../../../../../AppStyles.css"
 //Components
 const SaveOrCloseDoc = lazy(() => import("./SaveOrCloseDoc/SaveOrCloseDoc"));
 
-export default class DocumentHeaderCell extends Component{ 
-    constructor(props){ 
+export default class DocumentHeaderCell extends Component { 
+    constructor(props) { 
         super(props);
 
         this.changeSelectedDocument = this.changeSelectedDocument.bind(this);
     }
 
-    changeSelectedDocument(){ 
+    changeSelectedDocument() { 
         this.props.changeSelectedDocument(this.props.openedDoc.id);
     }
 
     render() { 
-        return( 
+        return ( 
             <div className = {"documentHeaderCell " + (this.props.openedDoc.isSelected === true ? "documentHeaderCellClilcked" : "")}
                  onClick = {this.changeSelectedDocument}>
                 <div className = "documentHeaderCellIcon">

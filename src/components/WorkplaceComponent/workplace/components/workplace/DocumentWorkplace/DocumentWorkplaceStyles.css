@@ -5,8 +5,8 @@
     box-sizing: border-box;
 
     overflow-y: auto;
-
-    position: relative;
+    display: flex;
+    flex-direction: row;
 }
 
 #documentWorkplaceComponentOutterCont::-webkit-scrollbar:horizontal{ 

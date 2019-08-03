@@ -15,4 +15,11 @@ div, p, span {
     -moz-user-select: none;   
     -ms-user-select: none;      
     user-select: none;  
+
+    font-family: Arial;
+}
+
+input { 
+    font-family: Arial;
+    cursor: default;
 }

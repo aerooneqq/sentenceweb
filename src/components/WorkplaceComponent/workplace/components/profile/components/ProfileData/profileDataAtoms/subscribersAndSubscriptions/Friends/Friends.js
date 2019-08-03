@@ -10,7 +10,7 @@ import UserService from "../../../../../../../../../../services/userServices/Use
 
 //Components
 const SubHeader = lazy(() => import("../SubHeader/SubHeader"));
-const FriendsSearch = lazy(() => import("../FriendsSearch/FriendsSearch"));
+const WorkplaceSearch = lazy(() => import("../../../../../../search/WorkplaceSearch"));
 const Subscriber = lazy(() => import("../Subscriber/Subscriber"));
 const Subscription = lazy(() => import("../Subscription/Subscription"));
 const UserSearchResult = lazy(() => import("../UserSearchResult/UserSearchResult"));
@@ -24,6 +24,8 @@ export default class Friends extends Component{
         };
 
         this.changeUserFriendMode = this.changeUserFriendMode.bind(this);
+        this.deleteSubscriber = this.deleteSubscriber.bind(this);
+        this.deleteSubscription = this.deleteSubscription.bind(this);
         this.uploadSubscribers = this.uploadSubscribers.bind(this);
         this.uploadSubscriptions = this.uploadSubscriptions.bind(this);
         this.searchForUsers = this.searchForUsers.bind(this);
@@ -139,7 +141,7 @@ export default class Friends extends Component{
         return (
             <div id = "friendsContainer">
                 <SubHeader changeUserFriendMode = {this.changeUserFriendMode} />
-                <FriendsSearch searchForUsers = {this.searchForUsers}/>
+                <WorkplaceSearch searchForUsers = {this.searchForUsers}/>
                 <div id = "friendsScrollViewer">
                     {this.state.elements}
                 </div>

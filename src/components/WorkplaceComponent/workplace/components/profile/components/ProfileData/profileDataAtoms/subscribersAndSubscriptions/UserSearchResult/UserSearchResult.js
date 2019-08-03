@@ -1,5 +1,8 @@
 import React, {Component, lazy} from "react";
 
+//Styles
+import "../Subscriber/SubscriberStyles.css"
+
 //Components
 const SubscribeBtn = lazy(() => import("../SubscribeBtn/SubscribeBtn"));
 

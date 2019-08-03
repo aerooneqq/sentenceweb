@@ -1,4 +1,4 @@
-#friendsSearch { 
+#workplaceSearch { 
     width: 100%;
     height: 44px;
 
@@ -10,7 +10,7 @@
     z-index: 1;
 }
 
-#friendsSearchInput{ 
+#workplaceSearchInput{ 
     height: 25px;
     width: 80%;
 
@@ -28,11 +28,11 @@
     color: #505050;
 }
 
-#friendsSearchInput:hover{ 
+#workplaceSearchInput:hover{ 
     border-color: orange;
 }
 
-#friendsSearchInput:focus{ 
+#workplaceSearchInput:focus{ 
     outline: none;
     border-color: orange;
 }
@@ -75,7 +75,7 @@
     }
 }
 
-#friendsSearchInputHelpCont{ 
+#workplaceSearchInputHelpCont{ 
     visibility: visible;
     width: 70px;
 

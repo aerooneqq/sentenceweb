@@ -1,9 +1,9 @@
 import React, {Component} from "react"
 
 //Styles
-import "./FriendsSearchStyles.css"
+import "./WorkplaceSearchStyles.css"
 
-export default class FriendsSearch extends Component { 
+export default class WorkplaceSearch extends Component { 
     constructor(props) {
         super(props);
 
@@ -23,30 +23,30 @@ export default class FriendsSearch extends Component {
     }   
 
     componentDidMount(){ 
-        let friendsSearch = document.getElementById("friendsSearchInput");
-        let friendsSearchHelp = document.getElementById("friendsSearchInputHelpCont");
+        let workplaceSearch = document.getElementById("workplaceSearchInput");
+        let workplaceSearchHelp = document.getElementById("workplaceSearchInputHelpCont");
 
-        friendsSearch.addEventListener("focus", this.handleInputFocus);
-        friendsSearch.addEventListener("focusout", this.handleInputLostFocus);
+        workplaceSearch.addEventListener("focus", this.handleInputFocus);
+        workplaceSearch.addEventListener("focusout", this.handleInputLostFocus);
 
-        friendsSearchHelp.classList.toggle("fadeOutAnimation");
+        workplaceSearchHelp.classList.toggle("fadeOutAnimation");
     }
 
     handleInputLostFocus(){ 
-        let friendsSearchHelp = document.getElementById("friendsSearchInputHelpCont"); 
-        friendsSearchHelp.classList.remove("fadeInAnimation");
-        friendsSearchHelp.classList.toggle("fadeOutAnimation");
+        let workplaceSearchHelp = document.getElementById("workplaceSearchInputHelpCont"); 
+        workplaceSearchHelp.classList.remove("fadeInAnimation");
+        workplaceSearchHelp.classList.toggle("fadeOutAnimation");
     }
 
     handleInputFocus() {
-        let friendsSearchHelp = document.getElementById("friendsSearchInputHelpCont"); 
-        friendsSearchHelp.classList.remove("fadeOutAnimation");
-        friendsSearchHelp.classList.toggle("fadeInAnimation");
+        let workplaceSearchHelp = document.getElementById("workplaceSearchInputHelpCont"); 
+        workplaceSearchHelp.classList.remove("fadeOutAnimation");
+        workplaceSearchHelp.classList.toggle("fadeInAnimation");
     }
 
     handleSearchInputKeyEnter(target){ 
         if (target.charCode === 13){ 
-            let searchInput = document.getElementById("friendsSearchInput").value;
+            let searchInput = document.getElementById("workplaceSearchInput").value;
             this.props.searchForUsers(searchInput);
         }
     }
@@ -54,15 +54,15 @@ export default class FriendsSearch extends Component {
     render() {
         return(
             <div>
-                <div id = "friendsSearch">
+                <div id = "workplaceSearch">
                     <input type = "text"    
-                           id = "friendsSearchInput"
+                           id = "workplaceSearchInput"
                            value = {this.state.value} 
                            onChange = {this.handleInputValueChange}
                            onKeyPress = {this.handleSearchInputKeyEnter}
                            placeholder="Enter the query..." />
                 </div>
-                <div id = "friendsSearchInputHelpCont">
+                <div id = "workplaceSearchInputHelpCont">
                     Press enter
                 </div>
             </div>

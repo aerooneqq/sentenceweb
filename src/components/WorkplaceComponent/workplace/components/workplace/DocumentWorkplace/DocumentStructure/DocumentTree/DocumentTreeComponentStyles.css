@@ -1,0 +1,63 @@
+.documentTreeContainer { 
+    width: 100%;
+    height: auto;
+
+    background: transparent;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.nestedItemsContainer { 
+    width: auto; 
+    height: auto;
+
+    margin-left: 20px;
+
+    display: block;
+    animation: nestedItemsFadeIn 0.2s linear forwards;
+}
+    .nestedItemsContainer.hidden { 
+        display: none;
+    }
+
+    .nestedItemsContainerFadeIn { 
+        display: block;
+        animation: nestedItemsFadeIn 0.2s linear forwards;
+    }
+
+    @keyframes nestedItemsFadeIn { 
+        from { 
+            opacity: 0;
+ 
+        }
+
+        to { 
+            opacity: 1;
+        }
+    }
+
+    .nestedItemsContainerFadeOut { 
+        animation: nestedItemsFadeOut 0.1s linear forwards,
+                   nestedItemsDisplayFadeOut 0.1s linear 0.2s forwards;
+    }
+
+    @keyframes nestedItemsFadeOut { 
+        from { 
+            opacity: 1;
+        }
+
+        to { 
+            opacity: 0;
+        }
+    }
+
+    @keyframes nestedItemsDisplayFadeOut { 
+        from { 
+            display:  block;
+        }
+
+        to { 
+            display: none;
+        }
+    }

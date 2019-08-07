@@ -141,7 +141,7 @@ export default class Friends extends Component{
         return (
             <div id = "friendsContainer">
                 <SubHeader changeUserFriendMode = {this.changeUserFriendMode} />
-                <WorkplaceSearch searchForUsers = {this.searchForUsers}/>
+                <WorkplaceSearch search = {this.searchForUsers}/>
                 <div id = "friendsScrollViewer">
                     {this.state.elements}
                 </div>

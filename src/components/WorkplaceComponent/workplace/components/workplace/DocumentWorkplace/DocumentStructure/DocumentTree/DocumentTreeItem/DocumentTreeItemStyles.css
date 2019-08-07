@@ -1,0 +1,81 @@
+.documentTreeItem { 
+    height: 25px;
+    width: auto;
+
+    display: flex;
+    flex-direction: row;
+    justify-items: baseline;
+    align-items: center;
+
+    padding-left: 10px;
+
+    opacity: 0.99;
+    position: relative;
+    z-index: 1;
+}
+
+    .documentTreeItem:hover .documentTreeItemNameInput:disabled { 
+        color: #F97646;
+    }
+
+.documentTreeItemIconContainer { 
+    width: 20px;
+    height: 20px; 
+
+    background: transparent;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.documentTreeItemIcon { 
+    width: 18px;
+    height: 18px;
+}
+
+.documentTreeItemNameInput { 
+    color: #404040;
+    font-size: 12px;
+    
+    height: 22px;
+
+    box-sizing: border-box;
+
+    background-color: white;
+
+    margin-left: 1px;
+
+    border-style: solid;
+    border-color: #F97646;
+    border-width: 0.5px; 
+    border-radius: 5px;
+
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+    .documentTreeItemNameInput:disabled { 
+        color: #404040;
+        font-size: 12px;
+
+        height: 20px;   
+        
+        box-sizing: border-box;
+
+        border-style: none;
+        background: #f9f9f9;
+    }
+
+        .documentTreeItemNameInput:disabled::selection { 
+            background: transparent !important;
+        }
+
+    .documentTreeItemNameInputSelected { 
+        color: #F97646;
+    }
+
+    .documentTreeItemNameInput:focus { 
+        outline: none;
+    }

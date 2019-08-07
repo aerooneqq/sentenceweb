@@ -2,10 +2,9 @@
     width: 100%;
     height: 50px;
 
-    background: #f9f9f9;
+    background: #f3f3f3;
 
     box-sizing: border-box;
-
 
     display: flex;
     flex-direction: row;
@@ -17,11 +16,11 @@
 
 #documentStructureHeaderInput { 
     position: absolute;
-    top: 3px;
-    left: -1px;
+    top: 2px;
+    left: -2px;
 
     height: 25px;
-    width: 70%;
+    width: 270px;
 
     box-sizing: content-box;
 
@@ -39,6 +38,7 @@
     }
 
     .documentStructureHeaderInputFadeIn { 
+        display: block;
         animation: documentsHeaderSearchFadeIn 0.2s linear forwards;
     }
 
@@ -54,6 +54,7 @@
 
     .documentStructureHeaderInputFadeOut { 
         animation: documentsHeaderSearchFadeOut 0.2s linear forwards;
+        display: none;
     }
 
     @keyframes documentsHeaderSearchFadeOut { 
@@ -66,26 +67,50 @@
         }
     }
 
-.fillContainer { 
-    flex-grow:1;
+#openedTreeItemContainer { 
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+
+    height: 100%;
+    width: 230px; 
+
+    margin-left: 10px;
+
+    display: flex;
+    flex-direction: column; 
+    align-items: baseline;
+    justify-content: center;
 }
 
-#openedTreeItemContainer { 
-    color: #646464;
-    font-size: 17px;
-    margin-left: 10px;
+#openedTreeItemDescription { 
+    color: #848484;
+    font-size: 11px;
+}
+
+#openedTreeItemName { 
+    color: black;
+    font-size: 13px;
+}
+
+.fillContainer { 
+    flex-grow: 1;
 }
 
 #searchIconContainer { 
-    width: 25px;
-    height: 25px;
+    width: 35px;
+    height: 35px;
 
-    background-color: #F97646;
-    background: url("./img/document_structure_header_search_icon.png");
+    background-color: transparent;
 
     margin-right: 10px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
-    #searchIconContainer:hover { 
-        background: url("./img/document_structure_header_search_icon_active.png");
+    #searchIconContainer > img { 
+        width: 35px;
+        height: 35px;
     }

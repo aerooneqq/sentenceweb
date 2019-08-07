@@ -1,5 +1,7 @@
-#documentStructureOutterCont{ 
+#documentStructureOutterCont { 
     width: 300px;
+    min-width: 300px;
+
     height: 100%;
     
     box-sizing: border-box;
@@ -14,4 +16,42 @@
 
     display: flex; 
     flex-direction: column;
+}
+
+#documentTreeOutterContainer { 
+    width: 100%;
+    flex-grow: 1;
+
+    background: #f9f9f9;
+
+    overflow-x: auto;
+    overflow-y: auto;
+}
+    #documentTreeOutterContainer::-webkit-scrollbar { 
+        width: 0px;
+        height: 0px;
+    }
+
+    #documentTreeOutterContainer::-webkit-scrollbar:horizontal { 
+        height: 10px;
+
+        border-style: solid;
+        border-color: #a0a0a0;
+        border-width: 0.5px;
+
+        background: white;
+        opacity: 0.5;
+    }
+
+    #documentTreeOutterContainer::-webkit-scrollbar-thumb:horizontal { 
+        background: #a0a0a0; 
+        opacity: 0.5;
+    }
+
+#documentTreeInnerContainer { 
+    width: fit-content; 
+    height: auto;
+
+    position: relative;
+    z-index: 1;
 }

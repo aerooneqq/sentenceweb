@@ -9,21 +9,21 @@
     flex-direction: row;
 }
 
-#documentWorkplaceComponentOutterCont::-webkit-scrollbar:horizontal{ 
-    box-sizing: border-box;
-    height: 10px;
+    #documentWorkplaceComponentOutterCont::-webkit-scrollbar:horizontal{ 
+        box-sizing: border-box;
+        height: 10px;
 
-    border-style: solid;
-    border-width: 0.5px;
-    border-color: #F97646;
-}
+        border-style: solid;
+        border-width: 0.5px;
+        border-color: #F97646;
+    }
 
-#documentWorkplaceComponentOutterCont::-webkit-scrollbar-thumb:horizontal{ 
-    background: #F97646;
-    height: 7px;
-}
+    #documentWorkplaceComponentOutterCont::-webkit-scrollbar-thumb:horizontal{ 
+        background: #F97646;
+        height: 7px;
+    }
 
-#documentWorkplaceComponentOutterCont::-webkit-scrollbar-thumb:horizontal:hover{ 
-    background: #F58E68;
-    height: 7px;
-}
+    #documentWorkplaceComponentOutterCont::-webkit-scrollbar-thumb:horizontal:hover{ 
+        background: #F58E68;
+        height: 7px;
+    }

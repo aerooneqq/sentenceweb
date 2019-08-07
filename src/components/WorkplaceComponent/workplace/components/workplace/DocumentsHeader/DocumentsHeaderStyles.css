@@ -14,17 +14,17 @@
     overflow-y: hidden;
 }
 
-#documentsHeaderOutterContainer:hover #documentsHeaderOutterContainer::-webkit-scrollbar{ 
-    height: 0px;
-}
+        #documentsHeaderOutterContainer:hover #documentsHeaderOutterContainer::-webkit-scrollbar{ 
+            height: 0px;
+        }
 
-#documentsHeaderOutterContainer::-webkit-scrollbar{ 
-    height: 2px;
-}
+    #documentsHeaderOutterContainer::-webkit-scrollbar{ 
+        height: 2px;
+    }
 
-#documentsHeaderOutterContainer::-webkit-scrollbar-thumb{ 
-    background: #FFCEBC;
-}
+    #documentsHeaderOutterContainer::-webkit-scrollbar-thumb{ 
+        background: #FFCEBC;
+    }
 
 #documentsHeaderInnerContainer{ 
     width: auto; 

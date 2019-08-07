@@ -1,7 +1,11 @@
-import React, {Component, lazy} from "react"
+import React, {Component, lazy} from "react";
+
+//Icons
+import searchIcon from  "./img/document_structure_header_search_icon.png";
+import searchIconActive from "./img/document_structure_header_search_icon_active.png";
 
 //Styles
-import "./DocumentStructureHeaderStyles.css"
+import "./DocumentStructureHeaderStyles.css";
 
 //Components
 const WorkplaceSearch = lazy(() => import("../../../../search/WorkplaceSearch"));
@@ -11,10 +15,12 @@ export default class DocumentStructureHeader extends Component {
         super(props);
 
         this.state = { 
-            searchOn: false
+            searchOn: false,
+            isSearchIconHovered: false
         };
 
         this.handleSearcIconClick = this.handleSearcIconClick.bind(this);
+        this.handleSearchIconMouseOver = this.handleSearchIconMouseOver.bind(this);
     }
 
     handleSearcIconClick() {
@@ -36,17 +42,32 @@ export default class DocumentStructureHeader extends Component {
         })
     }
     
+    handleSearchIconMouseOver() { 
+        this.setState(state => {
+            return { 
+                isSearchIconHovered: !state.isSearchIconHovered
+            }
+        });
+    }
+
     render() { 
         return (
             <div id = "documentStructureHeaderCont">
                 <div id = "documentStructureHeaderInput"> 
-                    <WorkplaceSearch />
+                    <WorkplaceSearch search = {this.props.findContentParagrahsWithName}
+                                     backgroundColor = "#f3f3f3"/>
                 </div> 
-                <span id = "openedTreeItemContainer">
-                    {this.props.openedTreeItem.name}
-                </span>
+                <div id = "openedTreeItemContainer">
+                    <span id = "openedTreeItemDescription">Now opened: </span>
+                    <span id = "openedTreeItemName">
+                        {this.props.openedParagraph === null ? "" : this.props.openedParagraph.name}
+                    </span>
+                </div>
                 <div className = "fillContainer" />
-                <div id = "searchIconContainer" onClick = {this.handleSearcIconClick} />
+                <div id = "searchIconContainer" onClick = {this.handleSearcIconClick}>
+                    <img src = {this.state.isSearchIconHovered === true ? searchIconActive : searchIcon} alt = ""
+                         onMouseEnter = {this.handleSearchIconMouseOver} onMouseLeave = {this.handleSearchIconMouseOver}/>
+                </div>
             </div>
         )
     }

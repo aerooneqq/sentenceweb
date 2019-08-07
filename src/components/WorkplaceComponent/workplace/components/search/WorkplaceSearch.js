@@ -47,7 +47,7 @@ export default class WorkplaceSearch extends Component {
     handleSearchInputKeyEnter(target){ 
         if (target.charCode === 13){ 
             let searchInput = document.getElementById("workplaceSearchInput").value;
-            this.props.searchForUsers(searchInput);
+            this.props.search(searchInput);
         }
     }
 
@@ -57,12 +57,14 @@ export default class WorkplaceSearch extends Component {
                 <div id = "workplaceSearch">
                     <input type = "text"    
                            id = "workplaceSearchInput"
+                           style = {{backgroundColor: this.props.backgroundColor === undefined ? "white" : this.props.backgroundColor}}
                            value = {this.state.value} 
                            onChange = {this.handleInputValueChange}
                            onKeyPress = {this.handleSearchInputKeyEnter}
                            placeholder="Enter the query..." />
                 </div>
-                <div id = "workplaceSearchInputHelpCont">
+                <div id = "workplaceSearchInputHelpCont"
+                     style = {{backgroundColor: this.props.backgroundColor === undefined ? "white" : this.props.backgroundColor}}>
                     Press enter
                 </div>
             </div>

@@ -38,11 +38,13 @@
 }
 
 .documentHeaderCellIcon{ 
-    height: 20px;
-    width: 20px;
-
-    background: url("./img/sentence_web_document_icon.png");
+    height: 25px;
+    width: 25px;
 }
+    .documentHeaderCellIcon > img { 
+        width: 25px;
+        height: 25px;
+    }
 
 .documentHeaderSaveCont{ 
     width: 7px;

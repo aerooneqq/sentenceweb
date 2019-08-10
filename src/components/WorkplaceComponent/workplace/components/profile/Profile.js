@@ -19,45 +19,17 @@ export default class Profile extends Component{
     super(props);
 
     this.state = { 
-      currentUserData: 2,
-      user: null,
-      userActivities: null
+      currentUserDataIndex: 2
     };
 
     this.userService = new UserService();
-    this.userActivityService = new UserActivityService();
 
     this.changeCurrentUserData = this.changeCurrentUserData.bind(this);
-    this.updateUser = this.updateUser.bind(this);
   }
 
-  updateUser(user){ 
-    let newUser = {};
-    let newUpdatedUser = {};
-
-    for (var key in user){ 
-      newUser[key] = user[key];
-      newUpdatedUser[key] = user[key];
-    }
-
+  changeCurrentUserData(newUserDataIndex){
     this.setState({ 
-      user: newUser,
-      updatedUser: newUpdatedUser
-    });
-  }
-
-  changeCurrentUserData(newUserData){
-    this.setState({ 
-      currentUserData: newUserData
-    });
-  }
-
-  componentDidMount(){ 
-    this.userService.getUser(localStorage.getItem("token")).then(res =>{ 
-      this.setState({ 
-        user: res.data,
-        updatedUser: res.data
-      });
+      currentUserDataIndex: newUserDataIndex
     });
   }
 
@@ -65,19 +37,16 @@ export default class Profile extends Component{
     return (
       <div id = "profileContainer">
         <div id = "userPhotoCont">
-              <UserPhoto changeUserData = {this.changeCurrentUserData}  
-                         user = {this.state.user}/>
+            <UserPhoto changeUserData = {this.changeCurrentUserData} />
         </div>
 
         <div id = "rightProfileCont">
           <div id = "userActivitiesOutterCont">
-            <UserActivityComponent getUserActivities = {this.getUserActivities}/>
+            <UserActivityComponent />
           </div>
 
           <div id = "userSettingsAndFeedOutterCont">
-            <ProfileData currentUserData = {this.state.currentUserData} 
-                         user = {this.state.user}
-                         updateUser = {this.updateUser}/>
+            <ProfileData currentUserDataIndex = {this.state.currentUserDataIndex} />
             <UserFeed />
           </div>
         </div>

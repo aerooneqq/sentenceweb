@@ -9,25 +9,11 @@ import "./SaveChangesStyles.css";
 export default class SaveChanges extends Component{ 
     constructor(props){ 
         super(props);
-        this.handleUpdateBtnClick = this.handleUpdateBtnClick.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
-    handleUpdateBtnClick() { 
-        let userService = new UserService();
-        let token = localStorage.getItem("token");
-        
-        this.props.setUpdatingStatus(true);
-        
-        alert(token);
-        userService.updateUser(token, this.props.updatedUser).then(res => {
-            if (res.status === 200) {
-                 this.props.updateUser(res.data);
-            }
-        }).catch(er => { 
-            alert(er);
-        }).then(() => { 
-            this.props.setUpdatingStatus(false);
-        });
+    handleClick() { 
+        this.props.saveChanges();
     }
 
     render(){ 

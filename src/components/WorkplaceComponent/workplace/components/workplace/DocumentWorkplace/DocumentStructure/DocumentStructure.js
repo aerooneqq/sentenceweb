@@ -52,7 +52,6 @@ export default class DocumentStructure extends Component{
      * @param {the id of the paragraph which was selected} id 
      */
     changeCurrentContentParagraph(paragraph) { 
-        alert(paragraph.name);
         this.setState({ 
             openedParagraph: paragraph
         });

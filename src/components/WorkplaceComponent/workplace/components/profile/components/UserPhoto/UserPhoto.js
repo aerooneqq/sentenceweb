@@ -14,11 +14,9 @@ const DeleteAccountComponent = lazy(()=>import("./DeleteAccount/DeleteAccount"))
 
 export default class UserPhoto extends Component{
   constructor(props){
-    super(props)
-  }
+    super(props);
 
-  render(){
-    let profileDataItems = []
+    let profileDataItems = [];
 
     for (let i = 0; i<5; i++){ 
       let props = { 
@@ -27,17 +25,15 @@ export default class UserPhoto extends Component{
         changeUserData: this.props.changeUserData
       }
 
-      profileDataItems.push(<ProfileDataItem data = {props}/>)
+      profileDataItems.push(<ProfileDataItem data = {props}/>);
     }
 
-    if (this.props.user === null){ 
-      return(
-        <div id = "userPhotoloaderContainer">
-          <Loader />
-        </div>
-      )
-    }
-    else { 
+    this.state = { 
+      profileDataItems: profileDataItems
+    };
+  }
+
+  render(){
       return (
         <div id="photoContainer">
           <div id="photoBorder">
@@ -47,13 +43,12 @@ export default class UserPhoto extends Component{
             </div>
           </div>
           <div id="profileDataItemsContainer">
-            {profileDataItems}
+            {this.state.profileDataItems}
           </div>
           <AccountVerification />
           <SignOutComponent />
           <DeleteAccountComponent />
         </div>
-    )
-    }
+      )
   }
 }

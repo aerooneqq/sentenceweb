@@ -72,8 +72,8 @@ export default class Friends extends Component{
             elements: <Loader  message = "Loading subscribers..."/>
         });
 
-        let userService = new UserFriendsService();
-        userService.getSubsribers(localStorage.getItem("token"))
+        let userFriendsService = new UserFriendsService();
+        userFriendsService.getSubsribers(localStorage.getItem("token"))
             .then(res => { 
                 let data = res.data;
                 let components = [];

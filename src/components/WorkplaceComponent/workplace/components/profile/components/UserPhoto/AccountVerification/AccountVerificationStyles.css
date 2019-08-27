@@ -29,15 +29,15 @@
     color: gray;
 }
 
-#accountVerificationCodeInput:focus{ 
-    outline: none;
-}
+    #accountVerificationCodeInput:focus{ 
+        outline: none;
+    }
 
 #accountVerificationText{
     box-sizing: border-box;
     
     font-family: Arial; 
-    color: gray;
+    color: black;
     font-size: 14px;
 
     padding-left: 10%;
@@ -66,16 +66,38 @@
 
     margin-left: 10px;
 
-    font-family: Arial; 
     font-size: 15px;
     color: orange;
 }
 
-#sendConfirmationCodeBtn:focus{ 
-    outline: none;
+    #sendConfirmationCodeBtn:focus{ 
+        outline: none;
+    }
+
+    #sendConfirmationCodeBtn:hover{ 
+        color: orangered;
+        border-color: orangered;
+    }
+
+#verifiedAccountContainer { 
+    width: 100%;
+    height: auto; 
+
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+    align-items: center;
 }
 
-#sendConfirmationCodeBtn:hover{ 
-    color: orangered;
-    border-color: orangered;
+#verifiedAccountIcon { 
+    width: 30px; 
+    height: 30px;
+}
+
+#verifiedAccountText { 
+    margin-left: 10px;
+
+    font-size: 14px; 
+    color: black;
 }

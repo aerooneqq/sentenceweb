@@ -12,7 +12,7 @@ const UserAtomFeed = lazy(()=>import("./UserAtomFeed/UserAtomFeed"))
 const Loader = lazy(() => import("../../../../../../loader/Loader"))
 const Error = lazy(() => import("../../../../../../errorComponent/Error"))
 
-export default class UserFeed extends Component{ 
+export default class UserFeed extends Component { 
     constructor(props) { 
         super(props)
 
@@ -40,7 +40,7 @@ export default class UserFeed extends Component{
             });
     }
 
-    render(){ 
+    render() { 
         return(
             <div id = "userFeedContainer">
                 <ProfileHeader header = "Feed" /> 

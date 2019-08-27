@@ -42,7 +42,6 @@ export default class DocumentTreeItem extends Component {
      */
     _setInputWidth(input) { 
         input.style.width = (input.value.length + 1) * 6.2 + "px";
-        alert(this.state.paragraphName);
     }
 
     handleParagraphInputValueChange(event) { 

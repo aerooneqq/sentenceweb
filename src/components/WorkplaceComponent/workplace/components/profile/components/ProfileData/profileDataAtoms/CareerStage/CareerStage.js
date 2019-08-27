@@ -29,10 +29,6 @@ export default class CareerStage extends Component{
                 <div className = "careerStageDescription">
                     {description}
                 </div>
-                <div className = "saveOrDiscardChangesCont">
-                    <SaveChanges />
-                    <DiscardChanges />
-                </div>
             </div>
         )
     }

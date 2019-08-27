@@ -8,9 +8,7 @@ import ProfileData from "./components/ProfileData/ProfileData";
 
 //Components
 const UserPhoto = lazy(()=>import("./components/UserPhoto/UserPhoto"))
-const ProfileDataComponent = lazy(()=>import("./components/ProfileData/ProfileData"))
 const UserActivityComponent = lazy(()=>import("./components/UserActivity/UserActivity"))
-const Loader = lazy(()=>import("../../../../loader/Loader"))
 const UserFeed = lazy(()=>import("./components/UserFeed/UserFeed"))
 
 export default class Profile extends Component{

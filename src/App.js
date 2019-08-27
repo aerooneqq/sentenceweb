@@ -28,13 +28,12 @@ export default class App extends Component {
 
     this.isTokenChecked = false;
 
-    let userService = new UserService();
-    let token = localStorage.getItem("token");
+    let userService = new UserService(localStorage.getItem("token"));
 
     //If we have not checked the token, we must check it and then upload
-    //the component which is suitable for the result for authentication
+    //the component which is suitable for the result of authentication
     if (!this.checkedToken) {
-      userService.getUser(token).then(result => {
+      userService.getUser().then(result => {
         this.setState({ 
           userLoggedIn: true,
           checkToken: true,

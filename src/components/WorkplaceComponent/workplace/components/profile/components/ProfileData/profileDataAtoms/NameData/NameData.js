@@ -1,38 +1,85 @@
 import React, {Component, lazy} from "react"
 
+import UserService from "../../../../../../../../../services/userServices/UserService";
+
+import Loader from "../../../../../../../../loader/Loader";
+import ProfileDataElementModel from "../ProfileDataElementModel";
+
+
 const ProfileTextBox = lazy(() => import("../ProfileTextBox/ProfileTextBox"));
 const SaveChanges = lazy(() => import("../SaveChanges/SaveChanges"));
 const DiscardChanges = lazy(() => import("../DiscardChanges/DiscardCahanges"));
 
 export default class NameData extends Component{ 
-    render(){ 
-        let user = this.props.user;
+    constructor(props) { 
+        super(props);
 
-        return(
-            <div className="fadeInAnimation" className="profileDataContentCont">
-                <div className="textBlock">          
-                    <ProfileTextBox propertyName = "Name" 
-                                    propertyDescription = "This is your name."
-                                    propertyValue = {user.name}
-                                    changeUpdatedUser = {this.props.changeUpdatedUser}/>
+        this.state = { 
+            isUpdating: true,
+        }
+
+        this.nameDataModel = new ProfileDataElementModel(["name", "surname", "middleName"]);
+
+        this.saveChanges = this.saveChanges.bind(this);
+        this.updateData = this.updateData.bind(this);
+    }
+
+    componentDidMount() { 
+        this.nameDataModel.getData(() => { 
+            this.setState({ 
+                isUpdating: false
+            });
+        }, () => { 
+            this.setState({ 
+                isUpdating: false
+            });
+        });
+    }
+
+    updateData = (property, value) => this.nameDataModel.udpateData(property, value); 
+
+    /**
+     * Saves the current changes by calling a user service's method to send a put reqeust to 
+     * the api. 
+     */
+    saveChanges = () => { 
+        this.nameDataModel.udpateUser(() => { 
+            this.setState({ 
+                isUpdating: false
+            });
+        }, () => { 
+            this.setState({ 
+                isUpdating: false
+            });
+        });
+    }
+
+    render(){ 
+        return this.state.isUpdating === true ? <Loader message = "Loading data..." /> : ( 
+                <div className="fadeInAnimation" className="profileDataContentCont">
+                    <div className="textBlock">          
+                        <ProfileTextBox propertyName = "Name" 
+                                        propertyDescription = "This is your name."
+                                        propertyValue = {this.nameDataModel.data.name}
+                                        updateData = {this.updateData}/>
+                    </div>
+                    <div className="textBlock">          
+                        <ProfileTextBox propertyName = "Surname" 
+                                        propertyDescription = "This is your surname."
+                                        propertyValue = {this.nameDataModel.data.surname}
+                                        updateData = {this.updateData}/>
+                    </div>
+                    <div className="textBlock">          
+                        <ProfileTextBox propertyName = "MiddleName" 
+                                        propertyDescription = "This is your middle name."
+                                        propertyValue = {this.nameDataModel.data.middleName}
+                                        updateData = {this.updateData}/>
+                    </div>
+                    <div className = "saveOrDiscardChangesCont">
+                        <SaveChanges saveChanges = {this.saveChanges}/>
+                        <DiscardChanges />
+                    </div>
                 </div>
-                <div className="textBlock">          
-                    <ProfileTextBox propertyName = "Surname" 
-                                    propertyDescription = "This is your surname."
-                                    propertyValue = {user.surname}
-                                    changeUpdatedUser = {this.props.changeUpdatedUser}/>
-                </div>
-                <div className="textBlock">          
-                    <ProfileTextBox propertyName = "MiddleName" 
-                                    propertyDescription = "This is your middle name."
-                                    propertyValue = {user.middleName}
-                                    changeUpdatedUser = {this.props.changeUpdatedUser}/>
-                </div>
-                <div className = "saveOrDiscardChangesCont">
-                    <SaveChanges />
-                    <DiscardChanges />
-                </div>
-            </div>
-        )
+            );
     }
 }

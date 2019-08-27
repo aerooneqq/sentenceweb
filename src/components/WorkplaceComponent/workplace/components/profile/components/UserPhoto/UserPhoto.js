@@ -31,23 +31,15 @@ export default class UserPhoto extends Component{
         changeUserData: this.props.changeUserData
       }
 
-      profileDataItems.push(<ProfileDataItem data = {props}/>)
+      profileDataItems.push(<ProfileDataItem data = {props}/>);
     }
 
     this.state = { 
       profileDataItems: profileDataItems
-    }
+    };
   }
 
   render(){
-    if (this.props.user === null){ 
-      return(
-        <div id = "userPhotoloaderContainer">
-          <Loader />
-        </div>
-      )
-    }
-    else { 
       return (
         <div id="photoContainer">
           <div id="photoBorder">
@@ -65,7 +57,6 @@ export default class UserPhoto extends Component{
           <DeleteAccountComponent />
 
         </div>
-    )
-    }
+      )
   }
 }

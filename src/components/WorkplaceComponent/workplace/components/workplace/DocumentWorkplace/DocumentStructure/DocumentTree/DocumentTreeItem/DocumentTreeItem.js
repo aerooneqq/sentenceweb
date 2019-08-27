@@ -46,7 +46,7 @@ export default class DocumentTreeItem extends Component {
 
     handleParagraphInputValueChange(event) { 
         this._setInputWidth(document.getElementById(this.state.inputID));
-        alert(this.state.paragraphName);
+
         this.setState({ 
             paragraphName: event.target.value
         });
@@ -76,7 +76,6 @@ export default class DocumentTreeItem extends Component {
 
     disableInput() { 
         document.getElementById(this.state.inputID).setAttribute("disabled", "disabled");  
-        
         this.setState(() => { 
             return { 
                 isEditable: false

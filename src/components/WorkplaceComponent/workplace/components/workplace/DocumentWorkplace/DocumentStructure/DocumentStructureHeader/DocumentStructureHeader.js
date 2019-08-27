@@ -33,6 +33,8 @@ export default class DocumentStructureHeader extends Component {
         else { 
             inputContainer.classList.toggle("documentStructureHeaderInputFadeIn");
             inputContainer.classList.remove("documentStructureHeaderInputFadeOut");
+
+            inputContainer.focus();
         }
 
         this.setState(state => {

@@ -1,6 +1,5 @@
 import React, {Component, lazy} from "react"
 
-import UserService from "../../../../../../../../../services/userServices/UserService";
 
 import Loader from "../../../../../../../../loader/Loader";
 import ProfileDataElementModel from "../ProfileDataElementModel";
@@ -59,7 +58,7 @@ export default class LocationData extends Component {
     render() {
         return this.state.isUpdating === true ? <Loader message = "Loading data..." /> :
             (
-                <div className="fadeInAnimation" className="profileDataContentCont">
+                <div className="fadeInAnimation profileDataContentCont">
                     <div className="textBlock">          
                     <ProfileTextBox propertyName = "Country" 
                                     propertyDescription = "This is your country."

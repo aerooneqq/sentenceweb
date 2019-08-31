@@ -1,11 +1,10 @@
-
 #profileDataOutterContainer{ 
   height: 90%;
   margin-right: 20px;
 }
 
 #profileDataContainer{
-  width: 300px;
+  width: 400px;
   height: 100%;
 
   background:  transparent;

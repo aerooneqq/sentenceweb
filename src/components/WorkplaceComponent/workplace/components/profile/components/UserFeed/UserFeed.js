@@ -4,13 +4,15 @@ import React, {Component, lazy, Suspense} from "react"
 import "./UserFeedStyles.css"
 
 //Services
-import UserFeedService from "../../../../../../../services/userServices/UserFeedService";
+import UserFeedService from "../../../../../../../services/UserServices/UserFeedService";
 import ProfileHeader from "../ProfileHeader/ProfileHeader";
 
+//App messages
+import {alertAppMessage} from "../../../../../../ApplicationMessage/ApplicationMessageManager";
+
 //Components
-const UserAtomFeed = lazy(()=>import("./UserAtomFeed/UserAtomFeed"))
-const Loader = lazy(() => import("../../../../../../loader/Loader"))
-const Error = lazy(() => import("../../../../../../errorComponent/Error"))
+const UserAtomFeed = lazy(()=>import("./UserAtomFeed/UserAtomFeed"));
+const Loader = lazy(() => import("../../../../../../loader/Loader"));
 
 export default class UserFeed extends Component { 
     constructor(props) { 
@@ -33,10 +35,8 @@ export default class UserFeed extends Component {
                 this.setState({
                     component: atomFeeds
                 });
-            }).catch(er =>{ 
-                this.setState({ 
-                    component: <Error message = {er} /> 
-                });
+            }).catch(er => {
+                alertAppMessage("Error occured while getting your feed", "error");
             });
     }
 

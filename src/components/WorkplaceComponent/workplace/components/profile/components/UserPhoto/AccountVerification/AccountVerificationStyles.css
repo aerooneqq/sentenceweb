@@ -21,7 +21,7 @@
 
     border-width: 1px;
     border-style: solid;
-    border-color: orangered;
+    border-color: orange;
     border-radius: 5px;
 
     font-family: Arial;
@@ -31,6 +31,10 @@
 
     #accountVerificationCodeInput:focus{ 
         outline: none;
+    }
+
+    #accountVerificationCodeInput:hover{ 
+        border-color: #F97646;
     }
 
 #accountVerificationText{
@@ -75,8 +79,8 @@
     }
 
     #sendConfirmationCodeBtn:hover{ 
-        color: orangered;
-        border-color: orangered;
+        color: #F97646;
+        border-color: #F97646;
     }
 
 #verifiedAccountContainer { 

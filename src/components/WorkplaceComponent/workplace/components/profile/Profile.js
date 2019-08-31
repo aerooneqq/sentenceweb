@@ -2,8 +2,7 @@ import React, {Component, Suspense, lazy} from "react"
 import "./ProfileStyles.css"
 
 //Services
-import UserService from "../../../../../services/userServices/UserService"
-import UserActivityService from "../../../../../services/userServices/UserActivitiesService"
+import UserService from "../../../../../services/UserServices/UserService"
 import ProfileData from "./components/ProfileData/ProfileData";
 
 //Components
@@ -13,7 +12,7 @@ const UserFeed = lazy(()=>import("./components/UserFeed/UserFeed"))
 
 export default class Profile extends Component{
   
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.state = { 
@@ -25,13 +24,13 @@ export default class Profile extends Component{
     this.changeCurrentUserData = this.changeCurrentUserData.bind(this);
   }
 
-  changeCurrentUserData(newUserDataIndex){
+  changeCurrentUserData(newUserDataIndex) {
     this.setState({ 
       currentUserDataIndex: newUserDataIndex
     });
   }
 
-  render(){
+  render() {
     return (
       <div id = "profileContainer">
         <div id = "userPhotoCont">

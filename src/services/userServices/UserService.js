@@ -53,4 +53,10 @@ export default class UserService {
             }
         });
     }
+
+    createNewUser(email, password) { 
+        let url = `${this._apiURL}?email=${email}&password=${password}`;
+        
+        return axios.post(url);
+    }
 }

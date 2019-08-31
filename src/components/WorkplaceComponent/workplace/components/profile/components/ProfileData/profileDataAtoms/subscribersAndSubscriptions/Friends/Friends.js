@@ -5,8 +5,8 @@ import "./FriendsStyles.css";
 import Loader from "../../../../../../../../../loader/Loader";
 
 //Services
-import UserFriendsService from "../../../../../../../../../../services/userServices/UserFriendsService";
-import UserService from "../../../../../../../../../../services/userServices/UserService";
+import UserFriendsService from "../../../../../../../../../../services/UserServices/UserFriendsService";
+import UserService from "../../../../../../../../../../services/UserServices/UserService";
 
 //Components
 const SubHeader = lazy(() => import("../SubHeader/SubHeader"));

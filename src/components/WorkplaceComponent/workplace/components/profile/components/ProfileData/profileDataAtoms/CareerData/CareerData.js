@@ -2,7 +2,6 @@ import React, {Component, lazy} from "react"
 
 import "./CareerData.css"
 
-import UserService from "../../../../../../../../../services/userServices/UserService";
 import Loader from "../../../../../../../../loader/Loader";
 import SaveChanges from "../SaveChanges/SaveChanges";
 import DiscardChanges from "../DiscardChanges/DiscardCahanges";
@@ -40,9 +39,9 @@ export default class CareerData extends Component {
             <div>
                 <div className="fadeInAnimation" className="profileDataContentCont">
                     {this.state.isUpdating === true ? <Loader message = "Loading data..." /> :
-                     this.careerDataModel.data.careerStages.map(careerStage => 
-                        <CareerStage careerStage = {careerStage}/> 
-                    )}
+                     this.careerDataModel !== null ? this.careerDataModel.data.careerStages.map(careerStage => 
+                         <CareerStage careerStage = {careerStage}/>) : null 
+                    }
                 </div>
                 <div className = "saveOrDiscardChangesCont">
                     <SaveChanges saveChanges = {this.saveChanges}/>

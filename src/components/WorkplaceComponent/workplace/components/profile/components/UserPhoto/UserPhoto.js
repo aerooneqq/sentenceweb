@@ -4,11 +4,14 @@ import React, {Component, lazy, Suspense} from "react";
 import "./UserPhotoStyles.css";
 
 //Icons
-import careerIcon from "./img/career_profile_data_icon.png";
-import authorizationIcon from "./img/authorization_profile_data_icon.png";
-import friendsIcon from "./img/friends_profile_data_icon.png"; 
-import locationIcon from "./img/location_profile_data_icon.png";
-import nameIcon from "./img/name_profile_data_icon.png";
+import careerIcon from "./img/career_profile_data_item.png";
+import authorizationIcon from "./img/authorization_profile_data_item.png";
+import friendsIcon from "./img/friends_profile_data_item.png"; 
+import locationIcon from "./img/location_profile_data_item.png";
+import nameIcon from "./img/name_profile_data_item.png";
+
+//Services
+import UserService from "../../../../../../../services/UserServices/UserService";
 
 //Components
 const Loader = lazy(()=>import("../../../../../../loader/Loader"));
@@ -22,6 +25,8 @@ export default class UserPhoto extends Component{
   constructor(props){
     super(props)
 
+    this.userService = new UserService(localStorage.getItem("token"))
+
     let profileDataItems = []
 
     for (let i = 0; i<5; i++){ 
@@ -31,13 +36,15 @@ export default class UserPhoto extends Component{
         changeUserData: this.props.changeUserData
       }
 
-      profileDataItems.push(<ProfileDataItem data = {props}/>);
+      profileDataItems.push(<ProfileDataItem data = {props} icon = {this._icons[i]}/>);
     }
 
     this.state = { 
       profileDataItems: profileDataItems
-    };
+    }
   }
+
+  _icons = [careerIcon, authorizationIcon, nameIcon, locationIcon, friendsIcon];
 
   render(){
       return (
@@ -52,7 +59,7 @@ export default class UserPhoto extends Component{
             {this.state.profileDataItems}
           </div>
 
-          <AccountVerification isVerified = {this.props.user.isAccountVerified}/>
+          <AccountVerification />
           <SignOutComponent />
           <DeleteAccountComponent />
 

@@ -15,7 +15,7 @@
     box-sizing: content-box;
     background: #f9f9f9;
   
-    border-color: orangered;
+    border-color: #F97646;
     border-style: solid;
     border-width: 0px;
     border-right-width: 0.1px;
@@ -35,9 +35,9 @@
     overflow-y: auto;
   }
 
-  #rightProfileCont::-webkit-scrollbar{ 
-    width: 0px;
-  }
+    #rightProfileCont::-webkit-scrollbar{ 
+      width: 0px;
+    }
 
   #userActivitiesOutterCont{ 
     height: auto;

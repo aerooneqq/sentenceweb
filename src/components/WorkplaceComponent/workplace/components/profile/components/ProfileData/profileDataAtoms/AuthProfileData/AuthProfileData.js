@@ -3,7 +3,6 @@ import React, {Component, lazy} from "react"
 import Loader from "../../../../../../../../loader/Loader";
 
 //Services
-import UserService from "../../../../../../../../../services/userServices/UserService";
 import ProfileDataElementModel from "../ProfileDataElementModel";
 
 const ProfileTextBox = lazy(() => import("../ProfileTextBox/ProfileTextBox"));

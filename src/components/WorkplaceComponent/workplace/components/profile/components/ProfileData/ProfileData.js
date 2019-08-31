@@ -26,7 +26,7 @@ export default class ProfileData extends Component {
     this.discardChangesInProfileData = this.discardChangesInProfileData.bind(this);
     this.setUpdatingStatus = this.setUpdatingStatus.bind(this);
     this.changeUserFriendMode = this.changeUserFriendMode.bind(this);
-
+    
     profileDataModel.setUpdateUserFunction(this.changeUpdatedUser).configureModel();
   }
 

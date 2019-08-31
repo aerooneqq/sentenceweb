@@ -3,6 +3,9 @@
 //Styles
 import "./AuthorizationStyles.css"
 
+//App message
+import {alertAppMessage} from "../../../ApplicationMessage/ApplicationMessageManager";
+
 //Components
 const Loader = lazy(()=>import("../../../loader/Loader"))
 
@@ -21,18 +24,18 @@ export default class Authorization extends Component {
         this.handleSignIn = this.handleSignIn.bind(this);
     }
 
-    componentDidMount(){
+    componentDidMount() {
       var authCont = document.getElementById("signInInputContainer")
       authCont.classList.toggle("authContentRotationThreeD")
     }
 
-    handleEmailInputChange(event){
+    handleEmailInputChange(event) {
       this.setState({
         email: event.target.value
       })
     }
 
-    handlePasswordInputChange(event){
+    handlePasswordInputChange(event) {
       this.setState({
         password: event.target.value
       })
@@ -46,14 +49,10 @@ export default class Authorization extends Component {
         isAuthorizing: true
       });
 
-      this.props.signIn(email, password).then(() => {
+      this.props.signIn(email, password).catch(() => { 
         this.setState({
           isAuthorizing: false
-        })
-      }).catch(() => { 
-        this.setState({
-          isAuthorizing: false
-        })
+        });
       })
     }
 

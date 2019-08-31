@@ -5,8 +5,11 @@ import axios from "axios";
 import "./UserActivityStyles.css";
 
 //Services
-import UserActivitiesService from "../../../../../../../services/userServices/UserActivitiesService";
-import DateService from "../../../../../../../services/dates/DateService";
+import UserActivitiesService from "../../../../../../../services/UserServices/UserActivitiesService";
+import DateService from "../../../../../../../services/Dates/DateService";
+
+//App messages
+import {alertAppMessage} from "../../../../../../ApplicationMessage/ApplicationMessageManager";
 
 //Components
 const MonthActivityComponent = lazy(() => import("./userActivityAtoms/MonthActivity/MonthActivity"));
@@ -99,7 +102,9 @@ export default class UserActivity extends Component{
                     components: monthActivities,
                     width: document.getElementById("userActivityOutterContainer").offsetWidth - 100
                 });
-            }).catch(er => alert(er));
+            }).catch(er => { 
+                alertAppMessage("Error occured while getting your activities", "error");
+            });
     }
 
     render(){ 

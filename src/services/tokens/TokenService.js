@@ -5,9 +5,8 @@ export default class TokenService{
         this.apiURL = "https://localhost:44368/api/tokens?";
     }
 
-    async sendGetTokenRequest(email, password){ 
+    sendGetTokenRequest(email, password){ 
         let link = this.apiURL + "email=" + email + "&password=" + password;
-        let res = await axios(link);
-        return await res.data;
+        return axios(link);
     }
 }

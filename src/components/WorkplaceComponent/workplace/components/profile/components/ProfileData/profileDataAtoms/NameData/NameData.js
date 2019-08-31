@@ -1,7 +1,5 @@
 import React, {Component, lazy} from "react"
 
-import UserService from "../../../../../../../../../services/userServices/UserService";
-
 import Loader from "../../../../../../../../loader/Loader";
 import ProfileDataElementModel from "../ProfileDataElementModel";
 

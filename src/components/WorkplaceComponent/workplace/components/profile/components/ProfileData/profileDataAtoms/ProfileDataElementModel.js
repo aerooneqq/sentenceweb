@@ -1,4 +1,4 @@
-import UserService from "../../../../../../../../services/userServices/UserService";
+import UserService from "../../../../../../../../services/UserServices/UserService";
 
 export default class ProfileDataElementModel {
 
@@ -15,7 +15,7 @@ export default class ProfileDataElementModel {
      * @param {function which will be excecuted if the query fails} errorCallback 
      */
     getData(successCallback, errorCallback) { 
-        return this._userService.getPartialData(this._properties).then( res => { 
+        return this._userService.getPartialData(this._properties).then(res => { 
             this.data = res.data;
             successCallback(res);
         }).catch(er => { 

@@ -1,0 +1,20 @@
+.saveChangesInCareerStages { 
+    width: 150px;
+    height: 35px;
+
+    background: #228B22;
+
+    border-style: none;
+    border-radius: 5px;
+
+    font-size: 15px;
+    color: white;
+}
+
+    .saveChangesInCareerStages:focus { 
+        outline: none;
+    }
+
+    .saveChangesInCareerStages:hover { 
+        background: linear-gradient(45deg, green, #228B22);
+    }

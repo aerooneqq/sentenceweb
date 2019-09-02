@@ -4,6 +4,7 @@ import Loader from "../../../../../../../../loader/Loader";
 
 //Services
 import ProfileDataElementModel from "../ProfileDataElementModel";
+import { alertAppMessage } from "../../../../../../../../ApplicationMessage/ApplicationMessageManager";
 
 const ProfileTextBox = lazy(() => import("../ProfileTextBox/ProfileTextBox"));
 const SaveChanges = lazy(() => import("../SaveChanges/SaveChanges"));
@@ -44,14 +45,20 @@ export default class AuthProfileData extends Component{
             isUpdating: true
         });
 
-        this.authElementModel.updateUser(() => {
+        this.authElementModel.udpateUser(() => {
             this.setState({ 
                 isUpdating: false
-            })
-        }, () => { 
+            });
+
+            alertAppMessage("The data was updated.", "success");
+        }, (er) => { 
             this.setState({ 
                 isUpdating: false
-            })
+            });
+
+            if (er.response) { 
+                alertAppMessage(er.response.data, "error");
+            }
         });
     }
 

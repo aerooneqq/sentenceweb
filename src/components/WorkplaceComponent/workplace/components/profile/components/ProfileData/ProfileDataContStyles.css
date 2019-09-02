@@ -30,8 +30,20 @@
   flex-grow: 1;
   flex-direction: column;
 
-  margin-top: 20px;
+  padding-top: 20px;
+
+  overflow-y: auto;
 }
+
+  #profileDataContentCont::-webkit-scrollbar:vertical { 
+    width: 3px;
+  }
+
+  #profileDataContentCont::-webkit-scrollbar-thumb { 
+    background: red;
+
+    border-radius: 5px;
+  }
 
 .fadeInAnimation{ 
   animation: fadeIn 0.5s linear;

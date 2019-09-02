@@ -7,6 +7,7 @@ import Loader from "../../../../../../../../../loader/Loader";
 //Services
 import UserFriendsService from "../../../../../../../../../../services/UserServices/UserFriendsService";
 import UserService from "../../../../../../../../../../services/UserServices/UserService";
+import { alertAppMessage } from "../../../../../../../../../ApplicationMessage/ApplicationMessageManager";
 
 //Components
 const SubHeader = lazy(() => import("../SubHeader/SubHeader"));
@@ -46,7 +47,12 @@ export default class Friends extends Component{
         userFriendsService.deleteSubscriber(localStorage.getItem("token"), userID)
             .then(() => { 
                 this.uploadSubscribers();
-            }).catch(er => alert(er))
+                alertAppMessage("The subscriber was deleted.", "success");
+            }).catch(er =>{
+                if (er.response) { 
+                    alertAppMessage(er.response.data, "error");
+                }
+            })
     }
 
     deleteSubscription(userID){ 
@@ -54,16 +60,23 @@ export default class Friends extends Component{
         userFriendsService.deleteSubscription(localStorage.getItem("token"), userID)
             .then(() => { 
                 this.uploadSubscriptions();
-            }).catch(er => alert(er))
+                alertAppMessage("The subscription was deleted.", "success");
+            }).catch(er => { 
+                if (er.response) { 
+                    alertAppMessage(er.response.data, "error");
+                }
+            })
     }
 
     subscribe(userID){ 
         let userFriendsService = new UserFriendsService();
         userFriendsService.addSubscription(localStorage.getItem("token"), userID)
             .then(() => { 
-                alert("Added sub")
+                alertAppMessage("Added subscriber", "success");
             }).catch(er => { 
-                alert(er);
+                if (er.response) { 
+                    alertAppMessage(er.response.data, "error");
+                }
             })
     }
 
@@ -87,7 +100,9 @@ export default class Friends extends Component{
                     elements: components 
                 });
             }).catch(er => { 
-                alert(er);
+                if (er.response) { 
+                    alertAppMessage(er.response.data, "error");
+                }
             });
     }
 
@@ -110,7 +125,11 @@ export default class Friends extends Component{
                 this.setState({ 
                     elements: components,
                 });
-            }).catch(er => alert(er));
+            }).catch(er => { 
+                if (er.response) { 
+                    alertAppMessage(er.response.data, "error");
+                }
+            });
     }
 
     searchForUsers(login){ 
@@ -134,7 +153,11 @@ export default class Friends extends Component{
                 this.setState({ 
                     elements: components
                 })
-            }).catch(er => alert(er));
+            }).catch(er => {
+                if (er.response) { 
+                    alertAppMessage(er.response.data, "error");
+                }
+            });
     }
 
     render(){

@@ -13,9 +13,9 @@ export default class SaveChanges extends Component{
         this.props.saveChanges();
     }
 
-    render(){ 
+    render() { 
         return(
-            <button id = "saveChangesBtn" onClick={this.handleUpdateBtnClick}>
+            <button id = "saveChangesBtn" onClick={this.handleClick}>
                 <div id = "saveChangesBtnIcon"></div>    
                 <div id = "saveChangesBtnText">Save</div>
             </button>

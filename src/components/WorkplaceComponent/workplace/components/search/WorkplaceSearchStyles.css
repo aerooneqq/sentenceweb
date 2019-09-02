@@ -28,14 +28,14 @@
     color: #505050;
 }
 
-#workplaceSearchInput:hover{ 
-    border-color: orange;
-}
+    #workplaceSearchInput:hover{ 
+        border-color: orange;
+    }
 
-#workplaceSearchInput:focus{ 
-    outline: none;
-    border-color: orange;
-}
+    #workplaceSearchInput:focus{ 
+        outline: none;
+        border-color: orange;
+    }
 
 .fadeOutAnimation { 
     opacity: 1 !important;

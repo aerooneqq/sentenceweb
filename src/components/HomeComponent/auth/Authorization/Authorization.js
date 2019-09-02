@@ -22,6 +22,7 @@ export default class Authorization extends Component {
         this.handleEmailInputChange = this.handleEmailInputChange.bind(this)
         this.handlePasswordInputChange = this.handlePasswordInputChange.bind(this)
         this.handleSignIn = this.handleSignIn.bind(this);
+        this.onPasswordInputKeyDown = this.onPasswordInputKeyDown.bind(this);
     }
 
     componentDidMount() {
@@ -40,8 +41,14 @@ export default class Authorization extends Component {
         password: event.target.value
       })
     }
+
+    onPasswordInputKeyDown(event) {
+      if (event.keyCode === 13) { 
+        this.handleSignIn();
+      }
+    }
     
-    handleSignIn(){
+    handleSignIn() {
       let email = this.state.email;
       let password = this.state.password;
 
@@ -69,13 +76,20 @@ export default class Authorization extends Component {
             <div id='signInInputContainer'>
               <div className="inputPropContainer">
                 <p className="inputNameText">E-mail</p>
-                <input type='text' value={this.state.email} id="inputEmail" className="authInput"
-                      onChange={this.handleEmailInputChange}/>
+                <input type='text'
+                       value={this.state.email} 
+                       id="inputEmail" 
+                       className="authInput"
+                       onChange={this.handleEmailInputChange}/>
               </div>
-              <div className="inputPropContainer">
-                <p className="inputNameText">Password</p>
-                <input type='password' value={this.state.password} id='inputPassword' className="authInput"
-                      onChange={this.handlePasswordInputChange}/>
+              <div className = "inputPropContainer">
+                <p className = "inputNameText">Password</p>
+                <input type = 'password' 
+                       value = {this.state.password} 
+                       id = 'inputPassword'
+                       className = "authInput"
+                       onChange = {this.handlePasswordInputChange}
+                       onKeyDown = {this.onPasswordInputKeyDown}/>
               </div>
               <div id="btnContainer">
                 <p>Forgot your password?</p>

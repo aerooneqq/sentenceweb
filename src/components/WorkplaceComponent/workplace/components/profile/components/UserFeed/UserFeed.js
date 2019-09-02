@@ -29,6 +29,7 @@ export default class UserFeed extends Component {
         this.insertNewPost = this.insertNewPost.bind(this);
         this.onTextAreaValueChange = this.onTextAreaValueChange.bind(this);
         this.uploadUserFeed = this.uploadUserFeed.bind(this);
+        this.onTextAreaKeyDown = this.onTextAreaKeyDown.bind(this);
 
         this.uploadUserFeed();
     }
@@ -86,6 +87,12 @@ export default class UserFeed extends Component {
         });
     }
 
+    onTextAreaKeyDown(event) { 
+        if (event.keyCode === 13) { 
+            this.insertNewPost();
+        }
+    }
+
     render() { 
         return(
             <div id = "userFeedContainer">
@@ -99,7 +106,8 @@ export default class UserFeed extends Component {
                             <textarea placeholder="Whats up? Type it here..."
                                       id = "userFeedTextArea"
                                       value = {this.state.textAreaValue}
-                                      onChange = {this.onTextAreaValueChange}/>
+                                      onChange = {this.onTextAreaValueChange}
+                                      onKeyDown = {this.onTextAreaKeyDown}/>
                             <button id = "sendFeedBtn" onClick = {this.insertNewPost}>
                                 Send
                             </button>

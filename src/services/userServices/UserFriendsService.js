@@ -1,61 +1,61 @@
 import axios from "axios";
 
 export default class UserFriendsService { 
-    constructor() { 
+    constructor(token) { 
         this.apiURL = "https://localhost:44368/api/userFriends/";
+        this._token = token;
     }
 
-    getSubsribers(token) { 
+    getSubsribers() { 
         let url = this.apiURL + "subscribers";
         return axios.get(url, {
             headers: { 
-                Authorization: "Bearer " + token
+                Authorization: `Bearer ${this._token}`
             }
         });
     }
 
-    getSubscriptions(token){ 
+    getSubscriptions() { 
         let url = this.apiURL + "subscriptions";
         return axios.get(url, { 
             headers: { 
-                Authorization: "Bearer " + token
+                Authorization: `Bearer ${this._token}`
             }
         });
     }
 
-    addSubscriber(token, subscriberID){ 
+    addSubscriber(subscriberID) { 
         let url = this.apiURL + "subscribers?subscriberID=" + subscriberID;
         return axios.put(url, {}, {
             headers: { 
-                Authorization: "Bearer " + token
+                Authorization: `Bearer ${this._token}`
             }
         });
     }
 
-    addSubscription(token, subscriptionID){ 
+    addSubscription(subscriptionID) { 
         let url = this.apiURL + "subscriptions?subscriptionID=" + subscriptionID;
         return axios.put(url, {}, { 
             headers: { 
-                Authorization: "Bearer " + token
+                Authorization: `Bearer ${this._token}`
             }
         });
     }
 
-    deleteSubscriber(token, subscriberID){ 
+    deleteSubscriber(subscriberID) { 
         let url = this.apiURL + "subscribers?subscriberID=" + subscriberID;
-        alert(subscriberID);
         return axios.delete(url, { 
             headers: { 
-                Authorization: "Bearer " + token
+                Authorization: `Bearer ${this._token}`
             }
         });
     }
 
-    deleteSubscription(token, subscriptionID){ 
+    deleteSubscription(subscriptionID) { 
         let url = this.apiURL + "subscriptions?subscriptionID=" + subscriptionID;
         return axios.delete(url, { 
             headers: { 
-                Authorization: "Bearer " + token
+                Authorization: `Bearer ${this._token}`
             }
         });
     }

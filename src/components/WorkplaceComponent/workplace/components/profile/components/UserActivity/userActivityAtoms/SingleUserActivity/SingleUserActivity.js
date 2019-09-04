@@ -3,19 +3,24 @@ import React, {Component} from "react"
 import "./SingleUserActivityStyles.css"
 
 export default class SingleUserActivity extends Component{ 
-    constructor(props){ 
+    constructor(props) { 
         super(props)
 
         this.state = { 
-            count: this.props.count
+            count: props.activityData.count
         }
 
         this.getCountStyle = this.getCountStyle.bind(this)
+        this.handleSingleActivityClick = this.handleSingleActivityClick.bind(this);
     }
 
-    render(){ 
-        return(
-            <div className = "singleUserActivityCont">
+    handleSingleActivityClick() { 
+        this.props.handleSingleUserActivityClick();
+    }
+
+    render() { 
+        return (
+            <div className = "singleUserActivityCont" onClick = {this.handleSingleActivityClick}>
                 <div style = {this.getCountStyle()} className = "activityBall" />
                 <span class = "userActivityToolTip">
                     {this.state.count}
@@ -24,7 +29,7 @@ export default class SingleUserActivity extends Component{
         )
     }
 
-    getCountStyle(){ 
+    getCountStyle() { 
         return{ 
             "width": this.state.count + 1,
             "height": this.state.count + 1,

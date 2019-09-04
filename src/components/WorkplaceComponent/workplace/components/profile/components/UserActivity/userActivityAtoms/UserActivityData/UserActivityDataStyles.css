@@ -1,0 +1,38 @@
+.userActivityData { 
+    width: 100%;
+    height: 100%;
+
+    background: transparent;
+}
+
+.userActivityDataHeaderCont { 
+    width: 100%;
+    height: auto;
+
+    box-sizing: border-box;
+
+    padding-left: 5%;
+    padding-right: 5%;
+
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.userActivityDataHeaderText { 
+    font-size: 14px;
+    color: black;
+}
+
+.userActivityDataFill { 
+    flex-grow: 1;
+}
+
+.closeUserActivityIcon { 
+    width: 20px;
+    height: 20px;
+
+    margin-top: 5px;
+}

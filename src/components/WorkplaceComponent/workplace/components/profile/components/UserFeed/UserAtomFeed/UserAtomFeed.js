@@ -2,7 +2,7 @@ import React, {Component} from "react"
 
 //Styles
 import "./UserAtomFeed.css"
-import DateService from "../../../../../../../../services/dates/DateService";
+import DateService from "../../../../../../../../services/Dates/DateService";
 
 export default class UserAtomFeed extends Component{ 
     constructor(props){ 

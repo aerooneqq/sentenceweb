@@ -22,7 +22,6 @@ export default class DocumentTreeModel {
      */
     _getPargraphWith(id, paragraphs) {
         for (let par of paragraphs) {
-            alert(par.id + " " + id); 
             if (par.id === id) { 
                 return par;
             }

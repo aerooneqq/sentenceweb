@@ -1,0 +1,43 @@
+#addNewCareerStage { 
+    width: 150px;
+    height: 40px;
+
+    background: white;
+
+    border-style: solid;
+    border-color: orange;
+    border-width: 1px;
+    border-radius: 5px;
+
+    margin-left: 5%;
+    margin-bottom: 10px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+    #addNewCareerStage:focus{ 
+        outline: none;
+    }
+    
+    #addNewCareerStage:hover { 
+        border-color: #F97646;
+    }
+
+    #addNewCareerStage:hover #addNewCareerStageBtnText { 
+        color: #F97646;
+    }
+
+#addNewCareerStageBtnText { 
+    font-size: 19px;
+    color: orange;
+    
+    margin-left: 5px;
+}
+
+#addNewCareerStageBtnIcon { 
+    width: 23px;
+    height: 23px;
+}

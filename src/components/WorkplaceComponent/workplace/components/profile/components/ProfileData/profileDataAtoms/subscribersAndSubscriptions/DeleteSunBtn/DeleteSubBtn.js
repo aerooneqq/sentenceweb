@@ -3,9 +3,6 @@ import React, {Component} from "react";
 //Styles
 import "./DeleteBtnStyles.css";
 
-//Services
-import UserFriendsService from "../../../../../../../../../../services/userServices/UserFriendsService";
-
 export default class DeleteSubBtn extends Component{ 
     constructor(props){ 
         super(props);

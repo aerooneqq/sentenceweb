@@ -1,0 +1,47 @@
+#careerStageInputCont { 
+    height: 35px;
+}
+
+.careerStageInput { 
+    margin-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+
+    box-sizing: border-box;
+
+    background: #f9f9f9;
+
+    color: gray;
+    font-size: 15px;
+
+    border-style: solid;
+    border-color: orange; 
+    border-width: 1px;
+    border-radius: 5px;
+
+    margin-right: 5px;
+
+    height: 30px;
+}
+
+    .careerStageInput:hover { 
+        border-color: #F97646
+    }
+
+    .careerStageInput:focus { 
+        outline: none;
+    }
+
+.careerStageInputHelper { 
+    position: relative;
+    top: -38px;
+    left: 10px;
+
+    background: #f9f9f9;
+
+    color: #F97646;
+    font-size: 14px;
+    text-align: center;
+
+    width: 80px;
+}

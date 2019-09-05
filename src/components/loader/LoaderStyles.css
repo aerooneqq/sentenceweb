@@ -22,13 +22,13 @@
     width: 51px;
     height: 51px;
     margin: 6px;
-    border: 6px solid orangered;
+    border: 6px solid #F97646;
 
     border-radius: 50%;
 
     animation: ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
 
-    border-color: orangered transparent transparent transparent;
+    border-color: #F97646 transparent transparent transparent;
   }
 
   .ring div:nth-child(1) {

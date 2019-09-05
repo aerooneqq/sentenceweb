@@ -17,20 +17,22 @@
   justify-content: center;
 }
 
-#signOutBtn:focus{
-  outline: none;
-}
+  #signOutBtn:focus{
+    outline: none;
+  }
 
-#signOutBtn:hover{
-    border-color: orangered;
-}
+  #signOutBtn:hover{
+      border-color: #F97646;
+  }
 
-#signOutBtn:hover #signOutBtnImgContainer{
-  background: url("../../../img/signOutIconBtn.png");
-}
-#signOutBtn:hover #signOutBtnText{
-    color: orangered;
-}
+  #signOutBtn:hover #signOutBtnImgContainer{
+    background: url("../../../img/signOutIconBtn.png");
+  }
+  
+  #signOutBtn:hover #signOutBtnText{
+      color: #F97646;
+  }
+
 #signOutBtnImgContainer{
   background: url("../../../img/signOutBtnIcon.png");
   width: 24px;

@@ -5,8 +5,9 @@ import "./FriendsStyles.css";
 import Loader from "../../../../../../../../../loader/Loader";
 
 //Services
-import UserFriendsService from "../../../../../../../../../../services/userServices/UserFriendsService";
-import UserService from "../../../../../../../../../../services/userServices/UserService";
+import UserFriendsService from "../../../../../../../../../../services/UserServices/UserFriendsService";
+import UserService from "../../../../../../../../../../services/UserServices/UserService";
+import { alertAppMessage } from "../../../../../../../../../ApplicationMessage/ApplicationMessageManager";
 
 //Components
 const SubHeader = lazy(() => import("../SubHeader/SubHeader"));
@@ -15,13 +16,17 @@ const Subscriber = lazy(() => import("../Subscriber/Subscriber"));
 const Subscription = lazy(() => import("../Subscription/Subscription"));
 const UserSearchResult = lazy(() => import("../UserSearchResult/UserSearchResult"));
 
-export default class Friends extends Component{ 
+export default class Friends extends Component {
+
     constructor(props){ 
         super(props);
 
         this.state = { 
             elements: [],
         };
+
+        this.userFriendsService = new UserFriendsService(localStorage.getItem("token"));
+        this.userService = new UserService(localStorage.getItem("token"));
 
         this.changeUserFriendMode = this.changeUserFriendMode.bind(this);
         this.deleteSubscriber = this.deleteSubscriber.bind(this);
@@ -30,6 +35,7 @@ export default class Friends extends Component{
         this.uploadSubscriptions = this.uploadSubscriptions.bind(this);
         this.searchForUsers = this.searchForUsers.bind(this);
         this.changeUserFriendMode = this.changeUserFriendMode.bind(this);
+        this.subscribe = this.subscribe.bind(this);
     }
     
     changeUserFriendMode(mode) { 
@@ -41,29 +47,38 @@ export default class Friends extends Component{
         }
     }
 
-    deleteSubscriber(userID){
-        let userFriendsService = new UserFriendsService();
-        userFriendsService.deleteSubscriber(localStorage.getItem("token"), userID)
+    deleteSubscriber(userID) {
+        this.userFriendsService.deleteSubscriber(localStorage.getItem("token"), userID)
             .then(() => { 
                 this.uploadSubscribers();
-            }).catch(er => alert(er))
+                alertAppMessage("The subscriber was deleted.", "success");
+            }).catch(er =>{
+                if (er.response) { 
+                    alertAppMessage(er.response.data, "error");
+                }
+            })
     }
 
-    deleteSubscription(userID){ 
-        let userFriendsService = new UserFriendsService();
-        userFriendsService.deleteSubscription(localStorage.getItem("token"), userID)
+    deleteSubscription(userID) { 
+        this.userFriendsService.deleteSubscription(userID)
             .then(() => { 
                 this.uploadSubscriptions();
-            }).catch(er => alert(er))
+                alertAppMessage("The subscription was deleted.", "success");
+            }).catch(er => { 
+                if (er.response) { 
+                    alertAppMessage(er.response.data, "error");
+                }
+            })
     }
 
-    subscribe(userID){ 
-        let userFriendsService = new UserFriendsService();
-        userFriendsService.addSubscription(localStorage.getItem("token"), userID)
+    subscribe(userID) { 
+        this.userFriendsService.addSubscription(userID)
             .then(() => { 
-                alert("Added sub")
+                alertAppMessage("Added subscriber", "success");
             }).catch(er => { 
-                alert(er);
+                if (er.response) { 
+                    alertAppMessage(er.response.data, "error");
+                }
             })
     }
 
@@ -72,8 +87,7 @@ export default class Friends extends Component{
             elements: <Loader  message = "Loading subscribers..."/>
         });
 
-        let userFriendsService = new UserFriendsService();
-        userFriendsService.getSubsribers(localStorage.getItem("token"))
+        this.userFriendsService.getSubsribers()
             .then(res => { 
                 let data = res.data;
                 let components = [];
@@ -86,8 +100,12 @@ export default class Friends extends Component{
                 this.setState({
                     elements: components 
                 });
+
+                alertAppMessage("Subscribers were uploaded", "success");
             }).catch(er => { 
-                alert(er);
+                if (er.response) { 
+                    alertAppMessage(er.response.data, "error");
+                }
             });
     }
 
@@ -96,8 +114,7 @@ export default class Friends extends Component{
             elements: <Loader message = "Loading subscriptions..." />
         });
 
-        let userFriendsService = new UserFriendsService();
-        userFriendsService.getSubscriptions(localStorage.getItem("token"))
+        this.userFriendsService.getSubscriptions()
             .then(res => { 
                 let data = res.data;
                 let components = []; 
@@ -110,7 +127,13 @@ export default class Friends extends Component{
                 this.setState({ 
                     elements: components,
                 });
-            }).catch(er => alert(er));
+
+                alertAppMessage("Subscriptions were uploaded", "success");
+            }).catch(er => { 
+                if (er.response) { 
+                    alertAppMessage(er.response.data, "error");
+                }
+            });
     }
 
     searchForUsers(login){ 
@@ -118,12 +141,10 @@ export default class Friends extends Component{
             elements: <Loader message = "Searching for users..." />
         })
 
-        let userService = new UserService();
-        userService.searchForUsers(localStorage.getItem("token"), login)
+        this.userService.searchForUsers(login)
             .then(res => { 
                 let data = res.data;
 
-                alert(data.length)
                 let components = data.map(user => { 
                     return (
                         <UserSearchResult searchResult = {user} 
@@ -133,8 +154,14 @@ export default class Friends extends Component{
 
                 this.setState({ 
                     elements: components
-                })
-            }).catch(er => alert(er));
+                });
+
+                alertAppMessage("Search results were uploaded", "success");
+            }).catch(er => {
+                if (er.response) { 
+                    alertAppMessage(er.response.data, "error");
+                }
+            });
     }
 
     render(){

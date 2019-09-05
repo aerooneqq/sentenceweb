@@ -7,6 +7,7 @@ import "./WorkplaceComponentStyles.css"
 const Header = lazy(()=> import("./workplace/components/header/Header"))
 const Profile = lazy(()=> import("./workplace/components/profile/Profile"))
 const DocumentDesk = lazy(() => import("./workplace/components/workplace/DocumentDesk"))
+const ApplicationMessage = lazy(() => import("../ApplicationMessage/ApplicationMessage"));
 
 export default class WorkplaceComponent extends Component{
   constructor(props){ 

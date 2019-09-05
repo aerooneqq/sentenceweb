@@ -4,24 +4,38 @@ import React, {Component, lazy, Suspense} from "react"
 import "./UserFeedStyles.css"
 
 //Services
-import UserFeedService from "../../../../../../../services/userServices/UserFeedService";
+import UserFeedService from "../../../../../../../services/UserServices/UserFeedService";
 import ProfileHeader from "../ProfileHeader/ProfileHeader";
 
-//Components
-const UserAtomFeed = lazy(()=>import("./UserAtomFeed/UserAtomFeed"))
-const Loader = lazy(() => import("../../../../../../loader/Loader"))
-const Error = lazy(() => import("../../../../../../errorComponent/Error"))
+//App messages
+import {alertAppMessage} from "../../../../../../ApplicationMessage/ApplicationMessageManager";
 
-export default class UserFeed extends Component{ 
+//Components
+const UserAtomFeed = lazy(()=>import("./UserAtomFeed/UserAtomFeed"));
+const Loader = lazy(() => import("../../../../../../loader/Loader"));
+
+export default class UserFeed extends Component { 
+
     constructor(props) { 
         super(props)
 
         this.state = { 
-            component: <Loader message = "Loading feed..." />
-        }
+            component: <Loader message = "Loading feed..." />,
+            textAreaValue: ""
+        };
 
-        let userFeedService = new UserFeedService();
-        userFeedService.getUserFeed(localStorage.getItem("token"))
+        this.userFeedService = new UserFeedService(localStorage.getItem("token"));
+
+        this.insertNewPost = this.insertNewPost.bind(this);
+        this.onTextAreaValueChange = this.onTextAreaValueChange.bind(this);
+        this.uploadUserFeed = this.uploadUserFeed.bind(this);
+        this.onTextAreaKeyDown = this.onTextAreaKeyDown.bind(this);
+
+        this.uploadUserFeed();
+    }
+
+    uploadUserFeed() { 
+        this.userFeedService.getUserFeed(localStorage.getItem("token"))
             .then(res => { 
                 let atomFeeds = res.data.map(f => { 
                     return  (
@@ -30,17 +44,56 @@ export default class UserFeed extends Component{
                     );
                 });
 
+                atomFeeds.reverse();
+
                 this.setState({
-                    component: atomFeeds
-                });
-            }).catch(er =>{ 
-                this.setState({ 
-                    component: <Error message = {er} /> 
-                });
+                    component: atomFeeds,
+                    textAreaValue: ""
+                }); 
+            }).catch(er => {
+                if (er.response) { 
+                    alertAppMessage(er.reponse.data, "error");
+                }
+                else { 
+                    alertAppMessage("Error occured while getting your feed", "error");
+                }
             });
     }
 
-    render(){ 
+    insertNewPost() { 
+        this.setState({ 
+            component: <Loader message = "Inserting your message" />
+        });
+
+        let message = this.state.textAreaValue;
+
+        this.userFeedService.insertUserPost(message).then(() => { 
+                alertAppMessage("The message was posted!", "success");
+                this.uploadUserFeed();
+            }).catch(er => { 
+                if (er.response) { 
+                    alertAppMessage(er.reponse.data, "error");
+                }
+                else { 
+                    alertAppMessage("The error occured while inserting your message", "error");
+                }
+            });
+
+    }
+
+    onTextAreaValueChange(event) { 
+        this.setState({ 
+            textAreaValue: event.target.value
+        });
+    }
+
+    onTextAreaKeyDown(event) { 
+        if (event.keyCode === 13) { 
+            this.insertNewPost();
+        }
+    }
+
+    render() { 
         return(
             <div id = "userFeedContainer">
                 <ProfileHeader header = "Feed" /> 
@@ -50,8 +103,12 @@ export default class UserFeed extends Component{
                             {this.state.component}
                         </div>
                         <div id = "userFeedInputCont">
-                            <textarea placeholder="Whats up? Type it here..." id = "userFeedTextArea"/>
-                            <button id = "sendFeedBtn">
+                            <textarea placeholder="Whats up? Type it here..."
+                                      id = "userFeedTextArea"
+                                      value = {this.state.textAreaValue}
+                                      onChange = {this.onTextAreaValueChange}
+                                      onKeyDown = {this.onTextAreaKeyDown}/>
+                            <button id = "sendFeedBtn" onClick = {this.insertNewPost}>
                                 Send
                             </button>
                         </div>

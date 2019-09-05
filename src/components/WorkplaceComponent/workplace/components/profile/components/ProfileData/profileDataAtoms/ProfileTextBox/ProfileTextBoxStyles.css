@@ -43,5 +43,5 @@
 .propertyValueInput:focus{
   outline: none;
 
-  border-color: orangered;
+  border-color: #F97646;
 }

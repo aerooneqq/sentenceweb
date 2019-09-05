@@ -1,9 +1,9 @@
 import React, {Component, lazy} from "react"
 
-import UserService from "../../../../../../../../../services/userServices/UserService";
 
 import Loader from "../../../../../../../../loader/Loader";
 import ProfileDataElementModel from "../ProfileDataElementModel";
+import { alertAppMessage } from "../../../../../../../../ApplicationMessage/ApplicationMessageManager";
 
 const ProfileTextBox = lazy(() => import("../ProfileTextBox/ProfileTextBox"));
 const SaveChanges = lazy(() => import("../SaveChanges/SaveChanges"));
@@ -45,21 +45,31 @@ export default class LocationData extends Component {
      * the api. 
      */
     saveChanges = () => { 
-        this.locationDataModel.udpateUser(() => { 
+        this.setState({ 
+            isUpdating: true
+        });
+
+        this.locationDataModel.udpateUser(res => { 
             this.setState({ 
                 isUpdating: false
             });
-        }, () => { 
+
+            alertAppMessage("The data was updated.", "success");
+        }, er => { 
             this.setState({ 
                 isUpdating: false
             });
+
+            if (er.response) { 
+                alertAppMessage(er.response.data);
+            }
         })
     }
 
     render() {
         return this.state.isUpdating === true ? <Loader message = "Loading data..." /> :
             (
-                <div className="fadeInAnimation" className="profileDataContentCont">
+                <div className="fadeInAnimation profileDataContentCont">
                     <div className="textBlock">          
                     <ProfileTextBox propertyName = "Country" 
                                     propertyDescription = "This is your country."

@@ -12,25 +12,41 @@
     border-color: lightgray;
 }
 
-.careerStageContatiner:nth-child(1){ 
-    margin-top: 5px;
+.careerStageTopLine { 
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
 }
 
-.careerStageContatiner::-webkit-scrollbar{ 
-    width: 5px;
-}
+    .careerStageContatiner:nth-child(1){ 
+        margin-top: 5px;
+    }
 
-.careerStageContatiner::-webkit-scrollbar-thumb{ 
-    background-color: orangered;
-    border-style: none;
-    border-radius: 5px;
-}
+    .careerStageContatiner::-webkit-scrollbar{ 
+        width: 5px;
+    }
+
+    .careerStageContatiner::-webkit-scrollbar-thumb{ 
+        background-color: orangered;
+        border-style: none;
+        border-radius: 5px;
+    }
 
 .careerStageJobName{ 
     font-family: Arial;
     color: orangered;
     letter-spacing: 0.1px;
     font-size: 19px;
+
+    flex-grow: 1;
+}
+
+.careerStageIcon { 
+    width: 20px;
+    height: 20px;
+
+    margin-left: 5px;
 }
 
 .careerStageCompanyName{ 
@@ -40,6 +56,9 @@
     font-size: 14px;
 
     margin-top: 5px;
+
+    display: flex;
+    flex-direction: row;
 }
 
 .careerStageDescription{ 

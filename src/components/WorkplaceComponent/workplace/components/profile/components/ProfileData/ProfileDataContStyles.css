@@ -1,11 +1,14 @@
-
 #profileDataOutterContainer{ 
   height: 90%;
   margin-right: 20px;
 }
 
 #profileDataContainer{
+<<<<<<< HEAD
   width: 500px;
+=======
+  width: 400px;
+>>>>>>> e79977003a4595f9a5164b125ec725c92aaa97a9
   height: 100%;
 
   background:  transparent;
@@ -31,8 +34,20 @@
   flex-grow: 1;
   flex-direction: column;
 
-  margin-top: 20px;
+  padding-top: 20px;
+
+  overflow-y: auto;
 }
+
+  #profileDataContentCont::-webkit-scrollbar:vertical { 
+    width: 3px;
+  }
+
+  #profileDataContentCont::-webkit-scrollbar-thumb { 
+    background: red;
+
+    border-radius: 5px;
+  }
 
 .fadeInAnimation{ 
   animation: fadeIn 0.5s linear;

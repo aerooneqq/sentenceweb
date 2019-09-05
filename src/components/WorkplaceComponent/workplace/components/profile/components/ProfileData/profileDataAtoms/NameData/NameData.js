@@ -1,9 +1,8 @@
 import React, {Component, lazy} from "react"
 
-import UserService from "../../../../../../../../../services/userServices/UserService";
-
 import Loader from "../../../../../../../../loader/Loader";
 import ProfileDataElementModel from "../ProfileDataElementModel";
+import { alertAppMessage } from "../../../../../../../../ApplicationMessage/ApplicationMessageManager";
 
 
 const ProfileTextBox = lazy(() => import("../ProfileTextBox/ProfileTextBox"));
@@ -29,7 +28,7 @@ export default class NameData extends Component{
             this.setState({ 
                 isUpdating: false
             });
-        }, () => { 
+        }, er => { 
             this.setState({ 
                 isUpdating: false
             });
@@ -43,14 +42,23 @@ export default class NameData extends Component{
      * the api. 
      */
     saveChanges = () => { 
+        this.setState({ 
+            isUpdating: true
+        });
+
         this.nameDataModel.udpateUser(() => { 
             this.setState({ 
                 isUpdating: false
             });
-        }, () => { 
+            alertAppMessage("The profile was updated.", "success");
+        }, er => { 
             this.setState({ 
                 isUpdating: false
             });
+
+            if (er.response) { 
+                alertAppMessage(er.response.data, "error");
+            }
         });
     }
 

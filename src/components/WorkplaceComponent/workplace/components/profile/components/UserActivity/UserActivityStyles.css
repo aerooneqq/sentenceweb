@@ -25,7 +25,7 @@
     }   
     
     #userActivitiesCont::-webkit-scrollbar-thumb{
-        background: orangered;
+        background: #F97646;
         border-radius: 2px;
     }
     
@@ -35,7 +35,7 @@
     
     #activityHeader{ 
         font-family: Arial; 
-        color: orangered;
+        color: #F97646;
         font-size: 20px;
     }
 }

@@ -3,6 +3,9 @@
     height: 100%;
 
     background: transparent;
+
+    display: flex;
+    flex-direction: column;
 }
 
 .userActivityDataHeaderCont { 
@@ -36,3 +39,20 @@
 
     margin-top: 5px;
 }
+
+.singleUserActivitiesCont { 
+    width: 95%;
+    margin-right: 5%;
+
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+    .singleUserActivitiesCont::-webkit-scrollbar { 
+        width: 5px;
+    }
+
+    .singleUserActivitiesCont::-webkit-scrollbar-thumb { 
+        background: #F97646;
+        border-radius: 5px;
+    }

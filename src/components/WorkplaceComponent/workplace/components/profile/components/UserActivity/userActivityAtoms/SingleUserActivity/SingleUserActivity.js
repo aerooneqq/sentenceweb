@@ -15,7 +15,7 @@ export default class SingleUserActivity extends Component{
     }
 
     handleSingleActivityClick() { 
-        this.props.handleSingleUserActivityClick();
+        this.props.handleSingleUserActivityClick(this.props.activityData);
     }
 
     render() { 

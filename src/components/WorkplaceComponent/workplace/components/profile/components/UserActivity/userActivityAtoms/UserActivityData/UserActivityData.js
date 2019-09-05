@@ -6,6 +6,7 @@ import "./UserActivityDataStyles.css"
 //Icons
 import closeIconStatic from "./img/close_user_activity_data_icon.png";
 import closeIconActive from "./img/close_user_activity_data_icon_active.png"
+import UserActivitiesSingleData from "./UserActivitySingleData/UserActivitySingleData";
 
 export default class UserActivityData extends Component  { 
 
@@ -18,6 +19,7 @@ export default class UserActivityData extends Component  {
 
         this.onCloseIconMouseEnter = this.onCloseIconMouseEnter.bind(this);
         this.onCloseIconMouseLeave = this.onCloseIconMouseLeave.bind(this);
+        console.log(props.activityData);
     }
 
     onCloseIconMouseEnter() { 
@@ -31,6 +33,7 @@ export default class UserActivityData extends Component  {
             isCloseIconActive: false
         });
     }
+
     render() { 
         return ( 
             <div className = "userActivityData">
@@ -47,6 +50,10 @@ export default class UserActivityData extends Component  {
                              onMouseLeave = {this.onCloseIconMouseLeave}
                              onClick = {this.props.closeActivityData} />
                     </div>
+                </div>
+                
+                <div className = "singleUserActivitiesCont">
+                    {this.props.activityData.activities.map(activityInfo => <UserActivitiesSingleData activity = {activityInfo}/>)}
                 </div>
             </div>
         )

@@ -49,7 +49,8 @@ export default class MonthActivity extends Component{
                 </div>
                 {this.state.isExtraDataVisible === true ? 
                 <div className = "userActivityDataContainer userActivityDataContFadeIn">
-                    <UserActivityData closeActivityData = {this.closeActivityData} />
+                    <UserActivityData closeActivityData = {this.closeActivityData}
+                                      activityData = {this.state.extraData} />
                 </div> : null}
             </div>
         )

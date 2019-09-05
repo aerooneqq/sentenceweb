@@ -1,0 +1,45 @@
+.singleActivityDataContainer { 
+    width: 100%;
+    height: auto;
+
+    box-sizing: border-box;
+
+    padding-left: 5%;
+    padding-right: 5%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.singleActivityDataIcon { 
+    width: 20px;
+    height: 20px;
+}
+
+.singleActivityDataIcon { 
+    width: 20px;
+    height: 20px;
+}
+
+.activityInfoContainer { 
+    display: flex;
+    flex-direction: column;
+
+    margin-left: 5px;
+}
+
+.singleActivityName { 
+    font-size: 15px;
+    color: #303030;
+}
+
+.singleActivityTime { 
+    font-size: 11px;
+    color: #404040;
+
+    margin-top: 3px;
+}
+

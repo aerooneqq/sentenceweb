@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from "axios";
 
 export default class UserService { 
     constructor(token) { 
@@ -21,11 +21,15 @@ export default class UserService {
      * @param {the dictionary of the properties which must be updated} data 
      */
     updateUser(data) { 
-        return axios.put(this._apiURL, data, {
+        let request = axios.put(this._apiURL, data, {
             headers: { 
                 "Authorization" : "Bearer " + this._token,
             },
         });
+
+        console.log(request);
+            
+        return request;
     }
 
     searchForUsers(login) {

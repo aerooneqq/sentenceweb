@@ -17,6 +17,7 @@ export default class ProfileDataElementModel {
     getData(successCallback, errorCallback) { 
         return this._userService.getPartialData(this._properties).then(res => { 
             this.data = res.data;
+            console.log(this.data);
             successCallback(res);
         }).catch(er => { 
             errorCallback(er);

@@ -7,7 +7,7 @@
     }
     
     #userActivitiesCont{
-        height: 180px;
+        height: 200px;
         overflow-y: hidden;
         overflow-x: scroll;
         

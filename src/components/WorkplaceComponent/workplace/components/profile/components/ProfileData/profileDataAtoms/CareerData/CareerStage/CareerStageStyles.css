@@ -23,16 +23,6 @@
         margin-top: 5px;
     }
 
-    .careerStageContatiner::-webkit-scrollbar{ 
-        width: 5px;
-    }
-
-    .careerStageContatiner::-webkit-scrollbar-thumb{ 
-        background-color: orangered;
-        border-style: none;
-        border-radius: 5px;
-    }
-
 .careerStageJobName{ 
     font-family: Arial;
     color: orangered;

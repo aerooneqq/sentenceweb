@@ -13,6 +13,13 @@ const ProfileHeader = lazy(() => import("../ProfileHeader/ProfileHeader"));
 
 const profileDataModel = new ProfileDataModel();
 
+/**
+ * The brief description of that class and components' dependencies:
+ * 1) All profile text blocks are wrapped in a "textBlock" class, the style rules for this
+ *    class are written in the ProfileDataContStyles.css
+ * 2) All logic is placed in the ProfileDataModel class.
+ * 
+ * */
 export default class ProfileData extends Component {
   constructor(props){
     super(props);
@@ -71,7 +78,7 @@ export default class ProfileData extends Component {
                     <ProfileDataHeader dataName = {profileDataModel.getProfileDataName(this.props.currentUserDataIndex)}/>
                   </div>  
           
-                  <div id = "profileDataContentCont">
+                  <div className = "profileDataContentCont">
                       {profileDataModel.getProfileDataContent(this.props.currentUserDataIndex)}
                   </div>
               </Suspense>

@@ -1,0 +1,10 @@
+.documentStorageOutterContainer { 
+    height: 100%;
+    background: #f9f9f9;
+
+    display:  flex;
+    flex-direction: row;
+    justify-content: baseline;
+    align-items: center;
+}
+

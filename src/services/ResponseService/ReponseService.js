@@ -7,7 +7,7 @@ export default class ResponseService {
      * @param {The error response from the axios request} er 
      * @param {Error message if the error does not contain response} errorMessage 
      */
-    alertResponseMessage(er, errorMessage) { 
+    alertErrorMessage(er, errorMessage) { 
         if (er.response) { 
             alertAppMessage(er.response.data, "error");
         }

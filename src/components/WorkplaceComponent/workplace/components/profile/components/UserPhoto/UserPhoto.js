@@ -1,4 +1,4 @@
-import React, {Component, lazy, Suspense} from "react";
+import React, {Component, lazy} from "react";
 
 //Styles
 import "./UserPhotoStyles.css";
@@ -11,9 +11,10 @@ import locationIcon from "./img/location_profile_data_item.png";
 import nameIcon from "./img/name_profile_data_item.png";
 
 //Services
-import UserService from "../../../../../../../services/UserServices/UserService";
 import { alertAppMessage } from "../../../../../../ApplicationMessage/ApplicationMessageManager";
 import ResponseService from "../../../../../../../services/ResponseService/ReponseService";
+import UserPhotoService from "../../../../../../../services/UserPhotoService/UserPhotoService";
+
 import Loader from "../../../../../../loader/Loader";
 
 //Components
@@ -24,23 +25,27 @@ const AccountVerification = lazy(() => import("./AccountVerification/AccountVeri
 
 export default class UserPhoto extends Component {
   _icons = [careerIcon, authorizationIcon, nameIcon, locationIcon, friendsIcon];
+  _toolTips = ["Career", "Authentication", "Name", "Location", "Subscribers and subscriptions"];
 
   constructor(props) {
     super(props);
 
-    this.userService = new UserService(localStorage.getItem("token"));
+    this.userPhotoService = new UserPhotoService(localStorage.getItem("token"));
     this.responseService = new ResponseService();
 
     let profileDataItems = [];
 
-    for (let i = 0; i<5; i++){ 
+    for (let i = 0; i < 5; i++){ 
       let props = { 
         imgURL: careerIcon,
         currentUserData: i,
-        changeUserData: this.props.changeUserData
+        changeUserData: this.props.changeUserData,
+
       }
 
-      profileDataItems.push(<ProfileDataItem data = {props} icon = {this._icons[i]}/>);
+      profileDataItems.push(<ProfileDataItem data = {props} 
+                                             icon = {this._icons[i]}
+                                             toolTip = {this._toolTips[i]}/>);
     }
 
     this.state = { 
@@ -54,20 +59,22 @@ export default class UserPhoto extends Component {
   }
 
   componentDidMount() { 
-    this.updateUserPhoto();
+    this.uploadUserPhoto();
   }
 
   uploadUserPhoto() { 
-    this.userService.getPartialData(["photo"]).then(res => { 
+    this.userPhotoService.getUserPhoto().then(res => { 
       this.setState({ 
         isPhotoUpdating: false,
         userPhoto: res.data.photo
       });
+
+      document.getElementById("userPhotoImg").src = `data:image/png;base64, ${this.state.userPhoto}`
     }).catch(er => { 
-      this.responseService.alertResponseMessage(er, "Error occured while getting photo.");
       this.setState({ 
         isPhotoUpdating: false
       });
+      this.responseService.alertErrorMessage(er, "Error occured while getting photo.");
     });
   }
 
@@ -95,12 +102,16 @@ export default class UserPhoto extends Component {
           isPhotoUpdating: true
         });
 
-        this.userService.updateUser({
-          photo: byteArray
-        }).then(() => { 
+        this.userPhotoService.updateUserPhoto(byteArray).then(() => { 
           alertAppMessage("The profile photo was updated!", "success");
+          this.setState({ 
+            isPhotoUpdating: false
+          });
         }).catch(er => { 
-          this.responseService.alertResponseMessage(er, "The error occured when updating the photo");
+          this.responseService.alertErrorMessage(er, "The error occured when updating the photo");
+          this.setState({ 
+            isPhotoUpdating: false
+          });
         });
       }
     }
@@ -111,10 +122,17 @@ export default class UserPhoto extends Component {
   render() {
       return (
         <div id="photoContainer">
+
+          <div className = "userPhotoTopSettings">
+            <SignOutComponent />
+            <div className = "fillContainer" />
+            <DeleteAccountComponent />
+          </div>
+
           <div id="photoBorder">
             {this.state.isPhotoUpdating === true ? <Loader message = "Updating the photo..."/> : 
             <div>
-              <img></img>
+              <img id = "userPhotoImg" alt = "Profile" />
               <div id ="uploadNewUserPhotoContainer" onClick = {this.updateUserPhoto}>
                 <div id="uploadNewUserPhotoImg"></div>
               </div> 
@@ -126,8 +144,6 @@ export default class UserPhoto extends Component {
           </div>
 
           <AccountVerification />
-          <SignOutComponent />
-          <DeleteAccountComponent />
 
         </div>
       )

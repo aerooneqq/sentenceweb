@@ -1,5 +1,5 @@
-.userAtomFeedCont{ 
-    width: 100%;
+.userAtomFeedCont { 
+    width: 100%; 
     height: auto;
     background: transparent;
 
@@ -13,9 +13,13 @@
     align-items: center;
 }
 
-.userAtomFeedPhoto{ 
-    width: 55px;
-    height: 50px;
+.userAtomFeedPhoto {  
+    width: 51px;
+    height: 51px;
+
+    padding: 0.23px;
+
+    box-sizing: content-box;
 
     border-style: solid;
     border-width: 1px;
@@ -25,27 +29,42 @@
     margin-left: 10px;
 }
 
-.userFeedTextCont{ 
+.userFeedTextCont { 
     width: 350px;
     margin-left: 10px;
 }
 
-.userAtomFeedCont:nth-child(1){ 
+.userAtomFeedCont:nth-child(1) { 
     margin-top: 10px;
 }
 
-.userAtomFeedCont:nth-last-child(1){ 
+.userAtomFeedCont:nth-last-child(1) { 
     margin-bottom: 10px;
 }
 
-.userAtomFeedText{ 
+.userAtomFeedData { 
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.userAtomFeedAuthorName { 
+    color: gray;
+    font-size: 14px;
+}
+
+.userAtomFeedText { 
+    margin-top: 5px;
+
     font-family: Arial; 
-    color: black;
+    color: #404040;
     font-size: 16px;
 }
 
-.userAtomFeedDate{ 
-    margin-top: 10px;
+.userAtomFeedDate { 
+    margin-left: 10px;
 
     font-family: Arial; 
     color: gray;

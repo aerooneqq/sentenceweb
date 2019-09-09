@@ -1,5 +1,7 @@
 @media screen and (min-width: 400px){ 
   #photoBorder{
+    margin-top: 30px;
+
     width: 200px;
     height: 200px;
 
@@ -9,6 +11,37 @@
     border-width: 0.7px;
     border-radius: 250px;
     border-color: #F97646;
+
+    position: relative;
+  }
+
+  .fillContainer { 
+    flex-grow: 1;
+  }
+
+  .userPhotoTopSettings { 
+    width: 100%;
+    height: 50px;
+
+    background: #e0e0e0;
+
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+
+    box-sizing: border-box;
+
+
+    display: flex;
+    flex-direction: row;  
+    justify-content: baseline;
+    align-items: center;
+  }
+
+  #userPhotoImg { 
+    width: 200px;
+    height: 200px;
+
+    border-radius: 200px;
   }
   
   #photoContainer{  
@@ -18,8 +51,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  
-    margin-top: 20px;
   }
   
   #photoBorder:hover #uploadNewUserPhotoContainer{
@@ -43,7 +74,10 @@
   }
   
   #uploadNewUserPhotoContainer{
-    position: relative;
+    position: absolute;
+
+    top: 0;
+    left: 0;
   
     visibility: hidden;
     opacity: 0;
@@ -103,6 +137,27 @@
   
     display: flex;
     flex-direction: column;
+    align-items: center;
+  }
+
+  .fillContainer { 
+    flex-grow: 1;
+  }
+
+  .userPhotoTopSettings { 
+    width: 100%;
+    height: 50px;
+
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+
+    box-sizing: border-box;
+
+    background: #e0e0e0;
+
+    display: flex;
+    flex-direction: row;  
+    justify-content: baseline;
     align-items: center;
   }
   
@@ -170,7 +225,7 @@
     visibility: collapse;
   }
   
-  #userPhotoloaderContainer{ 
+  #loaderContainer{ 
     width: 100%;
     height: 100%;
   

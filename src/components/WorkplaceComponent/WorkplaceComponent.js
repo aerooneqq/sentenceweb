@@ -6,15 +6,14 @@ import "./WorkplaceComponentStyles.css"
 //Components
 const Header = lazy(()=> import("./workplace/components/header/Header"))
 const Profile = lazy(()=> import("./workplace/components/profile/Profile"))
-const DocumentDesk = lazy(() => import("./workplace/components/workplace/DocumentDesk"))
-const ApplicationMessage = lazy(() => import("../ApplicationMessage/ApplicationMessage"));
+const DocumentDesk = lazy(() => import("./workplace/components/workplace/DocumentDesk"));
 
 export default class WorkplaceComponent extends Component{
   constructor(props){ 
     super(props);
 
     this.state = { 
-      component: <DocumentDesk />
+      component: <Profile />
     };
 
     this.changeWorkplaceComponent = this.changeWorkplaceComponent.bind(this);

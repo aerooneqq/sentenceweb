@@ -1,0 +1,45 @@
+.documentOpenerContaier { 
+    width: 25px;
+    height: 100%;   
+
+    background: #e0e0e0;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+}
+
+    .documentOpenerContaier:hover { 
+        background: #e5e5e5;
+    }
+
+.documentOpenerOpenIcon { 
+    width: 20px;
+    height: 20px;
+}
+
+.iconLeftRotation { 
+    animation: rotateOpenerIconAnimation 0.4s ease-in forwards;
+}
+
+@keyframes rotateOpenerIconAnimation { 
+    100% { 
+        transform: rotate(180deg);
+    }
+}
+
+.iconRightRotation { 
+    animation: rotateOpenerIconAnimationBackwards 0.4s ease-in forwards;
+}
+
+@keyframes rotateOpenerIconAnimationBackwards {
+    0% { 
+        transform: rotate(180deg);
+    }
+    
+    100% { 
+        transform: rotate(360deg);
+    }
+}

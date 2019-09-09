@@ -21,7 +21,7 @@
     }
     
     #userActivitiesCont::-webkit-scrollbar{ 
-        height: 5px;
+        height: 3px;
     }   
     
     #userActivitiesCont::-webkit-scrollbar-thumb{

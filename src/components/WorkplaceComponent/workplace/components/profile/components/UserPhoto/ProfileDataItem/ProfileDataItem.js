@@ -14,8 +14,8 @@ export default class ProfileDataItem extends Component{
     this.props.data.changeUserData(this.props.data.currentUserData)
   }
 
-  render(){
-    return(
+  render() { 
+    return (
       <div className = "profileDataItem" onClick={this.handleClick}>
         <img src = {this.props.icon} className = "profileDataItemImg" alt = "" />
       </div>

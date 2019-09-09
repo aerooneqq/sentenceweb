@@ -4,7 +4,6 @@ import React, {Component, lazy} from "react"
 import "./DocumentDeskStyles.css"
 
 //Components
-const Loader = lazy(() => import("../../../../loader/Loader"))
 const DocumentsHeader = lazy(() => import("./DocumentsHeader/DocumentsHeader"));
 const DocumentWorkplace = lazy(() => import("./DocumentWorkplace/DocumentWorkplace"));
 

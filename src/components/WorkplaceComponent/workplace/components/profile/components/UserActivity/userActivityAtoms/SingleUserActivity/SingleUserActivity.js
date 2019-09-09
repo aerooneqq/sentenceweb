@@ -10,6 +10,8 @@ export default class SingleUserActivity extends Component{
             count: props.activityData.count
         }
 
+        this.maxCount = 15;
+
         this.getCountStyle = this.getCountStyle.bind(this)
         this.handleSingleActivityClick = this.handleSingleActivityClick.bind(this);
     }
@@ -29,11 +31,13 @@ export default class SingleUserActivity extends Component{
         )
     }
 
-    getCountStyle() { 
-        return{ 
-            "width": this.state.count + 1,
-            "height": this.state.count + 1,
-            "border-radius": this.state.count,
+    getCountStyle() {
+        let size = this.state.count > this.maxCount ? this.maxCount : this.state.count;
+        
+        return { 
+            "width": size + 1,
+            "height": size + 1,
+            "border-radius": size
         }
     }
 }

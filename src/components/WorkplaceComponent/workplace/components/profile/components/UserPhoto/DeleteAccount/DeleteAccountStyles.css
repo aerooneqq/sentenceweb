@@ -1,15 +1,10 @@
 #deleteAccountBtn{
-  width: 150px;
+  width: 40px;
   height: 40px;
 
-  margin-top: 20px;
+  background: transparent;
 
-  background: red;
-
-  border-width: 1.5px;
-  border-style: solid;
-  border-color: red;
-  border-radius: 5px;
+  border-style: none;
 
   display: flex;
   flex-direction: row;
@@ -17,8 +12,9 @@
   justify-content: center;
 }
 
-#deleteAccountBtn:hover{
-  background: linear-gradient(23deg, #FF5F5F, red);
+#deleteAccountIcon { 
+  width: 30px;
+  height: 30px;
 }
 
 #deleteAccountBtn:focus{

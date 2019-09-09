@@ -34,13 +34,36 @@ export default class UserFeed extends Component {
         this.uploadUserFeed();
     }
 
+    /**
+     * Deletes all repeated entries of elements
+     * @param {Array of numbers} array 
+     */
+    _clearArray(array) { 
+        var seen = {};
+        var out = [];
+        var len = array.length;
+        var j = 0;
+
+        for(var i = 0; i < len; i++) {
+             var item = array[i];
+             if(seen[item] !== 1) {
+                   seen[item] = 1;
+                   out[j++] = item;
+             }
+        }
+
+        return out
+    }
+
     uploadUserFeed() { 
         this.userFeedService.getUserFeed(localStorage.getItem("token"))
             .then(res => { 
-                let atomFeeds = res.data.map(f => { 
+                let atomFeeds = res.data.map(f => {
                     return  (
                         <UserAtomFeed date = {f.publicationDate}
-                                      message = {f.message} />
+                                      message = {f.message}
+                                      photo = {f.photo}
+                                      authorName = {f.name + " " + f.surname}/>
                     );
                 });
 

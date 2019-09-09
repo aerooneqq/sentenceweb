@@ -1,0 +1,35 @@
+.documentFileSystemOutterCont {
+    height: 100%;
+
+    background: #f9f9f9;
+}
+
+.documentFileSystemSlideLeft { 
+    width: 300px;
+    animation: documentFileSystemSlideLeftAnimation 0.4s ease-in forwards;
+}
+
+@keyframes documentFileSystemSlideLeftAnimation { 
+    from {
+        width: 300px;
+    }
+
+    to { 
+        width: 0px;
+    }
+}
+
+.documentFileSystemSlideRight { 
+    animation: documentFileSystemSlideRightAnimation 0.4s ease-in forwards;
+}
+
+
+@keyframes documentFileSystemSlideRightAnimation { 
+    from {
+        width: 0;
+    }
+
+    to { 
+        width: 300px;
+    }
+}

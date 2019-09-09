@@ -33,11 +33,7 @@ export default class UserActivityData extends Component  {
             isCloseIconActive: false
         });
     }
-<<<<<<< HEAD
     
-=======
-
->>>>>>> 9b3a955071199d77b81675b009925dd3f49572f5
     render() { 
         return ( 
             <div className = "userActivityData">

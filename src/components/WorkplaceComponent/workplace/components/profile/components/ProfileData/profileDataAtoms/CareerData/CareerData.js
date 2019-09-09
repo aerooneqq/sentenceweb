@@ -115,7 +115,7 @@ export default class CareerData extends Component {
 
         return(
             <div>
-                <div className="fadeInAnimation">
+                <div className="careerStagesOutterContainer fadeInAnimation">
                     {this.state.isUpdating === true ? <Loader message = "Loading data..." /> :
                      this.careerDataModel.data.careerStages !== null ? this.careerDataModel.data.careerStages.map(careerStage => 
                          <CareerStage careerStage = {careerStage} 

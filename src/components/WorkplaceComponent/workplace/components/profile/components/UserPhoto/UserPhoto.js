@@ -124,7 +124,7 @@ export default class UserPhoto extends Component {
         <div id="photoContainer">
 
           <div className = "userPhotoTopSettings">
-            <SignOutComponent />
+            <SignOutComponent signOut = {this.props.signOut}/>
             <div className = "fillContainer" />
             <DeleteAccountComponent />
           </div>

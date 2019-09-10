@@ -29,6 +29,10 @@
     margin-left: 10px;
 }
 
+    .userAtomFeedPhoto:hover { 
+        border-color: orangered;
+    }
+
 .userFeedTextCont { 
     width: 350px;
     margin-left: 10px;

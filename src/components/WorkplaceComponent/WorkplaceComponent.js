@@ -13,7 +13,7 @@ export default class WorkplaceComponent extends Component{
     super(props);
 
     this.state = { 
-      component: <Profile />
+      component: <Profile signOut = {this.props.signOut}/>
     };
 
     this.changeWorkplaceComponent = this.changeWorkplaceComponent.bind(this);
@@ -30,7 +30,7 @@ export default class WorkplaceComponent extends Component{
   changeWorkplaceComponent(componentNumber){ 
     switch (componentNumber){ 
       case 0:
-        this.setState({ component: <Profile />});
+        this.setState({ component: <Profile signOut = {this.props.signOut}/>});
         break;
       
       case 1:

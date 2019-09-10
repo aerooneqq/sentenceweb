@@ -8,12 +8,20 @@
     background: white;
   
     border-style: solid;
-    border-width: 0.7px;
+    border-width: 1px;
     border-radius: 250px;
     border-color: #F97646;
 
+    box-sizing: content-box;
+
+    padding: 0.1px;
+
     position: relative;
   }
+
+    #photoBorder:hover { 
+      border-color: orangered;
+    }
 
   .fillContainer { 
     flex-grow: 1;

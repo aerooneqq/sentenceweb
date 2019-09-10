@@ -6,6 +6,8 @@ export default class ProfileDataElementModel {
         this._properties = properties; 
 
         this.data = null;
+        this.copiedData = {};
+
         this._userService = new UserService(localStorage.getItem("token"));
     }
 
@@ -15,13 +17,29 @@ export default class ProfileDataElementModel {
      * @param {function which will be excecuted if the query fails} errorCallback 
      */
     getData(successCallback, errorCallback) { 
-        return this._userService.getPartialData(this._properties).then(res => { 
+        return this._userService.getPartialData(this._properties).then(res => 
+        { 
             this.data = res.data;
-            console.log(this.data);
+            this._createDataCopy();
+
             successCallback(res);
-        }).catch(er => { 
+        })
+        .catch(er => 
+        { 
             errorCallback(er);
         });
+    }
+
+    _createDataCopy() { 
+        for (let key in this.data) { 
+            this.copiedData[key] = this.data[key];
+        }
+    }
+
+    discardChanges() { 
+        for (let key in this.data) { 
+            this.data[key] = this.copiedData[key];
+        }
     }
 
     /**

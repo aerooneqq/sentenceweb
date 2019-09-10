@@ -21,6 +21,7 @@ export default class NameData extends Component{
 
         this.saveChanges = this.saveChanges.bind(this);
         this.updateData = this.updateData.bind(this);
+        this.discardChanges = this.discardChanges.bind(this);
     }
 
     componentDidMount() { 
@@ -62,7 +63,22 @@ export default class NameData extends Component{
         });
     }
 
-    render(){ 
+    discardChanges() { 
+        this.setState(() =>{
+            return { 
+                isUpdating: true
+            }
+        }, () => setTimeout(() => { 
+                this.nameDataModel.discardChanges();
+                this.setState(() =>{
+                    return { 
+                        isUpdating: false
+                    }
+                });
+            }, 100));
+    }
+
+    render() { 
         return this.state.isUpdating === true ? <Loader message = "Loading data..." /> : ( 
                 <div className="fadeInAnimation" className="profileDataContentCont">
                     <div className="textBlock">          
@@ -85,7 +101,7 @@ export default class NameData extends Component{
                     </div>
                     <div className = "saveOrDiscardChangesCont">
                         <SaveChanges saveChanges = {this.saveChanges}/>
-                        <DiscardChanges />
+                        <DiscardChanges discardChangesInProfileData = {this.discardChanges}/>
                     </div>
                 </div>
             );

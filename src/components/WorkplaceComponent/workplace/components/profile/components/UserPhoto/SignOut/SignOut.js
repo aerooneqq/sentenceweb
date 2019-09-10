@@ -20,7 +20,7 @@ export default class SignOut extends Component{
   }
 
   handleSignOutClick() {
-    localStorage.clear();
+    this.props.signOut();
   }
 
   handleMouseLeaveEnter() {

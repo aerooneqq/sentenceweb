@@ -20,7 +20,7 @@ const WorkplaceComponent = lazy(() => import("./components/WorkplaceComponent/Wo
 
 export default class App extends Component {
 
-  constructor(){
+  constructor() {
     super()
 
     this.state = {
@@ -51,7 +51,7 @@ export default class App extends Component {
           this.setState({ 
             userLoggedIn: true,
             checkToken: true,
-            component: <WorkplaceComponent />
+            component: <WorkplaceComponent signOut = {this.signOut}/>
           });
         }
       }).catch(er => { 
@@ -67,6 +67,7 @@ export default class App extends Component {
     }
 
     this.signIn = this.signIn.bind(this);
+    this.signOut = this.signOut.bind(this);
   }
 
 
@@ -81,7 +82,7 @@ export default class App extends Component {
           localStorage.setItem("token", token);
     
           this.setState({
-            component: <WorkplaceComponent />
+            component: <WorkplaceComponent signOut = {this.signOut}/>
           });
         }
 
@@ -94,6 +95,13 @@ export default class App extends Component {
         
       })
     })
+  }
+
+  signOut() { 
+    localStorage.removeItem("token");
+    this.setState({
+      component: <HomeComponent signIn = {this.signIn}/>
+    });
   }
 
   render() {

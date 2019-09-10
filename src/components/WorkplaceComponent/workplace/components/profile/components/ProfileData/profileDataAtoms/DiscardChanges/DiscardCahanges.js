@@ -17,7 +17,7 @@ export default class DiscardChanges extends Component{
     render(){ 
         return(
             <div id = "discardChangesCont" onClick={this.handleDiscardChangesBtnClick}>
-                Discard changes (in all containers)
+                Discard changes
             </div>
         );
     }

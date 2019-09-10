@@ -22,6 +22,7 @@ export default class AuthProfileData extends Component{
 
         this.saveChanges = this.saveChanges.bind(this);
         this.updateData = this.updateData.bind(this);
+        this.discradChanges = this.discradChanges.bind(this);
     }
 
     componentDidMount() { 
@@ -62,7 +63,23 @@ export default class AuthProfileData extends Component{
         });
     }
 
-    render(){ 
+    discradChanges() { 
+        this.setState(() =>{
+            return { 
+                isUpdating: true
+            }
+        }, () => setTimeout(() => { 
+                this.authElementModel.discardChanges();
+
+                this.setState(() =>{
+                    return { 
+                        isUpdating: false
+                    }
+                });
+            }, 100));
+    }
+
+    render() { 
         return this.state.isUpdating === true ? <Loader message = "Loading data..."/> : ( 
             <div className="fadeInAnimation" className="profileDataContentCont">
                 <div className="textBlock">          
@@ -79,7 +96,7 @@ export default class AuthProfileData extends Component{
                 </div>
                 <div className = "saveOrDiscardChangesCont">
                     <SaveChanges saveChanges = {this.saveChanges}/>
-                    <DiscardChanges />
+                    <DiscardChanges discardChangesInProfileData = {this.discradChanges}/>
                 </div>
             </div>
         )

@@ -34,7 +34,8 @@ export default class Profile extends Component{
     return (
       <div id = "profileContainer">
         <div id = "userPhotoCont">
-            <UserPhoto changeUserData = {this.changeCurrentUserData} />
+            <UserPhoto changeUserData = {this.changeCurrentUserData} 
+                       signOut = {this.props.signOut}/>
         </div>
 
         <div id = "rightProfileCont">

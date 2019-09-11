@@ -19,6 +19,15 @@
     position: relative;
   }
 
+  .userPhotoAndSettingsCont { 
+    width: 100%;
+
+    display: flex; 
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+  }
+
     #photoBorder:hover { 
       border-color: orangered;
     }
@@ -145,6 +154,15 @@
   
     display: flex;
     flex-direction: column;
+    align-items: center;
+  }
+
+  .userPhotoAndSettingsCont { 
+    width: 100%;
+    
+    display: flex; 
+    flex-direction: column;
+    justify-content: center; 
     align-items: center;
   }
 

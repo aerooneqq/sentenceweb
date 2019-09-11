@@ -16,6 +16,7 @@ import ResponseService from "../../../../../../../services/ResponseService/Repon
 import UserPhotoService from "../../../../../../../services/UserPhotoService/UserPhotoService";
 
 import Loader from "../../../../../../loader/Loader";
+import UserPhotoLoader from "./UserPhotoLoader/UserPhotoLoader";
 
 //Components
 const ProfileDataItem = lazy(()=>import("./ProfileDataItem/ProfileDataItem"));
@@ -51,6 +52,7 @@ export default class UserPhoto extends Component {
     this.state = { 
       profileDataItems: profileDataItems,
       isPhotoUpdating: true,
+      isFirstLoad: true,
       userPhoto: null
     }
 
@@ -66,13 +68,15 @@ export default class UserPhoto extends Component {
     this.userPhotoService.getUserPhoto().then(res => { 
       this.setState({ 
         isPhotoUpdating: false,
+        isFirstLoad: false,
         userPhoto: res.data.photo
       });
 
       document.getElementById("userPhotoImg").src = `data:image/png;base64, ${this.state.userPhoto}`
     }).catch(er => { 
       this.setState({ 
-        isPhotoUpdating: false
+        isPhotoUpdating: false,
+        isFirstLoad: false,
       });
       this.responseService.alertErrorMessage(er, "Error occured while getting photo.");
     });
@@ -122,26 +126,31 @@ export default class UserPhoto extends Component {
   render() {
       return (
         <div id="photoContainer">
+          
+          {this.state.isFirstLoad === true ? <UserPhotoLoader /> :
+              <div className = "userPhotoAndSettingsCont">
+                <div className = "userPhotoTopSettings">
+                  <SignOutComponent signOut = {this.props.signOut}/>
+                  <div className = "fillContainer" />
+                  <DeleteAccountComponent />
+                </div>
+      
+                <div id="photoBorder">
+                  {this.state.isPhotoUpdating === true ? <Loader message = "Updating the photo..."/> : 
+                  <div>
+                    <img id = "userPhotoImg" alt = "Profile" />
+                    <div id ="uploadNewUserPhotoContainer" onClick = {this.updateUserPhoto}>
+                      <div id="uploadNewUserPhotoImg"></div>
+                    </div> 
+                  </div>}
+      
+                </div>
+                <div id="profileDataItemsContainer">
+                  {this.state.profileDataItems}
+                </div>
+              </div>
+          }
 
-          <div className = "userPhotoTopSettings">
-            <SignOutComponent signOut = {this.props.signOut}/>
-            <div className = "fillContainer" />
-            <DeleteAccountComponent />
-          </div>
-
-          <div id="photoBorder">
-            {this.state.isPhotoUpdating === true ? <Loader message = "Updating the photo..."/> : 
-            <div>
-              <img id = "userPhotoImg" alt = "Profile" />
-              <div id ="uploadNewUserPhotoContainer" onClick = {this.updateUserPhoto}>
-                <div id="uploadNewUserPhotoImg"></div>
-              </div> 
-            </div>}
-
-          </div>
-          <div id="profileDataItemsContainer">
-            {this.state.profileDataItems}
-          </div>
 
           <AccountVerification />
 

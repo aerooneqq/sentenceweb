@@ -1,0 +1,33 @@
+.userPhotoLoaderOutterCont { 
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.userPhotoLoaderTopBar { 
+    width: 90%;
+    height: 40px;
+
+    margin-top: 15px;
+
+    background: #d0d0d0;
+
+    border-style: none;
+    border-radius: 5px;
+}
+
+.userPhotoLoaderPhotoCont { 
+    margin-top: 20px;
+
+    width: 200px; 
+    height: 200px;
+
+    border-radius: 150px;
+
+    background: #d0d0d0;
+}

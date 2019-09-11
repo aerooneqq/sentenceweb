@@ -1,4 +1,4 @@
-import React, {Component, lazy, Suspense} from "react"
+import React, {Component} from "react"
 
 //Styles
 import "./UserFeedStyles.css"
@@ -10,9 +10,9 @@ import ProfileHeader from "../ProfileHeader/ProfileHeader";
 //App messages
 import {alertAppMessage} from "../../../../../../ApplicationMessage/ApplicationMessageManager";
 
-//Components
-const UserAtomFeed = lazy(()=>import("./UserAtomFeed/UserAtomFeed"));
-const Loader = lazy(() => import("../../../../../../loader/Loader"));
+import UserAtomFeed from "./UserAtomFeed/UserAtomFeed";
+import UserFeedLoader from "./UserFeedLoader/UserFeedLoader";
+import Loader from "../../../../../../loader/Loader";
 
 export default class UserFeed extends Component { 
 
@@ -20,6 +20,7 @@ export default class UserFeed extends Component {
         super(props)
 
         this.state = { 
+            isFirstLoad: true,
             component: <Loader message = "Loading feed..." />,
             textAreaValue: ""
         };
@@ -71,7 +72,8 @@ export default class UserFeed extends Component {
 
                 this.setState({
                     component: atomFeeds,
-                    textAreaValue: ""
+                    textAreaValue: "",
+                    isFirstLoad: false
                 }); 
             }).catch(er => {
                 if (er.response) { 
@@ -121,21 +123,21 @@ export default class UserFeed extends Component {
             <div id = "userFeedContainer">
                 <ProfileHeader header = "Feed" /> 
                 <div id = "userFeedInnerCont">
-                    <Suspense fallback={<Loader />}>
-                        <div id = "userFeedInnerScroll">
-                            {this.state.component}
+                        <div>
+                            <div id = "userFeedInnerScroll">
+                                {this.state.isFirstLoad === true ? <UserFeedLoader /> : this.state.component}
+                            </div>
+                            <div id = "userFeedInputCont">
+                                <textarea placeholder="Whats up? Type it here..."
+                                        id = "userFeedTextArea"
+                                        value = {this.state.textAreaValue}
+                                        onChange = {this.onTextAreaValueChange}
+                                        onKeyDown = {this.onTextAreaKeyDown}/>
+                                <button id = "sendFeedBtn" onClick = {this.insertNewPost}>
+                                    Send
+                                </button>
+                            </div>
                         </div>
-                        <div id = "userFeedInputCont">
-                            <textarea placeholder="Whats up? Type it here..."
-                                      id = "userFeedTextArea"
-                                      value = {this.state.textAreaValue}
-                                      onChange = {this.onTextAreaValueChange}
-                                      onKeyDown = {this.onTextAreaKeyDown}/>
-                            <button id = "sendFeedBtn" onClick = {this.insertNewPost}>
-                                Send
-                            </button>
-                        </div>
-                    </Suspense>
                 </div>
             </div>
         )

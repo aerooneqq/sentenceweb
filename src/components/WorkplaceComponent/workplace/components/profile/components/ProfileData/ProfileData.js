@@ -6,10 +6,12 @@ import "./ProfileDataContStyles.css";
 //Model
 import ProfileDataModel from "./ProfileDataModel";
 
+
 //Components
-const Loader = lazy(() => import("../../../../../../loader/Loader"));
-const ProfileDataHeader = lazy(() => import("./profileDataAtoms/ProfileDataHeader/ProfileDataHeader"));
-const ProfileHeader = lazy(() => import("../ProfileHeader/ProfileHeader"));
+import ProfileDataLoader from "./ProfileDataLoader/ProfileDataLoader";
+import ProfileDataHeader from "./profileDataAtoms/ProfileDataHeader/ProfileDataHeader";
+import ProfileHeader from "../ProfileHeader/ProfileHeader";
+import Loader from "../../../../../../loader/Loader";
 
 const profileDataModel = new ProfileDataModel();
 
@@ -21,10 +23,11 @@ const profileDataModel = new ProfileDataModel();
  * 
  * */
 export default class ProfileData extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.state = {
+      isFirstLoad: true,
       isUpdating: true,
       userFriendsMode: "subscribers"
     };
@@ -58,12 +61,12 @@ export default class ProfileData extends Component {
   }
 
   render() {
-    if (this.props.user === null) { 
+    if (this.state.isFirstLoad === true && this.props.user === null) { 
       return (
         <div id = "profileDataOutterContainer">
           <ProfileHeader header = "Settings"/>
           <div id = "profileDataContainer">
-            <Loader />
+            <ProfileDataLoader />
           </div>  
         </div>
       )
@@ -73,15 +76,13 @@ export default class ProfileData extends Component {
           <div id = "profileDataOutterContainer">
             <ProfileHeader header = "Settings"/>
             <div id = "profileDataContainer">
-              <Suspense fallback = {<Loader />}>
-                  <div id = "profileDataHeaderCont">
-                    <ProfileDataHeader dataName = {profileDataModel.getProfileDataName(this.props.currentUserDataIndex)}/>
-                  </div>  
+                <div id = "profileDataHeaderCont">
+                  <ProfileDataHeader dataName = {profileDataModel.getProfileDataName(this.props.currentUserDataIndex)}/>
+                 </div>  
           
-                  <div className = "profileDataContentCont">
-                      {profileDataModel.getProfileDataContent(this.props.currentUserDataIndex)}
-                  </div>
-              </Suspense>
+                <div className = "profileDataContentCont">
+                    {profileDataModel.getProfileDataContent(this.props.currentUserDataIndex)}
+                </div>
             </div>
           </div>
       )

@@ -9,22 +9,23 @@ import UserActivitiesService from "../../../../../../../services/UserServices/Us
 //App messages
 import {alertAppMessage} from "../../../../../../ApplicationMessage/ApplicationMessageManager";
 import UserActivityModel from "./UserActivityModel";
+import UserActivityLoader from "./UserActivityLoader/UserActivityLoader";
 
 //Components
 const Loader = lazy(()=>import("../../../../../../loader/Loader"));
 
-export default class UserActivity extends Component{
+export default class UserActivity extends Component {
 
-    constructor(props){ 
+    constructor(props) { 
         super(props)
 
         this.state = { 
+            isFirstLoad: true,
             components: <Loader message = "Loading activities..." />,
-            width: 500
         };
     }
 
-    componentDidMount(){ 
+    componentDidMount() { 
         this.setState({ 
             components: <Loader message = "Loading activities" />
         });
@@ -36,7 +37,7 @@ export default class UserActivity extends Component{
 
                 this.setState({ 
                     components: monthActivities,
-                    width: document.getElementById("userActivityOutterContainer").offsetWidth - 100
+                    isFirstLoad: false
                 });
             }).catch(er => { 
                 if (er.reponse) { 
@@ -48,13 +49,12 @@ export default class UserActivity extends Component{
             });
     }
 
-    render(){ 
-        return(
+    render() { 
+        return (
             <div id = "userActivityOutterContainer">
-                <div id = "userActivitiesCont" 
-                     className = "profileShadowContainer">
+                <div id = "userActivitiesCont" className = "profileShadowContainer">
                     <Suspense fallback = {<Loader message = "Loading activities..." />}>
-                        {this.state.components}
+                        {this.state.isFirstLoad === true ? <UserActivityLoader /> : this.state.components}
                     </Suspense>
                 </div>
             </div>

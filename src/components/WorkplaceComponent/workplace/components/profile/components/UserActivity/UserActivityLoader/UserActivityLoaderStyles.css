@@ -1,0 +1,39 @@
+.userActivityLoaderContainer { 
+    margin-left: 10px;
+
+    height: 180px;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.userActivityAtomLoaderCont { 
+    margin-left: 10px;
+    margin-top: 10px;
+
+    height: 180px;
+    width: 170px; 
+
+    display: flex; 
+    flex-direction: column;
+}
+
+.userActivityAtomLoaderMonthName { 
+    width: 70px; 
+    height: 20px; 
+
+    background: #c0c0c0;
+
+    border-radius: 5px;
+}
+
+.userActivityAtomLoaderMonth { 
+    width: 100%;
+    height: 140px; 
+
+    margin-top: 10px; 
+
+    background: #e0e0e0;
+
+    border-radius: 5px;
+}

@@ -15,6 +15,7 @@ import Loader from "../../../../../../../loader/Loader";
 
 //App messages
 import {alertAppMessage} from "../../../../../../../ApplicationMessage/ApplicationMessageManager";
+import AccountVerificationLoader from "./AccountVerificationLoader/AccountVerificationLoader";
 
 
 export default class AccountVerification extends Component { 
@@ -27,6 +28,7 @@ export default class AccountVerification extends Component {
         this.state = { 
             inputValue: "",
             isLoading: true,
+            isFirstLoad: true,
             isAccVerified: null
         };
 
@@ -44,7 +46,8 @@ export default class AccountVerification extends Component {
             .then(res => { 
                 this.setState({ 
                     isLoading: false,
-                    isAccVerified: res.data.isAccountVerified
+                    isAccVerified: res.data.isAccountVerified,
+                    isFirstLoad: false,
                 });
             }).catch(er => { 
                 if (er.reponse) { 
@@ -88,30 +91,31 @@ export default class AccountVerification extends Component {
     render() { 
         return (
             <div id = "accountVerificationOutterContainer">
-                {this.state.isLoading === true ? 
-                    <Loader message = "Getting verification data..." />
-                    : 
-                    this.state.isAccVerified === true ? 
-                        <div id = "verifiedAccountContainer">
-                            <img src = {verifiedAccountIcon} id = "verifiedAccountIcon"
-                                alt = "Account verified"/>
-                            <div id = "verifiedAccountText">
-                                Your account is verified
+                {this.state.isFirstLoad === true ? <AccountVerificationLoader /> : 
+                    this.state.isLoading === true ? 
+                        <Loader message = "Getting verification data..." />
+                        : 
+                        this.state.isAccVerified === true ? 
+                            <div id = "verifiedAccountContainer">
+                                <img src = {verifiedAccountIcon} id = "verifiedAccountIcon"
+                                    alt = "Account verified"/>
+                                <div id = "verifiedAccountText">
+                                    Your account is verified
+                                </div>
                             </div>
-                        </div>
-                    :
-                        <div>
-                            <div id = "accountVerificationText">
-                                Enter the code from the last e-mail. If you don't verify your account, it will be blocked.
+                        :
+                            <div>
+                                <div id = "accountVerificationText">
+                                    Enter the code from the last e-mail. If you don't verify your account, it will be blocked.
+                                </div>
+                                <div id = "enterCodeContainer">
+                                    <input id = "accountVerificationCodeInput" type = "text"
+                                        onChange = {this.handleInputValueChange} />
+                                    <button id = "sendConfirmationCodeBtn" onClick = {this.handleSendCodeClick}>
+                                        Send
+                                    </button>
+                                </div>
                             </div>
-                            <div id = "enterCodeContainer">
-                                <input id = "accountVerificationCodeInput" type = "text"
-                                    onChange = {this.handleInputValueChange} />
-                                <button id = "sendConfirmationCodeBtn" onClick = {this.handleSendCodeClick}>
-                                    Send
-                                </button>
-                            </div>
-                        </div>
                 }
 
             </div>

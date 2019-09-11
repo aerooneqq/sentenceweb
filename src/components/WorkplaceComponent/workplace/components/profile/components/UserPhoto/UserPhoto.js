@@ -15,14 +15,13 @@ import { alertAppMessage } from "../../../../../../ApplicationMessage/Applicatio
 import ResponseService from "../../../../../../../services/ResponseService/ReponseService";
 import UserPhotoService from "../../../../../../../services/UserPhotoService/UserPhotoService";
 
+//Components
 import Loader from "../../../../../../loader/Loader";
 import UserPhotoLoader from "./UserPhotoLoader/UserPhotoLoader";
-
-//Components
-const ProfileDataItem = lazy(()=>import("./ProfileDataItem/ProfileDataItem"));
-const SignOutComponent = lazy(()=>import("./SignOut/SignOut"));
-const DeleteAccountComponent = lazy(()=>import("./DeleteAccount/DeleteAccount"));
-const AccountVerification = lazy(() => import("./AccountVerification/AccountVerification"));
+import ProfileDataItem from "./ProfileDataItem/ProfileDataItem";
+import SignOutComponent from "./SignOut/SignOut";
+import DeleteAccountComponent from "./DeleteAccount/DeleteAccount";
+import AccountVerification from "./AccountVerification/AccountVerification";
 
 export default class UserPhoto extends Component {
   _icons = [careerIcon, authorizationIcon, nameIcon, locationIcon, friendsIcon];

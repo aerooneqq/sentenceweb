@@ -1,4 +1,4 @@
-import React, {Component, lazy, Suspense} from "react";
+import React, {Component} from "react";
 
 //Styles
 import "./ProfileDataContStyles.css";
@@ -6,12 +6,10 @@ import "./ProfileDataContStyles.css";
 //Model
 import ProfileDataModel from "./ProfileDataModel";
 
-
 //Components
 import ProfileDataLoader from "./ProfileDataLoader/ProfileDataLoader";
 import ProfileDataHeader from "./profileDataAtoms/ProfileDataHeader/ProfileDataHeader";
 import ProfileHeader from "../ProfileHeader/ProfileHeader";
-import Loader from "../../../../../../loader/Loader";
 
 const profileDataModel = new ProfileDataModel();
 
@@ -20,7 +18,6 @@ const profileDataModel = new ProfileDataModel();
  * 1) All profile text blocks are wrapped in a "textBlock" class, the style rules for this
  *    class are written in the ProfileDataContStyles.css
  * 2) All logic is placed in the ProfileDataModel class.
- * 
  * */
 export default class ProfileData extends Component {
   constructor(props) {

@@ -10,7 +10,7 @@ import ProfileTextBox from "../ProfileTextBox/ProfileTextBox";
 import SaveChanges from "../SaveChanges/SaveChanges";
 import DiscardChanges from "../DiscardChanges/DiscardCahanges";
 
-export default class NameData extends Component{ 
+export default class NameData extends Component { 
     constructor(props) { 
         super(props);
 

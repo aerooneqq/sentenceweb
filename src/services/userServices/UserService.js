@@ -63,4 +63,12 @@ export default class UserService {
         
         return axios.post(url);
     }
+
+    deleteAccount() { 
+        return axios.delete(this._apiURL, { 
+            headers: { 
+                Authorization: `Bearer ${this._token}`
+            }
+        });
+    }
 }

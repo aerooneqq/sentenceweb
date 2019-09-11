@@ -6,6 +6,9 @@ import "./DeleteAccountStyles.css"
 //Icons
 import deleteAccountIconStatic from "./img/delete_account_icon_static.png";
 import deleteAccountIconActive from "./img/delete_account_icon_active.png";
+import UserService from "../../../../../../../../services/UserServices/UserService";
+import { alertAppMessage } from "../../../../../../../ApplicationMessage/ApplicationMessageManager";
+import ResponseService from "../../../../../../../../services/ResponseService/ReponseService";
 
 export default class DeleteAccount extends Component {
 
@@ -17,6 +20,7 @@ export default class DeleteAccount extends Component {
     };
 
     this.handleMouseLeaveEnter = this.handleMouseLeaveEnter.bind(this);
+    this.deleteAccount = this.deleteAccount.bind(this);
   }
 
   handleMouseLeaveEnter() { 
@@ -27,12 +31,21 @@ export default class DeleteAccount extends Component {
     })
   }
 
+  deleteAccount() {
+    new UserService(localStorage.getItem("token")).deleteAccount().then(() => { 
+      alertAppMessage("The account was deleted!", "success");
+      localStorage.removeItem("token");
+    }).catch(er => { 
+      new ResponseService().alertErrorMessage(er, "The error happened while deleting the account");
+    })
+  }
+
   render() {
     return (
       <div className = "toolTipContainer"
            onMouseEnter = {this.handleMouseLeaveEnter}
            onMouseLeave = {this.handleMouseLeaveEnter}>
-        <button id = "deleteAccountBtn">
+        <button id = "deleteAccountBtn" onClick = {this.deleteAccount}>
           <img id = "deleteAccountIcon" 
                src = {this.state.isHovered === true ?  deleteAccountIconActive : deleteAccountIconStatic}
                alt = "Delete" />

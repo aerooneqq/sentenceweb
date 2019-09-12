@@ -4,11 +4,13 @@ import React, {Component} from "react"
 import "./DeleteAccountStyles.css"
 
 //Icons
-import deleteAccountIconStatic from "./img/delete_account_icon_static.png";
-import deleteAccountIconActive from "./img/delete_account_icon_active.png";
+import deleteAccountIcon from "./img/delete_account_icon.svg";
+
+//Services
 import UserService from "../../../../../../../../services/UserServices/UserService";
-import { alertAppMessage } from "../../../../../../../ApplicationMessage/ApplicationMessageManager";
 import ResponseService from "../../../../../../../../services/ResponseService/ReponseService";
+
+import { alertAppMessage } from "../../../../../../../ApplicationMessage/ApplicationMessageManager";
 
 export default class DeleteAccount extends Component {
 
@@ -18,17 +20,8 @@ export default class DeleteAccount extends Component {
     this.state = { 
       isHovered: false
     };
-
-    this.handleMouseLeaveEnter = this.handleMouseLeaveEnter.bind(this);
+    
     this.deleteAccount = this.deleteAccount.bind(this);
-  }
-
-  handleMouseLeaveEnter() { 
-    this.setState(prevState => { 
-      return { 
-        isHovered: !prevState.isHovered
-      }
-    })
   }
 
   deleteAccount() {
@@ -42,12 +35,10 @@ export default class DeleteAccount extends Component {
 
   render() {
     return (
-      <div className = "toolTipContainer"
-           onMouseEnter = {this.handleMouseLeaveEnter}
-           onMouseLeave = {this.handleMouseLeaveEnter}>
+      <div className = "toolTipContainer">
         <button id = "deleteAccountBtn" onClick = {this.deleteAccount}>
           <img id = "deleteAccountIcon" 
-               src = {this.state.isHovered === true ?  deleteAccountIconActive : deleteAccountIconStatic}
+               src = {deleteAccountIcon}
                alt = "Delete" />
         </button>
         <span className = "toolTipText">Delete account</span>

@@ -13,9 +13,13 @@
 }
 
 #deleteAccountIcon { 
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
 }
+
+  #deleteAccountIcon:hover { 
+    filter: saturate(2.3);
+  }
 
 #deleteAccountBtn:focus{
   outline: none;

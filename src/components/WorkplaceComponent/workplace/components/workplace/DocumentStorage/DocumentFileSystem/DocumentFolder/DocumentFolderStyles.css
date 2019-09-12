@@ -1,0 +1,34 @@
+.documentFolderOutterContainer { 
+    width: 125px; 
+    height: 100px;
+
+    margin-left: 20px;
+
+    background: transparent;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+}
+
+    .documentFolderOutterContainer:hover .documentFolderSvgIcon { 
+        fill: orangered;
+    }
+
+    .documentFolderOutterContainer:hover .documentFolderInput { 
+        color: black;
+    }
+
+.documentFolderSvgIcon { 
+    width: 40px; 
+    height: 40px;
+
+    fill: #f97626;
+}
+
+.documentFolderName { 
+    font-size: 13px;
+    color: #505050;
+}

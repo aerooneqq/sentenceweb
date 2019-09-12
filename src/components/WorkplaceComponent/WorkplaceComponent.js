@@ -13,7 +13,7 @@ export default class WorkplaceComponent extends Component{
     super(props);
 
     this.state = { 
-      component: <Profile signOut = {this.props.signOut}/>
+      component: <DocumentDesk />
     };
 
     this.changeWorkplaceComponent = this.changeWorkplaceComponent.bind(this);

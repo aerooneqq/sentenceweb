@@ -1,0 +1,25 @@
+.documentFoldersOutterContainer {
+    width: 100%;
+    max-height: 100%;
+
+    background: transparent;
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    overflow-y: scroll;
+}
+
+    .documentFoldersOutterContainer::-webkit-scrollbar { 
+        width: 0px;
+    }
+
+.documentFolderGrid { 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    justify-content: center;
+    align-items: baseline;
+}

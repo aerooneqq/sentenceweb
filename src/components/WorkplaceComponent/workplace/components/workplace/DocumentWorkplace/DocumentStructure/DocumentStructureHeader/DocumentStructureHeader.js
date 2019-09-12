@@ -1,8 +1,7 @@
 import React, {Component, lazy} from "react";
 
 //Icons
-import searchIcon from  "./img/document_structure_header_search_icon.png";
-import searchIconActive from "./img/document_structure_header_search_icon_active.png";
+import searchIcon from  "./img/document_structure_header_search_icon.svg";
 
 //Styles
 import "./DocumentStructureHeaderStyles.css";
@@ -20,7 +19,6 @@ export default class DocumentStructureHeader extends Component {
         };
 
         this.handleSearcIconClick = this.handleSearcIconClick.bind(this);
-        this.handleSearchIconMouseOver = this.handleSearchIconMouseOver.bind(this);
     }
 
     handleSearcIconClick() {
@@ -43,14 +41,6 @@ export default class DocumentStructureHeader extends Component {
             }
         })
     }
-    
-    handleSearchIconMouseOver() { 
-        this.setState(state => {
-            return { 
-                isSearchIconHovered: !state.isSearchIconHovered
-            }
-        });
-    }
 
     render() { 
         return (
@@ -67,8 +57,7 @@ export default class DocumentStructureHeader extends Component {
                 </div>
                 <div className = "fillContainer" />
                 <div id = "searchIconContainer" onClick = {this.handleSearcIconClick}>
-                    <img src = {this.state.isSearchIconHovered === true ? searchIconActive : searchIcon} alt = ""
-                         onMouseEnter = {this.handleSearchIconMouseOver} onMouseLeave = {this.handleSearchIconMouseOver}/>
+                    <img className = "documentStructureSearch" src = {searchIcon} alt = "Search" />
                 </div>
             </div>
         )

@@ -24,22 +24,23 @@ export default class WorkplaceSearch extends Component {
 
     componentDidMount(){ 
         let workplaceSearch = document.getElementById("workplaceSearchInput");
-        let workplaceSearchHelp = document.getElementById("workplaceSearchInputHelpCont");
 
         workplaceSearch.addEventListener("focus", this.handleInputFocus);
         workplaceSearch.addEventListener("focusout", this.handleInputLostFocus);
-
-        workplaceSearchHelp.classList.toggle("fadeOutAnimation");
     }
 
     handleInputLostFocus(){ 
         let workplaceSearchHelp = document.getElementById("workplaceSearchInputHelpCont"); 
+
+        workplaceSearchHelp.classList.remove("collapsed");
         workplaceSearchHelp.classList.remove("fadeInAnimation");
         workplaceSearchHelp.classList.toggle("fadeOutAnimation");
     }
 
     handleInputFocus() {
         let workplaceSearchHelp = document.getElementById("workplaceSearchInputHelpCont"); 
+
+        workplaceSearchHelp.classList.remove("collapsed");
         workplaceSearchHelp.classList.remove("fadeOutAnimation");
         workplaceSearchHelp.classList.toggle("fadeInAnimation");
     }
@@ -47,7 +48,9 @@ export default class WorkplaceSearch extends Component {
     handleSearchInputKeyEnter(target){ 
         if (target.charCode === 13){ 
             let searchInput = document.getElementById("workplaceSearchInput").value;
-            this.props.search(searchInput);
+            if (this.props.search) { 
+                this.props.search(searchInput);
+            }
         }
     }
 
@@ -64,6 +67,7 @@ export default class WorkplaceSearch extends Component {
                            placeholder="Enter the query..." />
                 </div>
                 <div id = "workplaceSearchInputHelpCont"
+                     className = "collapsed"
                      style = {{backgroundColor: this.props.backgroundColor === undefined ? "white" : this.props.backgroundColor}}>
                     Press enter
                 </div>

@@ -1,0 +1,10 @@
+.documentFileSystemHeader { 
+    width: 100%;
+    height: 50px;
+
+    box-sizing: border-box;
+
+    padding-top: 2px;
+
+    background: #f0f0f0;
+}

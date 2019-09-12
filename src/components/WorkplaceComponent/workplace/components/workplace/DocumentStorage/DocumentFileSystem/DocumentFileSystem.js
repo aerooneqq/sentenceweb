@@ -2,6 +2,10 @@ import React, {Component} from "react";
 
 import "./DocumentFileSystemStyles.css";
 
+//Components
+import DocumentFileSystemHeader from "./DocmentFileSystemHeader/DocumentFileSystemHeader";
+import DocumentFoldersComponent from "./DocumentFoldersComponent/DocumentFoldersComponent";
+
 export default class DocumentFileSystem extends Component { 
 
     constructor(props) { 
@@ -13,7 +17,8 @@ export default class DocumentFileSystem extends Component {
     render() { 
         return ( 
             <div id = "documentStorageContainer" className = {this.getClassName()}>
-
+                <DocumentFileSystemHeader />
+                <DocumentFoldersComponent />
             </div>
         );
     }

@@ -17,6 +17,10 @@
   }
 
 .signOutIcon { 
-  width: 40px;
-  height: 40px;
+  width: 28px;
+  height: 28px;
+}
+
+.signOutIcon:hover { 
+  filter: invert(38%) sepia(4%) saturate(7%) hue-rotate(316deg) brightness(91%) contrast(82%);
 }

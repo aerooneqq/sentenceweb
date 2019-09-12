@@ -1,14 +1,14 @@
-import React, {Component, lazy} from "react";
+import React, {Component} from "react";
 
 //Styles
 import "./UserPhotoStyles.css";
 
 //Icons
-import careerIcon from "./img/career_profile_data_item.png";
-import authorizationIcon from "./img/authorization_profile_data_item.png";
-import friendsIcon from "./img/friends_profile_data_item.png"; 
-import locationIcon from "./img/location_profile_data_item.png";
-import nameIcon from "./img/name_profile_data_item.png";
+import careerIcon from "./img/career_profile_data_item.svg";
+import authorizationIcon from "./img/authorization_profile_data_item.svg";
+import friendsIcon from "./img/friends_profile_data_item.svg"; 
+import locationIcon from "./img/location_profile_data_item.svg";
+import nameIcon from "./img/name_profile_data_item.svg";
 
 //Services
 import { alertAppMessage } from "../../../../../../ApplicationMessage/ApplicationMessageManager";

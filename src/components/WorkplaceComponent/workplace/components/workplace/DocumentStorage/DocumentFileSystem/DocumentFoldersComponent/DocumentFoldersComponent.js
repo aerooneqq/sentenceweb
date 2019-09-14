@@ -6,6 +6,9 @@ import "./DocumentFoldersComponentStyles.css";
 import DocumentFoldersGrid from "../DocumentFoldersGrid/DocumentFoldersGrid";
 import DocumentFolderComponentModel from "./DocumentFolderComponentModel";
 
+import { ContextMenuTrigger } from "react-contextmenu";
+import FolderComponentContextMenu from "./ContextMenu/FolderComponentContextMenu";
+
 export default class DocumentFoldersComponent extends Component { 
 
     constructor(props) { 
@@ -38,10 +41,15 @@ export default class DocumentFoldersComponent extends Component {
     }
 
     render() { 
-        return ( 
-            <div className = "documentFolderSpaceContainer">
-                {this.state.component}
-            </div>
+        return (
+            <ContextMenuTrigger id = "folderComponentContextMenu">
+                <div className = "documentFolderSpaceContainer">
+                    <div className = "documentFoldersContentContainer">
+                        {this.state.component}
+                    </div>
+                    <FolderComponentContextMenu contextMenuID = "folderComponentContextMenu" />
+                </div>
+            </ContextMenuTrigger> 
         )
     }
 }

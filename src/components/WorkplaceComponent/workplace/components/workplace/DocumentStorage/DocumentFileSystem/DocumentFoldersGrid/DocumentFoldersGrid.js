@@ -20,7 +20,6 @@ export default class DoumentFoldersGrid extends Component {
         return ( 
             <div className = "documentFoldersOutterContainer">
                 <div className = "documentFolderGrid">
-                    <DocumentFolder />
                 </div>
             </div>
         )

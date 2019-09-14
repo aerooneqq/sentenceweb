@@ -3,6 +3,7 @@ import React, {Component} from "react";
 //Styles
 import "./DocumentFileSystemHeaderStyles.css"
 import WorkplaceSearch from "../../../../search/WorkplaceSearch";
+import HeaderBackForwardComponent from "./HeaderBackForwardComponent/HeaderBackForwardComponent";
 
 export default class DocumentFileSystemHeader extends Component { 
 
@@ -13,7 +14,10 @@ export default class DocumentFileSystemHeader extends Component {
     render() { 
         return ( 
             <div className = "documentFileSystemHeader">
-                <WorkplaceSearch backgroundColor = "#f0f0f0" />
+                <HeaderBackForwardComponent />
+                <div className = "fileSystemHeaderSearchCont">
+                    <WorkplaceSearch backgroundColor = "#f0f0f0" />
+                </div>
             </div>
         )
     }

@@ -4,7 +4,9 @@
     flex-grow: 1;
 
     background: transparent;
+}
 
+.documentFoldersContentContainer { 
     display: flex;
     flex-direction: row;
 

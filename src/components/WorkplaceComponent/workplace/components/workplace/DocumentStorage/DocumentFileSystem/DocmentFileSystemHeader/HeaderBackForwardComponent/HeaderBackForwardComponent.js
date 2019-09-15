@@ -1,11 +1,23 @@
 import React, {Component} from "react";
 
 import "./HeaderBackForwardComponentStyles.css";
+import {getFoldersHistoryManager} from "../../DocumentFoldersComponent/FoldersHistoryManager";
 
 export default class HeaderBackForwardComponent extends Component { 
 
     constructor(props) { 
         super(props);
+
+        this.goToNextFolder = this.goToNextFolder.bind(this);
+        this.goToPrevFolder = this.goToPrevFolder.bind(this);
+    }
+
+    goToPrevFolder() { 
+        getFoldersHistoryManager().getPreviousFolder();
+    }
+
+    goToNextFolder() {
+        getFoldersHistoryManager().getNextFolder();
     }
 
     render() { 
@@ -13,7 +25,8 @@ export default class HeaderBackForwardComponent extends Component {
             <div className = "backForwardComponentOutterCont">
                 <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                      width="100.000000pt" height="100.000000pt" viewBox="0 0 100.000000 100.000000"
-                    preserveAspectRatio="xMidYMid meet" className = "backForwardIcon">
+                    preserveAspectRatio="xMidYMid meet" className = "backForwardIcon"
+                    onClick = {this.goToPrevFolder}>
                     <g transform="translate(0.000000,100.000000) scale(0.100000,-0.100000)"
                        fill="#000000" stroke="none">
                         <path d="M415 950 c-108 -24 -179 -65 -256 -146 -124 -133 -151 -341 -67 -511
@@ -30,7 +43,8 @@ export default class HeaderBackForwardComponent extends Component {
 
                 <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                         width="100.000000pt" height="100.000000pt" viewBox="0 0 100.000000 100.000000"
-                        preserveAspectRatio="xMidYMid meet" className = "backForwardIcon">
+                        preserveAspectRatio="xMidYMid meet" className = "backForwardIcon"
+                        onClick = {this.goToNextFolder}>
                     <g transform="translate(0.000000,100.000000) scale(0.100000,-0.100000)"
                        fill="#000000" stroke="none">
                         <path d="M415 950 c-108 -24 -179 -65 -256 -146 -124 -133 -151 -341 -67 -511

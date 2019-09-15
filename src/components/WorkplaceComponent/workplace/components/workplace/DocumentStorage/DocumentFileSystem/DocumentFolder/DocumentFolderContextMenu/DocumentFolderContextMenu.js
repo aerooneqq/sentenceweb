@@ -12,11 +12,13 @@ import copyIcon from "./img/document_folder_context_copy.svg"
 //Components
 import DocumentFolderContextMenuItem from "./DocumentFolderContextMenuItem";
 
+/**
+ * This is the DocumentFolderContextMenu, which supports the following:
+ * 1) Rename
+ * 2) Copy
+ * 3) Delete
+ */
 export default class DocumentFolderItemContextMenu extends Component { 
-
-    constructor(props) { 
-        super(props);
-    }
 
     render() { 
         return ( 
@@ -28,7 +30,7 @@ export default class DocumentFolderItemContextMenu extends Component {
                     <MenuItem>
                         <DocumentFolderContextMenuItem src = {deleteIcon} text = "Copy" />
                     </MenuItem>
-                    <MenuItem>
+                    <MenuItem onClick = {this.props.deleteFolder}>
                         <DocumentFolderContextMenuItem src = {copyIcon} text = "Delete" />
                     </MenuItem>
                 </div>

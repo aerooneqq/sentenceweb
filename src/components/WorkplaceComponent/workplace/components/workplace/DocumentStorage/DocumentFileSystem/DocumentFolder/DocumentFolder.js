@@ -7,21 +7,48 @@ import "./DocumentFolderStyles.css";
 //Components
 import DocumentFolderContextMenu from "./DocumentFolderContextMenu/DocumentFolderContextMenu";
 import DocumentFolderInput from "./DocumentFolderInput/DocumentFolderInput";
+import FolderService from "../../../../../../../../services/FileSystemService/FolderService";
+import { alertAppMessage } from "../../../../../../../ApplicationMessage/ApplicationMessageManager";
+import ResponseService from "../../../../../../../../services/ResponseService/ReponseService";
 
-
+/**
+ * This is a component which represents the document folder.
+ * This component has methods to:
+ * 1) Get folder data
+ * 2) Delete folder
+ * 3) Rename folder
+ * 4) Go to another folder
+ * The name of the folder is represented through the dummy component DocumentFolderInput,
+ * so this component stores all information about this input. This made in order to simplify work with
+ * context menu
+ * 
+ * PROPS LIST:
+ * 1) fodler - the folder object
+ * 2) goToFolder - fucntion to upload another folder to the parent DocumentFolderGrid
+ * 3) uploadFolderGrid - fucntion to re-upload current parent DocumentFolderGrid
+ * 4) changeUpdatingState - function to switch on/off the loader in the header componen
+ */
 export default class DocumentFolder extends Component { 
 
     constructor(props) { 
         super(props);
 
         this.state = { 
-            isInputEnabled: false
+            isInputEnabled: false,
+            inputValue: props.folder.folderName,
+            folder: props.folder
         };
 
-        this.contextMenuID = 123;
+        this.contextMenuID = `folderContextMenu${this.state.folder.ID}`;
+
+        this.folderService = new FolderService(localStorage.getItem("token"));
+        this.reponseService = new ResponseService(localStorage.getItem("token"));
 
         this.changeInputEditability = this.changeInputEditability.bind(this);
-        this.makeInputDisabled = this.makeInputDisabled.bind(this);
+        this.makeInputDisabledAndRename = this.makeInputDisabledAndRename.bind(this);
+        this.goToFolder = this.goToFolder.bind(this);
+        this.deleteFolder = this.deleteFolder.bind(this);
+        this.onInputValueChange = this.onInputValueChange.bind(this);
     }
 
     changeInputEditability() { 
@@ -32,16 +59,72 @@ export default class DocumentFolder extends Component {
         });
     }
 
-    makeInputDisabled() { 
+    updateFolderData() { 
+        this.folderService.getFolderData(this.state.folder.ID)
+            .then(res => { 
+                this.setState({
+                    folder: res.data
+                });
+            }).catch(er => { 
+                this.reponseService.changeUpdatingState(er, "The unknown error happened");
+            })
+    }
+
+    deleteFolder() { 
+        this.props.changeUpdatingState(true);
+
+        this.folderService.deleteFolder(this.state.folder.ID)
+            .then(() => { 
+                this.props.uploadFolderGrid();
+                this.props.changeUpdatingState(false);
+                alertAppMessage("The folder was deleted", "success");
+            })
+            .catch(er => { 
+                this.props.changeUpdatingState(false);
+                this.reponseService.alertErrorMessage(er, "The unknown error occured while deleting folder");
+            });
+    }
+
+    /**
+     * Renames the folder and then updates the folder's data.
+     */
+    renameFolder() { 
+        this.props.changeUpdatingState(true);
+
+        this.folderService.renameFolder(this.state.folder.ID, this.state.inputValue)
+            .then(() => { 
+                this.updateFolderData();
+                alertAppMessage("The folder was renamed", "success");
+                this.props.changeUpdatingState(false);
+            }).catch(er => { 
+                this.responseService.alertErrorMessage(er, "The unknown error happened");
+                this.props.changeUpdatingState(false);
+            });
+    }
+
+
+    makeInputDisabledAndRename() { 
         this.setState({ 
             isInputEnabled: false
         }); 
+
+        this.renameFolder();
+    }
+
+    onInputValueChange(event) { 
+        this.setState({ 
+            inputValue: event.target.value
+        });
+    }
+
+    goToFolder() {
+        this.props.goToFolder(this.state.folder.ID, true);
     }
 
     render() { 
         return (
             <ContextMenuTrigger id = {this.contextMenuID}>
-                <div className = "documentFolderOutterContainer">
+                <div className = "documentFolderOutterContainer" onDoubleClick = {this.goToFolder}>
                     <div className = "documentFolderIcon">
                         <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                             width="100.000000pt" height="100.000000pt" viewBox="0 0 100.000000 100.000000"
@@ -62,17 +145,17 @@ export default class DocumentFolder extends Component {
                         </svg>
                     </div>  
                     <div className = "documentFolderName">
-                        <DocumentFolderInput value = "Document's name" 
+                        <DocumentFolderInput value = {this.state.inputValue} 
+                                             onInputValueChange = {this.onInputValueChange}
                                              isEnabled = {this.state.isInputEnabled}
-                                             makeInputDisabled = {this.makeInputDisabled} 
-                                             id = {1}/>
+                                             makeInputDisabledAndRename = {this.makeInputDisabledAndRename}  />
                     </div>
 
                     <DocumentFolderContextMenu contextMenuID = {this.contextMenuID} 
-                                               changeInputEditability = {this.changeInputEditability}/>
+                                               changeInputEditability = {this.changeInputEditability}
+                                               deleteFolder = {this.deleteFolder} />
                 </div>
             </ContextMenuTrigger>
         )
     }
-
 }

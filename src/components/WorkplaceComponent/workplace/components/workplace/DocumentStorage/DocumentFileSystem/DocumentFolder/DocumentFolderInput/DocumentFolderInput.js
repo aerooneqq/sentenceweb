@@ -2,16 +2,30 @@ import React, {Component} from "react";
 
 //Styles
 import "./DocumentFolderInputStyles.css";
+import FolderService from "../../../../../../../../../services/FileSystemService/FolderService";
+import ResponseService from "../../../../../../../../../services/ResponseService/ReponseService";
 
+/**
+ * This is the dummy component which stores the name of the folder.
+ * This component is fully controlled by the DocumentFolderComponent
+ * 
+ * PROPS LIST:
+ * 1) isEnabled
+ * 2) makeInputDisabledAndRename
+ * 3) value
+ * 4) makeInputDisabledAndRename
+ */
 export default class DocumentFolderInput extends Component { 
 
     constructor(props) {
         super(props);
 
         this.state = { 
-            value: props.value,
             id: "documentFolderInput" + props.id
         }
+
+        this.folderService = new FolderService(localStorage.getItem("token"));
+        this.responseService = new ResponseService();
 
         this.handleInputValueChange = this.handleInputValueChange.bind(this);
     }
@@ -23,9 +37,7 @@ export default class DocumentFolderInput extends Component {
     }
 
     handleInputValueChange(event) { 
-        this.setState({ 
-            value: event.target.value
-        });
+        this.props.onInputValueChange(event);
     }
 
     render() { 
@@ -33,10 +45,10 @@ export default class DocumentFolderInput extends Component {
             <input type = "text" 
                    id = {this.state.id}
                    className = "documentFolderInput" 
-                   value = {this.state.value} 
+                   value = {this.props.value} 
                    disabled = {this.props.isEnabled === true ? null : "true"}
                    onChange = {this.handleInputValueChange}
-                   onBlur = {this.props.makeInputDisabled}>
+                   onBlur = {this.props.makeInputDisabledAndRename}>
             </input>
         )
     }

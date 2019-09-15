@@ -17,30 +17,4 @@ export default class FileSystemService {
             }
         });
     }
-
-    createNewFolder(currentFolderID, newFolderName) { 
-        let url = this._apiUrl + `/folders`;
-
-        return axios.put(url, { 
-            folderName: newFolderName, 
-            parentFolderID: currentFolderID
-        }, { 
-            headers: { 
-                Authorization: `Bearer ${this._token}`
-            }
-        });
-    }
-
-    createNewFile(currentFolderID, newFileName) { 
-        let url = this._apiUrl + `/files`;
-
-        return axios.put(url, { 
-            fileName: newFileName,
-            parentFolderID: currentFolderID
-        }, {
-            headers: { 
-                Authorization: `Bearer ${this._token}`
-            }
-        });
-    }
 }

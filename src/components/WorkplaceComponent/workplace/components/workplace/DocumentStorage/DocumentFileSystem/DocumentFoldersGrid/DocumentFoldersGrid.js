@@ -10,6 +10,8 @@ import ResponseService from "../../../../../../../../services/ResponseService/Re
 import FileSystemService from "../../../../../../../../services/FileSystemService/FileSystemService";
 import { setGoToFolderFunc, getFoldersHistoryManager } from "../DocumentFoldersComponent/FoldersHistoryManager";
 import { alertAppMessage } from "../../../../../../../ApplicationMessage/ApplicationMessageManager";
+import FolderService from "../../../../../../../../services/FileSystemService/FolderService";
+import FileService from "../../../../../../../../services/FileSystemService/FileService";
 
 /**
  * DocumentFolderGrid is a component where al the folders and files are displayed.
@@ -29,6 +31,8 @@ export default class DoumentFoldersGrid extends Component {
 
         this.responseService = new ResponseService();
         this.fileSystemService = new FileSystemService(localStorage.getItem("token"));
+        this.folderService = new FolderService(localStorage.getItem("token"));
+        this.fileService = new FileService(localStorage.getItem("token"));
 
         this.state = { 
             isLoading: false,
@@ -58,7 +62,9 @@ export default class DoumentFoldersGrid extends Component {
                                                                              goToFolder = {this.goToFolder}
                                                                              uploadFolderGrid = {this.getFilesAndFolders}
                                                                              changeUpdatingState = {this.props.changeUpdatingState}/>);
-                let files = res.data.files.map(file => <DocumentFile file = {file} />);
+                let files = res.data.files.map(file => <DocumentFile file = {file}
+                                                                     uploadFolderGrid = {this.uploadFolderGrid}
+                                                                     changeUpdatingState = {this.props.changeUpdatingState} />);
 
                 this.setState({ 
                     components: folders.concat(files)
@@ -80,7 +86,7 @@ export default class DoumentFoldersGrid extends Component {
         this.props.changeUpdatingState(true);
 
         let currFolderID = getFoldersHistoryManager().getCurrentFolderID();
-        this.fileSystemService.createNewFolder(currFolderID, "New folder")
+        this.folderService.createNewFolder(currFolderID, "New folder")
             .then(() => {
                 this.getFilesAndFolders();
 
@@ -97,7 +103,24 @@ export default class DoumentFoldersGrid extends Component {
     }
 
     createNewFile() {
-        
+        this.props.changeUpdatingState(true);
+
+        let currFolderID = getFoldersHistoryManager().getCurrentFolderID();
+        this.fileService.createNewFile(currFolderID, "New file")
+            .then(() => { 
+                this.getFilesAndFolders();
+
+                this.props.changeUpdatingState(false);
+                alertAppMessage("The file has been created", "success");
+            })
+            .catch(er => { 
+                this.setState({ 
+                    isLoading: false
+                })
+
+                this.props.changeUpdatingState(false);
+                this.responseService.alertErrorMessage(er, "The unknown error occured while creating new file");
+            });
     }
 
     goToFolder(folderID, addNewFolder) { 
@@ -119,7 +142,8 @@ export default class DoumentFoldersGrid extends Component {
                     {this.state.components}
                 </div>
                 <FolderComponentContextMenu contextMenuID = "folderComponentContextMenu"
-                                            createNewFolder = {this.createNewFolder} />
+                                            createNewFolder = {this.createNewFolder}
+                                            createNewFile = {this.createNewFile} />
             </div>
         )
     }

@@ -42,7 +42,7 @@ export default class DocumentFolder extends Component {
         this.contextMenuID = `folderContextMenu${this.state.folder.ID}`;
 
         this.folderService = new FolderService(localStorage.getItem("token"));
-        this.reponseService = new ResponseService(localStorage.getItem("token"));
+        this.responseService = new ResponseService(localStorage.getItem("token"));
 
         this.changeInputEditability = this.changeInputEditability.bind(this);
         this.makeInputDisabledAndRename = this.makeInputDisabledAndRename.bind(this);
@@ -66,7 +66,7 @@ export default class DocumentFolder extends Component {
                     folder: res.data
                 });
             }).catch(er => { 
-                this.reponseService.changeUpdatingState(er, "The unknown error happened");
+                this.responseService.changeUpdatingState(er, "The unknown error happened");
             })
     }
 
@@ -81,7 +81,7 @@ export default class DocumentFolder extends Component {
             })
             .catch(er => { 
                 this.props.changeUpdatingState(false);
-                this.reponseService.alertErrorMessage(er, "The unknown error occured while deleting folder");
+                this.responseService.alertErrorMessage(er, "The unknown error occured while deleting folder");
             });
     }
 
@@ -148,7 +148,8 @@ export default class DocumentFolder extends Component {
                         <DocumentFolderInput value = {this.state.inputValue} 
                                              onInputValueChange = {this.onInputValueChange}
                                              isEnabled = {this.state.isInputEnabled}
-                                             makeInputDisabledAndRename = {this.makeInputDisabledAndRename}  />
+                                             makeInputDisabledAndRename = {this.makeInputDisabledAndRename}
+                                             id = {this.state.folder.ID} />
                     </div>
 
                     <DocumentFolderContextMenu contextMenuID = {this.contextMenuID} 

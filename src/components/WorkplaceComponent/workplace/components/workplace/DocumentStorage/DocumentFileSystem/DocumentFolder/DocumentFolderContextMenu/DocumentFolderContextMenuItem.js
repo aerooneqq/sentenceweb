@@ -9,7 +9,7 @@ export default class DocumentFolderContextMenuItem extends Component {
     
     render() { 
         return ( 
-            <div className = "documentFolderContextMenuItemCont" onClick= {this.props.handle}>
+            <div className = "documentFolderContextMenuItemCont">
                 <img src = {this.props.src} className = "documentFolderContextMenuItemIcon" alt = ""/>
                 <div className = "documentFolderContextMenuItemText">
                     {this.props.text}

@@ -27,4 +27,27 @@ export default class FileService {
             }
         });
     }
+
+    getFileData(fileID) { 
+        let url = `${this._apiUrl}?fileID=${fileID}`;
+        
+        return axios.get(url, {
+            headers: { 
+                Authorization: `Bearer ${this._token}`
+            }
+        });
+    }
+
+    renameFile(fileID, newFileName) { 
+        let url = `${this._apiUrl}`;
+
+        return axios.put(url, {
+            fileID: fileID,
+            newFileName: newFileName
+        }, { 
+            headers: { 
+                Authorization: `Bearer ${this._token}`
+            }
+        });
+    }
 }

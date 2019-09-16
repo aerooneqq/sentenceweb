@@ -13,7 +13,8 @@ import ResponseService from "../../../../../../../../../services/ResponseService
  * 1) isEnabled
  * 2) makeInputDisabledAndRename
  * 3) value
- * 4) makeInputDisabledAndRename
+ * 4) onInputValueChange
+ * 5) id
  */
 export default class DocumentFolderInput extends Component { 
 
@@ -23,9 +24,6 @@ export default class DocumentFolderInput extends Component {
         this.state = { 
             id: "documentFolderInput" + props.id
         }
-
-        this.folderService = new FolderService(localStorage.getItem("token"));
-        this.responseService = new ResponseService();
 
         this.handleInputValueChange = this.handleInputValueChange.bind(this);
     }

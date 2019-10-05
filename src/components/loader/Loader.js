@@ -3,6 +3,14 @@ import React, {Component} from "react"
 //Styles
 import "./LoaderStyles.css"
 
+/**
+ * This class is a loader which is used in all components where the loader is required
+ * 
+ * PROPS LIST:1
+ * 1) innerWidth
+ * 2) outterWidth
+ * 3) message
+ */
 export default class Loader extends Component{ 
     constructor(props){ 
         super(props)

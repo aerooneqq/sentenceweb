@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import { ContextMenuTrigger } from "react-contextmenu";
+import { useDrag } from "react-dnd";
 
 //Styles
 import "./DocumentFolderStyles.css";
@@ -10,6 +11,7 @@ import DocumentFolderInput from "./DocumentFolderInput/DocumentFolderInput";
 import FolderService from "../../../../../../../../services/FileSystemService/FolderService";
 import { alertAppMessage } from "../../../../../../../ApplicationMessage/ApplicationMessageManager";
 import ResponseService from "../../../../../../../../services/ResponseService/ReponseService";
+import { performAction } from "../DocumentFileProcessManager";
 
 /**
  * This is a component which represents the document folder.
@@ -59,56 +61,65 @@ export default class DocumentFolder extends Component {
         });
     }
 
-    updateFolderData() { 
-        this.folderService.getFolderData(this.state.folder.ID)
-            .then(res => { 
-                this.setState({
-                    folder: res.data
-                });
-            }).catch(er => { 
-                this.responseService.changeUpdatingState(er, "The unknown error happened");
-            })
+    async updateFolderData() { 
+        let res = await this.folderService.getFolderData(this.state.folder.ID);
+
+        if (res.status === 200) { 
+            this.setState({
+                folder: res.data
+            });
+        }
+        else { 
+            this.responseService.changeUpdatingState(res, "The unknown error happened");
+        }
     }
 
-    deleteFolder() { 
+    async deleteFolder() { 
         this.props.changeUpdatingState(true);
 
-        this.folderService.deleteFolder(this.state.folder.ID)
-            .then(() => { 
-                this.props.uploadFolderGrid();
-                this.props.changeUpdatingState(false);
-                alertAppMessage("The folder was deleted", "success");
-            })
-            .catch(er => { 
-                this.props.changeUpdatingState(false);
-                this.responseService.alertErrorMessage(er, "The unknown error occured while deleting folder");
-            });
+        let res = await this.folderService.deleteFolder(this.state.folder.ID);
+
+        if (res.status === 200) { 
+            this.props.uploadFolderGrid();
+            this.props.changeUpdatingState(false);
+            alertAppMessage("The folder was deleted", "success");
+        }
+        else { 
+            this.props.changeUpdatingState(false);
+            this.responseService.alertErrorMessage(res, 
+                "The unknown error occured while deleting folder");
+        }
     }
 
     /**
      * Renames the folder and then updates the folder's data.
      */
-    renameFolder() { 
+    async renameFolder() { 
         this.props.changeUpdatingState(true);
-
-        this.folderService.renameFolder(this.state.folder.ID, this.state.inputValue)
-            .then(() => { 
+        
+        if (this.state.folder.name !== this.state.inputValue) { 
+            let res = await this.folderService.renameFolder(this.state.folder.ID,
+                this.state.inputValue);
+    
+            if (res.status === 200) { 
                 this.updateFolderData();
                 alertAppMessage("The folder was renamed", "success");
                 this.props.changeUpdatingState(false);
-            }).catch(er => { 
-                this.responseService.alertErrorMessage(er, "The unknown error happened");
+            }
+            else { 
+                this.responseService.alertErrorMessage(res, "The unknown error happened");
                 this.props.changeUpdatingState(false);
-            });
+            }
+        }
     }
 
 
-    makeInputDisabledAndRename() { 
+    async makeInputDisabledAndRename() { 
         this.setState({ 
             isInputEnabled: false
         }); 
 
-        this.renameFolder();
+        await this.renameFolder();
     }
 
     onInputValueChange(event) { 
@@ -118,13 +129,16 @@ export default class DocumentFolder extends Component {
     }
 
     goToFolder() {
-        this.props.goToFolder(this.state.folder.ID, true);
+        performAction(async () => { 
+            await this.props.goToFolder(this.state.folder.ID, true);
+        });
     }
 
     render() { 
         return (
             <ContextMenuTrigger id = {this.contextMenuID}>
-                <div className = "documentFolderOutterContainer" onDoubleClick = {this.goToFolder}>
+                <div className = "documentFolderOutterContainer"
+                     onDoubleClick = {this.goToFolder}>
                     <div className = "documentFolderIcon">
                         <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                             width="100.000000pt" height="100.000000pt" viewBox="0 0 100.000000 100.000000"

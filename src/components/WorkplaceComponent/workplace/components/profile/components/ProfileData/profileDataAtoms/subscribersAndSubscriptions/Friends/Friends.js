@@ -10,11 +10,11 @@ import UserService from "../../../../../../../../../../services/UserServices/Use
 import { alertAppMessage } from "../../../../../../../../../ApplicationMessage/ApplicationMessageManager";
 
 //Components
-const SubHeader = lazy(() => import("../SubHeader/SubHeader"));
-const WorkplaceSearch = lazy(() => import("../../../../../../search/WorkplaceSearch"));
-const Subscriber = lazy(() => import("../Subscriber/Subscriber"));
-const Subscription = lazy(() => import("../Subscription/Subscription"));
-const UserSearchResult = lazy(() => import("../UserSearchResult/UserSearchResult"));
+import SubHeader from "../SubHeader/SubHeader";
+import WorkplaceSearch from "../../../../../../search/WorkplaceSearch";
+import Subscriber from "../Subscriber/Subscriber";
+import Subscription from "../Subscription/Subscription";
+import UserSearchResult from "../UserSearchResult/UserSearchResult";
 
 export default class Friends extends Component {
 

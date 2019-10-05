@@ -7,8 +7,8 @@ export default class FileService {
         this._apiUrl = "https://localhost:44368/api/documentFiles";
     }
 
-    createNewFile(currentFolderID, newFileName) { 
-        return axios.post(this._apiUrl, {
+    async createNewFile(currentFolderID, newFileName) { 
+        return await axios.post(this._apiUrl, {
             fileName: newFileName, 
             parentFolderID: currentFolderID
         }, { 
@@ -18,30 +18,30 @@ export default class FileService {
         });
     }
 
-    deleteFile(fileID) { 
+    async deleteFile(fileID) { 
         let url = `${this._apiUrl}?fileID=${fileID}`;
 
-        return axios.delete(url, fileID, { 
+        return await axios.delete(url, fileID, { 
             headers: { 
                 Authorization: `Bearer ${this._token}`
             }
         });
     }
 
-    getFileData(fileID) { 
+    async getFileData(fileID) { 
         let url = `${this._apiUrl}?fileID=${fileID}`;
         
-        return axios.get(url, {
+        return await axios.get(url, {
             headers: { 
                 Authorization: `Bearer ${this._token}`
             }
         });
     }
 
-    renameFile(fileID, newFileName) { 
+    async renameFile(fileID, newFileName) { 
         let url = `${this._apiUrl}`;
 
-        return axios.put(url, {
+        return await axios.put(url, {
             fileID: fileID,
             newFileName: newFileName
         }, { 

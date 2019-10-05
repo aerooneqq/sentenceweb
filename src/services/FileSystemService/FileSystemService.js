@@ -8,10 +8,30 @@ export default class FileSystemService {
     }
 
     
-    getFoldersAndFiles(folderID) { 
+    async getFoldersAndFiles(folderID) { 
         let url = this._apiUrl + `?folderID=${folderID}`
 
-        return axios.get(url, { 
+        return await axios.get(url, { 
+            headers: { 
+                Authorization: `Bearer ${this._token}`
+            }
+        });
+    }
+
+    async placeOneFolderInAnother(firstFolderID, secondFolderID) { 
+        let url = `${this._apiUrl}/replaceFolder?firstFolderID=${firstFolderID}&secondFolderID=${secondFolderID}`;
+
+        return await axios.put(url, {}, {
+            headers: { 
+                Authorization: `Bearer ${this._token}`
+            }
+        });
+    }
+
+    async placeFileInFolder(folderID, fileID) { 
+        let url = `${this._apiUrl}/replaceFile?fileID=${fileID}&folderID=${folderID}`;
+
+        return await axios.put(url, {}, { 
             headers: { 
                 Authorization: `Bearer ${this._token}`
             }

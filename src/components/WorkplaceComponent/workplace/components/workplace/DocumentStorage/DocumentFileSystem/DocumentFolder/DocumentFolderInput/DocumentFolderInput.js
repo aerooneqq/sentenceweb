@@ -21,16 +21,14 @@ export default class DocumentFolderInput extends Component {
     constructor(props) {
         super(props);
 
-        this.state = { 
-            id: "documentFolderInput" + props.id
-        }
+        this.id = "documentFolderInput" + props.id
 
         this.handleInputValueChange = this.handleInputValueChange.bind(this);
     }
 
     componentDidUpdate() { 
         if (this.props.isEnabled === true) { 
-            document.getElementById(this.state.id).focus();
+            document.getElementById(this.id).focus();
         }
     }
 
@@ -41,7 +39,7 @@ export default class DocumentFolderInput extends Component {
     render() { 
         return (
             <input type = "text" 
-                   id = {this.state.id}
+                   id = {this.id}
                    className = "documentFolderInput" 
                    value = {this.props.value} 
                    disabled = {this.props.isEnabled === true ? null : "true"}
@@ -50,5 +48,4 @@ export default class DocumentFolderInput extends Component {
             </input>
         )
     }
-
 }

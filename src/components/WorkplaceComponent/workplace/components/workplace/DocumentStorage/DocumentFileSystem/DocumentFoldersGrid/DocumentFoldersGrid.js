@@ -1,10 +1,13 @@
 import React, {Component} from "react";
+import HTML5Backend from "react-dnd-html5-backend";
+import { DndProvider } from "react-dnd";
 
 //Styles
 import "./DocumentFoldersGridStyles.css";
 
 import DocumentFile from "../DocumentFile/DocumentFile";
-import DocumentFolder from "../DocumentFolder/DocumentFolder";
+import {DragableDocFolder} from "../DocumentFolder/DragableDocFolder";
+import {DragableDocFile} from "../DocumentFile/DragableDocFile";
 import FolderComponentContextMenu from "../DocumentFoldersComponent/ContextMenu/FolderComponentContextMenu";
 import ResponseService from "../../../../../../../../services/ResponseService/ReponseService";
 import FileSystemService from "../../../../../../../../services/FileSystemService/FileSystemService";
@@ -12,6 +15,7 @@ import { setGoToFolderFunc, getFoldersHistoryManager } from "../DocumentFoldersC
 import { alertAppMessage } from "../../../../../../../ApplicationMessage/ApplicationMessageManager";
 import FolderService from "../../../../../../../../services/FileSystemService/FolderService";
 import FileService from "../../../../../../../../services/FileSystemService/FileService";
+
 
 /**
  * DocumentFolderGrid is a component where al the folders and files are displayed.
@@ -53,81 +57,90 @@ export default class DoumentFoldersGrid extends Component {
         this.getFilesAndFolders();
     }
 
-    getFilesAndFolders() {
+    async getFilesAndFolders() {
         this.props.changeUpdatingState(true);
+        let data = await this.fileSystemService.getFoldersAndFiles(this.state.currentFolderID);
 
-        this.fileSystemService.getFoldersAndFiles(this.state.currentFolderID)
-            .then(res => { 
-                let folders = res.data.folders.map(folder => <DocumentFolder folder = {folder}
-                                                                             goToFolder = {this.goToFolder}
-                                                                             uploadFolderGrid = {this.getFilesAndFolders}
-                                                                             changeUpdatingState = {this.props.changeUpdatingState}/>);
-                let files = res.data.files.map(file => <DocumentFile file = {file}
-                                                                     uploadFolderGrid = {this.uploadFolderGrid}
-                                                                     changeUpdatingState = {this.props.changeUpdatingState} />);
-
+        if (data.status === 200) { 
+            this.setState({ 
+                components: null   
+            }, () => { 
+                let res = data.data;
+                let folders = res.folders.map(folder => <DragableDocFolder folder = {folder}
+                                                                           goToFolder = {this.goToFolder}
+                                                                           uploadFolderGrid = {this.getFilesAndFolders}
+                                                                           changeUpdatingState = {this.props.changeUpdatingState}/>);
+                let files = res.files.map(file => <DragableDocFile file = {file}
+                                                                   uploadFolderGrid = {this.uploadFolderGrid}
+                                                                   changeUpdatingState = {this.props.changeUpdatingState} />);
+                
                 this.setState({ 
                     components: folders.concat(files)
                 });
-
-                this.props.changeUpdatingState(false);
-            }).catch(er => { 
-                this.setState({ 
-                    components: null
-                });
-
-                this.props.changeUpdatingState(false);
-
-                this.responseService.alertErrorMessage(er, "The error occured while getting files");
             })
-    }
-
-    createNewFolder() { 
-        this.props.changeUpdatingState(true);
-
-        let currFolderID = getFoldersHistoryManager().getCurrentFolderID();
-        this.folderService.createNewFolder(currFolderID, "New folder")
-            .then(() => {
-                this.getFilesAndFolders();
-
-                this.props.changeUpdatingState(false);
-                alertAppMessage("The folder has been created", "success");
-            }).catch(er => {
-                this.setState({ 
-                    isLoading: false
-                });
-
-                this.props.changeUpdatingState(false);
-                this.responseService.alertErrorMessage(er, "The error occured while creating new folder");
-            })
-    }
-
-    createNewFile() {
-        this.props.changeUpdatingState(true);
-
-        let currFolderID = getFoldersHistoryManager().getCurrentFolderID();
-        this.fileService.createNewFile(currFolderID, "New file")
-            .then(() => { 
-                this.getFilesAndFolders();
-
-                this.props.changeUpdatingState(false);
-                alertAppMessage("The file has been created", "success");
-            })
-            .catch(er => { 
-                this.setState({ 
-                    isLoading: false
-                })
-
-                this.props.changeUpdatingState(false);
-                this.responseService.alertErrorMessage(er, "The unknown error occured while creating new file");
+        }
+        else { 
+            this.setState({ 
+                components: null
             });
+
+            this.responseService.alertErrorMessage(data, "The error occured while getting files");
+        }
+        
+        this.props.changeUpdatingState(false);
+    }
+
+    async createNewFolder() { 
+        this.props.changeUpdatingState(true);
+
+        let currFolderID = getFoldersHistoryManager().getCurrentFolderID();
+
+        let res = await this.folderService.createNewFolder(currFolderID, "New folder");
+
+        if (res.status === 200) { 
+            this.getFilesAndFolders();
+
+            this.props.changeUpdatingState(false);
+            alertAppMessage("The folder has been created", "success");
+        }
+        else { 
+            this.setState({ 
+                isLoading: false
+            });
+
+            this.props.changeUpdatingState(false);
+            this.responseService.alertErrorMessage(res, "The error occured while creating new folder");
+        }
+    }
+
+    async createNewFile() {
+        this.props.changeUpdatingState(true);
+
+        let currFolderID = getFoldersHistoryManager().getCurrentFolderID();
+        let res = await this.fileService.createNewFile(currFolderID, "New file");
+
+        if (res.status === 200) { 
+            this.getFilesAndFolders();
+
+            this.props.changeUpdatingState(false);
+            alertAppMessage("The file has been created", "success");
+        }
+        else { 
+            this.setState({ 
+                isLoading: false
+            })
+
+            this.props.changeUpdatingState(false);
+            this.responseService.alertErrorMessage(res,
+                 "The unknown error occured while creating new file");
+        }
     }
 
     goToFolder(folderID, addNewFolder) { 
         this.setState({ 
             currentFolderID: folderID
-        }, () => { 
-            this.getFilesAndFolders();
+        }, async () => { 
+            await this.getFilesAndFolders();
 
             if (addNewFolder === true) { 
                 this.foldersHistoryManager.addNewFolder(folderID);
@@ -139,7 +152,9 @@ export default class DoumentFoldersGrid extends Component {
         return ( 
             <div className = "documentFoldersOutterContainer">
                 <div className = "documentFolderGrid">
-                    {this.state.components}
+                    <DndProvider backend = {HTML5Backend}>
+                        {this.state.components}
+                    </DndProvider>
                 </div>
                 <FolderComponentContextMenu contextMenuID = "folderComponentContextMenu"
                                             createNewFolder = {this.createNewFolder}

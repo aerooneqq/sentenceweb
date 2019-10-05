@@ -24,6 +24,7 @@ class FolderHistoryManager {
     }
 
     getPreviousFolder() {
+        console.log(this.foldersID);
         if (this.currIndex - 1 === 0) { 
             this.goToStartingScreen();
             return 0;

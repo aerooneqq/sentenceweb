@@ -19,7 +19,7 @@
         }
 
     #documentsHeaderOutterContainer::-webkit-scrollbar{ 
-        height: 2px;
+        height: 5px;
     }
 
     #documentsHeaderOutterContainer::-webkit-scrollbar-thumb{ 

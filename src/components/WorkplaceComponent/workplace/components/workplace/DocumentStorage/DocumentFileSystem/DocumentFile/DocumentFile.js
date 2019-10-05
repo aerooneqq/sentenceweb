@@ -12,6 +12,7 @@ import FileService from "../../../../../../../../services/FileSystemService/File
 import ResponseService from "../../../../../../../../services/ResponseService/ReponseService";
 import { alertAppMessage } from "../../../../../../../ApplicationMessage/ApplicationMessageManager";
 import { ContextMenuTrigger } from "react-contextmenu";
+import { performAction } from "../DocumentFileProcessManager";
 
 /**
  * This component represents the document file.
@@ -44,19 +45,23 @@ export default class DocumentFile extends Component {
     }
 
     uploadFileData() { 
-        this.props.changeUpdatingState(true);
+        performAction(async () => { 
+            this.props.changeUpdatingState(true);
 
-        this.fileService.getFileData(this.state.file.ID)
-            .then(res => { 
+            let res = await this.fileService.getFileData(this.state.file.ID);
+
+            if (res.status === 200) { 
                 this.setState({ 
                     file: res.data
                 });
+
                 this.props.changeUpdatingState(false);
-            })
-            .catch(er => { 
+            }
+            else { 
                 this.props.changeUpdatingState(false);
-                this.responseService.alertErrorMessage(er, "The unknown error happened");
-            })
+                this.responseService.alertErrorMessage(res, "The unknown error happened");
+            }
+        })
     }
 
     changeInputEditability() { 
@@ -68,31 +73,38 @@ export default class DocumentFile extends Component {
     }
 
     deleteFile() { 
-        this.fileService.deleteFile(this.state.file.ID)
-            .then(() => { 
+        performAction(async () => { 
+            let res = await this.fileService.deleteFile(this.state.file.ID);
+
+            if (res.status === 200) { 
                 this.props.uploadFolderGrid();
                 alertAppMessage("The file was deleted", "success");
-            })
-            .catch(er => { 
-                this.responseService.alertErrorMessage(er, "The inknown error happened");
-            })
+            }
+            else { 
+                this.responseService.alertErrorMessage(res  , "The inknown error happened");
+            }
+        })
     }
 
     disableInputAndRename() { 
         this.setState({ 
             isInputEnabled: false,
-        }, () => { 
-            this.props.changeUpdatingState(true);
+        }, () => {
+            performAction(async () => { 
+                this.props.changeUpdatingState(true);
             
-            this.fileService.renameFile(this.state.file.ID, this.state.inputValue)
-                .then(() => { 
+                let res = await this.fileService.renameFile(this.state.file.ID,
+                    this.state.inputValue);
+                
+                if (res.status === 200) { 
                     this.uploadFileData();
                     alertAppMessage("The file was renamed", "success");
-                })
-                .catch(er => { 
+                }
+                else { 
                     this.props.changeUpdatingState(false);
-                    this.responseService.alertErrorMessage(er, "The unknown error happened");
-                })
+                    this.responseService.alertErrorMessage(res, "The unknown error happened");
+                }
+            }); 
         });
     }
 

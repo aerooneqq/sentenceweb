@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header menu item should render correctly 1`] = `
+<div
+  className="headerMenuOption"
+  id="headerMenuOption0"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <div
+    className="headerMenuOptionText"
+    id="headerMenuOptionText0"
+  >
+    name
+  </div>
+</div>
+`;

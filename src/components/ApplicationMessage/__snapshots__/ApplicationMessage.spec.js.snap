@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`application message should render corectly 1`] = `
+<div
+  className="appMessageFadeInOutAnimation"
+  id="errorComponentOutter"
+  style={
+    Object {
+      "bottom": "NaNpx",
+    }
+  }
+>
+  <div
+    id="errorComponentInnerCont"
+  >
+    <div
+      id="errorTitleCont"
+      style={
+        Object {
+          "backgroundColor": "black",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`application message should render correctly 1`] = `
+<div
+  className="appMessageFadeInOutAnimation"
+  id="errorComponentOutter"
+  style={
+    Object {
+      "bottom": "NaNpx",
+    }
+  }
+>
+  <div
+    id="errorComponentInnerCont"
+  >
+    <div
+      class={[Function]}
+      id="errorTitleCont"
+    >
+      Message
+    </div>
+  </div>
+</div>
+`;

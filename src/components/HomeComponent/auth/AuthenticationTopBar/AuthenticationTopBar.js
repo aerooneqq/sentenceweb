@@ -3,6 +3,12 @@
 //Styles
 import "./AuthenticationTopBarStyles.css"
 
+/**
+ * This is the top bar of the registration/authentication component
+ * 
+ * PROPS LIST:
+ * 1) mode - the mode of registration components (either signIn, signOut)
+ */
 export default class AuthenticationTopBar extends React.Component {
     constructor(props) {
         super(props);

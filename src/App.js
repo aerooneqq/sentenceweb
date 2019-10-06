@@ -12,7 +12,6 @@ import "./AppStyles.css";
 //App messages
 import ApplicationMessagesContainer from "./components/ApplicationMessage/ApplicationMessagesContainer";
 import { alertAppMessage } from "./components/ApplicationMessage/ApplicationMessageManager";
-import { resolve } from "url";
 
 //Components
 const HomeComponent = lazy(() => import("./components/HomeComponent/HomeComponent"));

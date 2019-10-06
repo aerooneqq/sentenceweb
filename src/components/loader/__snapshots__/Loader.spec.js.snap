@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loader normal rendering null props render 1`] = `ShallowWrapper {}`;
+
+exports[`Loader normal rendering should render correctly 1`] = `
+<div
+  className="loaderCont"
+>
+  <div
+    className="ring"
+    style={
+      Object {
+        "height": "64px",
+        "width": "64px",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "height": "51px",
+          "width": "51px",
+        }
+      }
+    />
+    <div
+      style={
+        Object {
+          "height": "51px",
+          "width": "51px",
+        }
+      }
+    />
+    <div
+      style={
+        Object {
+          "height": "51px",
+          "width": "51px",
+        }
+      }
+    />
+    <div
+      style={
+        Object {
+          "height": "51px",
+          "width": "51px",
+        }
+      }
+    />
+  </div>
+  <div
+    className="loaderMessageCont"
+  />
+</div>
+`;
+
+exports[`Loader normal rendering undefined props render 1`] = `ShallowWrapper {}`;

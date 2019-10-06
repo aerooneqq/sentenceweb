@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header title should render correctly 1`] = `
+<h2
+  id="headerTitle"
+>
+  <div
+    id="headerTitleText"
+  >
+    Sentence
+  </div>
+</h2>
+`;

@@ -3,33 +3,29 @@ import React, {Component} from "react"
 //Styles
 import "./ApplicationMessageStyles.css"
 
+/**
+ * This component is an application message, which is displayed in the right-down
+ * cornrer. It can be either succes (green background) or error (red color)
+ * 
+ * PROPS LIST:
+ * 1) message - the message to be displayed
+ * 2) type - the type of application message (succeces or error)
+ */
 export default class ApplicationMessage extends Component{ 
     constructor(props) { 
         super(props);
-
-        this._getMessageColorStyle = this._getMessageColorStyle.bind(this);
+        this._getMessageColorClass = this._getMessageColorClass.bind(this);
     }
 
-    _getMessageColorStyle() {
-        let color = "";
-
+    _getMessageColorClass() {
         switch (this.props.type) { 
             case "error":
-                color = "red";
-                break;
-            
+                return "errorTitleContError"
             case "success":
-                color = "green";
-                break;
-
+                return "errorTitleContSuccess"
             default:
-                color = "black";
-                break;
+                return "errorTitleContDefault"
         }
-
-        return { 
-            backgroundColor: color
-        };
     }
 
     render() { 
@@ -37,9 +33,9 @@ export default class ApplicationMessage extends Component{
             <div style = {{bottom: 65 * this.props.number + 10 + "px"}}  id = "errorComponentOutter"
                     className = "appMessageFadeInOutAnimation">
                 <div id = "errorComponentInnerCont">
-                    <div style = {this._getMessageColorStyle()} id = "errorTitleCont">
+                    <div class = {this._getMessageColorClass} id = "errorTitleCont">
                         {this.props.message}
-                    </div>
+                    </div>  
                 </div>
             </div>
         )

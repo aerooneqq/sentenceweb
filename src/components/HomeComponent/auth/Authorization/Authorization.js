@@ -9,6 +9,10 @@ import {alertAppMessage} from "../../../ApplicationMessage/ApplicationMessageMan
 //Components
 const Loader = lazy(()=>import("../../../loader/Loader"))
 
+/**
+ * PROPS LIST: 
+ * 1) signIn - the fucntion to sign in in the system
+ */
 export default class Authorization extends Component {
     constructor(props) {
         super(props);
@@ -26,8 +30,8 @@ export default class Authorization extends Component {
     }
 
     componentDidMount() {
-      var authCont = document.getElementById("signInInputContainer")
-      authCont.classList.toggle("authContentRotationThreeD")
+      //var authCont = document.getElementById("signInInputContainer")
+      //authCont.classList.toggle("authContentRotationThreeD")
     }
 
     handleEmailInputChange(event) {
@@ -66,14 +70,14 @@ export default class Authorization extends Component {
     render() {
         if (this.state.isAuthorizing) { 
           return(
-            <div id = "authorizationLoaderCont">
+            <div className = "authorizationLoaderCont">
               <Loader />
             </div>
           )
         }
-        else{ 
+        else { 
           return (
-            <div id='signInInputContainer'>
+            <div id='signInInputContainer' className="authContentRotationThreeD">
               <div className="inputPropContainer">
                 <p className="inputNameText">E-mail</p>
                 <input type='text'

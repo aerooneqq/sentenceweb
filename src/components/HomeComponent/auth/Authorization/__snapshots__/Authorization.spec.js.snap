@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Authorization must render correctly 1`] = `
+<div
+  className="authContentRotationThreeD"
+  id="signInInputContainer"
+>
+  <div
+    className="inputPropContainer"
+  >
+    <p
+      className="inputNameText"
+    >
+      E-mail
+    </p>
+    <input
+      className="authInput"
+      id="inputEmail"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="inputPropContainer"
+  >
+    <p
+      className="inputNameText"
+    >
+      Password
+    </p>
+    <input
+      className="authInput"
+      id="inputPassword"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      type="password"
+      value=""
+    />
+  </div>
+  <div
+    id="btnContainer"
+  >
+    <p>
+      Forgot your password?
+    </p>
+    <button
+      id="signInBtn"
+      onClick={[Function]}
+    >
+      Sign in
+    </button>
+  </div>
+</div>
+`;

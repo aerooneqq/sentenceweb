@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserPhoto should render corectly 1`] = `
+<div
+  id="photoContainer"
+>
+  <UserPhotoLoader />
+  <AccountVerification />
+</div>
+`;

@@ -23,6 +23,11 @@ import SignOutComponent from "./SignOut/SignOut";
 import DeleteAccountComponent from "./DeleteAccount/DeleteAccount";
 import AccountVerification from "./AccountVerification/AccountVerification";
 
+/**
+ * PROPS LIST:
+ * 1) changeUserData - the function to change the currently displayed data.
+ * 2) signOut  - the function to sign out from the system
+ */
 export default class UserPhoto extends Component {
   _icons = [careerIcon, authorizationIcon, nameIcon, locationIcon, friendsIcon];
   _toolTips = ["Career", "Authentication", "Name", "Location", "Subscribers and subscriptions"];
@@ -149,10 +154,7 @@ export default class UserPhoto extends Component {
                 </div>
               </div>
           }
-
-
           <AccountVerification />
-
         </div>
       )
   }

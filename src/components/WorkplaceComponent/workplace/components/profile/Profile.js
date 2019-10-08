@@ -1,15 +1,19 @@
 import React, {Component, lazy} from "react"
 import "./ProfileStyles.css"
 
-//Services
-import UserService from "../../../../../services/UserServices/UserService"
-import ProfileData from "./components/ProfileData/ProfileData";
-
 //Components
-const UserPhoto = lazy(()=>import("./components/UserPhoto/UserPhoto"))
-const UserActivityComponent = lazy(()=>import("./components/UserActivity/UserActivity"))
-const UserFeed = lazy(()=>import("./components/UserFeed/UserFeed"))
+import ProfileData from "./components/ProfileData/ProfileData";
+import UserPhoto from "./components/UserPhoto/UserPhoto";
+import UserActivityComponent from "./components/UserActivity/UserActivity";
+import UserFeed from "./components/UserFeed/UserFeed";
 
+/**
+ * This component is a top-level component which unites UserPhoto, UserFeed,
+ * ProfileData, UserActivity
+ * 
+ * PROPS LIST:
+ * 1) signOut - the function to sign out from the system
+ */
 export default class Profile extends Component{
   
   constructor(props) {
@@ -18,8 +22,6 @@ export default class Profile extends Component{
     this.state = { 
       currentUserDataIndex: 2
     };
-
-    this.userService = new UserService();
 
     this.changeCurrentUserData = this.changeCurrentUserData.bind(this);
   }

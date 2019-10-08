@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`workplace component should render correctly 1`] = `
+<div
+  id="workplaceContainer"
+>
+  <lazy
+    changeWorkplaceComponent={[Function]}
+  />
+  <div
+    id="contentContainer"
+  >
+    <lazy />
+  </div>
+</div>
+`;

@@ -8,15 +8,19 @@ const Header = lazy(()=> import("./workplace/components/header/Header"))
 const Profile = lazy(()=> import("./workplace/components/profile/Profile"))
 const DocumentDesk = lazy(() => import("./workplace/components/workplace/DocumentDesk"));
 
+/**
+ * PROPS LIST: 
+ * 1) signOut - the method to signout from the system
+ */
 export default class WorkplaceComponent extends Component{
-  constructor(props){ 
+  constructor(props) { 
     super(props);
 
     this.state = { 
       component: <DocumentDesk />
     };
 
-    this.changeWorkplaceComponent = this.changeWorkplaceComponent.bind(this);
+    this._changeWorkplaceComponent = this._changeWorkplaceComponent.bind(this);
   }
 
   /**
@@ -27,7 +31,7 @@ export default class WorkplaceComponent extends Component{
    * 2 - Projects
    * 3 - Templates
    */
-  changeWorkplaceComponent(componentNumber){ 
+  _changeWorkplaceComponent(componentNumber){ 
     switch (componentNumber){ 
       case 0:
         this.setState({ component: <Profile signOut = {this.props.signOut}/>});
@@ -42,7 +46,7 @@ export default class WorkplaceComponent extends Component{
   render(){
     return (
         <div id = "workplaceContainer">
-          <Header changeWorkplaceComponent = {this.changeWorkplaceComponent}/>
+          <Header changeWorkplaceComponent = {this._changeWorkplaceComponent}/>
           <div id="contentContainer">
             {this.state.component}
           </div>

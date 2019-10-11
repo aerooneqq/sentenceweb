@@ -30,7 +30,7 @@ export default class DeleteAccount extends Component {
       localStorage.removeItem("token");
     }).catch(er => { 
       new ResponseService().alertErrorMessage(er, "The error happened while deleting the account");
-    })
+    });
   }
 
   render() {

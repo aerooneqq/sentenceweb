@@ -49,6 +49,7 @@ export default class UserPhoto extends Component {
       }
 
       profileDataItems.push(<ProfileDataItem data = {props} 
+                                             key = {i}
                                              icon = {this._icons[i]}
                                              toolTip = {this._toolTips[i]}/>);
     }

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserPhotoLoader should render corectly 1`] = `
+<div
+  className="userPhotoLoaderOutterCont"
+>
+  <div
+    className="userPhotoLoaderTopBar"
+  />
+  <div
+    className="userPhotoLoaderPhotoCont"
+  />
+</div>
+`;

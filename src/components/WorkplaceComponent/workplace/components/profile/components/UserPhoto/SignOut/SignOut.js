@@ -6,6 +6,10 @@ import "./SignOutStyles.css"
 //Icons
 import signOutIcon from "./img/sign_out_icon.svg";
 
+/**
+ * PROPS LIST:
+ * 1) signOut - the function to sign out from the system.
+ */
 export default class SignOut extends Component{
   constructor(){
     super();
@@ -18,7 +22,8 @@ export default class SignOut extends Component{
   }
 
   handleSignOutClick() {
-    this.props.signOut();
+    if (this.props.signOut)
+      this.props.signOut();
   }
 
   render() {

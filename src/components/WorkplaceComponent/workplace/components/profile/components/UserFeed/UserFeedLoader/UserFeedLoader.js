@@ -12,12 +12,10 @@ export default class UserFeedLoader extends Component {
     render() { 
         return (
             <div className = "userFeedLoaderContainer">
-
                 <UserFeedAtomLoader />
                 <UserFeedAtomLoader />
                 <UserFeedAtomLoader />
                 <UserFeedAtomLoader />
-
             </div>
         )
     }

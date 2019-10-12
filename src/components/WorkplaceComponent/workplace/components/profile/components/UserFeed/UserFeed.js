@@ -31,7 +31,9 @@ export default class UserFeed extends Component {
         this.onTextAreaValueChange = this.onTextAreaValueChange.bind(this);
         this.uploadUserFeed = this.uploadUserFeed.bind(this);
         this.onTextAreaKeyDown = this.onTextAreaKeyDown.bind(this);
+    }
 
+    componentDidMount() { 
         this.uploadUserFeed();
     }
 
@@ -40,6 +42,10 @@ export default class UserFeed extends Component {
      * @param {Array of numbers} array 
      */
     _clearArray(array) { 
+        if (!array) { 
+            return [];
+        }
+
         var seen = {};
         var out = [];
         var len = array.length;

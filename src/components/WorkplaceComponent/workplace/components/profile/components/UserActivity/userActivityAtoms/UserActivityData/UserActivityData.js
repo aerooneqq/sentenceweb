@@ -19,7 +19,6 @@ export default class UserActivityData extends Component  {
 
         this.onCloseIconMouseEnter = this.onCloseIconMouseEnter.bind(this);
         this.onCloseIconMouseLeave = this.onCloseIconMouseLeave.bind(this);
-        console.log(props.activityData);
     }
 
     onCloseIconMouseEnter() { 

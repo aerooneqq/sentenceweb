@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SingleUserActivity should render corectly 1`] = `
+<div
+  className="singleUserActivityCont"
+  onClick={[Function]}
+>
+  <div
+    className="activityBall"
+    style={
+      Object {
+        "border-radius": 10,
+        "height": 11,
+        "width": 11,
+      }
+    }
+  />
+  <span
+    class="userActivityToolTip"
+  >
+    10
+  </span>
+</div>
+`;

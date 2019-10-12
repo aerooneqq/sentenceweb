@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserFeedLoader should render correctly 1`] = `
+<div
+  className="userFeedLoaderContainer"
+>
+  <UserFeedAtomLoader />
+  <UserFeedAtomLoader />
+  <UserFeedAtomLoader />
+  <UserFeedAtomLoader />
+</div>
+`;

@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserActivity should render correctly 1`] = `
+<div
+  id="userActivityOutterContainer"
+>
+  <div
+    className="profileShadowContainer"
+    id="userActivitiesCont"
+  >
+    <Suspense
+      fallback={
+        <UNDEFINED
+          message="Loading activities..."
+        />
+      }
+    >
+      <UserActivityLoader />
+    </Suspense>
+  </div>
+</div>
+`;

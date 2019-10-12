@@ -6,6 +6,12 @@ import "./MonthActivityStyles.css"
 import MonthActivityModel from "./MonthActivityModel";
 import UserActivityData from "../UserActivityData/UserActivityData";
 
+/**
+ * PROPS LIST:
+ * 1) activitiesData - the data which describes the activity
+ * 2) daysCount - the number of days in a month
+ * 3) month - the object which is a month description
+ */
 export default class MonthActivity extends Component{ 
 
     constructor(props) { 
@@ -17,8 +23,7 @@ export default class MonthActivity extends Component{
         this.state = {
             trList: new MonthActivityModel(props.activitiesData, 
                                            props.daysCount,
-                                           props.month.firstDayNum)
-                                           .getActivitiesTable(this.showUserActivityData),
+                                           props.month.firstDayNum).getActivitiesTable(this.showUserActivityData),
             isExtraDataVisible: false,
             extraData: null
         }

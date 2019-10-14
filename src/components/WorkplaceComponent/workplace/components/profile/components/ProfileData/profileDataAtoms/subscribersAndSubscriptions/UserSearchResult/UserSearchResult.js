@@ -3,13 +3,9 @@ import React, {Component, lazy} from "react";
 //Styles
 import "../Subscriber/SubscriberStyles.css"
 
-//Components
-const SubscribeBtn = lazy(() => import("../SubscribeBtn/SubscribeBtn"));
+import SubscribeBtn from "../SubscribeBtn/SubscribeBtn";
 
 export default class UserSearchResult extends Component { 
-    constructor(props){ 
-        super(props);
-    }
 
     render(){ 
         let date = this.props.searchResult.birthDate;

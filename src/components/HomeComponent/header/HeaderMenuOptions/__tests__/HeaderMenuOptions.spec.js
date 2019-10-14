@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import {shallowToJson} from "enzyme-to-json"
-import HeaderMenuOptions from './HeaderMenuOptions';
+import HeaderMenuOptions from '../HeaderMenuOptions';
 
 describe("Header menu options", () => { 
     it("should render correctly" , () => { 

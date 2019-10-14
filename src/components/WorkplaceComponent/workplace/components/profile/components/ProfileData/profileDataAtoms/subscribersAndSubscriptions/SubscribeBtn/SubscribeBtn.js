@@ -3,6 +3,11 @@ import React, {Component} from "react";
 //Styles
 import "./SubscribeBtnStyles.css";
 
+/**
+ * PROPS LIST:
+ * 1) subscribe
+ * 2) userID
+ */
 export default class SubscribeBtn extends Component { 
     constructor(props) { 
         super(props);
@@ -10,7 +15,7 @@ export default class SubscribeBtn extends Component {
         this.handleBtnClick = this.handleBtnClick.bind(this);
     }
 
-    handleBtnClick(){ 
+    handleBtnClick() { 
         this.props.subscribe(this.props.userID);
     }
 

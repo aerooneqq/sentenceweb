@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SaveChanges should render correctly 1`] = `
+<button
+  id="saveChangesBtn"
+  onClick={[Function]}
+>
+  <div
+    id="saveChangesBtnIcon"
+  />
+  <div
+    id="saveChangesBtnText"
+  >
+    Save
+  </div>
+</button>
+`;

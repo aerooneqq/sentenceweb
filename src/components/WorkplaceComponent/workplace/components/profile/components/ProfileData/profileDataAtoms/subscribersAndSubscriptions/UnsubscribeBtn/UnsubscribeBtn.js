@@ -3,14 +3,19 @@ import React, {Component} from "react";
 //Styles
 import "./UnsubscribeBtnStyles.css";
 
-export default class UnsubscribeBtn extends Component{ 
-    constructor(props){ 
+/**
+ * PROPS LIST:
+ * 1) deleteSubscription
+ * 2) userID
+ */
+export default class UnsubscribeBtn extends Component { 
+    constructor(props) { 
         super(props);
 
         this.handleBtnClick = this.handleBtnClick.bind(this);
     }
 
-    handleBtnClick(){ 
+    handleBtnClick() { 
         this.props.deleteSubscription(this.props.userID);
     }
 

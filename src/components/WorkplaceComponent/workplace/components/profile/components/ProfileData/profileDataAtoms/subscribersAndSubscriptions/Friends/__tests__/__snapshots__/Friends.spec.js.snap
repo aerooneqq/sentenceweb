@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Friends should render correctly 1`] = `
+<div
+  id="friendsContainer"
+>
+  <SubsHeader
+    changeUserFriendMode={[Function]}
+  />
+  <WorkplaceSearch
+    search={[Function]}
+  />
+  <div
+    id="friendsScrollViewer"
+  />
+</div>
+`;

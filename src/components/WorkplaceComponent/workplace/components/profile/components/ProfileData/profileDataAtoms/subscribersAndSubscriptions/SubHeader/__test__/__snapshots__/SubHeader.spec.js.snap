@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SubHeader should render correctly 1`] = `
+<div
+  id="subHeader"
+>
+  <div
+    className="subHeaderOption"
+    id="subscribers"
+    onClick={[Function]}
+  >
+    <div
+      className="subHeaderOptionTitle"
+      id="subscribersHeader"
+    >
+      Subscribers
+    </div>
+    <div
+      className="subHeaderOptionHighlighter"
+    />
+  </div>
+  <div
+    className="subHeaderOption"
+    id="subscriptions"
+    onClick={[Function]}
+  >
+    <div
+      className="subHeaderOptionTitle"
+      id="subscriptionsHeader"
+    >
+      Subscriptions
+    </div>
+    <div
+      className="subHeaderOptionHighlighter"
+    />
+  </div>
+</div>
+`;

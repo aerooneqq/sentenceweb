@@ -3,9 +3,17 @@ import React, {Component} from "react"
 //Styles
 import "./ProfileTextBoxStyles.css"
 
+/**
+ * PROPS LIST:
+ * 1) updateData - when the content of the text box is changed it updates the corresponding
+ *                 property in the user object.
+ * 2) propertyName
+ * 3) propertyDescription
+ * 4) propertyValue - the initial value of the property
+ */
 export default class ProfileTextBox extends Component{
 
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.state={
@@ -24,8 +32,8 @@ export default class ProfileTextBox extends Component{
     this.setState({value: event.target.value});
   }
 
-  render(){
-    return(
+  render() {
+    return (
       <div className = "profiletextBoxCont">
         <div className = "propertyNameText">{this.props.propertyName}</div>
         <div className = "propertyDescription">{this.props.propertyDescription}</div>

@@ -18,6 +18,11 @@ const profileDataModel = new ProfileDataModel();
  * 1) All profile text blocks are wrapped in a "textBlock" class, the style rules for this
  *    class are written in the ProfileDataContStyles.css
  * 2) All logic is placed in the ProfileDataModel class.
+ * 
+ * PROPS LIST: 
+ * 1) user - the object describes user.
+ * 2) currentUserDataIndex - the current index of user data which shows what information
+ *                           to display.
  * */
 export default class ProfileData extends Component {
   constructor(props) {
@@ -78,7 +83,7 @@ export default class ProfileData extends Component {
                  </div>  
           
                 <div className = "profileDataContentCont">
-                    {profileDataModel.getProfileDataContent(this.props.currentUserDataIndex)}
+                  {profileDataModel.getProfileDataContent(this.props.currentUserDataIndex)}
                 </div>
             </div>
           </div>

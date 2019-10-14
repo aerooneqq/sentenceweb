@@ -33,7 +33,7 @@ export default class ApplicationMessage extends Component{
             <div style = {{bottom: 65 * this.props.number + 10 + "px"}}  id = "errorComponentOutter"
                     className = "appMessageFadeInOutAnimation">
                 <div id = "errorComponentInnerCont">
-                    <div class = {this._getMessageColorClass} id = "errorTitleCont">
+                    <div class = {this._getMessageColorClass()} id = "errorTitleCont">
                         {this.props.message}
                     </div>  
                 </div>

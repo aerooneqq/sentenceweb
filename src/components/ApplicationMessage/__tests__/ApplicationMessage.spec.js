@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import {shallowToJson} from "enzyme-to-json"
-import ApplicationMessage from './ApplicationMessage';
+import ApplicationMessage from '../ApplicationMessage';
 
 describe('application message', () => { 
     it("should render correctly", () => { 

@@ -11,9 +11,9 @@ describe("ProfileDataItem", () => {
     });
 
     it("should call delete account method", () => { 
+        const spy = jest.spyOn(DeleteAccount.prototype, 'deleteAccount').mockImplementation(() => {});
         const deleteAccount = shallow(<DeleteAccount />);
 
-        const spy = jest.spyOn(deleteAccount.instance(), 'deleteAccount').mockImplementation(() => {});
         deleteAccount.find('button').simulate('click');
         
         expect(spy).toBeCalled()

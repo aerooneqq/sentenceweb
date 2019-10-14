@@ -3,30 +3,39 @@ import React, {Component} from "react";
 //Styles
 import "./SubHeaderStyles.css";
 
+/**
+ * PROPS LIST:
+ * 1) changeUserFriendMode
+ */
 export default class SubsHeader extends Component{ 
     constructor(props){ 
         super(props);
 
         this.changeFriendModeToSubscribers = this.changeFriendModeToSubscribers.bind(this);
         this.changeFriendModeToSubscriptions = this.changeFriendModeToSubscriptions.bind(this);
+        this.changeFrinedsMode = this.changeFriendsMode.bind(this);
+    }
+
+    changeFriendsMode(newStatus) { 
+        this.props.changeUserFriendsMode(newStatus);
     }
 
     changeFriendModeToSubscribers() { 
-        this.props.changeUserFriendMode("subscribers");
+        this.changeFrinedsState("subscribers");
 
         document.getElementById("subscribersHeader").classList
-            .toggle("sunHeaderOptionTitleClicked");
+            .toggle("subHeaderOptionTitleClicked");
         document.getElementById("subscriptionsHeader").classList
-            .remove("sunHeaderOptionTitleClicked");
+            .remove("subHeaderOptionTitleClicked");
     }
 
     changeFriendModeToSubscriptions() { 
-        this.props.changeUserFriendMode("subscriptions");
+        this.changeFrinedsState("subscriptions");
 
         document.getElementById("subscribersHeader").classList
-            .remove("sunHeaderOptionTitleClicked");
+            .remove("subHeaderOptionTitleClicked");
         document.getElementById("subscriptionsHeader").classList
-            .toggle("sunHeaderOptionTitleClicked");
+            .toggle("subHeaderOptionTitleClicked");
     }
 
     render(){ 

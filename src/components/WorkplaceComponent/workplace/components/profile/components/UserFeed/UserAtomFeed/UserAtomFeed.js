@@ -14,7 +14,7 @@ export default class UserAtomFeed extends Component {
     constructor(props) { 
         super(props)
 
-        let dateService = new DateService(props.date ? props.date : Date.now().toString());
+        let dateService = new DateService(props.date ? props.date : "30.05.2000T123123123");
 
         let day = dateService.getDay();
         let month = dateService.getMonth();

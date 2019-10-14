@@ -40,16 +40,30 @@ export default class DocumentFoldersComponent extends Component {
         this.fileSystemService = new FileSystemService(localStorage.getItem("token"));
         this.responseService = new ResponseService();
 
-        this.startComponents = [ 
-            <DocumentMainFolder icon = {cloudMainFolderIcon} name = "Shared"
-                onClick = {this.handleSharedDocsClick} />, 
-            <DocumentMainFolder icon = {localMainFolderIcon} name = "Local"
-                onClick = {this.handleLocalDocsClick} />
-        ]
+        this.startComponent = (
+            <div className = "startFoldersGrid">
+                <div className = "startFolderGridOutterCont">
+                    <DocumentMainFolder icon = {cloudMainFolderIcon} name = "Projects"
+                                        onClick = {this.handleSharedDocsClick} />
+                </div>
+                <div className = "startFolderGridOutterCont">
+                    <DocumentMainFolder icon = {localMainFolderIcon} name = "Local"
+                                        onClick = {this.handleLocalDocsClick} />   
+                </div>
+                <div className = "startFolderGridOutterCont">
+                    <DocumentMainFolder icon = {cloudMainFolderIcon} name = "Projects"
+                                     onClick = {this.handleSharedDocsClick} />
+                </div>
+                <div className = "startFolderGridOutterCont">
+                    <DocumentMainFolder icon = {localMainFolderIcon} name = "Local"
+                                        onClick = {this.handleLocalDocsClick} />   
+                </div>
+            </div>
+        )
 
         this.state = { 
             isLoading: false,
-            component: this.startComponents,
+            component: this.startComponent,
             currentFolderID: null
         }
     }

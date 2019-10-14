@@ -1,7 +1,8 @@
 import React, {Component, Suspense, lazy} from "react"
 import "./HeaderStyles.css"
 
-const MenuItem = lazy(()=>import("./utilityComponents/MenuItem"))
+//Components
+import MenuItem from "./utilityComponents/MenuItem";
 
 const menuItemModels = [{id: 0, name: "Profile"}, {id: 1, name: "Workplace"},
   {id: 2, name: "Projects"}, {id: 3, name: "Templates"}]
@@ -37,6 +38,7 @@ export default class Header extends Component {
 
     for (let i = 0; i<menuItemModels.length; i++) {
       menuItems.push(<MenuItem menuItem = {menuItemModels[i]}
+                               key = {i}
                                changeWorkplaceComponent = {this.props.changeWorkplaceComponent} />)
     }
 

@@ -21,7 +21,7 @@ exports[`UserAtomFeed should render correctly 1`] = `
       <div
         className="userAtomFeedDate"
       >
-        77.93.1570
+        0.0.2.30
       </div>
     </div>
     <div

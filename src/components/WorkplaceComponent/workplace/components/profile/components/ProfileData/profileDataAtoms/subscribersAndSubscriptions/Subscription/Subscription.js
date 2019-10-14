@@ -4,17 +4,15 @@ import React, {Component, lazy} from "react";
 import "./SubscriptionStyles.css";
 
 //Components
-const ViewUserPageBtn = lazy(() => import("../ViewUserPageBtn/ViewUserPageBtn"));
-const UnsubscribeBtn = lazy(() => import("../UnsubscribeBtn/UnsubscribeBtn"));
+import ViewUserPageBtn from "../ViewUserPageBtn/ViewUserPageBtn";
+import UnsubscribeBtn from "../UnsubscribeBtn/UnsubscribeBtn";
 
+/**
+ * PROPS LIST: 
+ * 1) subscription: {userID, name, birthDate}
+ * 2) deleteSubscription
+ */
 export default class Subscription extends Component { 
-    constructor(props) { 
-        super(props);
-
-        this.state = { 
-            userID: props.userID
-        };
-    }
 
     render() { 
         let date = this.props.subscription.birthDate;
@@ -27,10 +25,10 @@ export default class Subscription extends Component {
 
                 <div className = "subscriptionsListUserInfo">
                     <div className = "subscriptionsListUserName">
-                        Степанов Евгений
+                        {this.props.subscription.name}
                     </div>
                     <div className = "subscriptionsListUserBirthDate">
-                        30.05.2000
+                        {date}
                     </div>
                     <div class = "subscriptionsListUserBtns">
                         <UnsubscribeBtn deleteSubscription = {this.props.deleteSubscription}

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfileDataLoader should render correctly 1`] = `
+<div
+  className="profileDataLoaderContainer"
+>
+  <ProfileDataAtomLoader />
+  <ProfileDataAtomLoader />
+  <ProfileDataAtomLoader />
+  <div
+    className="profileDataLoaderButton"
+  />
+</div>
+`;

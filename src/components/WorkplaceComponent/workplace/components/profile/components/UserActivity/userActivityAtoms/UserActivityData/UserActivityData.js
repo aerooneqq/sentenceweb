@@ -8,7 +8,12 @@ import closeIconStatic from "./img/close_user_activity_data_icon.png";
 import closeIconActive from "./img/close_user_activity_data_icon_active.png"
 import UserActivitiesSingleData from "./UserActivitySingleData/UserActivitySingleData";
 
-export default class UserActivityData extends Component  { 
+/**
+ * PROPS LIST:
+ * 1) activityData
+ * 2) closeActivityData - hides the activity data
+ */
+export default class UserActivityData extends Component { 
 
     constructor(props) { 
         super(props);

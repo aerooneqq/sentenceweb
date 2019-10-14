@@ -3,8 +3,12 @@ import React, {Component} from "react";
 //Styles
 import "./SaveChangesStyles.css";
 
-export default class SaveChanges extends Component{ 
-    constructor(props){ 
+/**
+ * PROPS LIST:
+ * 1) saveChanges
+ */
+export default class SaveChanges extends Component { 
+    constructor(props) { 
         super(props);
         this.handleClick = this.handleClick.bind(this);
     }

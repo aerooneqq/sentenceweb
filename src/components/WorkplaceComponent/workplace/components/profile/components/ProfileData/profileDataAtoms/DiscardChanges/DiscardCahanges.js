@@ -3,6 +3,10 @@ import React, {Component} from "react"
 //Styles
 import "./DiscardChangesStyles.css"
 
+/**
+ * PROPS LIST:
+ * 1) discardChangesInProfileData - the function which discards the changes in profile data.
+ */
 export default class DiscardChanges extends Component{ 
     constructor(props){ 
         super(props);

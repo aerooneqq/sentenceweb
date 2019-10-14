@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Subscription should render correctly 1`] = `
+<div
+  className="subscriptionsListContainer"
+>
+  <div
+    className="subscriptionsListUserPhoto"
+  />
+  <div
+    className="subscriptionsListUserInfo"
+  >
+    <div
+      className="subscriptionsListUserName"
+    >
+      Aero
+    </div>
+    <div
+      className="subscriptionsListUserBirthDate"
+    >
+      30.0-.2-00
+    </div>
+    <div
+      class="subscriptionsListUserBtns"
+    >
+      <UnsubscribeBtn
+        deleteSubscription={[Function]}
+        userID={1}
+      />
+      <ViewUserPageBtn />
+    </div>
+  </div>
+</div>
+`;

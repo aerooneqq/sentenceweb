@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfileData should render correctly 1`] = `
+<div
+  id="profileDataOutterContainer"
+>
+  <ProfileHeader
+    header="Settings"
+  />
+  <div
+    id="profileDataContainer"
+  >
+    <div
+      id="profileDataHeaderCont"
+    >
+      <ProfileDataHeader
+        dataName={null}
+      />
+    </div>
+    <div
+      className="profileDataContentCont"
+    />
+  </div>
+</div>
+`;

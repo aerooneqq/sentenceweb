@@ -4,15 +4,16 @@ import React, {Component, lazy} from "react";
 import "./SubscriberStyles.css";
 
 //Components
-const DeleteSubBtn = lazy(() => import("../DeleteSunBtn/DeleteSubBtn"));
-const ViewUserPageBtn = lazy(() => import("../ViewUserPageBtn/ViewUserPageBtn"));
+import DeleteSubBtn from "../DeleteSubBtn/DeleteSubBtn";
+import ViewUserPageBtn from "../ViewUserPageBtn/ViewUserPageBtn";
 
-export default class Subscriber extends Component{ 
-    constructor(props){ 
-        super(props);
-    }
-
-    render(){  
+/**
+ * PROPS LIST:
+ * 1) subscriber (birthDate, name, userID),
+ * 2) deleteSubscriber
+ */
+export default class Subscriber extends Component {  
+    render() {  
         let date = this.props.subscriber.birthDate;
         date = date.substr(0, 4) + "-" + date.substr(5, 2) + "-" + date.substr(8, 2);
 

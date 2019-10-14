@@ -4,7 +4,6 @@ import {useDrag, DragPreviewImage} from "react-dnd";
 import {useDrop} from "react-dnd";
 import dragFolderIcon from "./img/DocumentFolderDragIcon.svg";
 import {alertAppMessage} from "../../../../../../../ApplicationMessage/ApplicationMessageManager";
-import FolderService from "../../../../../../../../services/FileSystemService/FolderService";
 import ResponseService from "../../../../../../../../services/ResponseService/ReponseService";
 import FileSystemService from "../../../../../../../../services/FileSystemService/FileSystemService";
 
@@ -15,33 +14,28 @@ function DragableDocFolder(props) {
         drop: async (item) => { 
             props.changeUpdatingState(true);
             let fileSystemService = new FileSystemService(localStorage.getItem("token"));
-            let responseService = new ResponseService();
+            let res; 
 
-            if (item.folderID) { 
-                let res = await fileSystemService.placeOneFolderInAnother(props.folder.ID, item.folderID);
-                
-                if (res.status === 200) { 
+            if (item.folderID) {
+                try { 
+                    res = await fileSystemService.placeOneFolderInAnother(props.folder.ID, item.folderID);
                     alertAppMessage("The folder was replaced", "success");
                 }
-                else { 
-                    responseService.alertErrorMessage(res);
+                catch (err) { 
+                    alertAppMessage("Can not replace folder", "error");
                 }
-
-                props.changeUpdatingState(false);
             }
             else { 
-                let res = await fileSystemService.placeFileInFolder(props.folder.ID, item.fileID);
-
-                if (res.status === 200) { 
+                try { 
+                    res = await fileSystemService.placeFileInFolder(props.folder.ID, item.fileID);
                     alertAppMessage("The file was replaced", "success");
                 }
-                else { 
-                    responseService.alertErrorMessage(res);
+                catch (err) { 
+                    alertAppMessage("Can not replace file", "error")
                 }
-
-                props.changeUpdatingState(false);
             }
 
+            props.changeUpdatingState(false);
             await props.uploadFolderGrid();
         }
     });

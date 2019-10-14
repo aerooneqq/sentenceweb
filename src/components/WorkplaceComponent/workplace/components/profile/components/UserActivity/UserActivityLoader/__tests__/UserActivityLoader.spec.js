@@ -12,7 +12,6 @@ describe("UserActivityLoader", () => {
     });
 
     it("should have 12 UserActivityAtomLoaders", () => { 
-
         expect(shallow(<UserActivityLoader />).find(UserActivityAtomLoader).length).toBe(12);
     });
 });

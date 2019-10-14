@@ -3,11 +3,11 @@ import React, {Component} from "react";
 //Styles
 import  "./ProfileDataHeaderStyles.css";
 
-export default class ProfileDataHeader extends Component{ 
-    constructor(props){ 
-        super(props);
-    }
-
+/**
+ * PROPS LIST:
+ * 1) dataName - the name of the currently opened data.
+ */
+export default class ProfileDataHeader extends Component { 
     render(){   
         return(
             <div id = "profileDataHeader">

@@ -10,7 +10,7 @@ function alertAppMessage(message, type) {
     alertAppMessageFunc(messages)
     setTimeout(() => { 
         if (messages.length > 0 ) { 
-            messages.pop();
+            messages.shift();
             alertAppMessageFunc(messages);
         }
     }, 2500);

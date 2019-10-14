@@ -9,11 +9,11 @@ import singleActivityData from "./img/single_user_activity_data_icon.png";
 //Services
 import DateService from "../../../../../../../../../../services/Dates/DateService";
 
+/**
+ * PROPS LIST:
+ * 1) activity - object which represents the activity
+ */
 export default class UserActivitiesSingleData extends Component { 
-
-    constructor(props) { 
-        super(props);
-    }
 
     render() { 
         return ( 

@@ -19,7 +19,7 @@ export default class HeaderMenuOptions extends Component{
         let menuOptions = []
 
         for (var i = 0; i < this.menuOptionsModels.length; i++) {
-            menuOptions.push(<HeaderMenuItem menuItem={this.menuOptionsModels[i]} />)
+            menuOptions.push(<HeaderMenuItem key = {i} menuItem={this.menuOptionsModels[i]} />)
         }
 
         return menuOptions

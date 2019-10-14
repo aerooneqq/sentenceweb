@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DiscardChanges should render correctly 1`] = `
+<div
+  id="discardChangesCont"
+  onClick={[Function]}
+>
+  Discard changes
+</div>
+`;

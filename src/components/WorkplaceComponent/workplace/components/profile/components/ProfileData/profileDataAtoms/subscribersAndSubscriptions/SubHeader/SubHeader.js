@@ -7,9 +7,9 @@ import "./SubHeaderStyles.css";
  * PROPS LIST:
  * 1) changeUserFriendMode
  */
-export default class SubsHeader extends Component{ 
-    constructor(props){ 
-        super(props);
+export default class SubsHeader extends Component { 
+    constructor(props) { 
+        super(props); 
 
         this.changeFriendModeToSubscribers = this.changeFriendModeToSubscribers.bind(this);
         this.changeFriendModeToSubscriptions = this.changeFriendModeToSubscriptions.bind(this);
@@ -17,11 +17,11 @@ export default class SubsHeader extends Component{
     }
 
     changeFriendsMode(newStatus) { 
-        this.props.changeUserFriendsMode(newStatus);
+        this.props.changeUserFriendMode(newStatus);
     }
 
     changeFriendModeToSubscribers() { 
-        this.changeFrinedsState("subscribers");
+        this.changeFriendsMode("subscribers");
 
         document.getElementById("subscribersHeader").classList
             .toggle("subHeaderOptionTitleClicked");
@@ -30,7 +30,7 @@ export default class SubsHeader extends Component{
     }
 
     changeFriendModeToSubscriptions() { 
-        this.changeFrinedsState("subscriptions");
+        this.changeFriendsMode("subscriptions");
 
         document.getElementById("subscribersHeader").classList
             .remove("subHeaderOptionTitleClicked");

@@ -34,7 +34,6 @@ export default class Friends extends Component {
         this.uploadSubscribers = this.uploadSubscribers.bind(this);
         this.uploadSubscriptions = this.uploadSubscriptions.bind(this);
         this.searchForUsers = this.searchForUsers.bind(this);
-        this.changeUserFriendMode = this.changeUserFriendMode.bind(this);
         this.subscribe = this.subscribe.bind(this);
     }
     
@@ -136,7 +135,7 @@ export default class Friends extends Component {
             });
     }
 
-    searchForUsers(login){ 
+    searchForUsers(login) { 
         this.setState({ 
             elements: <Loader message = "Searching for users..." />
         })
@@ -164,7 +163,7 @@ export default class Friends extends Component {
             });
     }
 
-    render(){
+    render() {
         return (
             <div id = "friendsContainer">
                 <SubHeader changeUserFriendMode = {this.changeUserFriendMode} />

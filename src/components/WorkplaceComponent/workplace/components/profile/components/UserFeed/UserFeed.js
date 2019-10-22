@@ -65,11 +65,12 @@ export default class UserFeed extends Component {
     uploadUserFeed() { 
         this.userFeedService.getUserFeed(localStorage.getItem("token"))
             .then(res => { 
-                let atomFeeds = res.data.map(f => {
+                let userFeedDto = res.data;
+                let atomFeeds = userFeedDto.usersFeed.map(f => {
                     return  (
                         <UserAtomFeed date = {f.publicationDate}
                                       message = {f.message}
-                                      photo = {f.photo}
+                                      photo = {userFeedDto.userPhotoes[f.userID]}
                                       authorName = {f.name + " " + f.surname}/>
                     );
                 });

@@ -14,7 +14,7 @@ export default class DiscardChanges extends Component{
         this.handleDiscardChangesBtnClick = this.handleDiscardChangesBtnClick.bind(this);
     }
 
-    handleDiscardChangesBtnClick(){ 
+    handleDiscardChangesBtnClick() { 
         this.props.discardChangesInProfileData();
     }
 

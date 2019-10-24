@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Subscriber should render correctly 1`] = `
+<div
+  className="friendsListContainer"
+>
+  <div
+    className="friendsListUserPhoto"
+  />
+  <div
+    className="friendsListUserInfo"
+  >
+    <div
+      className="friendsListUserName"
+    >
+      Aero
+    </div>
+    <div
+      className="friendsListUserBirthDate"
+    >
+      30.0-.2-00
+    </div>
+    <div
+      class="friendsListUserBtns"
+    >
+      <DeleteSubBtn
+        deleteSubscriber={[MockFunction]}
+        userID={1}
+      />
+      <ViewUserPageBtn />
+    </div>
+  </div>
+</div>
+`;

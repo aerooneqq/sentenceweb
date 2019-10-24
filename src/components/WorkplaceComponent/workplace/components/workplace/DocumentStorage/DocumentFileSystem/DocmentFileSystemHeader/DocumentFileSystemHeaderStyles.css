@@ -1,0 +1,30 @@
+.documentFileSystemHeader { 
+    width: 100%;
+    height: 50px;
+
+    box-sizing: border-box;
+
+    padding-top: 2px;
+
+    background: #f0f0f0;
+
+    display: flex;
+    flex-direction: row;
+
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.fileSystemHeaderSearchCont { 
+    height: 100%;
+    
+    flex-grow: 1;
+}
+
+.documentHeaderLoader { 
+    margin-top: 3px;
+}
+
+.fileSystemLoaderCollapsed { 
+    visibility: collapse;
+}

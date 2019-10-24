@@ -2,6 +2,9 @@ import React, {Component, lazy} from "react"
 
 import "./CareerData.css"
 
+//Components
+import ProfileDataLoader from "../../ProfileDataLoader/ProfileDataLoader";
+import CareerStage from "./CareerStage/CareerStage";
 import Loader from "../../../../../../../../loader/Loader";
 import SaveChanges from "../SaveChanges/SaveChanges";
 import DiscardChanges from "../DiscardChanges/DiscardCahanges";
@@ -11,15 +14,13 @@ import ProfileDataElementModel from "../ProfileDataElementModel";
 import {alertAppMessage} from "../../../../../../../../ApplicationMessage/ApplicationMessageManager";
 import AddNewCareerStage from "./AddNewCareerStage/AddNewCareerStage";
 
-const CareerStage = lazy(() => import("./CareerStage/CareerStage"));
-
 export default class CareerData extends Component { 
 
     constructor(props) { 
         super(props);
 
         this.state = { 
-            isUpdating: true
+            isUpdating: true,
         };
 
         this.careerDataModel = new ProfileDataElementModel(["careerStages"]);
@@ -33,11 +34,13 @@ export default class CareerData extends Component {
     componentDidMount() { 
         this.careerDataModel.getData(() => { 
             this.setState({ 
-                isUpdating: false
+                isUpdating: false,
+                isFirstLoad: false
             });
         }, (er) => { 
             this.setState({ 
-                isUpdating: false
+                isUpdating: false,
+                isFirstLoad: false
             });
 
             if (er.response) { 
@@ -56,11 +59,11 @@ export default class CareerData extends Component {
         }
 
         this.careerDataModel.data.careerStages.push({ 
-            company: "Enter career data",
-            job: "Engineer",
-            description: "ASDLASLD AS:LD AS:LDKAS :DLAKLD SD",
-            startYear: "2010",
-            finishYear: "2016"
+            company: "",
+            job: "",
+            description: "",
+            startYear: "",
+            finishYear: ""
         });
 
         this.setState({ 
@@ -116,8 +119,10 @@ export default class CareerData extends Component {
         return(
             <div>
                 <div className="careerStagesOutterContainer fadeInAnimation">
-                    {this.state.isUpdating === true ? <Loader message = "Loading data..." /> :
-                     this.careerDataModel.data.careerStages !== null ? this.careerDataModel.data.careerStages.map(careerStage => 
+                    {this.props.isFirstLoad === true ? <ProfileDataLoader /> :
+                     this.state.isUpdating === true ? <Loader message = "Loading data..." /> :
+                     this.careerDataModel.data.careerStages !== null ? 
+                     this.careerDataModel.data.careerStages.map(careerStage => 
                          <CareerStage careerStage = {careerStage} 
                                       index = {index++}
                                       updateCareerStage = {this.updateCareerStage}

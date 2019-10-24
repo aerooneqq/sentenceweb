@@ -12,7 +12,7 @@ import "./AppStyles.css";
 //App messages
 import ApplicationMessagesContainer from "./components/ApplicationMessage/ApplicationMessagesContainer";
 import { alertAppMessage } from "./components/ApplicationMessage/ApplicationMessageManager";
-import { resolve } from "url";
+import ApplicationMessage from "./components/ApplicationMessage/ApplicationMessage";
 
 //Components
 const HomeComponent = lazy(() => import("./components/HomeComponent/HomeComponent"));

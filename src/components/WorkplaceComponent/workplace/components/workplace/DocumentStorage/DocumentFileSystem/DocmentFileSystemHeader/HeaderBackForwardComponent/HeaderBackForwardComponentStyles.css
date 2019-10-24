@@ -1,0 +1,27 @@
+.backForwardComponentOutterCont {
+    display: flex;
+    flex-direction: row;
+
+    height: 100%;
+    align-items: center;
+}
+
+.backForwardIcon {
+    width: 30px;
+    height: 30px;
+}
+
+    .backForwardIcon:hover > g { 
+        fill: orangered;
+    }
+
+    .backForwardIcon:nth-child(2){ 
+        transform: rotate(180deg);
+
+        margin-left: 5px;
+    }
+
+    .backForwardIcon > g { 
+        fill: #f97626;
+    }
+

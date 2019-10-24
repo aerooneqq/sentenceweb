@@ -1,0 +1,77 @@
+.versionCircle { 
+    width: 22px; 
+    height: 22px;
+
+    background: #6ABD70;
+
+    border-style: solid; 
+    border-radius: 22px;
+    border-width: 3px; 
+    border-color: #6ABD70;
+}
+    
+    .versionCircle:hover { 
+        border-color: green; 
+    }
+
+.selectedVersion { 
+    background: green;
+    border-color: green;
+}
+
+
+.versionToolTipContainer { 
+    position: relative;
+    display: inline-block;
+}
+
+    .versionToolTipContainer .versionToolTipText { 
+        top: -45px;
+        left: -90px;
+        visibility: hidden;
+
+        width: 200px;
+
+        background-color: #333333;
+
+        font-size: 13px;
+        color: #fff;
+        text-align: left;
+        
+        border-radius: 3px;
+        
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 5px;
+
+        position: absolute;
+        z-index: 2000;
+
+        opacity: 0;
+    }
+
+        .versionToolTipContainer:nth-child(1) .versionToolTipText { 
+            top: -45px;
+            left: 0px;
+        }
+
+        
+        .versionToolTipContainer:nth-last-child(1) .versionToolTipText { 
+            top: -45px;
+            left: -180px;
+        }
+
+    .versionToolTipContainer:hover .versionToolTipText {
+        visibility: visible;
+        animation: toolTipFadeIn 0.5s linear forwards;
+    }
+
+    @keyframes toolTipFadeIn { 
+        from { 
+            opacity: 0;
+        }
+
+        to { 
+            opacity: 0.9;
+        }
+    }

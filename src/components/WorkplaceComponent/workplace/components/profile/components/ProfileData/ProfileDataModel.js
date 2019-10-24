@@ -15,6 +15,7 @@ export default class ProfileDataModel {
 
     setUpdateUserFunction(func) { 
         this.updateUserFunction = func;
+
         return this;
     }
 

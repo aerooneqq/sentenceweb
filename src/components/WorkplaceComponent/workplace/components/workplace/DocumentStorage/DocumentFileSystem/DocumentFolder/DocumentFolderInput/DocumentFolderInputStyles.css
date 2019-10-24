@@ -1,0 +1,27 @@
+.documentFolderInput {
+    width: 100px;    
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: #f97626;
+
+    background: white;
+
+    text-align: center;
+
+    color: black;
+    font-size: 14px;
+}
+
+    .documentFolderInput:focus { 
+        outline: none;
+    }
+
+    .documentFolderInput:disabled {
+        border-style: none;
+        background: transparent;
+
+        text-align: center;
+
+        color: gray;
+    }

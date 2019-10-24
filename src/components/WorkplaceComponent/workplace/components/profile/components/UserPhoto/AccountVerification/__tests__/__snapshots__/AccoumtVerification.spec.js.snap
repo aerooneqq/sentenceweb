@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Account verification should render correctly after the state has changed 1`] = `
+<div
+  id="accountVerificationOutterContainer"
+>
+  <div>
+    <div
+      id="accountVerificationText"
+    >
+      Enter the code from the last e-mail. If you don't verify your account, it will be blocked.
+    </div>
+    <div
+      id="enterCodeContainer"
+    >
+      <input
+        id="accountVerificationCodeInput"
+        onChange={[Function]}
+        type="text"
+      />
+      <button
+        id="sendConfirmationCodeBtn"
+        onClick={[Function]}
+      >
+        Send
+      </button>
+    </div>
+  </div>
+</div>
+`;

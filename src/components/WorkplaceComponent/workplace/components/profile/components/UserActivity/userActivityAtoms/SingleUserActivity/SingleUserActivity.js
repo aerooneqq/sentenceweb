@@ -2,6 +2,11 @@ import React, {Component} from "react"
 
 import "./SingleUserActivityStyles.css"
 
+/**
+ * PROPS LIST:
+ * 1) activityData - the object which describes the activity
+ * 2) handleSingleUserActivityClick
+ */
 export default class SingleUserActivity extends Component{ 
     constructor(props) { 
         super(props)

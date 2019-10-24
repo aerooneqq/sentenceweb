@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfileDataItem should render corrctly 1`] = `
+<div
+  className="toolTipContainer"
+>
+  <button
+    id="deleteAccountBtn"
+    onClick={[Function]}
+  >
+    <img
+      alt="Delete"
+      id="deleteAccountIcon"
+      src="delete_account_icon.svg"
+    />
+  </button>
+  <span
+    className="toolTipText"
+  >
+    Delete account
+  </span>
+</div>
+`;

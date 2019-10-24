@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserFeed should render correctly 1`] = `
+<div
+  id="userFeedContainer"
+>
+  <ProfileHeader
+    header="Feed"
+  />
+  <div
+    id="userFeedInnerCont"
+  >
+    <div>
+      <div
+        id="userFeedInnerScroll"
+      >
+        <UserFeedLoader />
+      </div>
+      <div
+        id="userFeedInputCont"
+      >
+        <textarea
+          id="userFeedTextArea"
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          placeholder="Whats up? Type it here..."
+          value=""
+        />
+        <button
+          id="sendFeedBtn"
+          onClick={[Function]}
+        >
+          Send
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

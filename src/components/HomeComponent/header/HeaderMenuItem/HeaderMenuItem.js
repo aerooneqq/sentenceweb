@@ -3,6 +3,12 @@
 //Styles
 import "./HeaderMenuItemStyles.css"
 
+/**
+ * The menu item in the header of the Home component
+ * 
+ * PROPS LIST:
+ * 1) menuItem - contanis ID and name of the menu ites (the model of this view);
+ */
 export default class HeaderMenuItem extends React.Component {
     constructor(props) {
         super(props);
@@ -35,9 +41,8 @@ export default class HeaderMenuItem extends React.Component {
                  className="headerMenuOption"
                  onMouseEnter={this.handleMouseEnter}
                  onMouseLeave={this.handleMouseLeave}>
-                <div id={this.state.textId}
-                     className="headerMenuOptionText">
-                        {this.props.menuItem.Name}
+                <div id={this.state.textId} className="headerMenuOptionText">
+                        {this.props.menuItem.name}
                 </div>
             </div>
         );

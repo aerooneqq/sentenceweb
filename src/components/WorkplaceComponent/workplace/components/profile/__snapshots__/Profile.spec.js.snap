@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile should render correctly 1`] = `
+<div
+  id="profileContainer"
+>
+  <div
+    id="userPhotoCont"
+  >
+    <UserPhoto
+      changeUserData={[Function]}
+      signOut={[Function]}
+    />
+  </div>
+  <div
+    id="rightProfileCont"
+  >
+    <div
+      id="userActivitiesOutterCont"
+    >
+      <UserActivity />
+    </div>
+    <div
+      id="userSettingsAndFeedOutterCont"
+    >
+      <ProfileData
+        currentUserDataIndex={2}
+      />
+      <UserFeed />
+    </div>
+  </div>
+</div>
+`;

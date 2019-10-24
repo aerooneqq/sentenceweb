@@ -2,8 +2,8 @@ import React, {Component} from "react";
 import {ContextMenuTrigger} from "react-contextmenu";
 
 //Images
-import listParagraphIcon from "./img/document_structure_list_paragraph_icon.png"
-import contentParagraphIcon from "./img/document_structure_conten_paragraph_icon.png"
+import listParagraphIcon from "./img/document_structure_list_paragraph_icon.svg"
+import contentParagraphIcon from "./img/document_structure_conten_paragraph_icon.svg"
 
 //Styles
 import "./DocumentTreeItemStyles.css";

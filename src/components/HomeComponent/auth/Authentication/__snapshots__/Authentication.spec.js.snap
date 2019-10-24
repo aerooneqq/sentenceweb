@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Authentiation top bar should render correctly 1`] = `
+<Suspense
+  fallback={
+    <div>
+      Loading...
+    </div>
+  }
+>
+  <div
+    class="authenticationContainerSize"
+    id="authenticationContainer"
+  >
+    <lazy
+      changeSignMode={[Function]}
+      mode="signIn"
+    />
+    <div
+      id="rotationContainer"
+    >
+      <div
+        id="rotation"
+      >
+        <div
+          id="front"
+        >
+          <lazy
+            signIn={[Function]}
+          />
+        </div>
+        <div
+          id="back"
+        >
+          <lazy />
+        </div>
+      </div>
+    </div>
+  </div>
+</Suspense>
+`;

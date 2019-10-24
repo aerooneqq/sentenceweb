@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Authentication top bar should render correctly 1`] = `
+<div
+  id="authenticationTopBarContainer"
+>
+  <div
+    className="movingLeftSlider"
+    id="authSlider"
+    onClick={[Function]}
+  >
+    Sign in
+  </div>
+</div>
+`;

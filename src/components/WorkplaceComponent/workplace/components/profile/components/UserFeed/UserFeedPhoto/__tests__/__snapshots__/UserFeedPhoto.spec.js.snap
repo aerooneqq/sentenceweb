@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserFeedPhoto should render correctly 1`] = `
+<img
+  alt="avatar"
+  className="singleUserFeedPhoto"
+  src="data:image/png;base64, undefined"
+/>
+`;

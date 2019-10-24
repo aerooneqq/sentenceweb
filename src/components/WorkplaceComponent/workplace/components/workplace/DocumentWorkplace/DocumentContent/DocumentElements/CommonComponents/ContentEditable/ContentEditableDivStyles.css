@@ -1,0 +1,16 @@
+.contentEditableDiv { 
+    width: 95%;
+    height: auto; 
+
+    margin-left: 10px; 
+
+    background: transparent; 
+
+    border-style: none;
+
+    font-size: 20px;
+}
+
+    .contentEditableDiv:focus { 
+        outline: none;
+    }

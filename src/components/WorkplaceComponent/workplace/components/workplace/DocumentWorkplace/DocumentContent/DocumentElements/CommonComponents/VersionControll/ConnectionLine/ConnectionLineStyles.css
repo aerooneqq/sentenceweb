@@ -1,0 +1,10 @@
+.connectionLine { 
+    width: 60px; 
+    height: 5px; 
+
+    border-style: none; 
+    border-radius: 10px;
+
+    background: #6ABD70;
+}
+

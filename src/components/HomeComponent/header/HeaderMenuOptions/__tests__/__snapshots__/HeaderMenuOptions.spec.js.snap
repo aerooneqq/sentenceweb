@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header menu options should render correctly 1`] = `
+<div
+  id="menuOptionsContainer"
+>
+  <lazy
+    key="0"
+    menuItem={
+      Object {
+        "Href": "",
+        "ID": 0,
+        "name": "About",
+      }
+    }
+  />
+  <lazy
+    key="1"
+    menuItem={
+      Object {
+        "Href": "",
+        "ID": 1,
+        "name": "Examples",
+      }
+    }
+  />
+  <lazy
+    key="2"
+    menuItem={
+      Object {
+        "Href": "",
+        "ID": 2,
+        "name": "Try",
+      }
+    }
+  />
+  <lazy
+    key="3"
+    menuItem={
+      Object {
+        "Href": "",
+        "ID": 3,
+        "name": "Contacts",
+      }
+    }
+  />
+</div>
+`;

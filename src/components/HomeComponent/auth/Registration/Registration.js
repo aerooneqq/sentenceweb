@@ -10,6 +10,7 @@ import UserService from "../../../../services/UserServices/UserService";
 //App messages
 import {alertAppMessage} from "../../../ApplicationMessage/ApplicationMessageManager";
 
+
 export default class Registration extends Component{
   constructor(props){
     super(props);
@@ -25,10 +26,6 @@ export default class Registration extends Component{
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleRepeatPasswordChange = this.handleRepeatPasswordChange.bind(this);
-  }
-
-  componentDidMount() {
-    document.getElementById("signUpInputContainer").classList.toggle("regContentRotationThreeD")
   }
 
   handleRegistrationClick() { 
@@ -82,14 +79,14 @@ export default class Registration extends Component{
   render(){
     if (this.state.isLoading === true) { 
       return ( 
-        <div id = "registrationLoaderCont">
+        <div className = "registrationLoaderCont">
           <Loader />
         </div>
       )
     }
 
-    return(
-      <div id='signUpInputContainer'>
+    return (
+      <div id='signUpInputContainer' className ="regContentRotationThreeD">
         <div className="inputPropContainer">
           <p className="inputNameText">E-mail</p>
           <input type='text' id="inputEmail" className="regInput" onChange = {this.handleEmailChange}/>

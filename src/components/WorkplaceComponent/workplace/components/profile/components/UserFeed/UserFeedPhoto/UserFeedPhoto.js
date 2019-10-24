@@ -5,8 +5,11 @@ import "./UserFeedPhotoStyles.css";
 //Services
 import UserService from "../../../../../../../../services/UserServices/UserService";
 import ResponseService from "../../../../../../../../services/ResponseService/ReponseService";
-import ImageService from "../../../../../../../../services/ImageService/ImageService";
 
+/**
+ * PROPS LIST:
+ * 1) photo - the base64 string represents the user photo.
+ */
 export default class UserFeedPhoto extends Component { 
     constructor(props) { 
         super(props);

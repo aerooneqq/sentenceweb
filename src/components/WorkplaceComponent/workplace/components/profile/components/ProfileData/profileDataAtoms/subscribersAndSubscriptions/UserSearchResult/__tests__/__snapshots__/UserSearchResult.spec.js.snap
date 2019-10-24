@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserSearchResult should render correctly 1`] = `
+<div
+  className="friendsListContainer"
+>
+  <div
+    className="friendsListUserPhoto"
+  />
+  <div
+    className="friendsListUserInfo"
+  >
+    <div
+      className="friendsListUserName"
+    >
+      name
+    </div>
+    <div
+      className="friendsListUserBirthDate"
+    >
+      30.0-.2-00
+    </div>
+    <div
+      class="friendsListUserBtns"
+    >
+      <SubscribeBtn
+        subscribe={[Function]}
+        userID={1}
+      />
+    </div>
+  </div>
+</div>
+`;

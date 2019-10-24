@@ -1,7 +1,7 @@
 import React, {Component, lazy} from "react";
 
 //Icons
-import documentIcon from "./img/workplace_header_document_icon.png";
+import documentIcon from "./img/workplace_header_document_icon.svg";
 
 //Styles
 import "./DocumentHeaderCellStyles.css";

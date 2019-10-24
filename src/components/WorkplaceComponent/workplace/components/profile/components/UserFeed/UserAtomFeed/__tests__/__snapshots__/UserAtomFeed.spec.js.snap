@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserAtomFeed should render correctly 1`] = `
+<div
+  className="userAtomFeedCont"
+>
+  <div
+    className="userAtomFeedPhoto"
+  >
+    <UserFeedPhoto />
+  </div>
+  <div
+    className="userFeedTextCont"
+  >
+    <div
+      className="userAtomFeedData"
+    >
+      <div
+        className="userAtomFeedAuthorName"
+      />
+      <div
+        className="userAtomFeedDate"
+      >
+        0.0.2.30
+      </div>
+    </div>
+    <div
+      className="userAtomFeedText"
+    />
+  </div>
+</div>
+`;

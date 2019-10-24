@@ -1,29 +1,33 @@
-import React, {Component, lazy} from "react";
+import React, {Component} from "react";
 
 //Styles
 import "./UserPhotoStyles.css";
 
 //Icons
-import careerIcon from "./img/career_profile_data_item.png";
-import authorizationIcon from "./img/authorization_profile_data_item.png";
-import friendsIcon from "./img/friends_profile_data_item.png"; 
-import locationIcon from "./img/location_profile_data_item.png";
-import nameIcon from "./img/name_profile_data_item.png";
+import careerIcon from "./img/career_profile_data_item.svg";
+import authorizationIcon from "./img/authorization_profile_data_item.svg";
+import friendsIcon from "./img/friends_profile_data_item.svg"; 
+import locationIcon from "./img/location_profile_data_item.svg";
+import nameIcon from "./img/name_profile_data_item.svg";
 
 //Services
 import { alertAppMessage } from "../../../../../../ApplicationMessage/ApplicationMessageManager";
 import ResponseService from "../../../../../../../services/ResponseService/ReponseService";
 import UserPhotoService from "../../../../../../../services/UserPhotoService/UserPhotoService";
 
+//Components
 import Loader from "../../../../../../loader/Loader";
 import UserPhotoLoader from "./UserPhotoLoader/UserPhotoLoader";
+import ProfileDataItem from "./ProfileDataItem/ProfileDataItem";
+import SignOutComponent from "./SignOut/SignOut";
+import DeleteAccountComponent from "./DeleteAccount/DeleteAccount";
+import AccountVerification from "./AccountVerification/AccountVerification";
 
-//Components
-const ProfileDataItem = lazy(()=>import("./ProfileDataItem/ProfileDataItem"));
-const SignOutComponent = lazy(()=>import("./SignOut/SignOut"));
-const DeleteAccountComponent = lazy(()=>import("./DeleteAccount/DeleteAccount"));
-const AccountVerification = lazy(() => import("./AccountVerification/AccountVerification"));
-
+/**
+ * PROPS LIST:
+ * 1) changeUserData - the function to change the currently displayed data.
+ * 2) signOut  - the function to sign out from the system
+ */
 export default class UserPhoto extends Component {
   _icons = [careerIcon, authorizationIcon, nameIcon, locationIcon, friendsIcon];
   _toolTips = ["Career", "Authentication", "Name", "Location", "Subscribers and subscriptions"];
@@ -45,6 +49,7 @@ export default class UserPhoto extends Component {
       }
 
       profileDataItems.push(<ProfileDataItem data = {props} 
+                                             key = {i}
                                              icon = {this._icons[i]}
                                              toolTip = {this._toolTips[i]}/>);
     }
@@ -150,10 +155,7 @@ export default class UserPhoto extends Component {
                 </div>
               </div>
           }
-
-
           <AccountVerification />
-
         </div>
       )
   }

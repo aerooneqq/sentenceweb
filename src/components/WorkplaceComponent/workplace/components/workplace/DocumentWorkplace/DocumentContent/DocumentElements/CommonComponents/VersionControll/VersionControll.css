@@ -1,0 +1,106 @@
+.versionControllOutterCont { 
+    margin-top: 15px;
+    background: transparent;
+
+    display: flex; 
+    flex-direction: column;
+    opacity: 0
+}
+
+    .openedContainer {
+        visibility: visible;
+        opacity: 1;
+
+        transition: 0.35s ease-in;
+    }
+
+    .closedContainer { 
+        visibility: collapse;
+        opacity: 0;
+
+        transition: 0.35s ease-in;
+    }
+
+.versionsGraphContainer { 
+    display: flex; 
+    flex-direction: row;
+
+    margin-left: 2.5%;
+    width: 95%; 
+    margin-top: 5px;
+}
+
+.topVersionControllCont { 
+    display: flex;
+    flex-direction: row;
+}
+
+.versionControllContainerTitle { 
+    font-size: 22px;
+    color: #AAAAAA; 
+}
+
+.versionControllInnerContainer {
+    margin-top: 5px; 
+    width: 100%;
+
+    display: flex; 
+    flex-direction: row; 
+    align-items: center;
+}
+
+.saveNewVersionBtn {
+    width: 110px;
+    height: 30px;
+    
+    background: green; 
+
+    border-style: none; 
+    border-radius: 5px; 
+
+    font-size: 15px; 
+    color: white;
+    text-align: center;
+
+    margin-left: 50px;
+}
+
+    .saveNewVersionBtn:focus { 
+        outline: none;
+    }
+
+    .saveNewVersionBtn:hover { 
+        background: #6ABD70;
+    }
+
+    .saveNewVersionBtn:active { 
+        transform: scale(0.9, 0.9);
+    }
+
+.deleteNewVersionBtn { 
+    width: 110px;
+    height: 30px;
+    
+    background: red; 
+
+    border-style: none; 
+    border-radius: 5px; 
+
+    font-size: 15px; 
+    color: white;
+    text-align: center;
+
+    margin-left: 20px;
+}
+
+    .deleteNewVersionBtn:focus { 
+        outline: none;
+    }
+
+    .deleteNewVersionBtn:hover { 
+        background: #FF6060;
+    }
+
+    .deleteNewVersionBtn:active { 
+        transform: scale(0.9, 0.9);
+    }

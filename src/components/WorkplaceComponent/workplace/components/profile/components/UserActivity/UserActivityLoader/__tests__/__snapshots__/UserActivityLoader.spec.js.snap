@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserActivityLoader should render correctly 1`] = `
+<div
+  className="userActivityLoaderContainer"
+>
+  <UserActivityAtomLoader />
+  <UserActivityAtomLoader />
+  <UserActivityAtomLoader />
+  <UserActivityAtomLoader />
+  <UserActivityAtomLoader />
+  <UserActivityAtomLoader />
+  <UserActivityAtomLoader />
+  <UserActivityAtomLoader />
+  <UserActivityAtomLoader />
+  <UserActivityAtomLoader />
+  <UserActivityAtomLoader />
+  <UserActivityAtomLoader />
+</div>
+`;

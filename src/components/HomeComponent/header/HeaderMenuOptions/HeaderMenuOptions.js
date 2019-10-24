@@ -7,9 +7,9 @@ import "./HeaderMenuOptionsStyles.css"
 const HeaderMenuItem = lazy(() => import("../HeaderMenuItem/HeaderMenuItem"));
 
 export default class HeaderMenuOptions extends Component{ 
-    menuOptionsModels = [{ ID: 0, Name: "About", Href: "" },
-    { ID: 1, Name: "Examples", Href: "" }, { ID: 2, Name: "Try", Href: "" },
-    { ID: 3, Name: "Contacts", Href: "" }]
+    menuOptionsModels = [{ ID: 0, name: "About", Href: "" },
+    { ID: 1, name: "Examples", Href: "" }, { ID: 2, name: "Try", Href: "" },
+    { ID: 3, name: "Contacts", Href: "" }]
 
     constructor(props){ 
         super(props);
@@ -19,7 +19,7 @@ export default class HeaderMenuOptions extends Component{
         let menuOptions = []
 
         for (var i = 0; i < this.menuOptionsModels.length; i++) {
-            menuOptions.push(<HeaderMenuItem menuItem={this.menuOptionsModels[i]} />)
+            menuOptions.push(<HeaderMenuItem key = {i} menuItem={this.menuOptionsModels[i]} />)
         }
 
         return menuOptions

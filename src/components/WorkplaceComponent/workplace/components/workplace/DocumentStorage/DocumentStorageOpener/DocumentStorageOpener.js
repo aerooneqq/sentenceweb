@@ -4,8 +4,7 @@ import React, {Component} from "react";
 import "./DocumentStorageOpenerStyles.css";
 
 //Icons
-import openDocumentStorageIconStatic from "./img/open_document_storage_icon.png";
-import openDocumentStorageIconActive from "./img/open_document_storage_icon_active.png";
+import openDocumentStorageIcon from "./img/open_document_storage_icon.svg";
 
 export default class DocumentStorageOpener extends Component { 
     
@@ -50,7 +49,7 @@ export default class DocumentStorageOpener extends Component {
                  onMouseLeave = {this.onOpenerMouseLeave}
                  onClick = {this.handleOpenerClick}>
                 <img className = {this.getOpenerIconClass()}
-                     src = {this.state.isHovered ? openDocumentStorageIconActive : openDocumentStorageIconStatic} 
+                     src = {openDocumentStorageIcon} 
                      alt = "Open" />
             </div>
         )

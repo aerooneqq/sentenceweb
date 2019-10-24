@@ -72,3 +72,15 @@
 
     padding: 10px;
 }
+
+.errorTitleContSuccess { 
+    background: green;
+}
+
+.errorTitleContError { 
+    background: red;
+}
+
+.errorTitleContDefault { 
+    background: gray;
+}

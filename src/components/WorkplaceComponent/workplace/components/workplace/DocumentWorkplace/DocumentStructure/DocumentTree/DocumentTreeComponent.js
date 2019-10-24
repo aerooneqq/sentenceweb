@@ -4,7 +4,7 @@ import React, {Component, lazy} from "react";
 import "./DocumentTreeComponentStyles.css";
 
 //Components
-const DocumentTreeItem = lazy(() => import("./DocumentTreeItem/DocumentTreeItem"));
+import DragableTreeItem from "./DocumentTreeItem/DragableTreeItem";
 
 export default class DocumentTreeComponent extends Component { 
     constructor(props) { 
@@ -67,7 +67,7 @@ export default class DocumentTreeComponent extends Component {
     render() { 
         return ( 
             <div className = "documentTreeContainer" style = {{position: "relative", zIndex: -this.props.paragraph.id}}>
-                <DocumentTreeItem paragraph = {this.state.paragraph}
+                <DragableTreeItem paragraph = {this.state.paragraph}
                                   handleTreeItemClick = {this.handleTreeItemClick}/>
 
                 <div id = {this.nestedContainerID} className = "nestedItemsContainer">

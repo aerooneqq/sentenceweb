@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Registration component should render correctly 1`] = `
+<div
+  className="regContentRotationThreeD"
+  id="signUpInputContainer"
+>
+  <div
+    className="inputPropContainer"
+  >
+    <p
+      className="inputNameText"
+    >
+      E-mail
+    </p>
+    <input
+      className="regInput"
+      id="inputEmail"
+      onChange={[Function]}
+      type="text"
+    />
+  </div>
+  <div
+    className="inputPropContainer"
+  >
+    <p
+      className="inputNameText"
+    >
+      Password
+    </p>
+    <input
+      className="regInput"
+      id="inputPassword"
+      onChange={[Function]}
+      type="password"
+    />
+  </div>
+  <div
+    className="inputPropContainer"
+  >
+    <p
+      className="inputNameText"
+    >
+      Repeat password
+    </p>
+    <input
+      className="regInput"
+      id="inputPassword"
+      onChange={[Function]}
+      type="password"
+    />
+  </div>
+  <div
+    id="btnContainer"
+  >
+    <button
+      id="signUpBtn"
+      onClick={[Function]}
+    >
+      Sign up
+    </button>
+    <p>
+      By clicking the sign up btn u agree to freely give me all things u have
+    </p>
+  </div>
+</div>
+`;

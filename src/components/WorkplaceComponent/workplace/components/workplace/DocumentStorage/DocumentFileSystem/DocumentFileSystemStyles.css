@@ -1,3 +1,22 @@
+#documentStorageContainer { 
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column; 
+}
+
+    #documentStorageContainer > .react-contextmenu-wrapper { 
+        height: 100%;
+        max-height: 100%;
+
+        overflow-y: scroll;
+    }
+
+    #documentStorageContainer > .react-contextmenu-wrapper::-webkit-scrollbar { 
+        width: 0px;
+    }
+
 .documentFileSystemOutterCont {
     height: 100%;
 
@@ -5,13 +24,13 @@
 }
 
 .documentFileSystemSlideLeft { 
-    width: 300px;
-    animation: documentFileSystemSlideLeftAnimation 0.4s ease-in forwards;
+    width: 700px;
+    animation: documentFileSystemSlideLeftAnimation 0.3s linear forwards;
 }
 
 @keyframes documentFileSystemSlideLeftAnimation { 
     from {
-        width: 300px;
+        width: 700px;
     }
 
     to { 
@@ -20,7 +39,7 @@
 }
 
 .documentFileSystemSlideRight { 
-    animation: documentFileSystemSlideRightAnimation 0.4s ease-in forwards;
+    animation: documentFileSystemSlideRightAnimation 0.3s linear forwards;
 }
 
 
@@ -30,6 +49,6 @@
     }
 
     to { 
-        width: 300px;
+        width: 700px;
     }
 }

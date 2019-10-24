@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserActivityData should render correctly 1`] = `
+<div
+  className="userActivityData"
+>
+  <div
+    className="userActivityDataHeaderCont"
+  >
+    <div
+      className="userActivityDataHeaderText"
+    >
+      Activity data
+    </div>
+    <div
+      className="userActivityDataFill"
+    />
+    <div
+      className="userActivityDataHeaderIcon"
+    >
+      <img
+        alt="Close"
+        className="closeUserActivityIcon"
+        onClick={[MockFunction]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        src="close_user_activity_data_icon.png"
+      />
+    </div>
+  </div>
+  <div
+    className="singleUserActivitiesCont"
+  />
+</div>
+`;

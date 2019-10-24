@@ -1,13 +1,17 @@
 import React, {Component, lazy} from "react"
 
-
-import Loader from "../../../../../../../../loader/Loader";
+//Models
 import ProfileDataElementModel from "../ProfileDataElementModel";
+
+//Application messages
 import { alertAppMessage } from "../../../../../../../../ApplicationMessage/ApplicationMessageManager";
 
-const ProfileTextBox = lazy(() => import("../ProfileTextBox/ProfileTextBox"));
-const SaveChanges = lazy(() => import("../SaveChanges/SaveChanges"));
-const DiscardChanges = lazy(() => import("../DiscardChanges/DiscardCahanges"));
+//Components
+import Loader from "../../../../../../../../loader/Loader";
+import ProfileTextBox from "../ProfileTextBox/ProfileTextBox";
+import SaveChanges from "../SaveChanges/SaveChanges";
+import DiscardChanges from "../DiscardChanges/DiscardCahanges";
+import ProfileDataLoader from "../../ProfileDataLoader/ProfileDataLoader";
 
 export default class LocationData extends Component { 
 
@@ -84,7 +88,8 @@ export default class LocationData extends Component {
     }
 
     render() {
-        return this.state.isUpdating === true ? <Loader message = "Loading data..." /> :
+        return this.props.isFirstLoad === true ? <ProfileDataLoader /> : 
+            this.state.isUpdating === true ? <Loader message = "Loading data..." /> :
             (
                 <div className="fadeInAnimation profileDataContentCont">
                     <div className="textBlock">          

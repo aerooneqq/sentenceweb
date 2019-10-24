@@ -1,4 +1,23 @@
 #documentContentOutterContainer{ 
     width: 100%;
     height: 100%;
+
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+
+    box-sizing: border-box;
+
+    padding: 20px;
+}
+
+#documentContentInnerContainer { 
+    width: 100%;
+    max-width: 1000px;
+    height: 100%;
+
+    overflow-x: none;
+    overflow-y: auto;
 }

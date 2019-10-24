@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignOut component should render correctly 1`] = `
+<div
+  className="toolTipContainer"
+>
+  <button
+    id="signOutBtn"
+    onClick={[Function]}
+  >
+    <object
+      className="signOutIcon"
+      data="sign_out_icon.svg"
+      type="image/svg+xml"
+    >
+      Folder
+    </object>
+  </button>
+  <span
+    className="toolTipText"
+  >
+    Sign out
+  </span>
+</div>
+`;

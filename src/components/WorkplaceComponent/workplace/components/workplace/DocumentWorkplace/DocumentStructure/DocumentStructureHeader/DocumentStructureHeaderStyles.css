@@ -14,6 +14,15 @@
     position: relative;
 }
 
+.documentStructureSearch { 
+    width: 20px;
+    height: 20px;
+}
+
+.documentStructureSearch:hover { 
+    filter: saturate(3)
+}
+
 #documentStructureHeaderInput { 
     position: absolute;
     top: 2px;

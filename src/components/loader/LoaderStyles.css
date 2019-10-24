@@ -11,18 +11,14 @@
 .ring {
     display: inline-block;
     position: relative;
-    width: 64px;
-    height: 64px;
   }
 
   .ring div {
     box-sizing: border-box;
     display: block;
     position: absolute;
-    width: 51px;
-    height: 51px;
-    margin: 6px;
-    border: 6px solid #F97646;
+    margin: 5px;
+    border: 2px solid #F97646;
 
     border-radius: 50%;
 

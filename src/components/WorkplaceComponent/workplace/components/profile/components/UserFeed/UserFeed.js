@@ -31,7 +31,9 @@ export default class UserFeed extends Component {
         this.onTextAreaValueChange = this.onTextAreaValueChange.bind(this);
         this.uploadUserFeed = this.uploadUserFeed.bind(this);
         this.onTextAreaKeyDown = this.onTextAreaKeyDown.bind(this);
+    }
 
+    componentDidMount() { 
         this.uploadUserFeed();
     }
 
@@ -40,6 +42,10 @@ export default class UserFeed extends Component {
      * @param {Array of numbers} array 
      */
     _clearArray(array) { 
+        if (!array) { 
+            return [];
+        }
+
         var seen = {};
         var out = [];
         var len = array.length;
@@ -59,11 +65,12 @@ export default class UserFeed extends Component {
     uploadUserFeed() { 
         this.userFeedService.getUserFeed(localStorage.getItem("token"))
             .then(res => { 
-                let atomFeeds = res.data.map(f => {
+                let userFeedDto = res.data;
+                let atomFeeds = userFeedDto.usersFeed.map(f => {
                     return  (
                         <UserAtomFeed date = {f.publicationDate}
                                       message = {f.message}
-                                      photo = {f.photo}
+                                      photo = {userFeedDto.userPhotoes[f.userID]}
                                       authorName = {f.name + " " + f.surname}/>
                     );
                 });

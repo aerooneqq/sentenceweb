@@ -1,4 +1,4 @@
-import React, {Component, lazy, Suspense} from "react";
+import React, {Component} from "react";
 
 //Styles
 import "./ProfileDataContStyles.css";
@@ -6,12 +6,10 @@ import "./ProfileDataContStyles.css";
 //Model
 import ProfileDataModel from "./ProfileDataModel";
 
-
 //Components
 import ProfileDataLoader from "./ProfileDataLoader/ProfileDataLoader";
 import ProfileDataHeader from "./profileDataAtoms/ProfileDataHeader/ProfileDataHeader";
 import ProfileHeader from "../ProfileHeader/ProfileHeader";
-import Loader from "../../../../../../loader/Loader";
 
 const profileDataModel = new ProfileDataModel();
 
@@ -21,6 +19,10 @@ const profileDataModel = new ProfileDataModel();
  *    class are written in the ProfileDataContStyles.css
  * 2) All logic is placed in the ProfileDataModel class.
  * 
+ * PROPS LIST: 
+ * 1) user - the object describes user.
+ * 2) currentUserDataIndex - the current index of user data which shows what information
+ *                           to display.
  * */
 export default class ProfileData extends Component {
   constructor(props) {
@@ -81,7 +83,7 @@ export default class ProfileData extends Component {
                  </div>  
           
                 <div className = "profileDataContentCont">
-                    {profileDataModel.getProfileDataContent(this.props.currentUserDataIndex)}
+                  {profileDataModel.getProfileDataContent(this.props.currentUserDataIndex)}
                 </div>
             </div>
           </div>

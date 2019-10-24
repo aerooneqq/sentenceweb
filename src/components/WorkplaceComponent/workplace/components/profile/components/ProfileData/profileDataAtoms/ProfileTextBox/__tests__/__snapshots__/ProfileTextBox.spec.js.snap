@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfileTextBox should render correctly 1`] = `
+<div
+  className="profiletextBoxCont"
+>
+  <div
+    className="propertyNameText"
+  >
+    property name
+  </div>
+  <div
+    className="propertyDescription"
+  >
+    property description
+  </div>
+  <input
+    className="propertyValueInput"
+    onChange={[Function]}
+    type="text"
+    value="value"
+  />
+</div>
+`;

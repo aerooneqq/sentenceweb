@@ -4,9 +4,12 @@ import React, {Component} from "react"
 import "./SignOutStyles.css"
 
 //Icons
-import signOutIconStatic from "./img/sign_out_icon_static.png"
-import signOutIconActive from "./img/sign_out_icon_active.png"
+import signOutIcon from "./img/sign_out_icon.svg";
 
+/**
+ * PROPS LIST:
+ * 1) signOut - the function to sign out from the system.
+ */
 export default class SignOut extends Component{
   constructor(){
     super();
@@ -16,29 +19,22 @@ export default class SignOut extends Component{
     };
 
     this.handleSignOutClick = this.handleSignOutClick.bind(this);
-    this.handleMouseLeaveEnter = this.handleMouseLeaveEnter.bind(this);
   }
 
   handleSignOutClick() {
-    this.props.signOut();
-  }
-
-  handleMouseLeaveEnter() {
-    this.setState(prevState => { 
-      return { 
-        isHovered: !prevState.isHovered
-      }
-    });
+    if (this.props.signOut)
+      this.props.signOut();
   }
 
   render() {
     return (
-      <div className = "toolTipContainer" o
-           onMouseEnter = {this.handleMouseLeaveEnter}
-           onMouseLeave = {this.handleMouseLeaveEnter}>
+      <div className = "toolTipContainer">
         <button id = "signOutBtn" onClick = {this.handleSignOutClick}>
-          <img className = "signOutIcon" src = {this.state.isHovered === true ? signOutIconActive :
-             signOutIconStatic} alt = "Sign out" />
+          <object type="image/svg+xml"
+                  data = {signOutIcon}
+                  className = "signOutIcon">
+            Folder     
+          </object>
         </button>
 
         <span className = "toolTipText">Sign out</span>

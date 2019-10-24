@@ -1,20 +1,22 @@
 import React, {Component, lazy} from "react"
 
-import Loader from "../../../../../../../../loader/Loader";
 import ProfileDataElementModel from "../ProfileDataElementModel";
 import { alertAppMessage } from "../../../../../../../../ApplicationMessage/ApplicationMessageManager";
 
+//Components
+import ProfileDataLoader from "../../ProfileDataLoader/ProfileDataLoader";
+import Loader from "../../../../../../../../loader/Loader";
+import ProfileTextBox from "../ProfileTextBox/ProfileTextBox";
+import SaveChanges from "../SaveChanges/SaveChanges";
+import DiscardChanges from "../DiscardChanges/DiscardCahanges";
 
-const ProfileTextBox = lazy(() => import("../ProfileTextBox/ProfileTextBox"));
-const SaveChanges = lazy(() => import("../SaveChanges/SaveChanges"));
-const DiscardChanges = lazy(() => import("../DiscardChanges/DiscardCahanges"));
-
-export default class NameData extends Component{ 
+export default class NameData extends Component { 
     constructor(props) { 
         super(props);
 
         this.state = { 
             isUpdating: true,
+            isFirstLoad: true
         }
 
         this.nameDataModel = new ProfileDataElementModel(["name", "surname", "middleName"]);
@@ -27,11 +29,13 @@ export default class NameData extends Component{
     componentDidMount() { 
         this.nameDataModel.getData(() => { 
             this.setState({ 
-                isUpdating: false
+                isUpdating: false,
+                isFirstLoad: false
             });
         }, er => { 
             this.setState({ 
-                isUpdating: false
+                isUpdating: false, 
+                isFirstLoad: false
             });
         });
     }
@@ -66,7 +70,7 @@ export default class NameData extends Component{
     discardChanges() { 
         this.setState(() =>{
             return { 
-                isUpdating: true
+                isUpdating: true,
             }
         }, () => setTimeout(() => { 
                 this.nameDataModel.discardChanges();
@@ -79,7 +83,8 @@ export default class NameData extends Component{
     }
 
     render() { 
-        return this.state.isUpdating === true ? <Loader message = "Loading data..." /> : ( 
+        return  this.state.isFirstLoad === true ? <ProfileDataLoader /> :
+                this.state.isUpdating === true ? <Loader message = "Loading data..." /> : ( 
                 <div className="fadeInAnimation" className="profileDataContentCont">
                     <div className="textBlock">          
                         <ProfileTextBox propertyName = "Name" 

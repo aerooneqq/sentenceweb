@@ -15,26 +15,26 @@
   align-items: center;
 }
 
-.profileDataItem:hover{
-  background: orange;
-  border-color: orange;
-}
+  .profileDataItem:hover{
+    background: orange;
+    border-color: orange;
+  }
 
-.profileDataItem:nth-child(1){
-  transform: translate(0, -20px);
-}
-.profileDataItem:nth-child(2){
-  transform: translate(-3px, 5px);
-}
-.profileDataItem:nth-child(3){
-  transform: translate(0px, 15px);
-}
-.profileDataItem:nth-child(4){
-  transform: translate(3px, 5px);
-}
-.profileDataItem:nth-child(5){
-  transform: translate(0px, -20px);
-}
+  .profileDataItem:nth-child(1){
+    transform: translate(0, -20px);
+  }
+  .profileDataItem:nth-child(2){
+    transform: translate(-3px, 5px);
+  }
+  .profileDataItem:nth-child(3){
+    transform: translate(0px, 15px);
+  }
+  .profileDataItem:nth-child(4){
+    transform: translate(3px, 5px);
+  }
+  .profileDataItem:nth-child(5){
+    transform: translate(0px, -20px);
+  }
 
 .profileDataItemImg{
   width: 25px;

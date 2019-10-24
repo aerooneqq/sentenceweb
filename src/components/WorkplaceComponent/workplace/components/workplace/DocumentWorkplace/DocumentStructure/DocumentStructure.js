@@ -1,8 +1,10 @@
 import React, {Component, lazy} from "react";
-import Loader from "../../../../../../loader/Loader";
+import HTML5Backend from "react-dnd-html5-backend";
+import { DndProvider } from "react-dnd";
 
 //Model classes
 import DocumentTreeModel from "./Models/DocumentTreeModel";
+import Loader from "../../../../../../loader/Loader";
 
 //Styles
 import "./DocumentStructureStyles.css";
@@ -79,7 +81,9 @@ export default class DocumentStructure extends Component{
                                          findContentParagrahsWithName = {this.findContentParagrahsWithName} />
                 <div id = "documentTreeOutterContainer">
                     <div id = "documentTreeInnerContainer">
-                        {this.state.paragraphsTreeComponent}
+                        <DndProvider backend = {HTML5Backend}>
+                            {this.state.paragraphsTreeComponent}
+                        </DndProvider>
                     </div>
                 </div>
             </div>      

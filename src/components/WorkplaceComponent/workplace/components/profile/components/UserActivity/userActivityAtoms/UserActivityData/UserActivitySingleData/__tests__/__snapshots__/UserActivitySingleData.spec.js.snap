@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserActivitySingleData should render correctly 1`] = `
+<div
+  className="singleActivityDataContainer"
+>
+  <div
+    className="singleActivityDataIconCont"
+  >
+    <img
+      alt="Activity icon"
+      className="singleActivityDataIcon"
+      src="single_user_activity_data_icon.png"
+    />
+  </div>
+  <div
+    className="activityInfoContainer"
+  >
+    <div
+      className="singleActivityName"
+    >
+      test name
+    </div>
+    <div
+      className="singleActivityTime"
+    >
+      23131231
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,20 @@
+#fullScreenBtn { 
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent; 
+
+    border-style: none;
+
+    background: transparent; 
+}
+
+    #fullScreenBtn:focus { 
+        outline: none;
+    }
+
+    #fullScreenBtnSvg:hover g { 
+        fill: #F0F0F0;  
+    }

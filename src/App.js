@@ -2,12 +2,13 @@ import React, {Component, Suspense, lazy} from "react"
 
 import Loader from "./components/loader/Loader"
 
-//Services
-import TokenService from "./services/Tokens/TokenService";
-import UserService from "./services/UserServices/UserService";
 
 //Styles
 import "./AppStyles.css";
+
+//Services
+import TokenService from "./services/Tokens/TokenService";
+import UserService from "./services/UserServices/UserService";
 
 //App messages
 import ApplicationMessagesContainer from "./components/ApplicationMessage/ApplicationMessagesContainer";

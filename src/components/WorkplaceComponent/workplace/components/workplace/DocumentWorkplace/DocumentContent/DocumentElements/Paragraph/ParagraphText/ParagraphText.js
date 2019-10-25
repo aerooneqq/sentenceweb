@@ -6,11 +6,6 @@ import "./ParagraphTextStyles.css"
 //Components
 import ContentEditableDiv from "../../CommonComponents/ContentEditable/ContentEditableDiv";
 
-const handleEditableChange = function(event) { 
-    this.setState({
-        value: event.target.value
-    });
-}
 
 export default class ParagraphText extends Component { 
     constructor(props) { 
@@ -19,12 +14,22 @@ export default class ParagraphText extends Component {
         this.state = { 
             value: props.text
         }
+
+        this.handleEditableChange = this.handleEditableChange.bind(this);
+    }
+
+    handleEditableChange(event) { 
+        this.setState({
+            value: event.target.value
+        });
     }
 
     render() { 
         return ( 
             <div className = "paragraphTextOutterCont">
-                <ContentEditableDiv text = {this.state.value} onChagne = {handleEditableChange} />
+                <ContentEditableDiv text = {this.state.value} 
+                                    onChagne = {this.handleEditableChange}
+                                    setUserWorkingStatus = {this.props.setUserWorkingStatus} />
             </div>
         )
     }

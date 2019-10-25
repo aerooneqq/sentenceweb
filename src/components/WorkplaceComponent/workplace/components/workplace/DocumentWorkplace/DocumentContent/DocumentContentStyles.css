@@ -21,3 +21,13 @@
     overflow-x: none;
     overflow-y: auto;
 }
+
+    #documentContentInnerContainer::-webkit-scrollbar { 
+        width: 5px;
+        background: #EEEEEE;
+    }
+
+    #documentContentInnerContainer::-webkit-scrollbar-thumb { 
+        background: #AAAAAA;
+        border-radius: 5px;
+    }

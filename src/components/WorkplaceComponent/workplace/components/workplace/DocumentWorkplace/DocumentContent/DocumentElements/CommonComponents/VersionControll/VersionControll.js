@@ -1,6 +1,4 @@
 import React, {Component} from "react";
-import ReactDOM from "react-dom";
-import * as d3 from "d3";
 
 //Styles
 import "./VersionControll.css";
@@ -51,6 +49,9 @@ export default class VersionControll extends Component {
             isFirstLoad: true, 
             versions: null
         }
+
+        this._getContainerClass = this._getContainerClass.bind(this);
+        this.handleMouseEnter = this.handleMouseEnter.bind(this);
     }
 
     componentDidMount() { 
@@ -79,9 +80,13 @@ export default class VersionControll extends Component {
         return this.props.visible ? "versionControllOutterCont openedContainer" : "versionControllOutterCont closedContainer";
     }
 
+    handleMouseEnter() { 
+        this.props.setUserWorkingStatus(true);
+    }
+
     render() { 
         return (
-            <div className = {this._getContainerClass()}>
+            <div className = {this._getContainerClass()} onMouseEnter = {this.handleMouseEnter}>
                 <div className = "topVersionControllCont">
                     <BranchSwitcher />
                     <button className = "saveNewVersionBtn">

@@ -3,6 +3,7 @@ import "./HeaderStyles.css"
 
 //Components
 import MenuItem from "./utilityComponents/MenuItem";
+import FullScreenBtn from "./FullScreenBtn/FullScreenBtn";
 
 const menuItemModels = [{id: 0, name: "Profile"}, {id: 1, name: "Workplace"},
   {id: 2, name: "Projects"}, {id: 3, name: "Templates"}]
@@ -18,22 +19,10 @@ export default class Header extends Component {
   constructor(props) {
     super(props)
 
-    this.getMenuOptionsArray = this.getMenuOptionsArray.bind(this)
+    this._getMenuOptionsArray = this._getMenuOptionsArray.bind(this)
   }
 
-  render() {
-    let menuItems = this.getMenuOptionsArray();
-
-    return (
-      <div id = "header">
-        <div id = "menuItemsContainer">
-          {menuItems}
-        </div>
-      </div>
-    )
-  }
-
-  getMenuOptionsArray() {
+  _getMenuOptionsArray() {
     let menuItems = []
 
     for (let i = 0; i<menuItemModels.length; i++) {
@@ -43,5 +32,18 @@ export default class Header extends Component {
     }
 
     return menuItems
+  }
+
+  render() {
+    return (
+      <div id = "header">
+        <div id = "menuItemsContainer">
+          {this._getMenuOptionsArray()}
+        </div>
+        <div id = "topButtons"> 
+          <FullScreenBtn />
+        </div>
+      </div>
+    )
   }
 }

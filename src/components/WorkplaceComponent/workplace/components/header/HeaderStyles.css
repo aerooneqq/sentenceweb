@@ -14,6 +14,13 @@
     align-items: center;
     margin-left: 1%;
   }
+
+  #topButtons { 
+    flex-grow: 1;
+
+    display: flex;
+    justify-content: flex-end;
+  }
 }
 
 @media screen and (max-width: 400px){ 
@@ -33,5 +40,9 @@
     align-items: baseline;
 
     flex-wrap: wrap;
+  }
+
+  #topButtons { 
+    visibility: collapse;
   }
 }

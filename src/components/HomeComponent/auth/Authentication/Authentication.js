@@ -23,7 +23,8 @@ export default class Authentication extends React.Component {
           mode: "signIn"
         }
 
-        this.changeSignMode = this.changeSignMode.bind(this)
+        this.changeSignMode = this.changeSignMode.bind(this);
+        this.handleAuthTopBarSliderClick = this.handleAuthTopBarSliderClick.bind(this);
     }
 
     changeSignMode() { 

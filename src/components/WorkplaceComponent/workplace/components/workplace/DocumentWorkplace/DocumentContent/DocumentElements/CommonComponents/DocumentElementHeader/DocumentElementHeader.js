@@ -16,6 +16,7 @@ export default class DocumentElementHeader extends Component {
         }
 
         this.onHeaderInputValueChange = this.onHeaderInputValueChange.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     onHeaderInputValueChange(event) { 
@@ -24,12 +25,16 @@ export default class DocumentElementHeader extends Component {
         });
     }
 
+    handleClick() { 
+        this.props.setUserWorkingStatus(true);
+    }
+
     render() { 
         return ( 
             <div className = "documentElementHeaderOutterCont">
                 <div className = "documentElementHeaderInnerCont"> 
                     <input className = "documentElementHeaderText" value = {this.state.headerInputValue}
-                           onChange = {this.onHeaderInputValueChange} />
+                           onChange = {this.onHeaderInputValueChange} onClick = {this.handleClick} />
                 </div>
             </div>
         )

@@ -1,9 +1,10 @@
 import axios from "axios";
+import {nginxServerConfig, getServerAddress} from "../ServerConfig";
 
 export default class FolderService { 
     constructor(token) {
         this._token = token;
-        this._apiUrl = "https://localhost:44368/api/documentFolders"; 
+        this._apiUrl = getServerAddress(nginxServerConfig) + "/documentFolders"; 
     }
 
     async createNewFolder(currentFolderID, newFolderName) {

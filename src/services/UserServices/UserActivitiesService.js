@@ -1,8 +1,9 @@
 import axios from "axios";
+import {nginxServerConfig, getServerAddress} from "../ServerConfig";
 
 export default class UserActivitiesService{ 
     constructor(){ 
-        this.apiURL = "https://localhost:44368/api/useractivities"
+        this.apiURL = getServerAddress(nginxServerConfig) + "/useractivities"
     }
 
     getUserActivities(token){ 

@@ -1,10 +1,11 @@
 import axios from "axios";
+import {nginxServerConfig, getServerAddress} from "../ServerConfig";
 
 export default class UserPhotoService { 
 
     constructor(token) { 
         this._token = token;
-        this._apiUrl = "https://localhost:44368/api/userPhoto"
+        this._apiUrl = getServerAddress(nginxServerConfig) + "/userPhoto"
     }
 
     getUserPhoto() { 

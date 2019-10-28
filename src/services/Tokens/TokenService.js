@@ -1,8 +1,9 @@
 import axios from "axios";
+import {nginxServerConfig, getServerAddress} from "../ServerConfig";
 
 export default class TokenService{ 
     constructor() { 
-        this.apiURL = "https://localhost:44368/api/tokens?";
+        this.apiURL = getServerAddress(nginxServerConfig) + "/tokens?";
     }
 
     sendGetTokenRequest(email, password) { 

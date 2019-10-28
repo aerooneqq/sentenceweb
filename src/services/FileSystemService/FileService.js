@@ -1,10 +1,11 @@
 import axios from "axios";
+import {nginxServerConfig, getServerAddress} from "../ServerConfig";
 
 export default class FileService { 
 
     constructor(token) { 
         this._token = token;
-        this._apiUrl = "https://localhost:44368/api/documentFiles";
+        this._apiUrl = getServerAddress(nginxServerConfig) + "/documentFiles";
     }
 
     async createNewFile(currentFolderID, newFileName) { 

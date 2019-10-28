@@ -8,7 +8,7 @@
     flex-direction: column;
 }
 
-.nestedItemsContainer { 
+.nestedItemsContainer {
     width: auto; 
     height: auto;
 
@@ -16,6 +16,7 @@
 
     display: block;
     animation: nestedItemsFadeIn 0.2s linear forwards;
+    -moz-animation: nestedItemsFadeIn 0.2s linear forwards;
 }
     .nestedItemsContainer.hidden { 
         display: none;
@@ -24,6 +25,7 @@
     .nestedItemsContainerFadeIn { 
         display: block;
         animation: nestedItemsFadeIn 0.2s linear forwards;
+        -moz-animation: nestedItemsFadeIn 0.2s linear forwards;
     }
 
     @keyframes nestedItemsFadeIn { 
@@ -37,8 +39,23 @@
         }
     }
 
+    @-moz-keyframes nestedItemsFadeIn { 
+        from { 
+            opacity: 0;
+ 
+        }
+
+        to { 
+            opacity: 1;
+        }
+    }
+
+
     .nestedItemsContainerFadeOut { 
         animation: nestedItemsFadeOut 0.1s linear forwards,
+                   nestedItemsDisplayFadeOut 0.1s linear 0.2s forwards;
+
+        -moz-animation: nestedItemsFadeOut 0.1s linear forwards,
                    nestedItemsDisplayFadeOut 0.1s linear 0.2s forwards;
     }
 
@@ -53,6 +70,26 @@
     }
 
     @keyframes nestedItemsDisplayFadeOut { 
+        from { 
+            display:  block;
+        }
+
+        to { 
+            display: none;
+        }
+    }
+
+    @-moz-keyframes nestedItemsFadeOut { 
+        from { 
+            opacity: 1;
+        }
+
+        to { 
+            opacity: 0;
+        }
+    }
+
+    @-moz-keyframes nestedItemsDisplayFadeOut { 
         from { 
             display:  block;
         }

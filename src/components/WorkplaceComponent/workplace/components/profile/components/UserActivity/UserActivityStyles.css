@@ -10,7 +10,10 @@
         height: 200px;
         overflow-y: hidden;
         overflow-x: scroll;
-        
+
+        scrollbar-width: thin;
+        scrollbar-color: #F97627 transparent;
+
         display: flex;
     
         box-sizing: content-box;
@@ -20,20 +23,20 @@
         border-style: none; 
     }
     
-    #userActivitiesCont::-webkit-scrollbar{ 
-        height: 10px;
-    }   
-    
-    #userActivitiesCont::-webkit-scrollbar-thumb{
-        background:rgba(255,110,74, 0.5) !important; 
-        border-radius: 2px;
-    }
+        #userActivitiesCont::-webkit-scrollbar{ 
+            height: 10px;
+        }   
+        
+        #userActivitiesCont::-webkit-scrollbar-thumb{
+            background:rgba(255,110,74, 0.5) !important; 
+            border-radius: 2px;
+        }
 
-    
-    .monthActivityCont:nth-child(n){ 
-        margin-right: 5px;
-    }
-    
+        
+        .monthActivityCont:nth-child(n){ 
+            margin-right: 5px;
+        }
+        
     #activityHeader{ 
         font-family: Arial; 
         color: #F97646;

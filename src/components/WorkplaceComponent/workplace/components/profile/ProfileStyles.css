@@ -28,6 +28,7 @@
 
     background: white;
     overflow-y: auto;
+    scrollbar-width: none;
   }
 
     #rightProfileCont::-webkit-scrollbar{ 

@@ -8,12 +8,13 @@ export default class ResponseService {
      * @param {Error message if the error does not contain response} errorMessage 
      */
     alertErrorMessage(er, errorMessage) { 
-        alert(er);
-        if (er.response) { 
-            alertAppMessage(er.response.data, "error");
-        }
-        else { 
-            alertAppMessage(errorMessage, "error")
+        if (er) { 
+            if (er.response) { 
+                alertAppMessage(er.response.data, "error");
+            }
+            else { 
+                alertAppMessage(errorMessage, "error")
+            }
         }
     }
 

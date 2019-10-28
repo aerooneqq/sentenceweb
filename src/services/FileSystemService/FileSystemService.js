@@ -1,10 +1,11 @@
 import axios from "axios";
+import {nginxServerConfig, getServerAddress} from "../ServerConfig";
 
 export default class FileSystemService { 
 
     constructor(token) { 
         this._token = token;
-        this._apiUrl = "https://localhost:44368/api/folderSystem";
+        this._apiUrl = getServerAddress(nginxServerConfig) + "/folderSystem";
     }
 
     

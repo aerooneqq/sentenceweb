@@ -17,8 +17,11 @@
   box-sizing: border-box;
 
   overflow-y: scroll;
+  
+  scrollbar-width: none;
 }
 
-#workplaceContainer::-webkit-scrollbar{ 
-  width: 0px;
-}
+    #workplaceContainer::-webkit-scrollbar{ 
+      width: 0px;
+    }
+

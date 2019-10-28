@@ -21,6 +21,8 @@
         height: 360px;
     
         overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: #F97627 transparent;
     
         background:#f9f9f9;
         border-style: none; 
@@ -28,18 +30,14 @@
         border-top-right-radius: 10px;
     }
     
-    #userFeedInnerScroll::-webkit-scrollbar{ 
-        width: 3px;
-    }
-    
-    #userFeedInnerScroll::-webkit-scrollbar-thumb{
-        background:rgba(255,110,74, 0.5) !important; 
-        border-radius: 2px; 
-    }
-    
-    #userFeedInnerScroll::-webkit-scrollbar{ 
-        height: 0px;
-    }   
+        #userFeedInnerScroll::-webkit-scrollbar{ 
+            width: 3px;
+        }
+        
+        #userFeedInnerScroll::-webkit-scrollbar-thumb{
+            background:rgba(255,110,74, 0.5) !important; 
+            border-radius: 2px; 
+        }
     
     #userFeedInputCont{ 
         width: 100%;

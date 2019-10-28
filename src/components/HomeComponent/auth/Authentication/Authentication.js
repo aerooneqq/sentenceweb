@@ -44,6 +44,15 @@ export default class Authentication extends React.Component {
     handleAuthTopBarSliderClick() {
       document.getElementById("rotation").classList.toggle("rotate");
 
+      if (this.state.mode === "signIn") { 
+        document.getElementById("back").classList.toggle("hidden");
+        document.getElementById("front").classList.remove("hidden");
+      }
+      else { 
+        document.getElementById("back").classList.remove("hidden");
+        document.getElementById("front").classList.toggle("hidden");
+      }
+
       this.changeSignMode();
     }
 

@@ -1,0 +1,13 @@
+.openedVersionContainer {
+    visibility: visible;
+    opacity: 1;
+
+    transition: 0.35s ease-in;
+}
+
+.closedVersionContainer { 
+    visibility: collapse;
+    opacity: 0;
+
+    transition: 0.35s ease-in;
+}

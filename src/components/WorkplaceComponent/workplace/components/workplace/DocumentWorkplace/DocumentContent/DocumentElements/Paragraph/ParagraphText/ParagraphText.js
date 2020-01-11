@@ -28,8 +28,7 @@ export default class ParagraphText extends Component {
         return ( 
             <div className = "paragraphTextOutterCont">
                 <ContentEditableDiv text = {this.state.value} 
-                                    onChagne = {this.handleEditableChange}
-                                    setUserWorkingStatus = {this.props.setUserWorkingStatus} />
+                                    onChagne = {this.handleEditableChange}/>
             </div>
         )
     }

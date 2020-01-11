@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import ReactDOM from "react-dom";
 
 //Srtyles
 import "./ParagraphStyles.css";
@@ -13,35 +14,8 @@ export default class Paragraph extends Component {
     constructor(props) { 
         super(props);
 
-        this.state = { 
-            versionsControllVisible: false,
-            isUserWorkingWithElement: false,
-            isInFocus: false
-        }
-
-        this.onPargraphMouseEnter = this.onPargraphMouseEnter.bind(this);
-        this.onPargraphMouseLeave = this.onPargraphMouseLeave.bind(this);
-        this.setUserWorkingStatus = this.setUserWorkingStatus.bind(this);
         this.handleBlur = this.handleBlur.bind(this); 
         this.handleFocus = this.handleFocus.bind(this);
-    }
-
-    onPargraphMouseEnter() { 
-        this.setState({ 
-            versionsControllVisible: true
-        });
-    }
-
-    onPargraphMouseLeave() { 
-        this.setState({ 
-            versionsControllVisible: false
-        });
-    }
-
-    setUserWorkingStatus(newStatus) { 
-        this.setState({ 
-            isUserWorkingWithElement: newStatus
-        });
     }
 
     /**
@@ -50,34 +24,29 @@ export default class Paragraph extends Component {
      * not to hide and show the version controll component we do the 50ms delay.
      */
     handleBlur() { 
-        setTimeout(() => { 
-            if (this.state.isInFocus === true) { 
-                this.setState({ 
-                    isUserWorkingWithElement: false,
-                    isInFocus: false
-                });
-            }
-        }, 100);
+        ReactDOM.findDOMNode(this).getElementsByClassName("versionControllContainer")[0].
+            classList.remove("openedVersionContainer");
+        ReactDOM.findDOMNode(this).getElementsByClassName("versionControllContainer")[0].
+            classList.toggle("closedVersionContainer");
     }
 
     handleFocus() {
-        this.setState({ 
-            isInFocus: true
-        });
+        ReactDOM.findDOMNode(this).getElementsByClassName("versionControllContainer")[0].
+            classList.remove("closedVersionContainer");
+        ReactDOM.findDOMNode(this).getElementsByClassName("versionControllContainer")[0].
+            classList.toggle("openedVersionContainer");
     }
 
     render() { 
         return (
             <div className = "documentElementOutterCont" onBlur = {this.handleBlur} 
                  onFocus = {this.handleFocus}>
-                <DocumentElementHeader headerText = {this.props.paragraph.name}
-                                       setFocus = {this.setFocus}
-                                       setUserWorkingStatus = {this.setUserWorkingStatus} />
-                <PargraphText text = {this.props.paragraph.text}
-                              setUserWorkingStatus = {this.setUserWorkingStatus}   />
-                <VersionControll visible = {this.state.isUserWorkingWithElement} 
-                                 setUserWorkingStatus = {this.setUserWorkingStatus}
-                                 isUserWorkingWithElement = {this.state.isUserWorkingWithElement} />
+                <DocumentElementHeader headerText = {this.props.paragraph.name} />
+                <PargraphText text = {this.props.paragraph.text} />
+                
+                <div className = "versionControllContainer closedVersionContainer">
+                    <VersionControll />
+                </div>
             </div>
         )
     }

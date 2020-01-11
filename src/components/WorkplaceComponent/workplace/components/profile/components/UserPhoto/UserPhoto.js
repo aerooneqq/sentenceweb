@@ -74,7 +74,7 @@ export default class UserPhoto extends Component {
       this.setState({ 
         isPhotoUpdating: false,
         isFirstLoad: false,
-        userPhoto: res.data.photo
+        userPhoto: res.data
       });
 
       document.getElementById("userPhotoImg").src = `data:image/png;base64, ${this.state.userPhoto}`

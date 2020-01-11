@@ -4,22 +4,8 @@
 
     display: flex; 
     flex-direction: column;
-    opacity: 0
+    opacity: 1
 }
-
-    .openedContainer {
-        visibility: visible;
-        opacity: 1;
-
-        transition: 0.35s ease-in;
-    }
-
-    .closedContainer { 
-        visibility: collapse;
-        opacity: 0;
-
-        transition: 0.35s ease-in;
-    }
 
 .versionsGraphContainer { 
     display: flex; 

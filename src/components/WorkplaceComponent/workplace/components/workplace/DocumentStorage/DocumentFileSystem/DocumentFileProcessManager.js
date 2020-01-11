@@ -2,9 +2,7 @@ import {alertAppMessage} from "../../../../../../ApplicationMessage/ApplicationM
 
 var isUpdating = false;
 
-async function performAction(action) {
-    console.log(isUpdating)
-    
+async function performAction(action) {    
     if (isUpdating === false) {
         isUpdating = true
         await action();

@@ -14,9 +14,11 @@ import DocumentMainFolder from "../DocumentMainFolder/DocumentMainFolder";
 //Services
 import FileSystemService from "../../../../../../../../services/FileSystemService/FileSystemService";
 import ResponseService from "../../../../../../../../services/ResponseService/ReponseService";
+import UserMainFoldersService from "../../../../../../../../services/FileSystemService/UserMainFoldersService";
 
 import { ContextMenuTrigger } from "react-contextmenu";
 import {initializeManager, getFoldersHistoryManager, setGoToStartingScreenFunc} from "./FoldersHistoryManager";
+
 
 /**
  * DocumentFoldersComponent is a component where the files and folders are displayed.
@@ -39,6 +41,7 @@ export default class DocumentFoldersComponent extends Component {
         
         this.fileSystemService = new FileSystemService(localStorage.getItem("token"));
         this.responseService = new ResponseService();
+        this.userMainFoldersService = new UserMainFoldersService(localStorage.getItem("token"));
 
         this.startComponent = (
             <div className = "startFoldersGrid">
@@ -50,22 +53,27 @@ export default class DocumentFoldersComponent extends Component {
                     <DocumentMainFolder icon = {localMainFolderIcon} name = "Local"
                                         onClick = {this.handleLocalDocsClick} />   
                 </div>
-                <div className = "startFolderGridOutterCont">
-                    <DocumentMainFolder icon = {cloudMainFolderIcon} name = "Projects"
-                                     onClick = {this.handleSharedDocsClick} />
-                </div>
-                <div className = "startFolderGridOutterCont">
-                    <DocumentMainFolder icon = {localMainFolderIcon} name = "Local"
-                                        onClick = {this.handleLocalDocsClick} />   
-                </div>
             </div>
         )
 
         this.state = { 
-            isLoading: false,
+            isLoading: true,
             component: this.startComponent,
-            currentFolderID: null
+            currentFolderID: null,
+            mainFolderIDs: {}
         }
+    }
+
+    async componentDidMount() {
+        let mainFoldersIDs = await this.userMainFoldersService.getMainFolders();
+
+        this.setState({
+            mainFolderIDs: {
+                "Projects": mainFoldersIDs.data.projectsFolderID,
+                "Local": mainFoldersIDs.data.localFolderID
+            },
+            isLoading: false
+        });
     }
 
     goToStartingScreen() { 
@@ -78,23 +86,23 @@ export default class DocumentFoldersComponent extends Component {
 
     handleSharedDocsClick() {
         getFoldersHistoryManager().clear();
-        getFoldersHistoryManager().addNewFolder(-1);
+        getFoldersHistoryManager().addNewFolder(this.state.mainFolderIDs["Projects"]);
         
         this.setState({ 
-            component: <DocumentFoldersGrid folderID = {-1} 
+            component: <DocumentFoldersGrid folderID = {this.state.mainFolderIDs["Projects"]} 
                                             changeUpdatingState = {this.props.changeUpdatingState} />,
-            currentFolderID: -1
+            currentFolderID: this.state.mainFolderIDs["Projects"]
         });
     }
 
     handleLocalDocsClick() { 
         getFoldersHistoryManager().clear();
-        getFoldersHistoryManager().addNewFolder(-2);
+        getFoldersHistoryManager().addNewFolder(this.state.mainFolderIDs["Local"]);
 
         this.setState({ 
-            component: <DocumentFoldersGrid folderID = {-2} 
+            component: <DocumentFoldersGrid folderID = {this.state.mainFolderIDs["Local"]} 
                                             changeUpdatingState = {this.props.changeUpdatingState} />,
-            currentFolderID: -1
+            currentFolderID: this.state.mainFolderIDs["Local"]  
         });
     }
 

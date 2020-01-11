@@ -84,7 +84,7 @@ export default class UserFeed extends Component {
                 }); 
             }).catch(er => {
                 if (er.response) { 
-                    alertAppMessage(er.reponse.data, "error");
+                    alertAppMessage(er.response.data, "error");
                 }
                 else { 
                     alertAppMessage("Error occured while getting your feed", "error");
@@ -104,11 +104,13 @@ export default class UserFeed extends Component {
                 this.uploadUserFeed();
             }).catch(er => { 
                 if (er.response) { 
-                    alertAppMessage(er.reponse.data, "error");
+                    alertAppMessage(er.response.data, "error");
                 }
                 else { 
                     alertAppMessage("The error occured while inserting your message", "error");
                 }
+
+                this.uploadUserFeed();
             });
 
     }

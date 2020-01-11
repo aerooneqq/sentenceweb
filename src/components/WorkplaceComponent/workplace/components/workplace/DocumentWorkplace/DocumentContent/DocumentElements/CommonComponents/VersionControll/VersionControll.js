@@ -51,7 +51,6 @@ export default class VersionControll extends Component {
         }
 
         this._getContainerClass = this._getContainerClass.bind(this);
-        this.handleMouseEnter = this.handleMouseEnter.bind(this);
     }
 
     componentDidMount() { 
@@ -80,14 +79,11 @@ export default class VersionControll extends Component {
         return this.props.visible ? "versionControllOutterCont openedContainer" : "versionControllOutterCont closedContainer";
     }
 
-    handleMouseEnter() { 
-        this.props.setUserWorkingStatus(true);
-    }
 
     render() { 
         return (
-            <div className = {this._getContainerClass()} onMouseEnter = {this.handleMouseEnter}>
-                <div className = "topVersionControllCont">
+            <div className = "versionControllOutterCont">
+                <div className = "topVersionControllCont" >
                     <BranchSwitcher />
                     <button className = "saveNewVersionBtn">
                         Save
@@ -97,7 +93,7 @@ export default class VersionControll extends Component {
                     </button>
                 </div>
 
-                <div className = "versionsGraphContainer">
+                <div className = "versionsGraphContainer" >
                     <div className = "versionControllInnerContainer">
                         {this.state.versions}
                     </div>

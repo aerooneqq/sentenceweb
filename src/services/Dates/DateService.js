@@ -12,9 +12,9 @@ export default class DateService {
         return Number(this.date.substr(0, 4));
     }
 
-    getMonth() { 
+    getMonth() {
         let month = this.date.substr(5, 2);
-        while (month.charAt(0) === "0"){ 
+        while (month.charAt(0) === "0") {
             month = month.substr(1)
         }
 

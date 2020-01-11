@@ -18,9 +18,8 @@ export default class ContentEditableDiv extends Component {
 
         this._getThisEditableText = this._getThisEditableText.bind(this); 
         this.updateEditableDivText = this.updateEditableDivText.bind(this);
-        this.handleClick = this.handleClick.bind(this);
         this.handleBlur = this.handleBlur.bind(this); 
-        this.handleInput = this.handleClick.bind(this);
+        this.handleInput = this.handleInput.bind(this);
     }
 
     shouldComponentUpdate(nextProps) { 
@@ -53,12 +52,7 @@ export default class ContentEditableDiv extends Component {
     }
 
     handleBlur() { 
-        this.props.setUserWorkingStatus(true);
         this.updateEditableDivText();
-    }
-
-    handleClick() { 
-        this.props.setUserWorkingStatus(true);
     }
 
     render() { 
@@ -66,8 +60,7 @@ export default class ContentEditableDiv extends Component {
             <div className = "contentEditableDiv" 
                  contentEditable = {true}
                  onInput = {this.updateEditableDivText}
-                 onBlur = {this.onBlur}
-                 onClick = {this.handleClick}>
+                 onBlur = {this.onBlur}>
                 {this.props.text}
             </div>
         )

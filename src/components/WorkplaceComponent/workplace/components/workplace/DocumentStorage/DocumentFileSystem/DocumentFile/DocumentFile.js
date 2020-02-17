@@ -42,6 +42,7 @@ export default class DocumentFile extends Component {
         this.disableInputAndRename = this.disableInputAndRename.bind(this);
         this.onInputValueChange = this.onInputValueChange.bind(this);
         this.changeInputEditability = this.changeInputEditability.bind(this);
+        this.deleteFile = this.deleteFile.bind(this);
     }
 
     uploadFileData() { 

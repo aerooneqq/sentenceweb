@@ -30,10 +30,10 @@ export default class Loader extends Component{
         return (
             <div className = "loaderCont">
                 <div className = "ring" style = {this.ringStyle}> 
-                    <div style = {this.ringDivStyle}></div>
-                    <div style = {this.ringDivStyle}></div>
-                    <div style = {this.ringDivStyle}></div>
-                    <div style = {this.ringDivStyle}></div>
+                    <div style = {this.ringDivStyle} />
+                    <div style = {this.ringDivStyle} />
+                    <div style = {this.ringDivStyle} />
+                    <div style = {this.ringDivStyle} />
                 </div>
                 <div className = "loaderMessageCont">
                     {this.props.message}   

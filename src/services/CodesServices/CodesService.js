@@ -1,11 +1,11 @@
 import axios from "axios";
-import {nginxServerConfig, getServerAddress} from "../ServerConfig";
+import {authorizationServerConfig, getServerAddress} from "../ServerConfig";
 
 export default class CodesService { 
 
     constructor(token) { 
         this._token = token;
-        this._apiUrl = getServerAddress(nginxServerConfig) + "/codes";
+        this._apiUrl = getServerAddress(authorizationServerConfig) + "/codes";
     }
 
     activateAccount(code) { 

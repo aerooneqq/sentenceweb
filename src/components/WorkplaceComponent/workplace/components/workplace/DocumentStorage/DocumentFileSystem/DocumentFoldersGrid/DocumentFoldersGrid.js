@@ -71,8 +71,9 @@ export default class DoumentFoldersGrid extends Component {
                                                                            uploadFolderGrid = {this.getFilesAndFolders}
                                                                            changeUpdatingState = {this.props.changeUpdatingState}/>);
                 let files = res.files.map(file => <DragableDocFile file = {file}
-                                                                   uploadFolderGrid = {this.uploadFolderGrid}
-                                                                   changeUpdatingState = {this.props.changeUpdatingState} />);
+                                                                   uploadFolderGrid = {this.getFilesAndFolders}
+                                                                   changeUpdatingState = {this.props.changeUpdatingState}
+                                                                   setDocumentID = {this.props.setDocumentID}/>);
                 
                 this.setState({ 
                     components: folders.concat(files)

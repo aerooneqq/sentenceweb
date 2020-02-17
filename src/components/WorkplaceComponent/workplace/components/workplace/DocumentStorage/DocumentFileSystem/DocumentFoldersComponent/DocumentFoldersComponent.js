@@ -54,7 +54,7 @@ export default class DocumentFoldersComponent extends Component {
                                         onClick = {this.handleLocalDocsClick} />   
                 </div>
             </div>
-        )
+        );
 
         this.state = { 
             isLoading: true,
@@ -90,7 +90,8 @@ export default class DocumentFoldersComponent extends Component {
         
         this.setState({ 
             component: <DocumentFoldersGrid folderID = {this.state.mainFolderIDs["Projects"]} 
-                                            changeUpdatingState = {this.props.changeUpdatingState} />,
+                                            changeUpdatingState = {this.props.changeUpdatingState}
+                                            setDocumentID = {this.props.setDocumentID}/>,
             currentFolderID: this.state.mainFolderIDs["Projects"]
         });
     }
@@ -101,7 +102,8 @@ export default class DocumentFoldersComponent extends Component {
 
         this.setState({ 
             component: <DocumentFoldersGrid folderID = {this.state.mainFolderIDs["Local"]} 
-                                            changeUpdatingState = {this.props.changeUpdatingState} />,
+                                            changeUpdatingState = {this.props.changeUpdatingState}
+                                            setDocumentID = {this.props.setDocumentID}/>,
             currentFolderID: this.state.mainFolderIDs["Local"]  
         });
     }

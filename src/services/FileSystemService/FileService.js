@@ -1,11 +1,11 @@
 import axios from "axios";
-import {nginxServerConfig, getServerAddress} from "../ServerConfig";
+import {getServerAddress, authorizationServerConfig} from "../ServerConfig";
 
 export default class FileService { 
 
     constructor(token) { 
         this._token = token;
-        this._apiUrl = getServerAddress(nginxServerConfig) + "/documentFiles";
+        this._apiUrl = getServerAddress(authorizationServerConfig)  + "/documentFiles";
     }
 
     async createNewFile(currentFolderID, newFileName) { 
@@ -22,7 +22,7 @@ export default class FileService {
     async deleteFile(fileID) { 
         let url = `${this._apiUrl}?fileID=${fileID}`;
 
-        return await axios.delete(url, fileID, { 
+        return await axios.delete(url, { 
             headers: { 
                 Authorization: `Bearer ${this._token}`
             }

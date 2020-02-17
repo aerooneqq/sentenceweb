@@ -1,9 +1,9 @@
 import axios from "axios";
-import {nginxServerConfig, getServerAddress} from "../ServerConfig";
+import {authorizationServerConfig, getServerAddress} from "../ServerConfig";
 
 export default class UserFriendsService { 
     constructor(token) { 
-        this.apiURL = getServerAddress(nginxServerConfig) + "/userFriends/";
+        this.apiURL = getServerAddress(authorizationServerConfig)  + "/userFriends/";
         this._token = token;
     }
 

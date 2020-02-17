@@ -1,11 +1,11 @@
 import axios from "axios";
-import {nginxServerConfig, getServerAddress} from "../ServerConfig";
+import {authorizationServerConfig, getServerAddress} from "../ServerConfig";
 
 export default class UserMainFoldersService {
 
     constructor(token) { 
         this._token = token;
-        this._apiUrl = getServerAddress(nginxServerConfig) + "/userMainFolders"; 
+        this._apiUrl = getServerAddress(authorizationServerConfig) + "/userMainFolders";
     }
     
     async getMainFolders() {

@@ -5,6 +5,8 @@ import "./DocumentTreeComponentStyles.css";
 
 //Components
 import DragableTreeItem from "./DocumentTreeItem/DragableTreeItem";
+import DocumentStructureService
+    from "../../../../../../../../services/DocumentStructureService/DocumentStructureService";
 
 export default class DocumentTreeComponent extends Component { 
     constructor(props) { 
@@ -16,6 +18,7 @@ export default class DocumentTreeComponent extends Component {
         };
 
         this.nestedContainerID = "nestedItemsContainer" + props.paragraph.id
+        this.documentStructureService = new DocumentStructureService(localStorage.getItem("token"));
 
         this.handleTreeItemClick = this.handleTreeItemClick.bind(this);
     }
@@ -42,7 +45,7 @@ export default class DocumentTreeComponent extends Component {
                 itemsContainer.classList.remove("nestedItemsContainerFadeIn");
                 
                 //This is used to set the display value from block to "none" for the nested container,
-                //afert the fade out CSS animation has finished. The timeout must be equal to the
+                //after the fade out CSS animation has finished. The timeout must be equal to the
                 //CSS animation duration (0.2s)
                 setTimeout(() => { 
                     document.getElementById(this.nestedContainerID).classList.toggle("hidden");

@@ -17,7 +17,8 @@ export default class WorkplaceComponent extends Component{
     super(props);
 
     this.state = { 
-      component: <DocumentDesk />
+      component: <DocumentDesk />,
+
     };
 
     this._changeWorkplaceComponent = this._changeWorkplaceComponent.bind(this);

@@ -18,13 +18,19 @@ function DragableDocFile(props) {
         })
     });
 
+    let handleDoubleClick = function(e) {
+        props.setDocumentID(props.file.ID);
+    };
+
     return ( 
         <>
             <DragPreviewImage connect = {preview} src = {dragFileIcon} />
-            <div ref = {drag}>
-                <DocumentFile file = {props.file}
-                            uploadFolderGrid = {props.uploadFolderGrid}
-                            changeUpdatingState = {props.changeUpdatingState}/>
+            <div ref = {drag}
+                 onDoubleClick={handleDoubleClick}>
+                <DocumentFile
+                              file = {props.file}
+                              uploadFolderGrid = {props.uploadFolderGrid}
+                              changeUpdatingState = {props.changeUpdatingState}/>
             </div>
         </>
     )

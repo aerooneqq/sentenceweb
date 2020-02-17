@@ -14,6 +14,7 @@ import UserService from "./services/UserServices/UserService";
 import ApplicationMessagesContainer from "./components/ApplicationMessage/ApplicationMessagesContainer";
 import { alertAppMessage } from "./components/ApplicationMessage/ApplicationMessageManager";
 import ApplicationMessage from "./components/ApplicationMessage/ApplicationMessage";
+import { local } from "d3";
 
 //Components
 const HomeComponent = lazy(() => import("./components/HomeComponent/HomeComponent"));
@@ -55,13 +56,13 @@ export default class App extends Component {
             component: <WorkplaceComponent signOut = {this.signOut}/>
           });
         }
-      }).catch(er => { 
+      }).catch(er => {
+        alert(er)
         this.setState({ 
           userLoggedIn: false,
           component: <HomeComponent signIn = {this.signIn} />,
           checkToken: true,
         });
-
       });
 
       this.isTokenChecked = true;
@@ -78,10 +79,10 @@ export default class App extends Component {
       tokenService.sendGetTokenRequest(email, password).then(res => { 
         let token = res.data;
   
-        if (token != null){ 
+        if (token != null){
           localStorage.removeItem("token");
           localStorage.setItem("token", token);
-    
+
           this.setState({
             component: <WorkplaceComponent signOut = {this.signOut}/>
           });
@@ -93,12 +94,12 @@ export default class App extends Component {
 
         alertAppMessage("Error while authorizing", "error");
         onRejected();
-        
+
       })
     })
   }
 
-  signOut() { 
+  signOut() {
     localStorage.removeItem("token");
     this.setState({
       component: <HomeComponent signIn = {this.signIn}/>

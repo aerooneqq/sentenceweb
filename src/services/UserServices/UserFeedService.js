@@ -1,10 +1,10 @@
 import axios from "axios";
-import {nginxServerConfig, getServerAddress} from "../ServerConfig";
+import {authorizationServerConfig, getServerAddress} from "../ServerConfig";
 
 export default class UserFeedService { 
     constructor(token) {
         this._token = token;
-        this._apiURL = getServerAddress(nginxServerConfig) + "/userFeed";
+        this._apiURL = getServerAddress(authorizationServerConfig)  + "/userFeed";
     }
 
     getUserFeed(token) { 

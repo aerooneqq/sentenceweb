@@ -10,16 +10,33 @@ const DocumentWorkplace = lazy(() => import("./DocumentWorkplace/DocumentWorkpla
 export default class DocumentDesk extends Component{ 
     constructor(props){ 
         super(props);
+
+        this.state = {
+            currentDocumentID: null,
+        };
+
+        this.setDocumentID = this.setDocumentID.bind(this);
     }
 
-    componentDidMount(){ 
+    componentDidMount() {
+
+    }
+
+    setDocumentID(documentID) {
+        alert(documentID);
+        if (!(documentID === null || documentID === undefined)) {
+            this.setState({
+                currentDocumentID: documentID
+            });
+        }
     }
 
     render() { 
         return ( 
             <div id = "documentDeskContainer">
-                <DocumentsHeader />
-                <DocumentWorkplace />
+                <DocumentsHeader setDocumentID = {this.setDocumentID} />
+                <DocumentWorkplace documentID = {this.state.currentDocumentID}
+                                   setDocumentID = {this.setDocumentID} />
             </div>
         )
     }

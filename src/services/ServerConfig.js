@@ -1,10 +1,15 @@
-const nginxServerConfig = { 
+const authorizationServerConfig = {
     host:"https://localhost:443",
-    apiPrefix: "api"
-}
+    apiPrefix: "sentenceapi",
+    documentsApiPrefix: "documentsapi"
+};
 
 function getServerAddress(config) { 
     return config.host + "/" + config.apiPrefix;
 }
 
-export {nginxServerConfig, getServerAddress};
+function getDocumentsAPIServerAddress(config) {
+    return config.host + "/" + config.documentsApiPrefix;
+}
+
+export {authorizationServerConfig, getDocumentsAPIServerAddress, getServerAddress};

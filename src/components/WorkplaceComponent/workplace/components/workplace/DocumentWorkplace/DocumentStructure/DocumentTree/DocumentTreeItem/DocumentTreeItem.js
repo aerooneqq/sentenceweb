@@ -16,7 +16,7 @@ export default class DocumentTreeItem extends Component {
         super(props);
 
         this.state = { 
-            isEidtable: false,
+            isEditable: false,
             paragraphName: props.paragraph.name,
             inputID: "documentStructureParagraphName" + props.paragraph.id,
         };

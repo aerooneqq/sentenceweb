@@ -1,9 +1,9 @@
 import axios from "axios";
-import { getServerAddress, nginxServerConfig } from "../ServerConfig";
+import { getServerAddress, authorizationServerConfig } from "../ServerConfig";
 
 export default class UserService { 
     constructor(token) { 
-        this._apiURL = getServerAddress(nginxServerConfig) + "/users";
+        this._apiURL = getServerAddress(authorizationServerConfig)  + "/users";
 
         this._token = token;
     }

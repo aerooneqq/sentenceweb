@@ -18,12 +18,7 @@ export default class DocumentDesk extends Component{
         this.setDocumentID = this.setDocumentID.bind(this);
     }
 
-    componentDidMount() {
-
-    }
-
     setDocumentID(documentID) {
-        alert(documentID);
         if (!(documentID === null || documentID === undefined)) {
             this.setState({
                 currentDocumentID: documentID

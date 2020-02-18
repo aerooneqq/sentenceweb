@@ -24,6 +24,7 @@ export default class DocumentWorkplace extends Component {
         this.state = {
             documentStructureRaw: null,
             currentDocumentID: null,
+            currentDocumentStructureID: null,
             isStructureLoading: false,
             isContentLoading: true,
         }
@@ -36,13 +37,16 @@ export default class DocumentWorkplace extends Component {
 
     getDocumentStructureContent(documentID) {
         this.setState({
-            isStructureLoading: true
+            isStructureLoading: true,
+            currentDocumentID: documentID
         }, () => {
             this.documentStructureService.getDocumentStructure(documentID)
                 .then(res => {
+                    console.log(res.data);
                     this.setState({
                         documentStructureRaw: res.data,
-                        isStructureLoading: false
+                        isStructureLoading: false,
+                        currentDocumentStructureID: res.data.ID,
                     });
                 })
                 .catch(er => {
@@ -60,19 +64,18 @@ export default class DocumentWorkplace extends Component {
         });
     }
 
-    getDocumentContent(documentID) {
-
-    }
+    getDocumentContent(documentID) { }
 
     render() { 
         return ( 
             <div id = "documentWorkplaceComponentOutterCont">
-                <DocumentStorage setDocumentID = {this.props.setDocumentID}
-                                 getDocumentStructure = {this.getDocumentStructureContent}
+                <DocumentStorage getDocumentStructure = {this.getDocumentStructureContent}
                                  getDocumentContent = {this.getDocumentContent}/>
-                <DocumentStructure documentID = {this.props.documentID}
+                <DocumentStructure documentID = {this.state.currentDocumentID}
                                    documentStructureRawData = {this.state.documentStructureRaw}
-                                   isStructureLoading = {this.state.isStructureLoading} />
+                                   isStructureLoading = {this.state.isStructureLoading}
+                                   getDocumentStructure = {this.getDocumentStructureContent}
+                                   currentDocumentStructureID = {this.state.currentDocumentStructureID}/>
                 <DocumentContent />
             </div>
         )

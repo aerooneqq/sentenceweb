@@ -9,7 +9,7 @@ export default function DragableTreeItem(props) {
         item: 
         {
             type: "DragableTreeItem",
-            paragraphID: props.paragraph.id
+            paragraphID: props.item.id
         },
         collect: monitor => ({
             isDragging: !!monitor.isDragging(),
@@ -19,7 +19,7 @@ export default function DragableTreeItem(props) {
     const[, drop] = useDrop({ 
         accept: "DragableTreeItem",
         drop: async (item) => { 
-            alert(props.paragraph.id + " " + item.paragraphID)
+            alert(props.item.id + " " + item.itemID)
         }
     });
 

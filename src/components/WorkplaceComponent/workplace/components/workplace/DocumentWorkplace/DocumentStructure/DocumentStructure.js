@@ -3,7 +3,6 @@ import HTML5Backend from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
 
 //Model classes
-import DocumentTreeModel from "./Models/DocumentTreeModel";
 import Loader from "../../../../../../loader/Loader";
 
 //Styles
@@ -21,8 +20,6 @@ export default class DocumentStructure extends Component{
     constructor(props) { 
         super(props);
 
-        this.documentTreeModel = new DocumentTreeModel();
-
         this.state = { 
             openedParagraph: null,
             documentTree: null,
@@ -30,8 +27,13 @@ export default class DocumentStructure extends Component{
             structureData: null
         };
 
+        this.documentStructureService = new DocumentStructureService(localStorage.getItem("token"));
+
         this.changeCurrentContentParagraph = this.changeCurrentContentParagraph.bind(this);
         this.findContentParagraphsWithName = this.findContentParagraphsWithName.bind(this);
+        this.addListItem = this.addListItem.bind(this);
+        this.addContentItem = this.addContentItem.bind(this);
+        this.renameItem = this.renameItem.bind(this);
     }
 
     componentDidMount() {
@@ -51,6 +53,66 @@ export default class DocumentStructure extends Component{
 
     }
 
+    addListItem(itemID) {
+        this.documentStructureService.addListItem(itemID, this.props.currentDocumentStructureID)
+            .then(res => {
+                this.props.getDocumentStructure(this.props.documentID);
+            })
+            .catch(er => {
+                if (er.response) {
+                    alertAppMessage(er.response.data);
+                }
+                else {
+                    alertAppMessage("Error ocured while creating new item");
+                }
+            })
+    }
+
+    addContentItem(itemID) {
+        this.documentStructureService.addContentItem(itemID, this.props.currentDocumentStructureID)
+            .then(res => {
+                this.props.getDocumentStructure(this.props.documentID);
+            })
+            .catch(er => {
+                if (er.response) {
+                    alertAppMessage(er.response.data);
+                }
+                else {
+                    alertAppMessage("Error ocured while creating new item");
+                }
+            })
+    }
+
+    renameItem(itemID, newName) {
+        this.documentStructureService.renameItem(itemID, this.props.currentDocumentStructureID, newName)
+            .then(res => {
+                this.props.getDocumentStructure(this.props.documentID);
+            })
+            .catch(er => {
+                if (er.response) {
+                    alertAppMessage(er.response.data);
+                }
+                else {
+                    alertAppMessage("Error ocured while creating new item");
+                }
+            })
+    }
+
+    deleteItem(itemID) {
+        this.documentStructureService.deleteDocumentItem(itemID, this.props.currentDocumentStructureID)
+            .then(res => {
+                this.props.getDocumentStructure(this.props.documentID);
+            })
+            .catch(er => {
+                if (er.response) {
+                    alertAppMessage(er.response.data);
+                }
+                else {
+                    alertAppMessage("Error ocured while creating new item");
+                }
+            })
+    }
+
     render() { 
         return ( 
             <div id = "documentStructureOutterCont">
@@ -59,9 +121,13 @@ export default class DocumentStructure extends Component{
                 <div id = "documentTreeOutterContainer">
                     <div id = "documentTreeInnerContainer">
                         <DndProvider backend = {HTML5Backend}>
-                            <DocumentStructureTree paragraphs = {this.state.documentTree}
-                                                   data = {this.state.structureData}
-                                                   changeCurrentContentParagraph = {this.changeCurrentContentParagraph} />
+                            <DocumentStructureTree data = {this.props.documentStructureRawData}
+                                                   changeCurrentContentParagraph = {this.changeCurrentContentParagraph}
+                                                   documentID = {this.props.documentID}
+                                                   addListItem = {this.addListItem}
+                                                   addContentItem = {this.addContentItem}
+                                                   renameItem = {this.renameItem}
+                                                   deleteItem = {this.deleteItem}/>
                         </DndProvider>
                     </div>
                 </div>

@@ -3,6 +3,7 @@ import DocumentTreeItem from "./DocumentTree/DocumentTreeItem/DocumentTreeItem";
 import {alertAppMessage} from "../../../../../../ApplicationMessage/ApplicationMessageManager";
 import DocumentStructureService from "../../../../../../../services/DocumentStructureService/DocumentStructureService";
 import Loader from "../../../../../../loader/Loader";
+import DocumentTreeComponent from "./DocumentTree/DocumentTreeComponent";
 
 export default class DocumentStructureTree extends Component {
 
@@ -10,61 +11,24 @@ export default class DocumentStructureTree extends Component {
         super(props);
 
         this.state = {
-            documentTree: null,
             documentID: props.documentID
         };
 
-        this.documentStructureService = new DocumentStructureService(localStorage.getItem("token"));
+        this.documentTree = null;
 
-        this._getDocumentStructure = this._getDocumentStructure.bind(this);
         this._constructTreeFromStructureRecursive = this._constructTreeFromStructureRecursive.bind(this);
         this._getViewModelFromTreeItem = this._getViewModelFromTreeItem.bind(this);
         this.changeCurrentContentParagraph = this.changeCurrentContentParagraph.bind(this);
     }
 
-    componentDidMount() {
-        this._getDocumentStructure();
-    }
+    _getDocumentTreeViewModel(data) {
+        console.log(data);
+        this.documentTree = this._getViewModelFromTreeItem(data, 0, 0);
 
-    static getDerivedStateFromProps(nextProps, prevState) {
-        if (nextProps.documentID !== null && nextProps.documentID !== undefined
-            && nextProps.documentID !== prevState.documentID) {
-            alert(nextProps);
-            return {
-                documentTree: null,
-                documentID: nextProps.documentID
-            }
-        }
-    }
+        this._constructTreeFromStructureRecursive(this.documentTree, data.items, { id: 1 }, 1);
 
-    _getDocumentStructure() {
-        if (this.state.documentID !== null && this.state.documentID !== undefined) {
-            let response = this.documentStructureService.getDocumentStructure(this.state.documentID)
-                .then(res => {
-                    let documentTree = { paragraphs: [] };
-                    this._constructTreeFromStructureRecursive(documentTree, res.data.items, {id: 0}, 0);
-
-                    this.setState({
-                        documentTree: documentTree
-                    });
-                })
-                .catch(er => {
-                    if (er.response) {
-                        alertAppMessage(response.data, "error");
-                    }
-                    else {
-                        alertAppMessage("Error occured while getting your feed", "error");
-                    }
-
-                    this.setState({
-                        documentTree: []
-                    });
-                });
-        }
-
-        this.setState({
-            documentTree: []
-        });
+        console.log(this.documentTree);
+        return this.documentTree;
     }
 
     _constructTreeFromStructureRecursive(viewModelTreeItem, treeStructure, currID, level) {
@@ -72,15 +36,17 @@ export default class DocumentStructureTree extends Component {
             return;
         }
 
-        for (let el in treeStructure) {
+        for (let el of treeStructure) {
             let innerViewModel = this._getViewModelFromTreeItem(el, currID.id, level);
-            viewModelTreeItem.paragraphs.append(innerViewModel);
             currID.id++;
             this._constructTreeFromStructureRecursive(innerViewModel, el.items, currID, level + 1);
+            viewModelTreeItem.items.push(innerViewModel);
         }
     }
 
     _getViewModelFromTreeItem(el, id, level) {
+        console.log("EL: ")
+        console.log(el);
         return {
             id: id,
             itemID: el.ID,
@@ -88,8 +54,8 @@ export default class DocumentStructureTree extends Component {
             level: level,
             opened: false,
             selected: false,
-            type: el.itemType === 0 ? "list" : "content",
-            paragraphs: [],
+            type: el.itemStatus.itemType === 0 ? "list" : "content",
+            items: [],
         }
     }
 
@@ -99,12 +65,15 @@ export default class DocumentStructureTree extends Component {
 
     render() {
         return (
-            this.props.documentID === null ? null :
-            this.state.documentTree === null ?
-                <Loader message = "Loading structure..." /> :
-                this.state.documentTree.map(paragraph =>
-                    <DocumentTreeItem paragraph = {paragraph}
-                                      handleTreeItemClick = {this.changeCurrentContentParagraph}/>)
+            this.props.data
+                ? <DocumentTreeComponent item = {this._getDocumentTreeViewModel(this.props.data.items[0])}
+                                         changeCurrentContentParagraph = {this.props.changeCurrentContentParagraph}
+                                         documentID = {this.props.documentID}
+                                         addListItem = {this.props.addListItem}
+                                         addContentItem = {this.props.addContentItem}
+                                         renameItem = {this.props.renameItem}
+                                         deleteItem = {this.props.deleteItem}/>
+                : null
         )
     }
 }

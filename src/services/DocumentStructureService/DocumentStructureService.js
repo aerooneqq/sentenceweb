@@ -16,6 +16,54 @@ export default class DocumentStructureService {
         });
     }
 
+    addListItem(parentItemID, documentStructureID) {
+        alert(documentStructureID);
+        return axios.put(`${this._apiUrl}`, {
+            parentDocumentStructureID: documentStructureID,
+            itemID: parentItemID,
+            newName: null,
+            newInnerItem: {
+                name: "New item",
+                itemType: 0,
+                position: 0,
+            }
+        }, {
+            headers: {
+                Authorization: `Bearer ${this._documentsAPIToken}`
+            }
+        });
+    }
+
+    addContentItem(parentItemID, documentStructureID) {
+        return axios.put(`${this._apiUrl}`, {
+            parentDocumentStructureID: documentStructureID,
+            itemID: parentItemID,
+            newName: null,
+            newInnerItem: {
+                name: "New item",
+                itemType: 1,
+                position: 0,
+            }
+        }, {
+            headers: {
+                Authorization: `Bearer ${this._documentsAPIToken}`
+            }
+        });
+    }
+
+    renameItem(itemID, documentStructureID, newName) {
+        return axios.put(`${this._apiUrl}`, {
+            parentDocumentStructureID: documentStructureID,
+            itemID: itemID,
+            newName: newName,
+            newInnerItem: null
+        }, {
+            headers: {
+                Authorization: `Bearer ${this._documentsAPIToken}`
+            }
+        });
+    }
+
     deleteDocumentItem(documentID, itemID) {
         let apiUrl = `${this._apiUrl}?documentID=${documentID}&itemID=${itemID}`;
 

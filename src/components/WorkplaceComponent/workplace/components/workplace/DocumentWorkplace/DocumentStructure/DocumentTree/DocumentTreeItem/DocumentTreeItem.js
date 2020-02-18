@@ -17,11 +17,11 @@ export default class DocumentTreeItem extends Component {
 
         this.state = { 
             isEditable: false,
-            paragraphName: props.paragraph.name,
-            inputID: "documentStructureParagraphName" + props.paragraph.id,
+            paragraphName: props.item.name,
+            inputID: "documentStructureParagraphName" + props.item.id,
         };
         
-        this.contextMenuID = "documentTreeItemContextMenu" + props.paragraph.id;
+        this.contextMenuID = "documentTreeItemContextMenu" + props.item.id;
 
         this.handleParagraphInputValueChange = this.handleParagraphInputValueChange.bind(this);
         this.changeInputEditability = this.changeInputEditability.bind(this);
@@ -47,9 +47,9 @@ export default class DocumentTreeItem extends Component {
     handleParagraphInputValueChange(event) { 
         this._setInputWidth(document.getElementById(this.state.inputID));
 
-        this.setState({ 
+        this.setState({
             paragraphName: event.target.value
-        });
+        }, this.props.renameItem(event.target.value));
     }
 
     /**
@@ -90,7 +90,7 @@ export default class DocumentTreeItem extends Component {
                     <div className = "documentTreeItem" onClick = {this.props.handleTreeItemClick}>
                         <div className = "documentTreeItemIconContainer">
                             <img className = "documentTreeItemIcon" 
-                                src = {this.props.paragraph.type === "list" ? listParagraphIcon : contentParagraphIcon} 
+                                src = {this.props.item.type === "list" ? listParagraphIcon : contentParagraphIcon}
                                 alt = "" />
                         </div>
                         <input id = {this.state.inputID}
@@ -102,7 +102,9 @@ export default class DocumentTreeItem extends Component {
                 </ContextMenuTrigger>
 
                 <DocumentTreeItemContextMenu contextMenuID = {this.contextMenuID} 
-                                             changeInputEditability = {this.changeInputEditability}/>
+                                             changeInputEditability = {this.changeInputEditability}
+                                             addContentItem = {this.props.addContentItem}
+                                             addListItem = {this.props.addListItem}/>
             </div> 
         );
     }

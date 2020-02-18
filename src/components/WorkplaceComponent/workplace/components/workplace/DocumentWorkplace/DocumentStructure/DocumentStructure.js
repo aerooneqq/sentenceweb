@@ -26,17 +26,15 @@ export default class DocumentStructure extends Component{
         this.state = { 
             openedParagraph: null,
             documentTree: null,
-            paragraphsTreeComponent: <Loader message = "Loading document tree..."/>
+            paragraphsTreeComponent: <Loader message = "Loading document tree..."/>,
+            structureData: null
         };
-
-        this.documentStructureService = new DocumentStructureService(localStorage.getItem("token"));
 
         this.changeCurrentContentParagraph = this.changeCurrentContentParagraph.bind(this);
         this.findContentParagraphsWithName = this.findContentParagraphsWithName.bind(this);
     }
 
     componentDidMount() {
-        this._getDocumentStructure(this.props.documentID);
     }
 
     /**
@@ -49,43 +47,8 @@ export default class DocumentStructure extends Component{
         });
     }
 
-    async _getDocumentStructure(documentID) {
-        alert(this.props.documentID);
-
-        let response = await this.documentStructureService.getDocumentStructure(documentID);
-
-        if (response.status !== 200) {
-            if (response.data) {
-                alertAppMessage(response.data, "error");
-            }
-            else {
-                alertAppMessage("Error occured while getting your feed", "error");
-            }
-
-            return [];
-        }
-        else {
-            let documentTree = { paragraphs: [] };
-            this._constructTreeFromStructureRecursive(documentTree, response.data.items, {id: 0}, 0);
-            this.setState({
-                documentTree: documentTree
-            });
-        }
-    }
-
     findContentParagraphsWithName(name) {
-        if (name === "" || name === undefined || name === null) {
-            this._showAllTree();
-        }
-        else {
-            this.setState(() => {
-                return {
-                    paragraphsTreeComponent: this.documentTreeModel.getContentParagraphs(name).map(paragraph => {
-                        return (<DocumentTreeItem paragraph = {paragraph} handleTreeItemClick = {this.changeCurrentContentParagraph}/>);
-                    })
-                }
-            });
-        }
+
     }
 
     render() { 
@@ -97,6 +60,7 @@ export default class DocumentStructure extends Component{
                     <div id = "documentTreeInnerContainer">
                         <DndProvider backend = {HTML5Backend}>
                             <DocumentStructureTree paragraphs = {this.state.documentTree}
+                                                   data = {this.state.structureData}
                                                    changeCurrentContentParagraph = {this.changeCurrentContentParagraph} />
                         </DndProvider>
                     </div>

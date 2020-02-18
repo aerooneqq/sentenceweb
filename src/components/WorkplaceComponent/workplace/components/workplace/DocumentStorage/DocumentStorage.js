@@ -31,7 +31,8 @@ export default class DocumentStorage extends Component {
         return ( 
             <div className = "documentStorageOutterContainer">
                 <DocumentFileSystem isOpened = {this.state.isOpened}
-                                    setDocumentID = {this.props.setDocumentID}/>
+                                    setDocumentID = {this.props.setDocumentID}
+                                    getDocumentStructure = {this.props.getDocumentStructure}/>
                 <DocumentStorageOpener changeOpenerOpenedState = {this.changeOpenerOpenedState}
                                        isOpened = {this.state.isOpened} />
             </div>

@@ -91,7 +91,8 @@ export default class DocumentFoldersComponent extends Component {
         this.setState({ 
             component: <DocumentFoldersGrid folderID = {this.state.mainFolderIDs["Projects"]} 
                                             changeUpdatingState = {this.props.changeUpdatingState}
-                                            setDocumentID = {this.props.setDocumentID}/>,
+                                            setDocumentID = {this.props.setDocumentID}
+                                            getDocumentStrcuture = {this.props.getDocumentStructure}/>,
             currentFolderID: this.state.mainFolderIDs["Projects"]
         });
     }
@@ -103,7 +104,8 @@ export default class DocumentFoldersComponent extends Component {
         this.setState({ 
             component: <DocumentFoldersGrid folderID = {this.state.mainFolderIDs["Local"]} 
                                             changeUpdatingState = {this.props.changeUpdatingState}
-                                            setDocumentID = {this.props.setDocumentID}/>,
+                                            setDocumentID = {this.props.setDocumentID}
+                                            getDocumentStrcuture = {this.props.getDocumentStructure}/>,
             currentFolderID: this.state.mainFolderIDs["Local"]  
         });
     }

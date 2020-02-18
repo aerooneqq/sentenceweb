@@ -19,7 +19,7 @@ function DragableDocFile(props) {
     });
 
     let handleDoubleClick = function(e) {
-        props.setDocumentID(props.file.ID);
+        props.getDocumentStructure(props.file.documentID);
     };
 
     return ( 

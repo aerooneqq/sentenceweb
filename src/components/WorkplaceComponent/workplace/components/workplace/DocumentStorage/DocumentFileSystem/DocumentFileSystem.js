@@ -40,7 +40,8 @@ export default class DocumentFileSystem extends Component {
             <div id = "documentStorageContainer" className = {this.getClassName()}>
                 <DocumentFileSystemHeader isUpdating = {this.state.isUpdating} />
                 <DocumentFoldersComponent changeUpdatingState = {this.changeUpdatingState}
-                                          setDocumentID = {this.props.setDocumentID}  />
+                                          setDocumentID = {this.props.setDocumentID}
+                                          getDocumentStructure = {this.props.getDocumentStructure}/>
             </div>
         );
     }

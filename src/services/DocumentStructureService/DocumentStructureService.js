@@ -5,11 +5,11 @@ export default class DocumentStructureService {
 
     constructor(documentsApiToken) {
         this._documentsAPIToken = documentsApiToken;
-        this._apiUrl = getDocumentsAPIServerAddress(authorizationServerConfig) + "/documentsStructure";
+        this._apiUrl = getDocumentsAPIServerAddress(authorizationServerConfig) + "/documentStructure";
     }
 
     async getDocumentStructure(documentID) {
-        return await axios.get(this._apiUrl, {
+        return await axios.get(`${this._apiUrl}?documentID=${documentID}`, {
             headers: {
                 Authorization: `Bearer ${this._documentsAPIToken}`
             }

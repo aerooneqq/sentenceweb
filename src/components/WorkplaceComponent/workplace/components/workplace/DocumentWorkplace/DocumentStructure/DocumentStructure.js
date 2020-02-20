@@ -34,6 +34,7 @@ export default class DocumentStructure extends Component{
         this.addListItem = this.addListItem.bind(this);
         this.addContentItem = this.addContentItem.bind(this);
         this.renameItem = this.renameItem.bind(this);
+        this.deleteItem = this.deleteItem.bind(this);
     }
 
     componentDidMount() {
@@ -99,7 +100,8 @@ export default class DocumentStructure extends Component{
     }
 
     deleteItem(itemID) {
-        this.documentStructureService.deleteDocumentItem(itemID, this.props.currentDocumentStructureID)
+        alert("ASdasd")
+        this.documentStructureService.deleteDocumentItem(this.props.currentDocumentStructureID, itemID)
             .then(res => {
                 this.props.getDocumentStructure(this.props.documentID);
             })

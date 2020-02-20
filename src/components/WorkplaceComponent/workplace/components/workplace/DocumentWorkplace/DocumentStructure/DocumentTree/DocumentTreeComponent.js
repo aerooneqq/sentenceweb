@@ -21,6 +21,7 @@ export default class DocumentTreeComponent extends Component {
         this.handleTreeItemClick = this.handleTreeItemClick.bind(this);
         this.addListItem = this.addListItem.bind(this);
         this.addContentItem = this.addContentItem.bind(this);
+        this.deleteItem = this.deleteItem.bind(this);
 
         this._findElementsToDisplay = this._findElementsToDisplay.bind(this);
         this._findThisNodeInTree = this._findThisNodeInTree.bind(this);

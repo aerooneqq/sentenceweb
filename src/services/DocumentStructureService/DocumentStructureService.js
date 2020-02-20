@@ -64,8 +64,8 @@ export default class DocumentStructureService {
         });
     }
 
-    deleteDocumentItem(documentID, itemID) {
-        let apiUrl = `${this._apiUrl}?documentID=${documentID}&itemID=${itemID}`;
+    deleteDocumentItem(documentStructureID, itemID) {
+        let apiUrl = `${this._apiUrl}/item?documentStructureID=${documentStructureID}&itemToDeleteID=${itemID}`;
 
         return axios.delete(apiUrl, {
             headers: {

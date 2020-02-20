@@ -46,10 +46,12 @@ export default class DocumentTreeItem extends Component {
 
     handleParagraphInputValueChange(event) { 
         this._setInputWidth(document.getElementById(this.state.inputID));
-
+        
         this.setState({
             paragraphName: event.target.value
         }, this.props.renameItem(event.target.value));
+
+        this.props.renameItem(props.item.itemID, event.target.value);
     }
 
     /**
@@ -104,7 +106,8 @@ export default class DocumentTreeItem extends Component {
                 <DocumentTreeItemContextMenu contextMenuID = {this.contextMenuID} 
                                              changeInputEditability = {this.changeInputEditability}
                                              addContentItem = {this.props.addContentItem}
-                                             addListItem = {this.props.addListItem}/>
+                                             addListItem = {this.props.addListItem}
+                                             deleteItem = {this.props.deleteItem}/>
             </div> 
         );
     }

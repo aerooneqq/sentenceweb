@@ -89,12 +89,9 @@ export default class App extends Component {
         }
 
         onResolved();
-
       }).catch(() => {
-
         alertAppMessage("Error while authorizing", "error");
         onRejected();
-
       })
     })
   }

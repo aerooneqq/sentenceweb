@@ -16,27 +16,13 @@ export default class DocumentsHeader extends Component{
         this.outterContWidth = -1;
         this.innerContWidth = -1;
 
-        this.state = { 
-            openedDocuments: [
-                {id: 0, name: "Test document sald asdl;sa dals;d ", isSaved: false, isSelected: false },
-                {id: 1, name: "sald asdl;sa dals;d ", isSaved: true, isSelected: false },
-                {id: 2, name: "Test document sald asdl;sa dals;d ", isSaved: true, isSelected: false },
-                {id: 3, name: "Test document ;sa dals;d ", isSaved: true, isSelected: false },
-                {id: 4, name: "Test document sald asdl;sa dals;d ", isSaved: false, isSelected: true },
-                {id: 5, name: "sald asdl;sa dals;d ", isSaved: true, isSelected: false },
-                {id: 6, name: "Test document sald asdl;sa dals;d ", isSaved: false, isSelected: false },
-                {id: 7, name: "Test document asdl;sa dals;d ", isSaved: true, isSelected: false },
-                {id: 8, name: "Test document sald asdl;sa dals;d ", isSaved: true, isSelected: false },
-                {id: 9, name: "Test document sald asdl;sa dals;d ", isSaved: true, isSelected: false },
-                {id: 10, name: "Test document asdl;sa dals;d ", isSaved: true, isSelected: false }
-            ],
+        this.state = {
             scrollBar: null,
             isScrollBarVisible: false,
             scrollBarContStyle: {},
             scrollBarThumbStyle: {}            
-        }
+        };
 
-        this.changeSelectedDocument = this.changeSelectedDocument.bind(this);
         this.setContainersSizesToState = this.setContainersSizesToState.bind(this);
         this.scroll = this.scroll.bind(this);
         this.handleMouseEnter = this.handleMouseEnter.bind(this);
@@ -46,6 +32,7 @@ export default class DocumentsHeader extends Component{
 
     componentDidMount() { 
         this.setContainersSizesToState();
+        this.props.getDocumentHeaderState();
     }
 
     _getScrollDistance(delta) { 
@@ -94,27 +81,6 @@ export default class DocumentsHeader extends Component{
         }
     }
 
-    /**
-     * Sets the document with a given id to the opened mode.
-     * Loads this document to the workplace via calling the method which comes from workplace.
-     * @param {the id of the opened document document} id 
-     */
-    changeSelectedDocument(id){ 
-        this.setState(prevState => { 
-            for (let openedDoc of prevState.openedDocuments) { 
-                openedDoc.isSelected = false;
-
-                if (openedDoc.id === id){ 
-                    openedDoc.isSelected = true;
-                }
-            }
-
-            return { 
-                openedDocuments: prevState.openedDocuments
-            }
-        })
-    }
-
     handleMouseEnter() { 
         console.log(true)
         this.setState({ 
@@ -135,10 +101,10 @@ export default class DocumentsHeader extends Component{
                  onMouseLeave = {this.handleMouseLeave}>
                 <div id = "documentsHeaderScrollableItems">
                     <div id = "documentsHeaderInnerContainer">
-                        {this.state.openedDocuments.map(openedDoc => { 
+                        {this.props.openedDocuments.map(openedDoc => {
                             return ( 
                                 <DocumentHeaderCell openedDoc = {openedDoc}
-                                                    changeSelectedDocument = {this.changeSelectedDocument} />
+                                                    changeSelectedDocument = {this.props.changeSelectedDocumentInHeader} />
                             )
                         })}
                     </div>

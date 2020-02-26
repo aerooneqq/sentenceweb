@@ -41,7 +41,6 @@ export default class FileService {
 
     async renameFile(fileID, newFileName) { 
         let url = `${this._apiUrl}`;
-
         return await axios.put(url, {
             fileID: fileID,
             newFileName: newFileName

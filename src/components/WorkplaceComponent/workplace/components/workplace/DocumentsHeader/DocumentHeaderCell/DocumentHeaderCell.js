@@ -29,7 +29,7 @@ export default class DocumentHeaderCell extends Component {
                     <img src = {documentIcon} alt = "" />
                 </div>
                 <div className = "documentHeaderCellName unselectableText">
-                    {this.props.openedDoc.name}
+                    {this.props.openedDoc.documentName}
                 </div>
                 <SaveOrCloseDoc isSaved = {this.props.openedDoc.isSaved}/>
             </div>

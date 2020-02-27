@@ -32,7 +32,8 @@ export default class DocumentWorkplace extends Component {
                                    isStructureLoading = {this.props.isStructureLoading}
                                    getDocumentStructure = {this.props.getDocumentStructureContent}
                                    currentDocumentStructureID = {this.props.currentDocumentStructureID}/>
-                <DocumentContent />
+                <DocumentContent isContentLoading = {this.props.isContentLoading}
+                                 documentElements = {this.props.documentElements} />
             </div>
         )
     }

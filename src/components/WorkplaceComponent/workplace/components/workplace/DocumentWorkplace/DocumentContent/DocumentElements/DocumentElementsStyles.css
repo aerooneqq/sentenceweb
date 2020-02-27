@@ -5,3 +5,24 @@
     border-style: none; 
     border-radius: 5px;
 }
+
+.documentElementOutterCont:hover > .versionControllContainer > .versionControllOutterCont {
+    display: flex;
+    animation: fadeIn 0.5s ease-in forwards;
+}
+
+.documentElementOutterCont:hover > .versionControllContainer > .create-new-element-outer-cont {
+    display: flex;
+    animation: fadeIn 0.5s ease-in forwards;
+}
+
+
+@keyframes fadeIn{ 
+    from { 
+        opacity: 0;
+    }
+
+    to { 
+        opacity: 1;
+    }
+}

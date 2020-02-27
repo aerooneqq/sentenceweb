@@ -22,7 +22,7 @@ export default class DocumentTreeComponent extends Component {
         this.addListItem = this.addListItem.bind(this);
         this.addContentItem = this.addContentItem.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
-
+        this.handleTreeItemClick = this.handleTreeItemClick.bind(this);
         this._findElementsToDisplay = this._findElementsToDisplay.bind(this);
         this._findThisNodeInTree = this._findThisNodeInTree.bind(this);
     }
@@ -99,6 +99,10 @@ export default class DocumentTreeComponent extends Component {
         else { 
             this.props.changeCurrentContentParagraph(this.props.item);
         }
+    }
+
+    handleTreeItemDoubleClick() {
+
     }
 
     addListItem() {

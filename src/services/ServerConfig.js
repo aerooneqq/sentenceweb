@@ -1,5 +1,5 @@
 const authorizationServerConfig = {
-    host:"https://localhost:443",
+    host:"http://localhost:3000",
     apiPrefix: "sentenceapi",
     documentsApiPrefix: "documentsapi"
 };

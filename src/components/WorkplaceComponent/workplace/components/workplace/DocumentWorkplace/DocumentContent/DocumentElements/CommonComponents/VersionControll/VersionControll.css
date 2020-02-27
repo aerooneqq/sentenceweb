@@ -1,8 +1,11 @@
 .versionControllOutterCont { 
+    position: relative;
+    z-index: 2;
+    
     margin-top: 15px;
     background: transparent;
 
-    display: flex; 
+    display: none; 
     flex-direction: column;
     opacity: 1
 }

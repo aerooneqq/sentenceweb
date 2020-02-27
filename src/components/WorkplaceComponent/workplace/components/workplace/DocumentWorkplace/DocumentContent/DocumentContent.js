@@ -9,6 +9,9 @@ import "./DocumentContentStyles.css"
 import Paragraph from "./DocumentElements/Paragraph/Paragraph";
 import Scrollbar from "../../../../../../Scrollbar/Scrollbar";
 import { isHidden } from "../../../../../../../services/Utility/UtilityFunctions";
+import DocumentElementsService from "../../../../../../../services/DocumentElementService/DocumentElementService";
+import { local } from "d3";
+import Loader from "../../../../../../loader/Loader";
 
 const paragraph = { 
     name: "Test name",
@@ -32,7 +35,12 @@ export default class DocumentContent extends Component {
     constructor(props) { 
         super(props);
 
-        this.state = {}
+        this.state = {
+            documentElements: [],
+            isLoading: false
+        }
+
+        this.documentElementsService = new DocumentElementsService(localStorage.getItem("token"))
     }
 
     render() { 
@@ -40,11 +48,6 @@ export default class DocumentContent extends Component {
             <div id = "documentScrollCont">
                 <div id = "documentContentOutterContainer">
                     <div id = "documentContentInnerContainer">
-                        <Paragraph paragraph = {paragraph} />
-                        <Paragraph paragraph = {paragraph} />
-                        <Paragraph paragraph = {paragraph} />
-                        <Paragraph paragraph = {paragraph} />
-                        <Paragraph paragraph = {paragraph} />
                         <Paragraph paragraph = {paragraph} />
                         <Paragraph paragraph = {paragraph} />
                         <Paragraph paragraph = {paragraph} />

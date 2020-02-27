@@ -3,7 +3,7 @@ import {authorizationServerConfig, getServerAddress} from "../ServerConfig";
 
 export default class TokenService{ 
     constructor() { 
-        this.apiURL = "https://localhost:443"  + "/authorization?";
+        this.apiURL = "http://localhost:3000"  + "/authorization?";
     }
 
     sendGetTokenRequest(email, password) { 

@@ -49,8 +49,6 @@ export default class VersionControll extends Component {
             isFirstLoad: true, 
             versions: null
         }
-
-        this._getContainerClass = this._getContainerClass.bind(this);
     }
 
     componentDidMount() { 
@@ -67,18 +65,6 @@ export default class VersionControll extends Component {
             versions: elements
         });
     }
-
-    _getContainerClass() {
-        if (this.state.isFirstLoad === true) { 
-            this.setState({ 
-                isFirstLoad: false
-            })
-            return "versionControllOutterCont";
-        }
-
-        return this.props.visible ? "versionControllOutterCont openedContainer" : "versionControllOutterCont closedContainer";
-    }
-
 
     render() { 
         return (

@@ -1,0 +1,28 @@
+.create-new-element-outer-cont{ 
+    width: 100%;
+    height: 30px;
+    background-color: transparent;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    padding-left: 2.5%;
+
+    display: none;
+}
+
+.create-new-element-icon {
+    width: auto; 
+    height: 100%;
+
+    color: gray;
+    font-size: 15px;
+
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+    .create-new-element-icon:hover {
+        color: #aaaaaa;
+    }

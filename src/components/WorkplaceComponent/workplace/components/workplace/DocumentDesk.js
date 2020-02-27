@@ -21,6 +21,7 @@ export default class DocumentDesk extends Component{
             currentDocumentStructureID: null,
             isStructureLoading: false,
             isContentLoading: true,
+            itemContent: []
         };
 
         this.documentHeaderService = new DocumentHeaderService(localStorage.getItem("token"));
@@ -117,7 +118,31 @@ export default class DocumentDesk extends Component{
         });
     }
 
-    getDocumentContent(documentID) {}
+    getDocumentContent(itemID) {
+        this.setState({
+            isContentLoading: true,
+        }, () => {
+            this.documentElementsService.getDocumentElements(itemID).
+                then(res => {
+                    this.setState({
+                        documentElements: res.data,
+                        isLoading: false
+                    })
+                })
+                .catch(er => {
+                    this.setState({
+                        isLoading: false
+                    });
+
+                    if (er.response) {
+                        alertAppMessage(er.response.data, "error");
+                    }
+                    else {
+                        alertAppMessage("Error occured while getting your feed", "error");
+                }
+            });
+        })
+    }
 
     changeSelectedDocumentInHeader(id) {
         this.setState(prevState => {
@@ -146,7 +171,9 @@ export default class DocumentDesk extends Component{
                                    isStructureLoading = {this.state.isStructureLoading}
                                    currentDocumentStructureID = {this.state.currentDocumentStructureID}
                                    getDocumentStructureContent = {this.getDocumentStructureContent}
-                                   getDocumentContent = {this.getDocumentContent} />
+                                   getDocumentContent = {this.getDocumentContent}
+                                   isContentLoading = {this.state.isContentLoading}
+                                   itemContent = {this.state.isContentLoading} />
             </div>
         )
     }

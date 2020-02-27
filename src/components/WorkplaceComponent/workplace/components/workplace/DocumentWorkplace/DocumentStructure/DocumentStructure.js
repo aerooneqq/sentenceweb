@@ -13,8 +13,6 @@ import {alertAppMessage} from "../../../../../../ApplicationMessage/ApplicationM
 
 //Components
 const DocumentStructureHeader = lazy(() => import("./DocumentStructureHeader/DocumentStructureHeader"));
-const DocumentTreeComponent = lazy(() => import("./DocumentTree/DocumentTreeComponent"));
-const DocumentTreeItem = lazy(() => import("./DocumentTree/DocumentTreeItem/DocumentTreeItem"));
 
 export default class DocumentStructure extends Component{ 
     constructor(props) { 
@@ -30,7 +28,6 @@ export default class DocumentStructure extends Component{
         this.documentStructureService = new DocumentStructureService(localStorage.getItem("token"));
 
         this.changeCurrentContentParagraph = this.changeCurrentContentParagraph.bind(this);
-        this.findContentParagraphsWithName = this.findContentParagraphsWithName.bind(this);
         this.addListItem = this.addListItem.bind(this);
         this.addContentItem = this.addContentItem.bind(this);
         this.renameItem = this.renameItem.bind(this);
@@ -48,10 +45,6 @@ export default class DocumentStructure extends Component{
         this.setState({ 
             openedParagraph: paragraph
         });
-    }
-
-    findContentParagraphsWithName(name) {
-
     }
 
     addListItem(itemID) {

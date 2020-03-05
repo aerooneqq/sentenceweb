@@ -122,7 +122,8 @@ export default class DocumentStructure extends Component{
                                                    addListItem = {this.addListItem}
                                                    addContentItem = {this.addContentItem}
                                                    renameItem = {this.renameItem}
-                                                   deleteItem = {this.deleteItem}/>
+                                                   deleteItem = {this.deleteItem}
+                                                   getDocumentContent = {this.props.getDocumentContent}/>
                         </DndProvider>
                     </div>
                 </div>

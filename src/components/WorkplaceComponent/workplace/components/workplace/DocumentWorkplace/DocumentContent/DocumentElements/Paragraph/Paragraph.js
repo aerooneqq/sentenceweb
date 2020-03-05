@@ -42,7 +42,7 @@ export default class Paragraph extends Component {
                 
                 <div className = "versionControllContainer">
                     <VersionControll />
-                    <CreateNewElement />
+                    <CreateNewElement createNewElement = {this.props.createNewElement}/>
                 </div>
             
             </div>

@@ -72,7 +72,8 @@ export default class DocumentStructureTree extends Component {
                                          addListItem = {this.props.addListItem}
                                          addContentItem = {this.props.addContentItem}
                                          renameItem = {this.props.renameItem}
-                                         deleteItem = {this.props.deleteItem}/>
+                                         deleteItem = {this.props.deleteItem}
+                                         getDocumentContent = {this.props.getDocumentContent}/>
                 : null
         )
     }

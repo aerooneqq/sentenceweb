@@ -23,6 +23,7 @@ export default class DocumentTreeComponent extends Component {
         this.addContentItem = this.addContentItem.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
         this.handleTreeItemClick = this.handleTreeItemClick.bind(this);
+        this.handleTreeItemDoubleClick = this.handleTreeItemDoubleClick.bind(this);
         this._findElementsToDisplay = this._findElementsToDisplay.bind(this);
         this._findThisNodeInTree = this._findThisNodeInTree.bind(this);
     }
@@ -102,7 +103,7 @@ export default class DocumentTreeComponent extends Component {
     }
 
     handleTreeItemDoubleClick() {
-
+        this.props.getDocumentContent(this.props.item.itemID)
     }
 
     addListItem() {
@@ -130,6 +131,7 @@ export default class DocumentTreeComponent extends Component {
             <div className = "documentTreeContainer" style = {{position: "relative", zIndex: -this.props.item.id}}>
                 <DragableTreeItem item = {this.props.item}
                                   handleTreeItemClick = {this.handleTreeItemClick}
+                                  handleTreeItemDoubleClick = {this.handleTreeItemDoubleClick}
                                   addContentItem = {this.addContentItem}
                                   addListItem = {this.addListItem}
                                   renameItem = {this.renameItem}
@@ -144,7 +146,8 @@ export default class DocumentTreeComponent extends Component {
                                                           addContentItem = {this.props.addContentItem}
                                                           addListItem = {this.props.addListItem}
                                                           renameItem = {this.props.renameItem}
-                                                          deleteItem = {this.props.deleteItem}/>
+                                                          deleteItem = {this.props.deleteItem}
+                                                          getDocumentContent = {this.props.getDocumentContent}/>
                         })}
                 </div>
             </div>

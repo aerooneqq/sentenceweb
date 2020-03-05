@@ -12,6 +12,7 @@ import { isHidden } from "../../../../../../../services/Utility/UtilityFunctions
 import DocumentElementsService from "../../../../../../../services/DocumentElementService/DocumentElementService";
 import { local } from "d3";
 import Loader from "../../../../../../loader/Loader";
+import CreateNewElement from "./DocumentElements/CommonComponents/CreateNewElement/CreateNewElement";
 
 const paragraph = { 
     name: "Test name",
@@ -40,7 +41,35 @@ export default class DocumentContent extends Component {
             isLoading: false
         }
 
-        this.documentElementsService = new DocumentElementsService(localStorage.getItem("token"))
+        this.documentElementsService = new DocumentElementsService(localStorage.getItem("token"));
+        this._get_documents_view = this._get_documents_view.bind(this);
+        this.createNewElement = this.createNewElement.bind(this);
+    }
+
+    
+    createNewElement(type) {
+        this.props.createNewElement(type);
+    }
+
+    _get_documents_view() {
+        if (this.props.documentElements) {
+            console.log("ASDASDASDASD")
+            console.log(this.props.documentElements)
+            if (this.props.documentElements.length == 0) {
+                return [<Paragraph paragraph = {paragraph} createNewElement = {this.createNewElement} />]
+            }
+            else {
+                return this.props.documentElements.map(de => {
+                    switch (de.type) {
+                        case "Paragraph":
+                            return <Paragraph paragraph = {de} createNewElement = {this.createNewElement}/>
+
+                        default:
+                            return null
+                    }
+                });
+            }
+        }
     }
 
     render() { 
@@ -48,9 +77,8 @@ export default class DocumentContent extends Component {
             <div id = "documentScrollCont">
                 <div id = "documentContentOutterContainer">
                     <div id = "documentContentInnerContainer">
-                        <Paragraph paragraph = {paragraph} />
-                        <Paragraph paragraph = {paragraph} />
-                        <Paragraph paragraph = {paragraph} />
+                        {this.props.isContentLoading === true ? <Loader message = "Loading document content..." /> :
+                            this._get_documents_view()}
                     </div>
                 </div>
             </div>

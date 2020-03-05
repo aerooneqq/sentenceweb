@@ -89,7 +89,8 @@ export default class DocumentTreeItem extends Component {
         return (
             <div>
                 <ContextMenuTrigger id = {this.contextMenuID}>
-                    <div className = "documentTreeItem" onClick = {this.props.handleTreeItemClick}>
+                    <div className = "documentTreeItem" onClick = {this.props.handleTreeItemClick}
+                         onDoubleClick = {this.props.handleTreeItemDoubleClick}>
                         <div className = "documentTreeItemIconContainer">
                             <img className = "documentTreeItemIcon" 
                                 src = {this.props.item.type === "list" ? listParagraphIcon : contentParagraphIcon}

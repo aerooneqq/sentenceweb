@@ -16,4 +16,13 @@ export default class DocumentElementsService {
             }
         });
     }
+
+    createNewElement(elementType, itemID, documentID) {
+        let url = `${this._url}?documentID=${documentID}&itemID=${itemID}&type=${elementType}`;
+        return axios.post(url, {}, {
+            headers: {
+                Authorization: `Bearer ${this._token}`
+            }
+        });
+    }
 }

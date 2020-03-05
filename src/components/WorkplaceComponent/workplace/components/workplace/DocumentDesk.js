@@ -5,6 +5,7 @@ import "./DocumentDeskStyles.css"
 import DocumentHeaderService from "../../../../../services/DocumentsHeaderService/DocumentHeaderService";
 import {alertAppMessage} from "../../../../ApplicationMessage/ApplicationMessageManager";
 import DocumentStructureService from "../../../../../services/DocumentStructureService/DocumentStructureService";
+import DocumentElementsService from "../../../../../services/DocumentElementService/DocumentElementService";
 
 //Components
 const DocumentsHeader = lazy(() => import("./DocumentsHeader/DocumentsHeader"));
@@ -21,11 +22,14 @@ export default class DocumentDesk extends Component{
             currentDocumentStructureID: null,
             isStructureLoading: false,
             isContentLoading: true,
-            itemContent: []
+            itemContent: [],
+            documentElements: [],
+            currentItemID: null
         };
 
         this.documentHeaderService = new DocumentHeaderService(localStorage.getItem("token"));
         this.documentStructureService = new DocumentStructureService(localStorage.getItem("token"));
+        this.documentElementsService = new DocumentElementsService(localStorage.getItem("token"));
 
         this.getDocumentHeaderState = this.getDocumentHeaderState.bind(this);
         this.openDocumentFromDocumentsHeader = this.openDocumentFromDocumentsHeader.bind(this);
@@ -33,6 +37,7 @@ export default class DocumentDesk extends Component{
         this.removeDocumentFromHeader = this.removeDocumentFromHeader.bind(this);
         this.getDocumentContent = this.getDocumentContent.bind(this);
         this.getDocumentStructureContent = this.getDocumentStructureContent.bind(this);
+        this.createNewElement = this.createNewElement.bind(this);
     }
 
     getDocumentHeaderState() {
@@ -122,16 +127,17 @@ export default class DocumentDesk extends Component{
         this.setState({
             isContentLoading: true,
         }, () => {
-            this.documentElementsService.getDocumentElements(itemID).
-                then(res => {
+            this.documentElementsService.getDocumentElements(itemID)
+                .then(res => {
                     this.setState({
                         documentElements: res.data,
-                        isLoading: false
+                        isContentLoading: false,
+                        currentItemID: itemID
                     })
                 })
                 .catch(er => {
                     this.setState({
-                        isLoading: false
+                        isContentLoading: false
                     });
 
                     if (er.response) {
@@ -160,6 +166,23 @@ export default class DocumentDesk extends Component{
         })
     }
 
+    createNewElement(type) {
+        this.documentElementsService.createNewElement(type, this.state.currentItemID, this.state.currentDocumentID)
+            .then(res => {
+                this.setState({
+                    documentElements: res.data,
+                });
+            })
+            .catch(er => {
+                if (er.response) {
+                    alertAppMessage(er.response.data, "error");
+                }
+                else {
+                    alertAppMessage("Error occured while getting your feed", "error");
+                }
+            });
+    }
+
     render() { 
         return ( 
             <div id = "documentDeskContainer">
@@ -173,7 +196,9 @@ export default class DocumentDesk extends Component{
                                    getDocumentStructureContent = {this.getDocumentStructureContent}
                                    getDocumentContent = {this.getDocumentContent}
                                    isContentLoading = {this.state.isContentLoading}
-                                   itemContent = {this.state.isContentLoading} />
+                                   itemContent = {this.state.isContentLoading}
+                                   documentElements = {this.state.documentElements}
+                                   createNewElement = {this.createNewElement} />
             </div>
         )
     }

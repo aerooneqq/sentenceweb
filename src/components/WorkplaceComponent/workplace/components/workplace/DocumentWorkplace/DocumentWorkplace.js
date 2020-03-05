@@ -10,12 +10,6 @@ const DocumentStructure = lazy(() => import("./DocumentStructure/DocumentStructu
 const DocumentContent = lazy(() => import("./DocumentContent/DocumentContent"));
 const DocumentStorage = lazy(() => import("../DocumentStorage/DocumentStorage"));
 
-
-/**
- * PROPS LIST:
- * 1) setDocumentID - sets the id of selected document
- * 2) documentID
- */
 export default class DocumentWorkplace extends Component { 
     
     constructor(props) { 
@@ -31,9 +25,11 @@ export default class DocumentWorkplace extends Component {
                                    documentStructureRawData = {this.props.documentStructureRaw}
                                    isStructureLoading = {this.props.isStructureLoading}
                                    getDocumentStructure = {this.props.getDocumentStructureContent}
-                                   currentDocumentStructureID = {this.props.currentDocumentStructureID}/>
+                                   currentDocumentStructureID = {this.props.currentDocumentStructureID}
+                                   getDocumentContent = {this.props.getDocumentContent}/>
                 <DocumentContent isContentLoading = {this.props.isContentLoading}
-                                 documentElements = {this.props.documentElements} />
+                                 documentElements = {this.props.documentElements}
+                                 createNewElement = {this.props.createNewElement} />
             </div>
         )
     }

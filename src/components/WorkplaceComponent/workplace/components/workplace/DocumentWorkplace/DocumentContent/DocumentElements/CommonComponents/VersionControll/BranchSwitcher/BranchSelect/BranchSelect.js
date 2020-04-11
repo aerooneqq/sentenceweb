@@ -9,20 +9,25 @@ import downArrowIcon from "./img/down_arrow.svg";
 
 //Components
 import BranchOption from "./BranchOption/BranchOption";
+import CreateNewBranch from "./CreateNewBranch/CreateNewBranch";
+
 
 export default class BranchSelect extends Component {
     constructor(props) { 
         super(props);
 
         this.state = { 
-            selectedOptionID: 0,
-            areOptionsVisible: false
+            selectedBranchID: null,
+            selectedBranchName: null,
         }
 
         this.onArrowClick = this.onArrowClick.bind(this);
         this._getOptionsClass = this._getOptionsClass.bind(this);
         this.toggleRotationClassToArrow = this.toggleRotationClassToArrow.bind(this);
         this.toggleBackRotationClassToArrow = this.toggleBackRotationClassToArrow.bind(this);
+        this.selectBranch = this.selectBranch.bind(this);
+        this._getBranchOptions = this._getBranchOptions.bind(this);
+        this.createNewBranch = this.createNewBranch.bind(this);
     }
 
     toggleRotationClassToArrow() { 
@@ -54,6 +59,32 @@ export default class BranchSelect extends Component {
         return this.state.areOptionsVisible === true ? "branchSelectOptions optionsOpened" : "branchSelectOptions"; 
     }
 
+    selectBranch(branchName, branchID) {
+        this.props.changeSelectedBranch(branchID);
+        this.setState({
+            selectedBranchID: branchID,
+            selectedBranchName: branchName,
+        }); 
+    }
+
+    createNewBranch(branchName) {
+        this.props.createNewBranch(branchName);
+    }
+
+    _getBranchOptions(branches) {
+        let branchOptions = []
+
+        for (let branch of branches) {
+            branchOptions.push(<BranchOption branchName = {branch.branchName}
+                                             branchID = {branch.branchID}
+                                             selectBranch = {this.selectBranch} />);
+        }
+        
+        branchOptions.push(<CreateNewBranch createNewBranch = {this.createNewBranch} />)
+
+        return branchOptions;
+    }
+
     render() { 
         return ( 
             <div className = "branchSelect">
@@ -62,15 +93,14 @@ export default class BranchSelect extends Component {
                         Branch
                     </div>
                     <div className = "currentlySelectedOption" onClick = {this.onArrowClick}>
-                        Test selected option
+                        {this.state.selectedBranchName}
                     </div>
                     <div className = "arrowIconContainer" onClick = {this.onArrowClick}>
                         <img className = "dropDownArrowIcon" src={downArrowIcon} width="16" height="16" alt="The drop-down arrow" />
                     </div>
                 </div>
                 <div className = {this._getOptionsClass()}>
-                    <BranchOption />
-                    <BranchOption />
+                    {this.props.branches ? this._getBranchOptions(this.props.branches) : null}
                 </div>
             </div>
         )

@@ -127,7 +127,7 @@ export default class DocumentDesk extends Component{
         this.setState({
             isContentLoading: true,
         }, () => {
-            this.documentElementsService.getDocumentElements(itemID)
+            this.documentElementsService.getDocumentElements(this.state.currentDocumentID, itemID)
                 .then(res => {
                     this.setState({
                         documentElements: res.data,
@@ -166,8 +166,8 @@ export default class DocumentDesk extends Component{
         })
     }
 
-    createNewElement(type) {
-        this.documentElementsService.createNewElement(type, this.state.currentItemID, this.state.currentDocumentID)
+    createNewElement(type, index) {
+        this.documentElementsService.createNewElement(type, this.state.currentItemID, this.state.currentDocumentID, index)
             .then(res => {
                 this.setState({
                     documentElements: res.data,

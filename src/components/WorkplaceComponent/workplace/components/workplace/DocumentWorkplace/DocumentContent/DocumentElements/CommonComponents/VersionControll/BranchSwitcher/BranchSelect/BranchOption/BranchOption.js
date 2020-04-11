@@ -6,17 +6,19 @@ import { isArray } from "util";
 
 export default class BranchOption extends Component { 
     constructor(props) {
-        super(props); 
+        super(props);
+        
+        this.onBranchOptionClick = this.onBranchOptionClick.bind(this);
     }
 
     onBranchOptionClick() { 
-        alert("Branch option is clicked!")
+        this.props.selectBranch(this.props.branchName, this.props.branchID);
     }
 
     render() { 
         return ( 
             <div className = "branchOptionCont" onClick = {this.onBranchOptionClick}>
-                Test option
+                {this.props.branchName}
             </div>
         )
     }

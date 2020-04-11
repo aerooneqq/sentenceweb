@@ -3,7 +3,7 @@ import React, {Component} from "react";
 //Styles 
 import "./VersionStyles.css";
 
-export default class Version extends Component {
+export default class BranchNode extends Component {
     constructor(props) { 
         super(props);
 
@@ -11,7 +11,7 @@ export default class Version extends Component {
     }
 
     _getClassName() { 
-        return this.props.version.selected === true ? "versionCircle selectedVersion versionToolTipContainer" 
+        return this.props.selected === true ? "versionCircle selectedVersion versionToolTipContainer" 
             : "versionCircle versionToolTipContainer";
     }
 
@@ -19,8 +19,8 @@ export default class Version extends Component {
         return ( 
             <div className = {this._getClassName()}>
                 <span className = "versionToolTipText">
-                    <div> {this.props.version.name} </div>
-                    <div> {this.props.version.date} </div>
+                    <div> {this.props.branchNode.title} </div>
+                    <div> {this.props.branchNode.createdAt} </div>
                 </span>
             </div>
         )

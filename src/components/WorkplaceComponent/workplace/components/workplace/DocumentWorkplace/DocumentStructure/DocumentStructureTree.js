@@ -22,7 +22,6 @@ export default class DocumentStructureTree extends Component {
     }
 
     _getDocumentTreeViewModel(data) {
-        console.log(data);
         this.documentTree = this._getViewModelFromTreeItem(data, 0, 0);
 
         this._constructTreeFromStructureRecursive(this.documentTree, data.items, { id: 1 }, 1);
@@ -45,8 +44,6 @@ export default class DocumentStructureTree extends Component {
     }
 
     _getViewModelFromTreeItem(el, id, level) {
-        console.log("EL: ")
-        console.log(el);
         return {
             id: id,
             itemID: el.ID,

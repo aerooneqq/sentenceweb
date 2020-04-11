@@ -16,19 +16,19 @@ export default class CreateNewElement extends Component {
     }
 
     handleCreateParagraphClick() {
-        this.props.createNewElement(0);
+        this.props.createNewElement(0, this.props.index);
     }
 
     handleCreateImageClick() {
-        this.props.createNewElement(1);
+        this.props.createNewElement(1, this.props.index);
     }
 
     handleCreateTableClick() {
-        this.props.createNewElement(2);
+        this.props.createNewElement(2, this.props.index);
     }
 
     handleCreateListClick() {
-        this.props.createNewElement(3);
+        this.props.createNewElement(3, this.props.index);
     }
 
     render() {

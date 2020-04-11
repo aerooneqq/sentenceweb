@@ -7,10 +7,7 @@ import "./DocumentContentStyles.css"
 
 //Components
 import Paragraph from "./DocumentElements/Paragraph/Paragraph";
-import Scrollbar from "../../../../../../Scrollbar/Scrollbar";
-import { isHidden } from "../../../../../../../services/Utility/UtilityFunctions";
 import DocumentElementsService from "../../../../../../../services/DocumentElementService/DocumentElementService";
-import { local } from "d3";
 import Loader from "../../../../../../loader/Loader";
 import CreateNewElement from "./DocumentElements/CommonComponents/CreateNewElement/CreateNewElement";
 
@@ -47,28 +44,30 @@ export default class DocumentContent extends Component {
     }
 
     
-    createNewElement(type) {
-        this.props.createNewElement(type);
+    createNewElement(type, index) {
+        this.props.createNewElement(type, index);
     }
 
     _get_documents_view() {
         if (this.props.documentElements) {
-            console.log("ASDASDASDASD")
-            console.log(this.props.documentElements)
-            if (this.props.documentElements.length == 0) {
-                return [<Paragraph paragraph = {paragraph} createNewElement = {this.createNewElement} />]
+            let documentContentItems = [<CreateNewElement index = {-1} createNewElement = {this.createNewElement}/>]
+            
+            for (let i = 0; i < this.props.documentElements.length; ++i) {
+                documentContentItems.push(this._get_component(this.props.documentElements[i]));
+                documentContentItems.push(<CreateNewElement index = {i} createNewElement = {this.createNewElement}/>);
             }
-            else {
-                return this.props.documentElements.map(de => {
-                    switch (de.type) {
-                        case "Paragraph":
-                            return <Paragraph paragraph = {de} createNewElement = {this.createNewElement}/>
 
-                        default:
-                            return null
-                    }
-                });
-            }
+            return documentContentItems;
+        }
+    }
+
+    _get_component(documentElement) {
+        switch (documentElement.type) {
+            case "Paragraph":
+                return <Paragraph paragraph = {documentElement} createNewElement = {this.createNewElement}/>
+
+            default:
+                return null
         }
     }
 

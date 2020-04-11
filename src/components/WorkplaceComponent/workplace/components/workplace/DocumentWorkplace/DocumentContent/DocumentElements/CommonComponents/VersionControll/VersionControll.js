@@ -4,42 +4,11 @@ import React, {Component} from "react";
 import "./VersionControll.css";
 
 //Compomnents
-import Version from "./Version/Version";
+import BranchNode from "./BranchNode/BranchNode";
 import ConnectionLine from "./ConnectionLine/ConnectionLine";
 import BranchSwitcher from "./BranchSwitcher/BranchSwitcher";
+import AddNewNode from "./AddNewNode/AddNewNode";
 
-const versions = [
-    {
-        name: "Version 1",
-        id: 0,
-        date: "30.05.2000",
-        selected: false
-    },
-    {
-        name: "Version 1",
-        id: 0,
-        date: "30.05.2000",
-        selected: false
-    },
-    {
-        name: "Version 1",
-        id: 0,
-        date: "30.05.2000",
-        selected: false
-    },
-    {
-        name: "Version 1",
-        id: 0,
-        date: "30.05.2000",
-        selected: true
-    },
-    {
-        name: "Version 1",
-        id: 0,
-        date: "30.05.2000",
-        selected: false
-    }
-]
 
 export default class VersionControll extends Component { 
     constructor(props) { 
@@ -47,22 +16,60 @@ export default class VersionControll extends Component {
 
         this.state = {
             isFirstLoad: true, 
-            versions: null
+            currentBranchNodes: null,
+            currentBranchID: props.currentBranchID,
+            currentBranchNodeID: props.currentBranchNodeID
         }
+
+        this._setCurrentSelectedBranch = this._setCurrentSelectedBranch.bind(this);
+        this.changeSelectedBranch = this.changeSelectedBranch.bind(this);
+        this._getBranch = this._getBranch.bind(this);
+        this.createNewBranchNode = this.createNewBranchNode.bind(this);
+        this.createNewBranch = this.createNewBranch.bind(this);
     }
 
-    componentDidMount() { 
-        let elements = [];
-
-        for (let i = 0; i < versions.length - 1; i++) { 
-            elements.push(<Version key = {i} version = {versions[i]} />);
-            elements.push(<ConnectionLine key = {i + versions.length} />);
+    _setCurrentSelectedBranch(branchID) {
+        if (this.props.branches) {
+            let elements = [];
+            let branchNodes = this._getBranch(this.props.branches, branchID).branchNodes;
+    
+            for (let i = 0; i < branchNodes.length - 1; ++i) { 
+                elements.push(<BranchNode key = {i} branchNode = {branchNodes[i]}
+                                          selected = {this.props.currentBranchNodeID === branchNodes[i].branchNodeID} />);
+                elements.push(<ConnectionLine key = {i + branchNodes.length} />);
+            }
+    
+            elements.push(<BranchNode key = {branchNodes.length - 1} branchNode = {branchNodes[branchNodes.length - 1]} />);
+            elements.push(<ConnectionLine key = {2 * branchNodes.length + 2}  />);
+            elements.push(<AddNewNode createNewNode = {this.createNewBranchNode} />);
+    
+            return elements;
         }
 
-        elements.push(<Version key = {versions.length - 1} version = {versions[versions.length - 1]} />);
+        return null;
+    }
+    
+    _getBranch(branches, id) {
+        for (let branch of branches) {
+            if (branch.branchID === id) {
+                return branch;
+            }
+        }
 
+        return null;
+    }
+
+    createNewBranchNode() {
+        this.props.createNewNode(this.state.currentBranchID);
+    }
+
+    createNewBranch(branchName) {
+        this.props.createNewBranch(branchName);
+    }
+
+    changeSelectedBranch(newBranchID) {
         this.setState({
-            versions: elements
+            currentBranchID: newBranchID,
         });
     }
 
@@ -70,7 +77,9 @@ export default class VersionControll extends Component {
         return (
             <div className = "versionControllOutterCont">
                 <div className = "topVersionControllCont" >
-                    <BranchSwitcher />
+                    <BranchSwitcher branches = {this.props.branches}
+                                    changeSelectedBranch = {this.changeSelectedBranch}
+                                    createNewBranch = {this.createNewBranch}/>
                     <button className = "saveNewVersionBtn">
                         Save
                     </button>
@@ -81,7 +90,7 @@ export default class VersionControll extends Component {
 
                 <div className = "versionsGraphContainer" >
                     <div className = "versionControllInnerContainer">
-                        {this.state.versions}
+                        {this._setCurrentSelectedBranch(this.state.currentBranchID)}
                     </div>
                     <div className = "fillContainer" />
                 </div>

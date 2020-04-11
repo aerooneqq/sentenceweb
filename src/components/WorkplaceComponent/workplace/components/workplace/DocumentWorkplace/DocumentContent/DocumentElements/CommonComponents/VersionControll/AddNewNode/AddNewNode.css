@@ -1,0 +1,15 @@
+.add-new-node-container {
+    width: 22px; 
+    height: 22px;
+
+    background: rgb(116, 160, 241);
+
+    border-style: solid; 
+    border-radius: 22px;
+    border-width: 3px; 
+    border-color: rgb(116, 160, 241);
+}
+
+    .add-new-node-container:hover { 
+        border-color: rgb(70, 111, 187); 
+    }

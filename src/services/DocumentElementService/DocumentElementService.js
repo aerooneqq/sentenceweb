@@ -9,16 +9,43 @@ export default class DocumentElementsService {
         this._url = getDocumentsAPIServerAddress(authorizationServerConfig) + "/documentElements";
     }
 
-    getDocumentElements(itemID) {
-        return axios.get(`${this._url}?itemID=${itemID}`, {
+    getDocumentElements(documentID, itemID) {
+        return axios.get(`${this._url}?documentID=${documentID}&itemID=${itemID}`, {
             headers: { 
                 Authorization: `Bearer ${this._token}`
             }
         });
     }
 
-    createNewElement(elementType, itemID, documentID) {
-        let url = `${this._url}?documentID=${documentID}&itemID=${itemID}&type=${elementType}`;
+    createNewElement(elementType, itemID, documentID, index) {
+        let url = `${this._url}?documentID=${documentID}&itemID=${itemID}&type=${elementType}&index=${index}`;
+        return axios.post(url, {}, {
+            headers: {
+                Authorization: `Bearer ${this._token}`
+            }
+        });
+    }
+
+    getDocumentElement(elementID) {
+        let url = `${this._url}/element?documentElementID=${elementID}`;
+        return axios.get(url, {
+            headers: {
+                Authorization: `Bearer ${this._token}`
+            }
+        });
+    }
+
+    createNewBranchNode(elementID, branchID) {
+        let url = `${this._url}/node?elementID=${elementID}&branchID=${branchID}`;
+        return axios.post(url, {}, {
+            headers: {
+                Authorization: `Bearer ${this._token}`
+            }
+        });
+    }
+
+    createNewBranch(elementID, branchName) {
+        let url = `${this._url}/branch?elementID=${elementID}&branchName=${branchName}`;
         return axios.post(url, {}, {
             headers: {
                 Authorization: `Bearer ${this._token}`

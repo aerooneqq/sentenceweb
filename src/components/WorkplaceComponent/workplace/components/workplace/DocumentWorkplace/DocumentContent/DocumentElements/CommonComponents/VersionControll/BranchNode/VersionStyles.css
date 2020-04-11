@@ -52,7 +52,7 @@
 
         .versionToolTipContainer:nth-child(1) .versionToolTipText { 
             top: -45px;
-            left: 0px;
+            right: 180px;
         }
 
         

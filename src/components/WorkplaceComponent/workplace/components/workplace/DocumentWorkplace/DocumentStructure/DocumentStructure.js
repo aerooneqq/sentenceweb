@@ -93,7 +93,6 @@ export default class DocumentStructure extends Component{
     }
 
     deleteItem(itemID) {
-        alert("ASdasd")
         this.documentStructureService.deleteDocumentItem(this.props.currentDocumentStructureID, itemID)
             .then(res => {
                 this.props.getDocumentStructure(this.props.documentID);

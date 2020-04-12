@@ -17,8 +17,6 @@ export default class VersionControll extends Component {
         this.state = {
             isFirstLoad: true, 
             currentBranchNodes: null,
-            currentBranchID: props.currentBranchID,
-            currentBranchNodeID: props.currentBranchNodeID
         }
 
         this._setCurrentSelectedBranch = this._setCurrentSelectedBranch.bind(this);
@@ -26,24 +24,34 @@ export default class VersionControll extends Component {
         this._getBranch = this._getBranch.bind(this);
         this.createNewBranchNode = this.createNewBranchNode.bind(this);
         this.createNewBranch = this.createNewBranch.bind(this);
+        this.deleteCurrentBranch = this.deleteCurrentBranch.bind(this);
+        this.deleteDocumentElement = this.deleteDocumentElement.bind(this);
     }
 
     _setCurrentSelectedBranch(branchID) {
-        if (this.props.branches) {
+        if (this.props.branches && branchID) {
             let elements = [];
-            let branchNodes = this._getBranch(this.props.branches, branchID).branchNodes;
-    
-            for (let i = 0; i < branchNodes.length - 1; ++i) { 
-                elements.push(<BranchNode key = {i} branchNode = {branchNodes[i]}
-                                          selected = {this.props.currentBranchNodeID === branchNodes[i].branchNodeID} />);
-                elements.push(<ConnectionLine key = {i + branchNodes.length} />);
+            let branch = this._getBranch(this.props.branches, branchID)
+            
+            if (branch) {
+                let branchNodes = branch.branchNodes;
+                for (let i = 0; i < branchNodes.length - 1; ++i) { 
+                    elements.push(<BranchNode key = {i} branchNode = {branchNodes[i]}
+                                              selected = {this.props.currentBranchNodeID === branchNodes[i].branchNodeID}
+                                              deleteNode = {this.props.deleteNode} 
+                                              renameNode = {this.props.renameNode}/>);
+                    elements.push(<ConnectionLine key = {i + branchNodes.length} />);
+                }
+        
+                elements.push(<BranchNode key = {branchNodes.length - 1} 
+                                          branchNode = {branchNodes[branchNodes.length - 1]}
+                                          deleteNode = {this.props.deleteNode} 
+                                          renameNode = {this.props.renameNode}/>);
+                elements.push(<ConnectionLine key = {2 * branchNodes.length + 2}  />);
+                elements.push(<AddNewNode createNewNode = {this.createNewBranchNode} />);
+        
+                return elements;
             }
-    
-            elements.push(<BranchNode key = {branchNodes.length - 1} branchNode = {branchNodes[branchNodes.length - 1]} />);
-            elements.push(<ConnectionLine key = {2 * branchNodes.length + 2}  />);
-            elements.push(<AddNewNode createNewNode = {this.createNewBranchNode} />);
-    
-            return elements;
         }
 
         return null;
@@ -59,8 +67,8 @@ export default class VersionControll extends Component {
         return null;
     }
 
-    createNewBranchNode() {
-        this.props.createNewNode(this.state.currentBranchID);
+    createNewBranchNode(nodeName, comment) {
+        this.props.createNewNode(this.props.currentBranchID, nodeName, comment);
     }
 
     createNewBranch(branchName) {
@@ -68,9 +76,15 @@ export default class VersionControll extends Component {
     }
 
     changeSelectedBranch(newBranchID) {
-        this.setState({
-            currentBranchID: newBranchID,
-        });
+        this.props.changeCurrentBranch(newBranchID);
+    }
+
+    deleteCurrentBranch() {
+        this.props.deleteBranch(this.props.currentBranchID);
+    }
+
+    deleteDocumentElement() {
+        this.props.deleteElement();
     }
 
     render() { 
@@ -79,18 +93,22 @@ export default class VersionControll extends Component {
                 <div className = "topVersionControllCont" >
                     <BranchSwitcher branches = {this.props.branches}
                                     changeSelectedBranch = {this.changeSelectedBranch}
-                                    createNewBranch = {this.createNewBranch}/>
+                                    createNewBranch = {this.createNewBranch}
+                                    firstBranchID = {this.props.currentBranchID}/>
                     <button className = "saveNewVersionBtn">
                         Save
                     </button>
-                    <button className = "deleteNewVersionBtn">
-                        Delete
+                    <button className = "deleteNewVersionBtn" onClick = {this.deleteCurrentBranch}>
+                        Delete branch
+                    </button>
+                    <button className = "deleteElementBtn" onClick = {this.deleteDocumentElement}>
+                        Delete element
                     </button>
                 </div>
 
                 <div className = "versionsGraphContainer" >
                     <div className = "versionControllInnerContainer">
-                        {this._setCurrentSelectedBranch(this.state.currentBranchID)}
+                        {this._setCurrentSelectedBranch(this.props.currentBranchID)}
                     </div>
                     <div className = "fillContainer" />
                 </div>

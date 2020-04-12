@@ -34,9 +34,6 @@ export default class DocumentStructure extends Component{
         this.deleteItem = this.deleteItem.bind(this);
     }
 
-    componentDidMount() {
-    }
-
     /**
      * Changes the current selected paragraph and uploads the content of this paragraph to the main workplace
      * @param {the id of the paragraph which was selected} id 

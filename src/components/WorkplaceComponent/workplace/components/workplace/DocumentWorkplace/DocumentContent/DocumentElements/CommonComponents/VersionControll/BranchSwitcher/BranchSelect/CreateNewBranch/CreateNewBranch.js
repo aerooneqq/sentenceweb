@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 
 import "./CreateNewBranch.css";
+import { showInputMessageBox } from "../../../../../../../../../../../../MessageInputBox/MessageInputBoxManager";
 
 
 export default class CreateNewBranch extends Component {
@@ -10,7 +11,10 @@ export default class CreateNewBranch extends Component {
     }
 
     handleClick() {
-        this.props.createNewBranch("New branch name");
+        showInputMessageBox("Enter name for new branch", [{title: "Name"}], 
+            (values) => {
+                this.props.createNewBranch(values["Name"]);
+            }, () => {});
     }
 
     render() {

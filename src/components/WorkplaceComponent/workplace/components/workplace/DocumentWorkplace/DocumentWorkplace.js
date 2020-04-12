@@ -29,7 +29,9 @@ export default class DocumentWorkplace extends Component {
                                    getDocumentContent = {this.props.getDocumentContent}/>
                 <DocumentContent isContentLoading = {this.props.isContentLoading}
                                  documentElements = {this.props.documentElements}
-                                 createNewElement = {this.props.createNewElement} />
+                                 createNewElement = {this.props.createNewElement}
+                                 documentID = {this.props.currentDocumentID}
+                                 parentItemID = {this.props.parentItemID} />
             </div>
         )
     }

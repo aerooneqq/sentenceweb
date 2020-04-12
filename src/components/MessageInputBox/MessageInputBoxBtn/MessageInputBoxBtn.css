@@ -1,0 +1,21 @@
+.message-input-box-btn {
+    width: 90px;
+    height: 35px;
+
+    border-style: none;
+    border-radius: 5px;
+
+    color: white;
+    font-size: 18px;
+
+    margin-right: 25px;
+    outline: none;
+}
+
+    .message-input-box-btn:focus {
+        outline: none;
+    }
+
+    .message-input-box-btn:-moz-focus-inner {
+        outline: none;
+    }

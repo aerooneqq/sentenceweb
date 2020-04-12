@@ -52,13 +52,12 @@
 
         .versionToolTipContainer:nth-child(1) .versionToolTipText { 
             top: -45px;
-            right: 180px;
+            left: 180px;
         }
 
-        
         .versionToolTipContainer:nth-last-child(1) .versionToolTipText { 
             top: -45px;
-            left: -180px;
+            left: 0px;
         }
 
     .versionToolTipContainer:hover .versionToolTipText {

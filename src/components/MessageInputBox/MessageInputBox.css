@@ -1,0 +1,53 @@
+.message-input-box-container {
+    position: fixed;
+    z-index: 20000000;
+
+    top: 20%;
+    left: 50%;
+    margin-left: -200px;
+
+    background-color: rgb(218, 218, 218);
+    width: 400px;
+    height: auto;
+
+    border-style: none;
+    border-radius: 10px;
+}
+
+.message-input-box-header {
+    margin-top: 10px;
+    margin-left: 10px;
+
+    font-size: 20px;
+
+    color: #F97646;
+}
+
+.message-input-box-buttons {
+    margin-top: 50px;
+    margin-bottom: 20px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: right;
+}
+
+.invisible-message-input-box {
+    display: none;
+}
+
+.visible-message-input-box {
+    display: visible;
+    animation: messageInputBoxAppearing 0.5s ease-in forwards;
+}
+
+    @keyframes messageInputBoxAppearing {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }

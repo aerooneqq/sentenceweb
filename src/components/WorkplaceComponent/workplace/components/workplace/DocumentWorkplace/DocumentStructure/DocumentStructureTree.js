@@ -26,7 +26,6 @@ export default class DocumentStructureTree extends Component {
 
         this._constructTreeFromStructureRecursive(this.documentTree, data.items, { id: 1 }, 1);
 
-        console.log(this.documentTree);
         return this.documentTree;
     }
 

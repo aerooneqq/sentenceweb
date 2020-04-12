@@ -6,6 +6,7 @@ import DocumentHeaderService from "../../../../../services/DocumentsHeaderServic
 import {alertAppMessage} from "../../../../ApplicationMessage/ApplicationMessageManager";
 import DocumentStructureService from "../../../../../services/DocumentStructureService/DocumentStructureService";
 import DocumentElementsService from "../../../../../services/DocumentElementService/DocumentElementService";
+import { showInputMessageBox } from "../../../../MessageInputBox/MessageInputBoxManager";
 
 //Components
 const DocumentsHeader = lazy(() => import("./DocumentsHeader/DocumentsHeader"));
@@ -101,7 +102,6 @@ export default class DocumentDesk extends Component{
         }, () => {
             this.documentStructureService.getDocumentStructure(documentID)
                 .then(res => {
-                    console.log(res.data);
                     this.setState({
                         documentStructureRaw: res.data,
                         isStructureLoading: false,
@@ -125,28 +125,7 @@ export default class DocumentDesk extends Component{
 
     getDocumentContent(itemID) {
         this.setState({
-            isContentLoading: true,
-        }, () => {
-            this.documentElementsService.getDocumentElements(this.state.currentDocumentID, itemID)
-                .then(res => {
-                    this.setState({
-                        documentElements: res.data,
-                        isContentLoading: false,
-                        currentItemID: itemID
-                    })
-                })
-                .catch(er => {
-                    this.setState({
-                        isContentLoading: false
-                    });
-
-                    if (er.response) {
-                        alertAppMessage(er.response.data, "error");
-                    }
-                    else {
-                        alertAppMessage("Error occured while getting your feed", "error");
-                }
-            });
+            currentItemID: itemID,
         })
     }
 
@@ -197,7 +176,7 @@ export default class DocumentDesk extends Component{
                                    getDocumentContent = {this.getDocumentContent}
                                    isContentLoading = {this.state.isContentLoading}
                                    itemContent = {this.state.isContentLoading}
-                                   documentElements = {this.state.documentElements}
+                                   parentItemID = {this.state.currentItemID}
                                    createNewElement = {this.createNewElement} />
             </div>
         )

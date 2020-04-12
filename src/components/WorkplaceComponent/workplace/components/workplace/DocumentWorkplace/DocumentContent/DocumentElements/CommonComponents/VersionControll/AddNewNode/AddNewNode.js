@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 
 import "./AddNewNode.css";
+import { showInputMessageBox } from "../../../../../../../../../../MessageInputBox/MessageInputBoxManager";
 
 
 export default class AddNewNode extends Component {
@@ -11,7 +12,11 @@ export default class AddNewNode extends Component {
     }
 
     handleClick(event) {
-        this.props.createNewNode();
+        showInputMessageBox("Enter name for new node", [{title: "Name"}, {title: "Comment"}], 
+            (userValues) => {
+                this.props.createNewNode(userValues["Name"], userValues["Comment"]);
+            }, () => {}
+        ); 
     }
 
     render() {

@@ -13,8 +13,8 @@ import UserService from "./services/UserServices/UserService";
 //App messages
 import ApplicationMessagesContainer from "./components/ApplicationMessage/ApplicationMessagesContainer";
 import { alertAppMessage } from "./components/ApplicationMessage/ApplicationMessageManager";
-import ApplicationMessage from "./components/ApplicationMessage/ApplicationMessage";
-import { local } from "d3";
+
+import {getMessageInputBox} from "./components/MessageInputBox/MessageInputBoxManager";
 
 //Components
 const HomeComponent = lazy(() => import("./components/HomeComponent/HomeComponent"));
@@ -111,6 +111,7 @@ export default class App extends Component {
             height: "100%"
           }}>
             <ApplicationMessagesContainer />
+            {getMessageInputBox()}
             {this.state.component}
           </div>
       </Suspense>

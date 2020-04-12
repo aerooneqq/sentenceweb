@@ -6,7 +6,7 @@
     border-radius: 5px;
 }
 
-.documentElementOutterCont:hover > .versionControllContainer > .versionControllOutterCont {
+/* .documentElementOutterCont:hover > .versionControllContainer > .versionControllOutterCont {
     display: flex;
     animation: fadeIn 0.5s ease-in forwards;
 }
@@ -25,4 +25,4 @@
     to { 
         opacity: 1;
     }
-}
+} */

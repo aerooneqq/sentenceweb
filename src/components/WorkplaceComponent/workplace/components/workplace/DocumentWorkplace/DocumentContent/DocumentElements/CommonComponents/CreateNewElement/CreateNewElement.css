@@ -3,12 +3,17 @@
     height: 30px;
     background-color: transparent;
 
+    opacity: 0;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
 
     padding-left: 2.5%;
 }
+
+    .create-new-element-outer-cont:hover {
+        opacity: 1;
+    }
 
 .create-new-element-icon {
     width: auto; 

@@ -17,8 +17,8 @@ export default class BranchSelect extends Component {
         super(props);
 
         this.state = { 
-            selectedBranchID: null,
-            selectedBranchName: null,
+            selectedBranchID: props.firstBranchID,
+            selectedBranchName: props.branches.filter(branch => branch.branchID == props.firstBranchID)[0].branchName,
         }
 
         this.onArrowClick = this.onArrowClick.bind(this);
@@ -64,6 +64,7 @@ export default class BranchSelect extends Component {
         this.setState({
             selectedBranchID: branchID,
             selectedBranchName: branchName,
+            areOptionsVisible: false,
         }); 
     }
 

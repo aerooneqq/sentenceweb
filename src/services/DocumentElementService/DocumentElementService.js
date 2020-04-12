@@ -35,18 +35,9 @@ export default class DocumentElementsService {
         });
     }
 
-    createNewBranchNode(elementID, branchID) {
-        let url = `${this._url}/node?elementID=${elementID}&branchID=${branchID}`;
-        return axios.post(url, {}, {
-            headers: {
-                Authorization: `Bearer ${this._token}`
-            }
-        });
-    }
-
-    createNewBranch(elementID, branchName) {
-        let url = `${this._url}/branch?elementID=${elementID}&branchName=${branchName}`;
-        return axios.post(url, {}, {
+    deleteDocumentElement(elementID) {
+        let url = `${this._url}?documentElementID=${elementID}`;
+        return axios.delete(url, {
             headers: {
                 Authorization: `Bearer ${this._token}`
             }

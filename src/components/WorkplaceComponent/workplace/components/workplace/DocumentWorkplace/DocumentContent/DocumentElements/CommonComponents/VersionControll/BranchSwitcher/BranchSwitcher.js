@@ -20,7 +20,9 @@ export default class BranchSwitcher extends Component {
             <div className = "branchSwitcherOutterCont">
                 <BranchSelect branches = {this.props.branches} 
                               changeSelectedBranch = {this.props.changeSelectedBranch}
-                              createNewBranch = {this.createNewBranch}/>
+                              createNewBranch = {this.createNewBranch}
+                              deleteNode = {this.props.deleteNode}
+                              firstBranchID = {this.props.firstBranchID}/>
             </div>
         )
     }

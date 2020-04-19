@@ -2,6 +2,7 @@ import React, {Component, lazy} from "react"
 
 //Styles
 import "./WorkplaceComponentStyles.css"
+import TemplateComponent from "./workplace/components/templates/TemplateComponent";
 
 //Components
 const Header = lazy(()=> import("./workplace/components/header/Header"))
@@ -16,9 +17,13 @@ export default class WorkplaceComponent extends Component{
   constructor(props) { 
     super(props);
 
+    this.components = [
+      <Profile signOut = {this.props.signOut}/>,
+      <DocumentDesk />,
+      <TemplateComponent />,
+    ]
     this.state = { 
       component: <DocumentDesk />,
-
     };
 
     this._changeWorkplaceComponent = this._changeWorkplaceComponent.bind(this);
@@ -33,15 +38,9 @@ export default class WorkplaceComponent extends Component{
    * 3 - Templates
    */
   _changeWorkplaceComponent(componentNumber){ 
-    switch (componentNumber){ 
-      case 0:
-        this.setState({ component: <Profile signOut = {this.props.signOut}/>});
-        break;
-      
-      case 1:
-        this.setState({ component: <DocumentDesk />});
-        break;
-    }
+    this.setState({
+      component: this.components[componentNumber],
+    })
   }
 
   render(){

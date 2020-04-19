@@ -1,16 +1,15 @@
-.contentEditableDiv { 
+.contentEditableSpan { 
     width: 95%;
     height: auto; 
-
-    margin-left: 10px; 
+    overflow: auto;
+    -webkit-line-break:normal;
+    line-break: normal;
 
     background: transparent; 
 
     border-style: none;
-
-    font-size: 20px;
 }
 
-    .contentEditableDiv:focus { 
+    .contentEditableSpan:focus { 
         outline: none;
     }

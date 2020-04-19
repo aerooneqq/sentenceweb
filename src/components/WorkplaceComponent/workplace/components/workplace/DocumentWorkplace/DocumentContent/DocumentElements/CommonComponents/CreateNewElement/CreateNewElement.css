@@ -8,7 +8,7 @@
     flex-direction: row;
     justify-content: flex-start;
 
-    padding-left: 2.5%;
+    padding-left: 2.4%;
 }
 
     .create-new-element-outer-cont:hover {
@@ -16,6 +16,12 @@
     }
 
 .create-new-element-icon {
+    width: 25px;
+    height: 25px;
+    margin-top: 1px;
+}
+
+.create-new-element-text {
     width: auto; 
     height: 100%;
 
@@ -26,6 +32,6 @@
     margin-left: 5px;
 }
 
-    .create-new-element-icon:hover {
+    .create-new-element-text:hover {
         color: #aaaaaa;
     }

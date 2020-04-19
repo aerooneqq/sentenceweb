@@ -1,7 +1,7 @@
 import axios from "axios";
 import {authorizationServerConfig, getDocumentsAPIServerAddress} from "../ServerConfig";
 
-
+axios.defaults.headers["Accept-language"] = "ru-RU, ru;q=0.9, en-US;q=0.8, en;q=0.7"
 class BranchNodeService {
 
     constructor(token) {
@@ -34,9 +34,18 @@ class BranchNodeService {
             comment: newComment,
         }, {
             headers: {
-                Authorization: `Bearer ${this._token}`
+                Authorization: `Bearer ${this._token}`,
             }
         })
+    }
+
+    updateNodeContent(elementID, nodeID, newContent) {
+        let url = `${this._url}/content?elementID=${elementID}&branchNodeID=${nodeID}`;
+        return axios.put(url, newContent, {
+            headers: {
+                Authorization: `Bearer ${this._token}`,
+            }
+        });
     }
 }
 

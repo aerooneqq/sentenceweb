@@ -1,0 +1,64 @@
+.numbered-list-element {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+
+    margin-top: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
+    border-radius: 5px;
+}
+
+    .numbered-list-element:hover .numbered-list-element-icons  {
+        animation: numberedListIconsFadeIn 0.5s ease-in forwards;
+    }   
+
+.numbered-list-element-content {
+    max-width: 500px;
+    margin-top: -2px;
+    overflow: auto;
+}
+
+.numbered-list-element-num {
+    color: gray;
+    font-size: 16px;
+    margin-right: 10px;
+    color: black;
+}
+
+.numbered-list-element {
+    max-width: 100%;
+}
+
+.numbered-list-element-icons {
+    display: flex;
+    flex-direction: row;
+    opacity: 0;
+}
+
+    @keyframes numberedListIconsFadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+.numbered-list-element-add {
+    margin-left: 40px;
+}
+
+.numbered-list-element-remove {
+    margin-left: 10px;
+}
+
+.numbered-list-element-add-inside {
+    margin-left: 10px;
+    margin-top: -2px;
+    width: 20px;
+    height: 20px;
+}

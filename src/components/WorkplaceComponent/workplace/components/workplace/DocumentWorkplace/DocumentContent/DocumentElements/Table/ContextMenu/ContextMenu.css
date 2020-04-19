@@ -1,0 +1,64 @@
+.react-contextmenu { 
+    z-index: 2000;
+}
+
+    .react-contextmenu:focus { 
+        outline: none;
+    }
+
+    .react-contextmenu-item:focus { 
+        outline: none;
+    }
+
+
+#tableCellContextMenuInnerCont { 
+    width: auto;
+    height: auto;
+    
+    padding: 10px;
+    box-sizing: content-box;
+
+    background: #efefef;
+
+    margin-left: 10px;
+
+    border-style: none;
+    border-radius:  5px;
+}
+
+    #tableCellContextMenuInnerCont:focus { 
+        outline: none;
+    }
+
+.tableCellContextMenuItemCont { 
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: baseline;
+    align-items: center;
+
+    margin-top: 5px;
+}
+
+    .tableCellContextMenuItemCont:nth-child(0) { 
+        margin-top: 0px;
+    }
+
+        .tableCellContextMenuItemCont:hover .tableCellContextMenuItemText { 
+            color: #F97646;
+        }
+
+
+.tableCellContextMenuItemIcon { 
+    width: 20px;
+    height: 20px;
+}
+
+.tableCellContextMenuItemText { 
+    font-size: 14px;
+    color: #505050;
+
+    margin-left: 7px;
+}

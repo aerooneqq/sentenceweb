@@ -14,6 +14,7 @@ export default class BranchNode extends Component {
 
         this._getClassName = this._getClassName.bind(this);
         this.renameNode = this.renameNode.bind(this);
+        this.changeCurrentNode = this.changeCurrentNode.bind(this);
         this.deleteNode = this.deleteNode.bind(this);
     }
 
@@ -38,11 +39,15 @@ export default class BranchNode extends Component {
             }, () => {}); 
     }
 
+    changeCurrentNode() {
+        this.props.changeCurrentBranchNode(this.props.branchNode.branchNodeID);
+    }
+
     render() { 
         return ( 
             <>
                 <ContextMenuTrigger id = {this.contextMenuID}>
-                    <div className = {this._getClassName()}>
+                    <div className = {this._getClassName()} onClick = {this.changeCurrentNode}>
                         <span className = "versionToolTipText">
                             <div> {this.props.branchNode.title} </div>
                             <div> {this.props.branchNode.createdAt.substr(0, 10)} {this.props.branchNode.createdAt.substr(11, 5)} </div>
@@ -54,7 +59,6 @@ export default class BranchNode extends Component {
                                        deleteNode = {this.deleteNode}
                                        renameNode = {this.renameNode} />
             </>
-
         )
     }
 }

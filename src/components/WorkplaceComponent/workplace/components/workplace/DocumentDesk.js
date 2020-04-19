@@ -38,7 +38,6 @@ export default class DocumentDesk extends Component{
         this.removeDocumentFromHeader = this.removeDocumentFromHeader.bind(this);
         this.getDocumentContent = this.getDocumentContent.bind(this);
         this.getDocumentStructureContent = this.getDocumentStructureContent.bind(this);
-        this.createNewElement = this.createNewElement.bind(this);
     }
 
     getDocumentHeaderState() {
@@ -143,23 +142,6 @@ export default class DocumentDesk extends Component{
                 headerOpenedDocs: prevState.headerOpenedDocs
             }
         })
-    }
-
-    createNewElement(type, index) {
-        this.documentElementsService.createNewElement(type, this.state.currentItemID, this.state.currentDocumentID, index)
-            .then(res => {
-                this.setState({
-                    documentElements: res.data,
-                });
-            })
-            .catch(er => {
-                if (er.response) {
-                    alertAppMessage(er.response.data, "error");
-                }
-                else {
-                    alertAppMessage("Error occured while getting your feed", "error");
-                }
-            });
     }
 
     render() { 

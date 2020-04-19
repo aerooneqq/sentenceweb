@@ -3,6 +3,8 @@ import React, {Component} from "react";
 //Styles
 import "./CreateNewElement.css";
 
+import addIcon from "./img/create_new_element.svg";
+
 export default class CreateNewElement extends Component {
     constructor(props) {
         super(props);
@@ -34,10 +36,11 @@ export default class CreateNewElement extends Component {
     render() {
         return (
             <div className = "create-new-element-outer-cont">
-                <div className = "create-new-element-icon" onClick = {this.handleCreateParagraphClick}>Paragraph</div>
-                <div className = "create-new-element-icon" onClick = {this.handleCreateImageClick}>Image</div>
-                <div className = "create-new-element-icon" onClick = {this.handleCreateListClick}>List</div>
-                <div className = "create-new-element-icon" onClick = {this.handleCreateTableClick}>Table</div>
+                <img className = "create-new-element-icon" src = {addIcon} />
+                <div className = "create-new-element-text" onClick = {this.handleCreateParagraphClick}>Paragraph</div>
+                <div className = "create-new-element-text" onClick = {this.handleCreateImageClick}>Image</div>
+                <div className = "create-new-element-text" onClick = {this.handleCreateListClick}>List</div>
+                <div className = "create-new-element-text" onClick = {this.handleCreateTableClick}>Table</div>
             </div>
         )
     }

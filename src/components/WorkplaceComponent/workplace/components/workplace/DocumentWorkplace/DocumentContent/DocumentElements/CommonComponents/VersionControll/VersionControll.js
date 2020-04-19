@@ -8,6 +8,7 @@ import BranchNode from "./BranchNode/BranchNode";
 import ConnectionLine from "./ConnectionLine/ConnectionLine";
 import BranchSwitcher from "./BranchSwitcher/BranchSwitcher";
 import AddNewNode from "./AddNewNode/AddNewNode";
+import CreateNewElement from "../CreateNewElement/CreateNewElement";
 
 
 export default class VersionControll extends Component { 
@@ -17,6 +18,7 @@ export default class VersionControll extends Component {
         this.state = {
             isFirstLoad: true, 
             currentBranchNodes: null,
+            currentBranchNodeID: props.currentBranchNodeID,
         }
 
         this._setCurrentSelectedBranch = this._setCurrentSelectedBranch.bind(this);
@@ -26,6 +28,8 @@ export default class VersionControll extends Component {
         this.createNewBranch = this.createNewBranch.bind(this);
         this.deleteCurrentBranch = this.deleteCurrentBranch.bind(this);
         this.deleteDocumentElement = this.deleteDocumentElement.bind(this);
+        this.updateNodeContent = this.updateNodeContent.bind(this);
+        this.changeCurrentBranchNode = this.changeCurrentBranchNode.bind(this);
     }
 
     _setCurrentSelectedBranch(branchID) {
@@ -39,14 +43,17 @@ export default class VersionControll extends Component {
                     elements.push(<BranchNode key = {i} branchNode = {branchNodes[i]}
                                               selected = {this.props.currentBranchNodeID === branchNodes[i].branchNodeID}
                                               deleteNode = {this.props.deleteNode} 
-                                              renameNode = {this.props.renameNode}/>);
+                                              renameNode = {this.props.renameNode}
+                                              changeCurrentBranchNode = {this.changeCurrentBranchNode}/>);
                     elements.push(<ConnectionLine key = {i + branchNodes.length} />);
                 }
         
                 elements.push(<BranchNode key = {branchNodes.length - 1} 
+                                          selected = {this.props.currentBranchNodeID === branchNodes[branchNodes.length - 1].branchNodeID}
                                           branchNode = {branchNodes[branchNodes.length - 1]}
                                           deleteNode = {this.props.deleteNode} 
-                                          renameNode = {this.props.renameNode}/>);
+                                          renameNode = {this.props.renameNode}
+                                          changeCurrentBranchNode = {this.changeCurrentBranchNode}/>);
                 elements.push(<ConnectionLine key = {2 * branchNodes.length + 2}  />);
                 elements.push(<AddNewNode createNewNode = {this.createNewBranchNode} />);
         
@@ -67,6 +74,14 @@ export default class VersionControll extends Component {
         return null;
     }
 
+    changeCurrentBranchNode(newNodeID) {
+        this.setState({
+            currentBranchNodeID: newNodeID,
+        }, () => {
+            this.props.changeCurrentNode(newNodeID);
+        })
+    }
+    
     createNewBranchNode(nodeName, comment) {
         this.props.createNewNode(this.props.currentBranchID, nodeName, comment);
     }
@@ -87,6 +102,10 @@ export default class VersionControll extends Component {
         this.props.deleteElement();
     }
 
+    updateNodeContent() {
+        this.props.updateNodeContent(this.state.currentBranchNodeID)
+    }
+
     render() { 
         return (
             <div className = "versionControllOutterCont">
@@ -95,7 +114,7 @@ export default class VersionControll extends Component {
                                     changeSelectedBranch = {this.changeSelectedBranch}
                                     createNewBranch = {this.createNewBranch}
                                     firstBranchID = {this.props.currentBranchID}/>
-                    <button className = "saveNewVersionBtn">
+                    <button className = "saveNewVersionBtn" onClick = {this.updateNodeContent}>
                         Save
                     </button>
                     <button className = "deleteNewVersionBtn" onClick = {this.deleteCurrentBranch}>

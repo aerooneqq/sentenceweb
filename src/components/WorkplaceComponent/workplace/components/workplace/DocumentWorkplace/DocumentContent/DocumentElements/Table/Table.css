@@ -1,0 +1,26 @@
+.table-outer-container {
+    width: auto;
+    height: auto;
+
+    margin-left: 23px;
+}
+
+.table-cell {
+    width: auto;
+    height: auto;
+
+    border-style: solid;
+    border-radius: 5px;
+    border-color: #F97646;
+    border-width: 0.5px;
+
+    padding: 5px;
+}
+
+    .table-cell:focus {
+        outline: none;
+    }
+
+    .table-cell:hover {
+        background: #ffc8bb;
+    }

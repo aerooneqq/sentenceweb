@@ -6,6 +6,20 @@
     border-radius: 5px;
 }
 
+.openedVersionContainer {
+    visibility: visible;
+    opacity: 1;
+
+    transition: 0.35s ease-in;
+}
+
+.closedVersionContainer { 
+    visibility: none;
+    opacity: 0;
+
+    transition: 0.35s ease-in;
+}
+
 /* .documentElementOutterCont:hover > .versionControllContainer > .versionControllOutterCont {
     display: flex;
     animation: fadeIn 0.5s ease-in forwards;

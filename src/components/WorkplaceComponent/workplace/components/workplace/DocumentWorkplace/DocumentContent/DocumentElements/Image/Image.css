@@ -1,0 +1,9 @@
+.document-element-image-container {
+    margin-left: 25px;
+    background: transparent;
+}
+
+.document-element-image {
+    max-width: 800px;
+    max-height: 700px;
+}

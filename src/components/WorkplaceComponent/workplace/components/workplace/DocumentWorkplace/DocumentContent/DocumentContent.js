@@ -11,19 +11,10 @@ import DocumentElementsService from "../../../../../../../services/DocumentEleme
 import Loader from "../../../../../../loader/Loader";
 import CreateNewElement from "./DocumentElements/CommonComponents/CreateNewElement/CreateNewElement";
 import { alertAppMessage } from "../../../../../../ApplicationMessage/ApplicationMessageManager";
+import Image from "./DocumentElements/Image/Image";
+import NumberedList from "./DocumentElements/NumberedList/NumberedList";
+import Table from "./DocumentElements/Table/Table";
 
-let outterScrollStyle = { 
-    width: "10px",
-    height: "100%",
-    background: "#AAAAAA",
-    "border-radius": "5px"
-}
-
-let thumbStyle = { 
-    width: "10px",
-    "border-radius": "5px",
-    "background": "#909090"
-}
 
 export default class DocumentContent extends Component { 
     constructor(props) { 
@@ -44,32 +35,72 @@ export default class DocumentContent extends Component {
     }
     
     createNewElement(type, index) {
-        this.props.createNewElement(type, index);
+        this.documentElementsService.createNewElement(type, this.state.currentItemID, this.props.documentID, index)
+            .then(res => {
+                this.setState({
+                    documentElements: res.data,
+                }, () => {
+                    this.forceUpdate();
+                    alertAppMessage("Element was added", "success");
+                 });
+            })
+            .catch(er => {
+                if (er.response) {
+                    alertAppMessage(er.response.data, "error");
+                }
+                else {
+                    alertAppMessage("Error occured while getting your feed", "error");
+                }
+            });
+    }
+
+    static getDerivedStateFromProps(nextProps, prevState) {
+        if (nextProps.parentItemID != prevState.currentItemID) {
+            return {
+                documentElements: null
+            }
+        }
     }
 
     shouldComponentUpdate(nextProps, nextState) {
         return nextProps.parentItemID !== this.state.currentItemID
     }
 
-    _getDocumentsView() {
-        this.updateDocumentContent();
-        if (this.state.documentElements) {
+    _getDocumentsView(elements) {
+        if (elements) {
             let documentContentItems = [<CreateNewElement index = {-1} createNewElement = {this.createNewElement}/>]
             
-            for (let i = 0; i < this.state.documentElements.length; ++i) {
-                documentContentItems.push(this._getComponent(this.state.documentElements[i]));
+            for (let i = 0; i < elements.length; ++i) {
+                documentContentItems.push(this._getComponent(elements[i]));
                 documentContentItems.push(<CreateNewElement index = {i} createNewElement = {this.createNewElement}/>);
             }
 
             return documentContentItems;
         }
+
+        return null;
+    }
+
+    _getInitialDocumentsView() {
+        this.updateDocumentContent();
     }
 
     _getComponent(documentElement) {
         switch (documentElement.type) {
             case "Paragraph":
-                return <Paragraph paragraph = {documentElement} createNewElement = {this.createNewElement}
+                return <Paragraph element = {documentElement} createNewElement = {this.createNewElement}
                                   deleteElement = {this.deleteDocumentElement}/>
+            case "Image":
+                return <Image element = {documentElement} createNewElement = {this.createNewElement}
+                              deleteElement = {this.deleteDocumentElement}/>
+
+            case "NumberedList":
+                return <NumberedList element = {documentElement} createNewElement = {this.createNewElement}
+                                     deleteElement = {this.deleteDocumentElement}/>
+
+            case "Table":
+                return <Table element = {documentElement} createNewElement = {this.createNewElement}
+                              deleteElement = {this.deleteDocumentElement}/>
 
             default:
                 return null
@@ -82,6 +113,8 @@ export default class DocumentContent extends Component {
                 this.setState({
                     documentElements: res.data,
                     currentItemID: this.props.parentItemID,
+                }, () => {
+                    this.forceUpdate();
                 })
             })
             .catch(err => {
@@ -98,6 +131,7 @@ export default class DocumentContent extends Component {
         this.documentElementsService.deleteDocumentElement(elementID)
             .then(res => {
                 this.updateDocumentContent();
+                alertAppMessage("The element was deleted", "success")
             })
             .catch(err => {
                 if (err.response) {
@@ -114,7 +148,8 @@ export default class DocumentContent extends Component {
             <div id = "documentScrollCont">
                 <div id = "documentContentOutterContainer">
                     <div id = "documentContentInnerContainer">
-                        {this.props.parentItemID ? this._getDocumentsView() : null}
+                        {this.state.documentElements ? this._getDocumentsView(this.state.documentElements) :
+                             (this.props.parentItemID ? this._getInitialDocumentsView() : null)}
                     </div>
                 </div>
             </div>

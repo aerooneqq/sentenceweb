@@ -2,6 +2,7 @@ import React, {Component} from "react";
 
 //Styles
 import "./DocumentElementHeaderStyles.css";
+import ContentEditableDiv from "../ContentEditable/ContentEditableSpan";
 
 /**
  * PROPS LIST: 
@@ -11,25 +12,21 @@ export default class DocumentElementHeader extends Component {
     constructor(props) { 
         super(props);
 
-        this.state = { 
-            headerInputValue: props.headerText
-        }
-
-        this.onHeaderInputValueChange = this.onHeaderInputValueChange.bind(this);
+        this.handleEditableChange = this.handleEditableChange.bind(this);
     }
 
-    onHeaderInputValueChange(event) { 
-        this.setState({ 
-            headerInputValue: event.target.value
-        });
+    handleEditableChange(newName) { 
+        this.props.changeName(newName);
     }
 
     render() { 
         return ( 
             <div className = "documentElementHeaderOutterCont">
                 <div className = "documentElementHeaderInnerCont"> 
-                    <input className = "documentElementHeaderText" value = {this.state.headerInputValue}
-                           onChange = {this.onHeaderInputValueChange} />
+                    <ContentEditableDiv text = {this.props.name} 
+                                        color = {"#999999"}
+                                        fontSize = {"16px"}
+                                        onChange = {this.handleEditableChange}/>
                 </div>
             </div>
         )

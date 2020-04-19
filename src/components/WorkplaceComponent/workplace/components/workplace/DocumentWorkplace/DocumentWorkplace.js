@@ -4,6 +4,7 @@ import React, {Component, lazy} from "react"
 import "./DocumentWorkplaceStyles.css"
 import DocumentStructureService from "../../../../../../services/DocumentStructureService/DocumentStructureService";
 import {alertAppMessage} from "../../../../../ApplicationMessage/ApplicationMessageManager";
+import DocumentElementsService from "../../../../../../services/DocumentElementService/DocumentElementService";
 
 //Components
 const DocumentStructure = lazy(() => import("./DocumentStructure/DocumentStructure"));
@@ -27,7 +28,7 @@ export default class DocumentWorkplace extends Component {
                                    getDocumentStructure = {this.props.getDocumentStructureContent}
                                    currentDocumentStructureID = {this.props.currentDocumentStructureID}
                                    getDocumentContent = {this.props.getDocumentContent}/>
-                <DocumentContent isContentLoading = {this.props.isContentLoading}
+               <DocumentContent isContentLoading = {this.props.isContentLoading}
                                  documentElements = {this.props.documentElements}
                                  createNewElement = {this.props.createNewElement}
                                  documentID = {this.props.currentDocumentID}

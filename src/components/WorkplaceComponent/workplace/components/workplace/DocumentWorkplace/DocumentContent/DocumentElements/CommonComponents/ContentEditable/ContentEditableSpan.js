@@ -36,7 +36,7 @@ export default class ContentEditableDiv extends Component {
                             "color": this.props.color,
                             "margin-top": (this.props.marginTop ? this.props.marginTop : 0) + "px",
                             "max-width": (this.props.maxWidth ? this.props.maxWidth : 10000000) + "px"}}  
-                  contentEditable = {true}
+                  contentEditable = {this.props.editable ? this.props.editable : true}
                   onInput = {this.handleChange}>
             </span>
         )

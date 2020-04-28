@@ -11,7 +11,8 @@ export default class TemplateSearch extends Component {
     render() {
         return (
             <div className = "template-search-outer-container">
-                <TemplateSearchHeader />
+                <TemplateSearchHeader changeMode = {this.props.changeMode}
+                                      search = {this.props.search} />
             </div>
         )
     }

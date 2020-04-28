@@ -1,0 +1,8 @@
+.template-info-structure-tree-container {
+    margin-top: 40px; 
+    margin-left: 40px;  
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}

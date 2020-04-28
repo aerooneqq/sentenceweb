@@ -1,0 +1,86 @@
+.tree-item-outer-container { 
+    margin-top: 3px;
+}
+
+.tree-item-children-container { 
+    margin-left: 40px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.tree-item-content { 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    width: max-content;
+    max-width: 700px;
+    height: 35px;
+    
+    padding-left: 10px;
+    padding-right: 10px;
+
+    border-style: solid;
+    border-color: #F97646;
+    border-radius: 5px;
+    border-width: 1px;
+}
+
+    .tree-item-content:hover .template-tree-item-icons {
+        display: flex;
+        animation: templateTreeListIconsFadeIn 0.3s ease-in forwards;
+    }
+
+.tree-item-content-text {
+    margin-left: 5px; 
+    font-size: 17px;
+    color: #606060;
+}
+
+.template-tree-item-icons {
+    display: flex;
+    flex-direction: row;
+    margin-top: 4px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: none;
+    opacity: 0;
+}
+
+    @keyframes templateTreeListIconsFadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+.template-tree-item-add-content { 
+    margin-left: 5px;
+}
+
+.template-tree-item-add-list { 
+    margin-left: 5px;
+}
+
+.template-tree-item-add-inside-content { 
+    margin-left: 5px;
+}
+
+.template-tree-item-add-inside-list { 
+    margin-left: 5px;
+}
+
+.template-tree-item-remove {
+    margin-left: 10px;
+}
+
+.template-tree-item-add-inside {
+    margin-left: 10px;
+    margin-top: -2px;
+    width: 20px;
+    height: 20px;
+}

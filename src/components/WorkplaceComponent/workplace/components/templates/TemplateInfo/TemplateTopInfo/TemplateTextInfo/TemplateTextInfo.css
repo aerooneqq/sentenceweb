@@ -1,0 +1,33 @@
+.template-text-info-outer-container {
+    width: 100%;
+    background: transparent;
+    margin-top: 65px;
+}
+
+.template-text-info-property {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.template-text-info-property-description {
+    font-size: 14px;
+    color: #909090;
+}
+
+.template-info-danger-zone-container {
+    margin-right: 40px;
+    margin-top: 40px;
+}
+
+.template-info-danger-zone-text {
+    color: #F97646;
+    font-size: 23px;
+    font-weight: 800;
+}
+
+.template-text-info-author-username {
+    font-size: 18px;
+    margin-left: 10px;
+    color: #F97646;
+    font-weight: 500;
+}

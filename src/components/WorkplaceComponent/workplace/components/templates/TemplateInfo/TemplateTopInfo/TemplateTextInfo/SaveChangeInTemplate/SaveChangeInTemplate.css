@@ -1,0 +1,29 @@
+.save-change-in-template-info-btn {
+    width: 100px; 
+    height: 30px;
+
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: green;
+
+    background-color: rgb(61, 170, 61);
+    
+    color: white;
+    font-size: 15px;
+
+    margin-top: 10px;
+}
+
+    .save-change-in-template-info-btn:hover {
+        background-color: rgb(43, 143, 43);
+    }
+
+    .save-change-in-template-info-btn:focus {
+        outline: none;
+    }
+
+    .save-change-in-template-info-btn:active {
+        outline: none;
+        transform: scale(0.96);
+    }

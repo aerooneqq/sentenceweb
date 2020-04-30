@@ -10,10 +10,14 @@ export default class TemplateStructureHeader extends Component {
     render() {
         return (
             <div className = "template-structure-header-container">
+                <span className = "template-structure-header-template-name">
+                    Template name: 
+                </span>
                 <span>
                     {this.props.headerText}
                 </span>
-                <button onClick = {this.props.updateTemplateStructure}>
+                <button className = "template-structure-save-changes-btn"
+                        onClick = {this.props.updateTemplateStructure}>
                     Save structure
                 </button>
             </div>

@@ -35,6 +35,8 @@ export default class ContentEditableDiv extends Component {
                   style = {{"font-size": this.props.fontSize, 
                             "color": this.props.color,
                             "margin-top": (this.props.marginTop ? this.props.marginTop : 0) + "px",
+                            "margin-right": (this.props.marginRight ? this.props.marginRight : 0) + "px",
+                            "margin-left": (this.props.marginLeft ? this.props.marginLeft : 0) + "px",
                             "max-width": (this.props.maxWidth ? this.props.maxWidth : 10000000) + "px"}}  
                   contentEditable = {this.props.editable ? this.props.editable : true}
                   onInput = {this.handleChange}>

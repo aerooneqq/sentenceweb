@@ -3,18 +3,26 @@ import React, {Component} from "react";
 import "./TreeItem.css";
 
 //Icons
-import addInsideIcon from "./img/add_inside.svg";
-import addIcon from "./img/add.svg";
+import addContentInsideIcon from "./img/add_content_inside.svg";
+import addListInsideIcon from "./img/add_list_inside.svg"
+import addContentIcon from "./img/add_content.svg";
+import addListIcon from "./img/add_list.svg";
 import deleteIcon from "./img/delete.svg";
 import contentItemIcon from "./img/template_structure_content_paragraph_icon.svg";
 import listItemIcon from "./img/template_structure_list_paragraph_icon.svg";
+import commentIcon from "./img/comment_icon.svg";
 
 import ContentEditableDiv from "../../../../workplace/DocumentWorkplace/DocumentContent/DocumentElements/CommonComponents/ContentEditable/ContentEditableSpan";
+import TreeItemComment from "./TreeItemComment/TreeItemComment";
 
 
 export default class TreeItem extends Component { 
     constructor(props) {
         super(props);
+
+        this.state = {
+            isCommentShown: false,
+        }
 
         this.handleAddContentItem = this.handleAddContentItem.bind(this);
         this.handleAddListItem = this.handleAddListItem.bind(this);
@@ -25,6 +33,8 @@ export default class TreeItem extends Component {
         this._handleAddClick = this._handleAddClick.bind(this);
         this._getThisIndexInParent = this._getThisIndexInParent.bind(this);
         this.handleNameChange = this.handleNameChange.bind(this);
+        this.handleCommentChange = this.handleCommentChange.bind(this);
+        this.handleShowComment = this.handleShowComment.bind(this);
     }
 
     _getThisIndexInParent() { 
@@ -43,7 +53,7 @@ export default class TreeItem extends Component {
         this.props.parentItem.items.splice(index, 0, {
             name: "New item", 
             comment: "New comment here...", 
-            type: itemType,
+            itemType: itemType,
             items: [],
         });
 
@@ -58,11 +68,11 @@ export default class TreeItem extends Component {
         this._handleAddClick(0);
     }
 
-    _handleAddInside() {
+    _handleAddInside(itemType) {
         this.props.item.items.unshift({
             name: "New item", 
             comment: "New comment here...", 
-            type: 1,
+            itemType: itemType,
             items: [],
         });
 
@@ -89,33 +99,53 @@ export default class TreeItem extends Component {
         this.props.item.name = newName;
     }
 
+    handleCommentChange(newComment) { 
+        this.props.item.comment = newComment;
+    }
+
+    handleShowComment() { 
+        this.setState(prevState => {
+            return {
+                isCommentShown: !prevState.isCommentShown
+            }
+        });
+    }
+
     render() {
         return (
             <div className = "tree-item-outer-container">
                 <div className = "tree-item-content">
-                    <img src = {this.props.item.itemType === 0 ? listItemIcon : contentItemIcon} />
-                    <div className = "tree-item-content-text">
-                        <ContentEditableDiv text = {this.props.item.name}
-                                            onChange = {this.handleNameChange}/>
+                    <div>
+                        <img src = {this.props.item.itemType === 0 ? listItemIcon : contentItemIcon} />
                     </div>
+                    <ContentEditableDiv text = {this.props.item.name}
+                                        marginLeft = {10}
+                                        onChange = {this.handleNameChange}/>
                     <div className = "template-tree-item-icons">
+
+                        <div className = "template-tree-item-add-content" onClick = {this.handleShowComment}>
+                            <img src = {commentIcon} />
+                        </div>
                         {this.props.parentItem ? (
                             <>
-                            <div className = "template-tree-item-add-content" onClick = {this.handleAddContentItem}>
-                                <img src = {addIcon} />
-                            </div>
-                            <div className = "template-tree-item-add-list" onClick = {this.handleAddListItem}>
-                                <img src = {addIcon} />
-                            </div>
+                                <div className = "template-tree-item-add-content" onClick = {this.handleAddContentItem}>
+                                    <img src = {addContentIcon} />
+                                </div>
+                                <div className = "template-tree-item-add-list" onClick = {this.handleAddListItem}>
+                                    <img src = {addListIcon} />
+                                </div>
                             </>
                         ) : null}
-
-                        <div className = "template-tree-item-add-inside-content" onClick = {this.handleAddInsideContent}>
-                            <img src = {addInsideIcon} />
-                        </div>
-                        <div className = "template-tree-item-add-inside-list" onClick = {this.handleAddInsideList}>
-                            <img src = {addInsideIcon} />
-                        </div>
+                        {this.props.item.itemType === 0 || this.props.item.itemType === 2 ? (
+                            <>
+                                <div className = "template-tree-item-add-inside-content" onClick = {this.handleAddInsideContent}>
+                                    <img src = {addContentInsideIcon} />
+                                </div>
+                                <div className = "template-tree-item-add-inside-list" onClick = {this.handleAddInsideList}>
+                                    <img src = {addListInsideIcon} />
+                                </div>
+                            </>
+                        ) : null }
 
                         {this.props.parentItem ? (
                             <div className = "template-tree-item-remove" onClick = {this.handleRemove}>
@@ -124,6 +154,10 @@ export default class TreeItem extends Component {
                         ) : null}
 
                     </div>
+                </div>
+                <div className = {this.state.isCommentShown ? "tree-item-comment-visible" : "tree-item-comment-invisible"}>
+                    <TreeItemComment comment = {this.props.item.comment}
+                                     handleCommentChange = {this.handleCommentChange} />
                 </div>
                 <div className = "tree-item-children-container">
                     {this.props.item.items ? this.props.item.items.map(

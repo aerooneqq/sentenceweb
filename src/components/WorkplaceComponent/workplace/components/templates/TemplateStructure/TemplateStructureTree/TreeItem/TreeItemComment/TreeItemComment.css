@@ -1,0 +1,29 @@
+.template-structure-tree-item-comment-container {
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    width: max-content;
+    max-width: 500px;
+    min-height: 30px;
+
+    border-style: solid;
+    border-color: #a0a0a0;
+    border-width: 1px;
+    border-radius: 5px;
+
+    color: #909090;
+    font-size: 15px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.template-structure-tree-item-comment-photo {
+    width: 25px;
+    height: 25px;
+}
+
+.template-structure-tree-item-comment-photo {
+    margin-left: 10px;
+}

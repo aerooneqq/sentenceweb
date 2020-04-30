@@ -3,6 +3,7 @@ import React, {Component, lazy} from "react"
 //Styles
 import "./WorkplaceComponentStyles.css"
 import TemplateComponent from "./workplace/components/templates/TemplateComponent";
+import ProjectsComponent from "./workplace/components/projects/ProjectsComponent";
 
 //Components
 const Header = lazy(()=> import("./workplace/components/header/Header"))
@@ -20,10 +21,11 @@ export default class WorkplaceComponent extends Component{
     this.components = [
       <Profile signOut = {this.props.signOut}/>,
       <DocumentDesk />,
+      <ProjectsComponent />,
       <TemplateComponent />,
     ]
     this.state = { 
-      component: <DocumentDesk />,
+      component: this.components[1],
     };
 
     this._changeWorkplaceComponent = this._changeWorkplaceComponent.bind(this);

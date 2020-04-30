@@ -13,3 +13,21 @@
     font-size: 18px;
     font-weight: 400;
 }
+
+.template-structure-header-template-name { 
+    color: #909090;
+    font-size: 15px;
+    margin-right: 15px;
+}
+
+.template-structure-save-changes-btn { 
+    margin-left: 40px;
+
+    width: 150px;
+    height: 30px;
+    border-style: none;
+    border-radius: 5px;
+    background: green; 
+
+    color: white;
+}

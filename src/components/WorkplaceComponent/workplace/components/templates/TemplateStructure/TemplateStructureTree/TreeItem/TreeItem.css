@@ -16,7 +16,7 @@
 
     width: max-content;
     max-width: 700px;
-    height: 35px;
+    min-height: 35px;
     
     padding-left: 10px;
     padding-right: 10px;
@@ -36,6 +36,15 @@
     margin-left: 5px; 
     font-size: 17px;
     color: #606060;
+}
+
+.tree-item-comment-visible {
+    margin-top: 1px;
+    display: flex;
+}
+
+.tree-item-comment-invisible {
+    display: none;
 }
 
 .template-tree-item-icons {
@@ -75,7 +84,7 @@
 }
 
 .template-tree-item-remove {
-    margin-left: 10px;
+    margin-left: 5px;
 }
 
 .template-tree-item-add-inside {

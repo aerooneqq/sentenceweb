@@ -25,7 +25,6 @@ export default class DocumentHeaderService {
     }
 
     addDocumentToHeader(documentID) {
-        alert(documentID);
         let url = `${this._apiUrl}?documentID=${documentID}`;
         return axios.put(url, {}, {
             headers: {

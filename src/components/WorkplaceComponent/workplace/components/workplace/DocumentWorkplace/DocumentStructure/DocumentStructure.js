@@ -54,7 +54,7 @@ export default class DocumentStructure extends Component{
                     alertAppMessage(er.response.data);
                 }
                 else {
-                    alertAppMessage("Error ocured while creating new item");
+                    alertAppMessage("Error ocurred while creating new item");
                 }
             })
     }
@@ -69,7 +69,7 @@ export default class DocumentStructure extends Component{
                     alertAppMessage(er.response.data);
                 }
                 else {
-                    alertAppMessage("Error ocured while creating new item");
+                    alertAppMessage("Error ocurred while creating new item");
                 }
             })
     }
@@ -77,14 +77,14 @@ export default class DocumentStructure extends Component{
     renameItem(itemID, newName) {
         this.documentStructureService.renameItem(itemID, this.props.currentDocumentStructureID, newName)
             .then(res => {
-                this.props.getDocumentStructure(this.props.documentID);
+
             })
             .catch(er => {
                 if (er.response) {
                     alertAppMessage(er.response.data);
                 }
                 else {
-                    alertAppMessage("Error ocured while creating new item");
+                    alertAppMessage("Error ocurred while creating new item");
                 }
             })
     }

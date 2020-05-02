@@ -50,8 +50,6 @@ export default class DocumentTreeItem extends Component {
         this.setState({
             paragraphName: event.target.value
         }, this.props.renameItem(event.target.value));
-
-        this.props.renameItem(this.props.item.itemID, event.target.value);
     }
 
     /**

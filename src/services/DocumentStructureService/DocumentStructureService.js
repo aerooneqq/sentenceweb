@@ -17,7 +17,6 @@ export default class DocumentStructureService {
     }
 
     addListItem(parentItemID, documentStructureID) {
-        alert(documentStructureID);
         return axios.put(`${this._apiUrl}`, {
             parentDocumentStructureID: documentStructureID,
             itemID: parentItemID,

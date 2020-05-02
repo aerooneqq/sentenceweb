@@ -37,6 +37,7 @@ export default class TemplateStructure extends Component {
                 }, () => {
                     this.secondItems = deepCopy(this.state.items);
                     alertAppMessage("The structure was updated", "success");
+                    this.forceUpdate();
                 });
             })
             .catch(err => {

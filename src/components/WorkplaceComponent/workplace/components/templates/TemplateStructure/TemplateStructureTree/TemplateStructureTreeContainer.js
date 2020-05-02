@@ -7,16 +7,12 @@ import { deepCopy } from "../../../../../../../services/Utility/UtilityFunctions
 export default class TemplateStructureTreeContainer extends Component { 
     constructor(props) { 
         super(props);
-
-        this.state = { 
-            items: props.items
-        }
     }
 
     render() { 
         return (
             <div className = "template-info-structure-tree-container">
-                {this.state.items ? this.state.items.map(item => <TreeItem item = {item}
+                {this.props.items ? this.props.items.map(item => <TreeItem item = {item}
                                                                            updateStructure = {this.props.updateStructure}
                                                                            parentItem = {null} />) : null}
             </div>

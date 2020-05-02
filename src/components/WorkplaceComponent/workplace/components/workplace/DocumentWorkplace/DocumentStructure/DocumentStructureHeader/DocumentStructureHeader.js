@@ -18,10 +18,10 @@ export default class DocumentStructureHeader extends Component {
             isSearchIconHovered: false
         };
 
-        this.handleSearcIconClick = this.handleSearcIconClick.bind(this);
+        this.handleSearchIconClick = this.handleSearchIconClick.bind(this);
     }
 
-    handleSearcIconClick() {
+    handleSearchIconClick() {
         let inputContainer = document.getElementById("documentStructureHeaderInput");
 
         if (this.state.searchOn) { 
@@ -56,7 +56,7 @@ export default class DocumentStructureHeader extends Component {
                     </span>
                 </div>
                 <div className = "fillContainer" />
-                <div id = "searchIconContainer" onClick = {this.handleSearcIconClick}>
+                <div id = "searchIconContainer" onClick = {this.handleSearchIconClick}>
                     <img className = "documentStructureSearch" src = {searchIcon} alt = "Search" />
                 </div>
             </div>

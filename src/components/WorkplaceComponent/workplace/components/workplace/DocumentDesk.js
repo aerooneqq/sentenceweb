@@ -95,7 +95,6 @@ export default class DocumentDesk extends Component{
     }
 
     getDocumentStructureContent(documentID) {
-        this.addDocumentToDocumentHeader(documentID);
         this.setState({
             isStructureLoading: true,
             currentDocumentID: documentID,

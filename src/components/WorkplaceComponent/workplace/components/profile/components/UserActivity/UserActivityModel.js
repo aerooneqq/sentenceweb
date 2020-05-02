@@ -5,17 +5,17 @@ import DateService from "../../../../../../../services/Dates/DateService";
 export default class UserActivityModel { 
     months = [
         {name: "January", daysCount: 31, firstDayNum: 1}, 
-        {name : "February", daysCount: 28, firstDayNum: 4}, 
-        {name : "March", daysCount: 31, firstDayNum: 4}, 
-        {name: "April", daysCount: 30, firstDayNum: 0}, 
-        {name : "May", daysCount: 31, firstDayNum: 2}, 
-        {name : "June", daysCount: 30, firstDayNum: 5}, 
-        {name : "July", daysCount: 31, firstDayNum: 0},
-        {name : "August", daysCount: 31, firstDayNum: 3}, 
-        {name :"September", daysCount: 30, firstDayNum: 6}, 
-        {name : "October", daysCount: 31, firstDayNum: 1}, 
-        {name : "November", daysCount: 30, firstDayNum: 4},
-        {name : "December", daysCount: 31, firstDayNum: 6}
+        {name : "February", daysCount: 29, firstDayNum: 5}, 
+        {name : "March", daysCount: 31, firstDayNum: 6}, 
+        {name: "April", daysCount: 30, firstDayNum: 2}, 
+        {name : "May", daysCount: 31, firstDayNum: 4}, 
+        {name : "June", daysCount: 30, firstDayNum: 0}, 
+        {name : "July", daysCount: 31, firstDayNum: 2},
+        {name : "August", daysCount: 31, firstDayNum: 5}, 
+        {name :"September", daysCount: 30, firstDayNum: 1}, 
+        {name : "October", daysCount: 31, firstDayNum: 3}, 
+        {name : "November", daysCount: 30, firstDayNum: 6},
+        {name : "December", daysCount: 31, firstDayNum: 1}
     ];
 
     constructor(activities) { 

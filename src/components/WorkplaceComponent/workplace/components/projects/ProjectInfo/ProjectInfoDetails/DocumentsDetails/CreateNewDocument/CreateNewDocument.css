@@ -1,0 +1,138 @@
+.create-new-document-outer-container-closed {
+    width: 400px;
+    height: 100px;
+
+    margin-top: 40px;
+    margin-left: 40px;
+
+    border-style: solid;
+    border-width: 1px;
+    border-color: gray;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-new-document-outer-container-opened {
+    width: 400px;
+    height: 100px;
+
+    margin-top: 40px;
+    margin-left: 40px;
+
+    border-style: solid;
+    border-width: 1px;
+    border-color: gray;
+    border-radius: 10px;
+
+    animation: expandDocumentCreation 0.3s ease-in forwards;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+    @keyframes expandDocumentCreation {
+        from {
+            height: 50px;
+        }
+
+        to {
+            height: 500px;
+        }
+    }
+
+.create-new-document-form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.invite-new-participant-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.create-new-document-input-description {
+    margin-top: 10px;
+    font-size: 13px;
+    color: gray;
+    align-self: flex-start;
+    margin-left: 30px;
+}
+
+.create-new-document-input {
+    align-self: flex-start;
+    margin-left: 30px;
+
+    border-style: solid;
+    border-width: 1px;
+    border-color: #f97645;
+    border-radius: 3px;
+
+    width: 330px;
+    height: 25px;
+
+    font-size: 18px;
+    color: gray;
+
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.create-new-document-close {
+    font-size: 15px;
+    color: gray;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+    .create-new-document-close:hover {
+        color: black;
+    }
+
+.create-new-document-search-for-templates {
+    width: 100%;
+    height: 50px;
+}
+
+.create-new-document-templates {
+    height: 250px;
+
+    overflow-y: auto;
+}
+
+.create-new-document-btn {
+    width: 260px;
+    height: 45px;
+
+    background: green;
+
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: transparent;
+
+    margin-top: 10px;
+
+    color: white;
+    font-size: 15px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+    .create-new-document-btn:hover {
+        background: rgb(8, 165, 8);
+    }
+
+    .create-new-document-btn:active {
+        transform: scale(0.95);
+    }

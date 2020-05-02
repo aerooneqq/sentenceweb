@@ -17,11 +17,7 @@ export default class TemplateList extends Component {
 
                 return (                
                     <div onClick = {handleTemplateClick}>
-                        <Template templateID = {template.templateID} logo = {template.logo} name = {template.name}
-                                  documentsCount = {template.documentsCount}
-                                  author = {template.author}
-                                  createdAt = {template.createdAt}
-                                  published = {template.published} />
+                        <Template template = {template} />
                     </div>)
             }) : null
         )

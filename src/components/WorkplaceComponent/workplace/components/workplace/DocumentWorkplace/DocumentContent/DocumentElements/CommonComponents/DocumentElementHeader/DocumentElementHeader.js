@@ -2,7 +2,7 @@ import React, {Component} from "react";
 
 //Styles
 import "./DocumentElementHeaderStyles.css";
-import ContentEditableDiv from "../ContentEditable/ContentEditableSpan";
+import ContentEditableSpan from "../../../../../../../../../ContentEditable/ContentEditableSpan";
 
 /**
  * PROPS LIST: 
@@ -23,10 +23,10 @@ export default class DocumentElementHeader extends Component {
         return ( 
             <div className = "documentElementHeaderOutterCont">
                 <div className = "documentElementHeaderInnerCont"> 
-                    <ContentEditableDiv text = {this.props.name} 
-                                        color = {"#999999"}
-                                        fontSize = {"16px"}
-                                        onChange = {this.handleEditableChange}/>
+                    <ContentEditableSpan text = {this.props.name} 
+                                         color = {"#999999"}
+                                         fontSize = {"16px"}
+                                         onChange = {this.handleEditableChange}/>
                 </div>
             </div>
         )

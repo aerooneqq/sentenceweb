@@ -1,0 +1,67 @@
+.user-search-result-container {
+    width: 210px;
+    height: min-content;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;   
+    
+    border-width: 1px;
+    border-color: #f97645;
+    border-radius: 5px;
+    border-style: solid;
+
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+}
+
+.user-search-result-text-info {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.user-search-result-photo {
+    width: 30px;
+    height: 30px;
+
+    border-radius: 30px;
+
+    margin-left: 10px;
+}
+
+.user-search-result-text-info {
+    margin-left: 5px;
+}
+
+.user-search-result-name {
+    font-size: 17px;
+    color: black;
+}
+
+.user-search-result-birth-date {
+    font-size: 13px;
+    color: #909090;
+}
+
+.user-search-result-invite-container {
+    width: 35px;
+    height: 35px;
+
+    border-radius: 35px;
+
+    margin-left: 20px;
+
+    background:  green;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+    .user-search-result-invite-container:hover {
+        background:  rgb(14, 163, 14);
+    }

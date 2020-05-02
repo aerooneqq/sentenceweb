@@ -18,7 +18,7 @@ export default class DocumentHeaderCell extends Component {
     }
 
     changeSelectedDocument() { 
-        this.props.changeSelectedDocument(this.props.openedDoc.id);
+        this.props.changeSelectedDocument(this.props.openedDoc.documentID);
     }
 
     render() { 

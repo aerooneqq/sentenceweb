@@ -1,5 +1,5 @@
 .project-outer-container {
-    width: 100%;
+    width: 300px;
     height: 60px;
     display: flex;
     flex-direction: row;
@@ -15,8 +15,8 @@
 }
 
 .project-info {
+    width: 240px;
     height: 100%;
-    flex-grow: 1;
     margin-left: 10px;
     display: flex;
     flex-direction: column;
@@ -26,10 +26,16 @@
     margin-top: 5px;    
     font-size: 24px;
     color: black;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .project-creation-date {
     font-size: 13px;
     color: #909090;
     margin-top: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }

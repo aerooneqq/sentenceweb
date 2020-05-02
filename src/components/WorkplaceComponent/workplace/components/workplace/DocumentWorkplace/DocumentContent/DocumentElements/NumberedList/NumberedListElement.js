@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import "./NumberedList.css";
-import ContentEditableDiv from "../CommonComponents/ContentEditable/ContentEditableSpan";
+import ContentEditableSpan from "../../../../../../../../ContentEditable/ContentEditableSpan";
 
 //Icons
 import addInsideIcon from "./img/add_inside.svg";
@@ -41,12 +41,12 @@ export default class NumberedListElement extends Component {
                 <div className = "numbered-list-element-num">
                     {this.props.index + 1}.
                 </div>
-                <ContentEditableDiv text = {this.props.element.content} 
-                                    color = {"black"}
-                                    fontSize = {"18px"}
-                                    marginTop = {-2}
-                                    maxWidth = {300}
-                                    onChange = {this.handleEditableChange}/>
+                <ContentEditableSpan text = {this.props.element.content} 
+                                     color = {"black"}
+                                     fontSize = {"18px"}
+                                     marginTop = {-2}
+                                     maxWidth = {300}
+                                     onChange = {this.handleEditableChange}/>
                 <div className = "numbered-list-element-icons">
                     <div className = "numbered-list-element-add" onClick = {this.handleAddClick}>
                         <img src = {addIcon} />

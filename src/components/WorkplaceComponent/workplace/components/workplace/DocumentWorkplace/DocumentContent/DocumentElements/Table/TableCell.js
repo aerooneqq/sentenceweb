@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import ReactDOM from "react-dom";
 
 import "./Table.css";
-import ContentEditableDiv from "../CommonComponents/ContentEditable/ContentEditableSpan";
+import ContentEditableSpan from "../../../../../../../../ContentEditable/ContentEditableSpan";
 import { ContextMenuTrigger } from "react-contextmenu";
 import TableCellContextMenu from "./ContextMenu/TableCellContextMenu";
 
@@ -58,12 +58,12 @@ export default class TableCell extends Component {
                 <td className = "table-cell"
                     onClick = {this.handleClick}>
                     <ContextMenuTrigger id = {this.props.contextMenuID}>
-                        <ContentEditableDiv text = {this.props.content} 
-                                            color = {"black"}
-                                            fontSize = {"18px"}
-                                            marginTop = {-2}
-                                            maxWidth = {300}
-                                            onChange = {this.changeContent}/>
+                        <ContentEditableSpan text = {this.props.content} 
+                                             color = {"black"}
+                                             fontSize = {"18px"}
+                                             marginTop = {-2}
+                                             maxWidth = {300}
+                                             onChange = {this.changeContent}/>
                     </ContextMenuTrigger>
 
                     <TableCellContextMenu contextMenuID = {this.props.contextMenuID}

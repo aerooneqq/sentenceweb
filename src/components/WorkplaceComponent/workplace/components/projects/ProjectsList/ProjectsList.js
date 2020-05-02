@@ -58,9 +58,12 @@ export default class ProjectsList extends Component {
     render() {
         return (
             <div className = "projects-list-outer-container">
+                <div className = "projects-list-container">
+                    {this.state.projects.map(project => <Project project = {project}
+                                                                changeSelectedProject = {this.props.changeSelectedProject}/>)}
+                </div>
+
                 <CreateNewProjectBtn createNewProject = {this.createNewProject} />
-                {this.state.projects.map(project => <Project project = {project}
-                                                             changeSelectedProject = {this.props.changeSelectedProject}/>)}
             </div>
         )
     }

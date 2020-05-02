@@ -1,0 +1,44 @@
+.participant-role-selected {
+    width: auto;
+    height: 35px;
+
+    padding-left: 10px;
+    padding-right: 10px;
+
+    border-color: red;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+
+    background: #559ad3;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+
+    margin-left: 5px;
+}
+
+.participant-role-container {
+    width: auto;
+    height: 35px;
+
+    padding-left: 10px;
+    padding-right: 10px;
+
+    border-color: #559ad3;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+
+    background: #559ad3;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    margin-left: 5px
+}

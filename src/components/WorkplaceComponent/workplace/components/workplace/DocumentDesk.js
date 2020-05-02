@@ -38,6 +38,7 @@ export default class DocumentDesk extends Component{
         this.removeDocumentFromHeader = this.removeDocumentFromHeader.bind(this);
         this.getDocumentContent = this.getDocumentContent.bind(this);
         this.getDocumentStructureContent = this.getDocumentStructureContent.bind(this);
+        this.changeSelectedDocumentInHeader = this.changeSelectedDocumentInHeader.bind(this);
     }
 
     getDocumentHeaderState() {
@@ -137,7 +138,8 @@ export default class DocumentDesk extends Component{
                     openedDoc.isSelected = true;
                 }
             }
-
+            
+            this.getDocumentStructureContent(id);
             return {
                 headerOpenedDocs: prevState.headerOpenedDocs
             }

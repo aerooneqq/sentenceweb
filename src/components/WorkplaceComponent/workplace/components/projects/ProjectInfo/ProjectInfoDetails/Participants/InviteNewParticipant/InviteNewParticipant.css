@@ -1,0 +1,37 @@
+.invite-new-participant-container {
+    width: 400px;
+    min-height: 100px;
+    height: min-content;
+
+    border-width: 1px;
+    border-radius: 10px;
+    border-color: #909090;
+    border-style: solid;
+
+    margin-left: 20px;
+    margin-top: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.invite-new-participant-container:hover {
+    border-color: #606060;
+    background: #e7e7e7;
+}
+
+.invite-new-participant-search {
+    padding-top: 20px;
+}
+
+.invite-new-participant-search-result {
+    margin-top: 20px;
+}
+
+.invite-new-participant-search-result {
+    margin-top: 40px;
+
+    margin-bottom: 20px;
+}

@@ -22,7 +22,23 @@ export default class ProjectService {
             headers: { 
                 Authorization: `Bearer ${this._token}`
             }
-        });
+        })
+    }
+
+    getProjectUsers(projectID) {
+        return axios.get(`${this._url}/projectUsers?projectID=${projectID}`, {
+            headers: { 
+                Authorization: `Bearer ${this._token}`
+            }
+        })
+    }
+
+    getProjectDocuments(projectID) {
+        return axios.get(`${this._url}/projectDocuments?projectID=${projectID}`, {
+            headers: { 
+                Authorization: `Bearer ${this._token}`
+            }
+        })
     }
 
     deleteProject(projectID) {
@@ -39,5 +55,34 @@ export default class ProjectService {
                 Authorization: `Bearer ${this._token}`
             }
         })
+    }
+
+    updateProjectNameAndDesc(projectID, newName, newDescription) {
+        return axios.put(this._url, {
+            projectID: projectID,
+            description: newDescription,
+            name: newName
+        }, {
+            headers: { 
+                Authorization: `Bearer ${this._token}`
+            }
+        })
+    }
+
+    inviteUser(userID, projectID) {
+        return axios.put(`${this._url}/invite?userID=${userID}&projectID=${projectID}`, {}, {
+            headers: { 
+                Authorization: `Bearer ${this._token}`
+            }
+        });
+    }
+
+    createNewDocumentInProject(projectID, documentName, templateID) {
+        return axios.put(`${this._url}/document?projectID=${projectID}&documentName=${documentName}&templateID=${templateID}`,
+            {}, {
+                headers: { 
+                    Authorization: `Bearer ${this._token}`
+                }
+            });
     }
 }

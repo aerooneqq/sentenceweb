@@ -1,0 +1,26 @@
+.profile-details-header-element {
+    height: 100%;
+    width: auto;
+
+    padding-left: 10px;
+    padding-right: 10px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 18px;
+    color: #606060;
+}
+
+    .profile-details-header-element:nth-child(n + 2) {
+        border-style: solid;
+        border-width: 0px;
+        border-left-width: 1px;
+        border-color: #f97645;
+    }
+
+    .profile-details-header-element:hover {
+        color: #f97645;
+    }

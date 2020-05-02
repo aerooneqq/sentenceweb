@@ -28,7 +28,7 @@ import FileService from "../../../../../../../../services/FileSystemService/File
  * 1) folderID
  * 2) changeUpdatingState - function to switch on/off the loader.
  */
-export default class DoumentFoldersGrid extends Component { 
+export default class DocumentFoldersGrid extends Component { 
 
     constructor(props) { 
         super(props);

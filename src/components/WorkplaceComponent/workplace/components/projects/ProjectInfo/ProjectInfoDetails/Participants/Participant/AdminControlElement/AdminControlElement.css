@@ -1,0 +1,27 @@
+.admin-control-element-container {
+    width: 35px;
+    height: 35px;
+
+    border-radius: 35px;
+    border-width: 1px;
+    border-color: #f97645;
+    border-style: solid;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin-control-element-container:hover {
+    border-color: red;
+}
+
+.admin-control-element-container:nth-child(n + 2) {
+    margin-left: 10px;
+}
+
+.admin-control-element-icon {
+    width: 25px;
+    height: 25px;
+}

@@ -60,11 +60,12 @@ export default class WorkplaceSearch extends Component {
                 <div id = "workplaceSearch">
                     <input type = "text"    
                            id = "workplaceSearchInput"
-                           style = {{backgroundColor: this.props.backgroundColor === undefined ? "white" : this.props.backgroundColor}}
+                           style = {{backgroundColor: this.props.backgroundColor === undefined ? "white" : this.props.backgroundColor,
+                                     "margin-top": (this.props.marginTop ? this.props.marginTop : 0) + "px"}}
                            value = {this.state.value} 
                            onChange = {this.handleInputValueChange}
                            onKeyPress = {this.handleSearchInputKeyEnter}
-                           placeholder="Enter the query..." />
+                           placeholder = "Enter the query..." />
                 </div>
                 <div id = "workplaceSearchInputHelpCont"
                      className = "collapsed"

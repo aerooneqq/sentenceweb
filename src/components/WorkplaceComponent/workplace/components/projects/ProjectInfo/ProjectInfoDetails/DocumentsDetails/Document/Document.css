@@ -1,0 +1,39 @@
+.document-container {
+    width: 400px;
+    height: 100px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    border-width: 1px;
+    border-color: #f97645;
+    border-radius: 10px;
+    border-style: solid;
+}
+
+    .document-container:nth-child(n + 2) {
+        margin-top: 10px;
+    }
+
+    .document-container:hover {
+        background: #e4e4e4;
+    }
+
+.document-icon {
+    margin-left: 10px;
+}
+
+.document-name {
+    height: 100%;
+    width: 250px;
+    font-size: 22px;
+    color: gray;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    box-sizing: border-box;
+}

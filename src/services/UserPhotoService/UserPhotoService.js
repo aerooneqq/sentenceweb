@@ -23,4 +23,12 @@ export default class UserPhotoService {
             }
         });
     }
+
+    getOtherUserPhoto(userID) {
+        return axios.get(`${this._apiUrl}?userID=${userID}`, {
+            headers: { 
+                Authorization: `Bearer ${this._token}`
+            }
+        });
+    }
 }

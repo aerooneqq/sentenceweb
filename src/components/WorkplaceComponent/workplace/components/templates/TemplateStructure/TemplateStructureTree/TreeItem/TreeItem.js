@@ -12,7 +12,7 @@ import contentItemIcon from "./img/template_structure_content_paragraph_icon.svg
 import listItemIcon from "./img/template_structure_list_paragraph_icon.svg";
 import commentIcon from "./img/comment_icon.svg";
 
-import ContentEditableDiv from "../../../../workplace/DocumentWorkplace/DocumentContent/DocumentElements/CommonComponents/ContentEditable/ContentEditableSpan";
+import ContentEditableSpan from "../../../../../../../ContentEditable/ContentEditableSpan";
 import TreeItemComment from "./TreeItemComment/TreeItemComment";
 
 
@@ -118,9 +118,9 @@ export default class TreeItem extends Component {
                     <div>
                         <img src = {this.props.item.itemType === 0 ? listItemIcon : contentItemIcon} />
                     </div>
-                    <ContentEditableDiv text = {this.props.item.name}
-                                        marginLeft = {10}
-                                        onChange = {this.handleNameChange}/>
+                    <ContentEditableSpan text = {this.props.item.name}
+                                         marginLeft = {10}
+                                         onChange = {this.handleNameChange}/>
                     <div className = "template-tree-item-icons">
 
                         <div className = "template-tree-item-add-content" onClick = {this.handleShowComment}>

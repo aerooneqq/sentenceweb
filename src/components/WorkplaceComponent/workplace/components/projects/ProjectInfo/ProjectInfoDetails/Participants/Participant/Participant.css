@@ -1,0 +1,61 @@
+.participant-container {
+    width: 400px;
+
+    border-style: solid;
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: #f97645;
+
+    background: #e0e0e0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    padding-bottom: 10px;
+}
+
+.participant-photo {
+    margin-top: 10px;
+    width: 80px;
+    height: 80px;
+
+    border-radius: 80px;
+    border-width: 1px;
+    border-color: #f97645;
+    border-style: solid;
+
+    margin-left: 10px;
+}
+
+.participant-info {
+    margin-left: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.participant-name {
+    margin-top: 5px;
+
+    font-size: 24px;
+    color: #404040;
+}   
+
+.participant-role {
+    font-size: 14px;
+    color: #606060;
+}
+
+.participant-admin-control {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+}
+
+.participant-roles {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+}

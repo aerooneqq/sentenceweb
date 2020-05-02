@@ -15,24 +15,24 @@ export default class Template extends Component {
         return (
             <div className = "template-list-item-container">
                 <div className = "template-list-item-picture-container">
-                    <img src = {this.props.logo ? "data:image/png;base64," + this.props.logo : defaultTemplatePhoto} 
-                         className = {this.props.logo ? "template-list-item-picture-exists" : "template-list-item-picture-doesnt-exist"} />
+                    <img src = {this.props.template.logo ? "data:image/png;base64," + this.props.template.logo : defaultTemplatePhoto} 
+                         className = {this.props.template.logo ? "template-list-item-picture-exists" : "template-list-item-picture-doesnt-exist"} />
                 </div>
                 <div className = "template-list-item-desc">
                     <div className = "template-list-item-desc-top">
                         <span className = "template-list-item-name">
-                            {this.props.name} 
+                            {this.props.template.name} 
                         </span>
-                        <img src = {this.props.published ? publishedTemplateIcon : privateTemplateIcon}
+                        <img src = {this.props.template.published ? publishedTemplateIcon : privateTemplateIcon}
                              className = "template-list-item-publish-status-icon" />
                         <div className = "fill-container" />
                         <div className = "template-list-item-usage-count">
-                            {this.props.documentsCount ? this.props.documentsCount: 0}
+                            {this.props.template.documentCount ? this.props.template.documentCount : 0}
                         </div>
                     </div>
                     <div className = "template-list-item-desc-bottom">
                         <div className = "template-list-item-author">
-                            by {this.props.author.username} ({this.props.createdAt.substr(0, 10)})
+                            by {this.props.template.author.username} ({this.props.template.createdAt.substr(0, 10)})
                         </div>
                     </div>
                 </div>

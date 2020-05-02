@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 
 import "./TemplateTextInfoTextBox.css";
-import ContentEditableDiv from "../../../../../workplace/DocumentWorkplace/DocumentContent/DocumentElements/CommonComponents/ContentEditable/ContentEditableSpan";
+import ContentEditableSpan from "../../../../../../../../ContentEditable/ContentEditableSpan"
 
 export default class TemplateInfoTextBox extends Component {
     constructor(props) {
@@ -17,9 +17,9 @@ export default class TemplateInfoTextBox extends Component {
     render() {
         return (
             <div className = "template-info-text-box">
-                <ContentEditableDiv onChange = {this.handlePropertyChange}
-                                    text = {this.props.value}
-                                    editable = {this.props.mode === "My"} />
+                <ContentEditableSpan onChange = {this.handlePropertyChange}
+                                     text = {this.props.value}
+                                     editable = {this.props.mode === "My"} />
             </div>
         )
     }

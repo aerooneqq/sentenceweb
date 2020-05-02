@@ -4,7 +4,7 @@ import React, {Component} from "react";
 import "./ParagraphTextStyles.css" 
 
 //Components
-import ContentEditableDiv from "../../CommonComponents/ContentEditable/ContentEditableSpan";
+import ContentEditableSpan from "../../../../../../../../../ContentEditable/ContentEditableSpan";
 
 
 export default class ParagraphText extends Component { 
@@ -21,10 +21,10 @@ export default class ParagraphText extends Component {
     render() { 
         return ( 
             <div className = "paragraphTextOutterCont">
-                <ContentEditableDiv text = {this.props.text} 
-                                    color = {"black"}
-                                    fontSize = {"18px"}
-                                    onChange = {this.handleEditableChange}/>
+                <ContentEditableSpan text = {this.props.text} 
+                                     color = {"black"}
+                                     fontSize = {"18px"}
+                                     onChange = {this.handleEditableChange}/>
             </div>
         )
     }

@@ -1,0 +1,8 @@
+.participants-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.documents-container {
+    display: flex;
+}

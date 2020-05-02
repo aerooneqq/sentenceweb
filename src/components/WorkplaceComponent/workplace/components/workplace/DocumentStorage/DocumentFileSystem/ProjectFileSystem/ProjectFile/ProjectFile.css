@@ -1,0 +1,28 @@
+.project-file-outer-container {
+    width: 150px;
+    height: 150px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border-width: 0.5px;
+    border-color: #f97645;
+    border-style: solid;
+    border-radius: 10px;
+
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+    .project-file-outer-container:hover {
+        box-shadow: 2px 2px 12px rgba(134, 130, 119, 0.5);
+        border-color: #dd5d2e;
+    }
+
+.project-file-name {
+    margin-top: 10px;
+    color: gray;
+    font-size: 16px;
+}

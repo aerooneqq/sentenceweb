@@ -103,7 +103,6 @@ export default class Registration extends Component{
           <button id="signUpBtn" onClick = {this.handleRegistrationClick}>  
             Sign up
           </button> 
-          <p>By clicking the sign up btn u agree to freely give me all things u have</p>
         </div>
       </div>
     )

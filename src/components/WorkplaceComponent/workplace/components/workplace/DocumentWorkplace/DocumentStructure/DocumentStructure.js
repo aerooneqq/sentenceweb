@@ -108,7 +108,7 @@ export default class DocumentStructure extends Component{
         return ( 
             <div id = "documentStructureOutterCont">
                 <DocumentStructureHeader openedParagraph = {this.state.openedParagraph}
-                                         findContentParagrahsWithName = {this.findContentParagraphsWithName} />
+                                         findContentParagraphsWithName = {this.findContentParagraphsWithName} />
                 <div id = "documentTreeOutterContainer">
                     <div id = "documentTreeInnerContainer">
                         <DndProvider backend = {HTML5Backend}>

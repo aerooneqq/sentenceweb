@@ -57,7 +57,6 @@ export default class App extends Component {
           });
         }
       }).catch(er => {
-        alert(er)
         this.setState({ 
           userLoggedIn: false,
           component: <HomeComponent signIn = {this.signIn} />,

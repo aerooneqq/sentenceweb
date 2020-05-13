@@ -21,7 +21,8 @@ export default class DocumentWorkplace extends Component {
         return ( 
             <div id = "documentWorkplaceComponentOutterCont">
                 <DocumentStorage getDocumentStructure = {this.props.getDocumentStructureContent}
-                                 getDocumentContent = {this.props.getDocumentContent}/>
+                                 getDocumentContent = {this.props.getDocumentContent}
+                                 downloadWordDocument = {this.props.downloadWordDocument}/>
                 <DocumentStructure documentID = {this.props.currentDocumentID}
                                    documentStructureRawData = {this.props.documentStructureRaw}
                                    isStructureLoading = {this.props.isStructureLoading}

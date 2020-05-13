@@ -90,7 +90,8 @@ export default class DocumentFoldersComponent extends Component {
         getFoldersHistoryManager().addNewFolder(this.state.mainFolderIDs["Projects"]);
         
         this.setState({ 
-            component: <ProjectFileSystem getDocumentStructure = {this.props.getDocumentStructure} />,
+            component: <ProjectFileSystem getDocumentStructure = {this.props.getDocumentStructure} 
+                                          downloadWordDocument = {this.props.downloadWordDocument}/>,
             currentFolderID: this.state.mainFolderIDs["Projects"]
         });
     }
@@ -103,7 +104,8 @@ export default class DocumentFoldersComponent extends Component {
             component: <DocumentFoldersGrid folderID = {this.state.mainFolderIDs["Local"]} 
                                             changeUpdatingState = {this.props.changeUpdatingState}
                                             setDocumentID = {this.props.setDocumentID}
-                                            getDocumentStructure = {this.props.getDocumentStructure} />,
+                                            getDocumentStructure = {this.props.getDocumentStructure} 
+                                            downloadWordDocument = {this.props.downloadWordDocument}/>,
             currentFolderID: this.state.mainFolderIDs["Local"]  
         });
     }

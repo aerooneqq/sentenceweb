@@ -74,7 +74,20 @@ export default class DocumentElementBase  extends Component {
     }
 
     changeCurrentNode(newNodeID) {
-        this.updateState(this.state.currentBranchID, newNodeID);
+        this.documentElementsService.changeSelectedBranchNode(this.state.element.elementID, newNodeID)
+            .then(res => {
+                alertAppMessage("The branch node was changed", "success");
+                this.updateState(this.state.currentBranchID, newNodeID);
+            })
+            .catch(err => {
+                if (err.response) {
+                    alertAppMessage(err.response.data, "error");
+                }
+                else {
+                    alertAppMessage("Error occurred while updating element", "error");
+                }
+            })
+        
     }
 
     updateState(branchID, nodeID) {

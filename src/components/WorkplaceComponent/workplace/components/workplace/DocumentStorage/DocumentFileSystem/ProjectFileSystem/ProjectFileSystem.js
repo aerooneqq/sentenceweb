@@ -55,7 +55,7 @@ export default class ProjectFileSystem extends Component {
         }
 
         return this.state.documents.map(document => <ProjectDocumentFile document = {document}
-                                                                         getDocumentStructure = {this.props.getDocumentStructure} />);
+                                                                         getDocumentStructure = {this.props.getDocumentStructure}/>);
     }
 
     render() {

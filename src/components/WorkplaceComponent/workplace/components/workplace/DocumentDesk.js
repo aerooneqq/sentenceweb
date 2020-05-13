@@ -1,10 +1,12 @@
 import React, {Component, lazy} from "react"
+import FileDownload from "js-file-download"
 
 //Styles
 import "./DocumentDeskStyles.css"
 import DocumentHeaderService from "../../../../../services/DocumentsHeaderService/DocumentHeaderService";
 import {alertAppMessage} from "../../../../ApplicationMessage/ApplicationMessageManager";
 import DocumentStructureService from "../../../../../services/DocumentStructureService/DocumentStructureService";
+import WordService from "../../../../../services/Word/WordService";
 import DocumentElementsService from "../../../../../services/DocumentElementService/DocumentElementService";
 import { showInputMessageBox } from "../../../../MessageInputBox/MessageInputBoxManager";
 
@@ -31,6 +33,7 @@ export default class DocumentDesk extends Component{
         this.documentHeaderService = new DocumentHeaderService(localStorage.getItem("token"));
         this.documentStructureService = new DocumentStructureService(localStorage.getItem("token"));
         this.documentElementsService = new DocumentElementsService(localStorage.getItem("token"));
+        this.wordService = new WordService(localStorage.getItem("token"));
 
         this.getDocumentHeaderState = this.getDocumentHeaderState.bind(this);
         this.openDocumentFromDocumentsHeader = this.openDocumentFromDocumentsHeader.bind(this);
@@ -144,6 +147,8 @@ export default class DocumentDesk extends Component{
             }
         })
     }
+
+
 
     render() { 
         return ( 

@@ -101,12 +101,12 @@ export default class DocumentsHeader extends Component{
                  onMouseLeave = {this.handleMouseLeave}>
                 <div id = "documentsHeaderScrollableItems">
                     <div id = "documentsHeaderInnerContainer">
-                        {this.props.openedDocuments.map(openedDoc => {
+                        {this.props.openedDocuments ? this.props.openedDocuments.map(openedDoc => {
                             return ( 
                                 <DocumentHeaderCell openedDoc = {openedDoc}
                                                     changeSelectedDocument = {this.props.changeSelectedDocumentInHeader} />
                             )
-                        })}
+                        }) : null}
                     </div>
                 </div>
 

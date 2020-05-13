@@ -43,4 +43,22 @@ export default class DocumentElementsService {
             }
         });
     }
+
+    changeSelectedBranch(elementID, branchID) {
+        let url = `${this._url}/selectedBranch?elementID=${elementID}&selectedBranchID=${branchID}`;
+        return axios.put(url, {}, {
+            headers: {
+                Authorization: `Bearer ${this._token}`
+            }
+        });
+    }
+
+    changeSelectedBranchNode(elementID, branchNodeID) {
+        let url = `${this._url}/selectedBranchNode?elementID=${elementID}&selectedBranchNodeID=${branchNodeID}`;
+        return axios.put(url, {}, {
+            headers: {
+                Authorization: `Bearer ${this._token}`
+            }
+        });
+    }
 }
